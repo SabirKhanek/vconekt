@@ -839,10 +839,11 @@ export function FluidCursor({ className, ...props }) {
 
       window.addEventListener("mousemove", (e) => {
         pointers[0].moved = pointers[0].down;
-        pointers[0].dx = (e.offsetX - pointers[0].x) * 10.0;
-        pointers[0].dy = (e.offsetY - pointers[0].y) * 10.0;
-        pointers[0].x = e.offsetX;
-        pointers[0].y = e.offsetY;
+        pointers[0].dx = (e.pageX - pointers[0].x) * 10.0;
+        pointers[0].dy = (e.pageY - pointers[0].y) * 10.0;
+        pointers[0].x = e.pageX;
+        pointers[0].y = e.pageY;
+        // console.log(pointers[0].x, e.offsetX);
       });
 
       window.addEventListener(
