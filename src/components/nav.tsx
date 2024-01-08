@@ -1,6 +1,7 @@
 import { NavHashLink } from "react-router-hash-link";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { Button } from "./button";
+import { Link } from "react-router-dom";
 
 export interface NavbarProps {
   className?: string;
@@ -8,9 +9,11 @@ export interface NavbarProps {
 export function Navbar({ className }: NavbarProps) {
   return (
     <nav
-      className={`absolute top-5 left-0 right-0 w-full z-[2] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
+      className={`absolute top-5 left-0 right-0 w-full z-[11] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
     >
-      <img src="/logo.png" className="scale-75" alt="Logo" />
+      <Link to={"/"}>
+        <img src="/logo.png" className="scale-75" alt="Logo" />
+      </Link>
       <div className="flex items-center gap-6">
         {navlinks.map((link) => {
           return (

@@ -4,8 +4,9 @@ export interface ButtonProps {
   className?: string;
   children?: React.ReactNode;
   bg?: "gradient" | "grey";
+  onClick?: () => void;
 }
-export function Button({ className, bg, children }: ButtonProps) {
+export function Button({ className, bg, children, onClick }: ButtonProps) {
   return (
     <button
       style={{
@@ -15,6 +16,7 @@ export function Button({ className, bg, children }: ButtonProps) {
             : "linear-gradient(90.23deg, #7CB51A 48.3%, #B1E060 87.74%, #B1E060 99.82%",
       }}
       className={`rounded-tr-xl rounded-bl-xl flex items-center ${className}`}
+      onClick={() => onClick && onClick()}
     >
       <span className="px-3 border-r border-white  py-1  text-white">
         {children}
