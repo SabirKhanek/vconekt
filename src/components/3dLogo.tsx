@@ -114,7 +114,7 @@ export function V3d({}: V3dProps) {
           gsap.to(elementRef.current, {
             opacity: 0,
             scrollTrigger: {
-            //   markers: true,
+              //   markers: true,
 
               trigger: "#about_us",
               start: "top top",
@@ -150,7 +150,9 @@ export function V3d({}: V3dProps) {
   return (
     <div
       ref={elementRef}
-      className="min-h-screen fixed pointer-events-none z-[3] w-full top-0 left-0"
+      className={`min-h-screen fixed pointer-events-none z-[3] w-full top-0 left-0 ${
+        is3dModelLoaded ? "" : "hidden"
+      }`}
     >
       <Spline
         id="spline"

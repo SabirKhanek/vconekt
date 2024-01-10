@@ -6,7 +6,6 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <section
       {...props}
-      //   data-speed={0.5}
       className={`relative w-full h-[100vh] z-10 ${getResponsiveClasses()}`}
     >
       <div className="h-screen flex justify-between items-center">

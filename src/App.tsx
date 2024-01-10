@@ -1,27 +1,28 @@
 import { Navbar } from "./components/nav";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap-trial/ScrollSmoother";
+
 import { Hero } from "./sections/hero.js";
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 import "./App.css";
 import { AboutUs } from "./sections/about_us.js";
 import { V3d } from "./components/3dLogo.js";
-import { FluidCursor } from "./components/fluidCursor.jsx";
+
 export default function App() {
-  let smoother = new ScrollSmoother({});
-  useEffect(() => {
-    smoother = new ScrollSmoother({
-      wrapper: "#scroll-wrapper",
-      content: "#main-container",
-      // smooth: 1.5,
-    });
+  let smoother: any;
+  useLayoutEffect(() => {
+    // smoother = ScrollSmoother.create({
+    //   wrapper: "#scroll-wrapper",
+    //   content: "#main-container",
+    //   effects: true,
+    //   // smooth: 1.2,
+    // });
   }, []);
   smoother;
   return (
     <div className="relative">
-      <FluidCursor className={"pointer-events-none"} />
+      {/* <FluidCursor className={"pointer-events-none"} /> */}
       <V3d />
 
       <div id="scroll-wrapper" className="z-[5]">
@@ -36,6 +37,20 @@ export default function App() {
 
           <Hero id="hero" />
           <AboutUs id="about_us" />
+          <section className="relative h-[100vh] flex justify-center items-center">
+            <div className="flex justify-center w-full gap-2">
+              <div data-speed={0.5} className="box"></div>
+              <div data-speed={1} className="box"></div>
+              <div data-speed={1.5} className="box"></div>
+            </div>
+          </section>
+          <section className="relative h-[100vh] flex justify-center items-center">
+            <div className="flex justify-center w-full gap-2">
+              <div data-speed={0.5} className="box"></div>
+              <div data-speed={1} className="box"></div>
+              <div data-speed={1.5} className="box"></div>
+            </div>
+          </section>
         </main>
       </div>
     </div>
