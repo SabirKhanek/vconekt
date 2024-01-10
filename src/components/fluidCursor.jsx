@@ -10,7 +10,7 @@ export function FluidCursor({ className, ...props }) {
 
       let config = {
         TEXTURE_DOWNSAMPLE: 1, // No downsampling for texture
-        DENSITY_DISSIPATION: 0.98, // Controls how fast density dissipates/smoothens
+        DENSITY_DISSIPATION: 0.975, // Controls how fast density dissipates/smoothens
         VELOCITY_DISSIPATION: 0.99, // Controls how fast velocity dissipates/smoothens
         PRESSURE_DISSIPATION: 0.8, // Controls how fast pressure dissipates/smoothens
         PRESSURE_ITERATIONS: 25, // Number of iterations to solve pressure
@@ -814,9 +814,9 @@ export function FluidCursor({ className, ...props }) {
       function multipleSplats(amount) {
         for (let i = 0; i < amount; i++) {
           const color = [
-            Math.random() * 10,
-            Math.random() * 10,
-            Math.random() * 10,
+            Math.random() * 255,
+            Math.random() * 255,
+            Math.random() * 255,
           ];
           const x = canvas.width * Math.random();
           const y = canvas.height * Math.random();
@@ -839,10 +839,11 @@ export function FluidCursor({ className, ...props }) {
 
       window.addEventListener("mousemove", (e) => {
         pointers[0].moved = pointers[0].down;
-        pointers[0].dx = (e.pageX - pointers[0].x) * 10.0;
-        pointers[0].dy = (e.pageY - pointers[0].y) * 10.0;
-        pointers[0].x = e.pageX;
-        pointers[0].y = e.pageY;
+        pointers[0].dx = (e.clientX - pointers[0].x) * 10.0;
+        pointers[0].dy = (e.clientY - pointers[0].y) * 10.0;
+        pointers[0].x = e.clientX;
+        pointers[0].y = e.clientY;
+        // console.log(e.clientX, e.clientX, e.clientY, e.clientY);
         // console.log(pointers[0].x, e.offsetX);
       });
 
@@ -854,10 +855,10 @@ export function FluidCursor({ className, ...props }) {
           for (let i = 0; i < touches.length; i++) {
             let pointer = pointers[i];
             pointer.moved = pointer.down;
-            pointer.dx = (touches[i].pageX - pointer.x) * 10.0;
-            pointer.dy = (touches[i].pageY - pointer.y) * 10.0;
-            pointer.x = touches[i].pageX;
-            pointer.y = touches[i].pageY;
+            pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
+            pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
+            pointer.x = touches[i].clientX;
+            pointer.y = touches[i].clientY;
           }
         },
         false
@@ -880,8 +881,8 @@ export function FluidCursor({ className, ...props }) {
 
           pointers[i].id = touches[i].identifier;
           pointers[i].down = true;
-          pointers[i].x = touches[i].pageX;
-          pointers[i].y = touches[i].pageY;
+          pointers[i].x = touches[i].clientX;
+          pointers[i].y = touches[i].clientY;
           pointers[i].color = [
             Math.random() + 0.2,
             Math.random() + 0.2,
@@ -901,6 +902,74 @@ export function FluidCursor({ className, ...props }) {
             if (touches[i].identifier == pointers[j].id)
               pointers[j].down = false;
       });
+
+      return () => {
+        window.removeEventListener("mousemove", (e) => {
+          pointers[0].moved = pointers[0].down;
+          pointers[0].dx = (e.clientX - pointers[0].x) * 10.0;
+          pointers[0].dy = (e.clientY - pointers[0].y) * 10.0;
+          pointers[0].x = e.clientX;
+          pointers[0].y = e.clientY;
+          // console.log(e.clientX, e.clientX, e.clientY, e.clientY);
+          // console.log(pointers[0].x, e.offsetX);
+        });
+
+        window.removeEventListener(
+          "touchmove",
+          (e) => {
+            e.preventDefault();
+            const touches = e.targetTouches;
+            for (let i = 0; i < touches.length; i++) {
+              let pointer = pointers[i];
+              pointer.moved = pointer.down;
+              pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
+              pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
+              pointer.x = touches[i].clientX;
+              pointer.y = touches[i].clientY;
+            }
+          },
+          false
+        );
+
+        window.removeEventListener("mousemove", () => {
+          pointers[0].down = true;
+          pointers[0].color = [
+            Math.random() + 0.2,
+            Math.random() + 0.2,
+            Math.random() + 0.2,
+          ];
+        });
+
+        window.removeEventListener("touchstart", (e) => {
+          e.preventDefault();
+          const touches = e.targetTouches;
+          for (let i = 0; i < touches.length; i++) {
+            if (i >= pointers.length) pointers.push(new pointerPrototype());
+
+            pointers[i].id = touches[i].identifier;
+            pointers[i].down = true;
+            pointers[i].x = touches[i].clientX;
+            pointers[i].y = touches[i].clientY;
+            pointers[i].color = [
+              Math.random() + 0.2,
+              Math.random() + 0.2,
+              Math.random() + 0.2,
+            ];
+          }
+        });
+
+        window.removeEventListener("mouseleave", () => {
+          pointers[0].down = false;
+        });
+
+        window.removeEventListener("touchend", (e) => {
+          const touches = e.changedTouches;
+          for (let i = 0; i < touches.length; i++)
+            for (let j = 0; j < pointers.length; j++)
+              if (touches[i].identifier == pointers[j].id)
+                pointers[j].down = false;
+        });
+      };
     }
   }, []);
   return (
