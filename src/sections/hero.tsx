@@ -6,13 +6,9 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <section
       {...props}
+      //   data-speed={0.5}
       className={`relative w-full h-[100vh] z-10 ${getResponsiveClasses()}`}
     >
-      <img
-        src="/graph.png"
-        className="absolute top-0 left-0  w-[25vw]"
-        alt=""
-      />
       <div className="h-screen flex justify-between items-center">
         <div className="max-w-96">
           <h2 className="text-5xl text-white ">

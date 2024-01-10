@@ -18,7 +18,7 @@ export default function App() {
       // smooth: 1.5,
     });
   }, []);
-
+  smoother;
   return (
     <div className="relative">
       <FluidCursor className={"pointer-events-none"} />
@@ -27,6 +27,11 @@ export default function App() {
       <div id="scroll-wrapper" className="z-[5]">
         <main id="main-container">
           {/* <Spline scene="https://prod.spline.design/CKWF1KdvY5LNUrVL/scene.splinecode" /> */}
+          <img
+            src="/graph.png"
+            className="absolute top-0 left-0  w-[25vw]"
+            alt=""
+          />
           <Navbar />
 
           <Hero id="hero" />

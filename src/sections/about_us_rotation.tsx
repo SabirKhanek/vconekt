@@ -15,7 +15,7 @@ export function AboutUs({ ...props }: HTMLProps<HTMLElement>) {
         end: "bottom bottom",
         pin: true,
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
 

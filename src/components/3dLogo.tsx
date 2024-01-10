@@ -114,7 +114,7 @@ export function V3d({}: V3dProps) {
           gsap.to(elementRef.current, {
             opacity: 0,
             scrollTrigger: {
-              markers: true,
+            //   markers: true,
 
               trigger: "#about_us",
               start: "top top",

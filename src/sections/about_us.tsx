@@ -26,6 +26,7 @@ export function AboutUs({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <section
       {...props}
+      // data-speed={1.5}
       className={`relative w-full h-[250vh] z-[2] flex bg-transparent justify-start ${getResponsiveClasses()}`}
     >
       <div
