@@ -10,10 +10,10 @@ export function FluidCursor({ className, ...props }) {
 
       let config = {
         TEXTURE_DOWNSAMPLE: 1, // No downsampling for texture
-        DENSITY_DISSIPATION: 0.975, // Controls how fast density dissipates/smoothens
+        DENSITY_DISSIPATION: 0.98, // Controls how fast density dissipates/smoothens
         VELOCITY_DISSIPATION: 0.99, // Controls how fast velocity dissipates/smoothens
         PRESSURE_DISSIPATION: 0.8, // Controls how fast pressure dissipates/smoothens
-        PRESSURE_ITERATIONS: 25, // Number of iterations to solve pressure
+        PRESSURE_ITERATIONS: 20, // Number of iterations to solve pressure
         CURL: 24, // Adds curl to the simulation for more realistic flow
         SPLAT_RADIUS: 0.004, // Controls the radius of the splat (smoothing radius for adding density/velocity)
       };

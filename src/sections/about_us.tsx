@@ -1,11 +1,11 @@
-import { HTMLProps, useRef } from "react";
+import React, { HTMLProps, useRef } from "react";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaStar } from "react-icons/fa";
 import { V3dAboutUS } from "../components/3dLogoInAboutUs";
 
-export function AboutUs({ ...props }: HTMLProps<HTMLElement>) {
+export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
   const vidContainerRef = useRef<HTMLDivElement>(null);
   const contenRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -32,8 +32,7 @@ export function AboutUs({ ...props }: HTMLProps<HTMLElement>) {
       },
     });
     tl.to("#section2-content", {
-      translateZ: 0,
-      rotateY: 0,
+      transform: "perspective(1000px) rotateY(0deg) translateZ(0)",
       opacity: 1,
       backgroundColor: "black",
       borderRadius: 0,
@@ -141,4 +140,4 @@ export function AboutUs({ ...props }: HTMLProps<HTMLElement>) {
       </div>
     </section>
   );
-}
+});

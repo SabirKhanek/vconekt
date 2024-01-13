@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 import "./App.css";
 import { AboutUs } from "./sections/about_us.js";
 import { V3d } from "./components/3dLogo.js";
+import { FluidCursor } from "./components/fluidCursor.jsx";
 
 export default function App() {
   let smoother: any;
@@ -22,7 +23,7 @@ export default function App() {
   smoother;
   return (
     <div className="relative">
-      {/* <FluidCursor className={"pointer-events-none"} /> */}
+      <FluidCursor className={"pointer-events-none"} />
       <V3d />
 
       <div id="scroll-wrapper" className="z-[5]">

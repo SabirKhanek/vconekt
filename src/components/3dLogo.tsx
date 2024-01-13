@@ -55,16 +55,17 @@ export function V3d({}: V3dProps) {
       "4105c047-d140-4582-9486-75af7f9aa712"
     );
     if (logo) {
-      logo.position.x -= 35;
+      // logo.position.x -= 35;
       if (logo) {
         const tl = gsap.timeline({});
-        tl.set(logo.scale, { x: 3, y: 3, z: 3 });
-        tl.to(logo.scale, {
-          x: 1,
-          y: 1,
-          z: 1,
-          duration: 1,
-        });
+        // tl.set(logo.scale, { x: 2, y: 2, z: 2 });
+        // tl.to(logo.scale, {
+        //   x: 1,
+        //   y: 1,
+        //   z: 1,
+        //   duration: 1,
+        //   delay: 1,
+        // });
         tl.to(logo.scale, {
           scrollTrigger: {
             trigger: "#hero",
