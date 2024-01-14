@@ -52,7 +52,7 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
           style={{ backgroundColor: "#333333", borderRadius: "50px" }}
           id="section2-content"
           ref={contenRef}
-          className="w-full h-[85vh] flex justify-center gap-5 items-start relative p-5 reflected"
+          className="w-full h-[85vh] flex justify-center transform- gap-5 items-start relative p-5 reflected"
         >
           <V3dAboutUS scale={0.7} parentRef={contenRef} />
           <div className="basis-1/2 shrink-0">

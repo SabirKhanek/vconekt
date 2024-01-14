@@ -1,8 +1,31 @@
 import { HTMLProps } from "react";
 import { Button } from "../components/button";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitType from "split-type";
+import { usePreloader } from "../shared/contexts/preloader";
 
 export function Hero({ ...props }: HTMLProps<HTMLElement>) {
+  const preloader = usePreloader();
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    new SplitType("#hero_subtext", {
+      types: ["chars"],
+      charClass: "subtext_char",
+    });
+    tl.fromTo(
+      ".hero_text",
+      {
+        rotateZ: -10,
+      },
+      {
+        rotate: "0deg",
+        duration: 1,
+        stagger: 0.1,
+      }
+    ).fromTo(".subtext_char", { opacity: 0 }, { opacity: 1, stagger: 0.02 });
+  }, [preloader.isLoaded]);
   return (
     <section
       {...props}
@@ -11,9 +34,26 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
       <div className="h-screen flex justify-between items-center">
         <div className="max-w-96">
           <h2 className="text-5xl text-white ">
-            Empowering the Future: Cutting-Edge Software Solutions
+            <span className="inline-block overflow-hidden">
+              <span className="hero_text">Empowering the</span>
+            </span>{" "}
+            <span className="inline-block overflow-hidden">
+              <span className="hero_text">Future: Cutting-</span>
+            </span>
+            <span className="inline-block overflow-hidden">
+              <span className="hero_text">Solutions</span>
+            </span>
+            <span className="inline-block overflow-hidden">
+              <span className="hero_text">Edge Software</span>
+            </span>{" "}
+            <span className="overflow-hidden inline-block">
+              <span className="hero_text">Solutions</span>
+            </span>
           </h2>
-          <p className="text-primary my-5 font-medium pl-2 border-l-4 border-primary">
+          <p
+            id="hero_subtext"
+            className="hero_subtext text-primary my-5 font-medium pl-2 border-l-4 border-primary"
+          >
             Bring Force of Artificial Intelligence To Your
             <br />
             Business Development

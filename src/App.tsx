@@ -9,6 +9,8 @@ import "./App.css";
 import { AboutUs } from "./sections/about_us.js";
 import { V3d } from "./components/3dLogo.js";
 import { FluidCursor } from "./components/fluidCursor.jsx";
+import { usePreloader } from "./shared/contexts/preloader.js";
+import { Preloader } from "./components/preloader.js";
 
 export default function App() {
   let smoother: any;
@@ -21,11 +23,12 @@ export default function App() {
     // });
   }, []);
   smoother;
+  const preloader = usePreloader();
   return (
     <div className="relative">
       <FluidCursor className={"pointer-events-none"} />
       <V3d />
-
+      <Preloader />
       <div id="scroll-wrapper" className="z-[5]">
         <main id="main-container">
           {/* <Spline scene="https://prod.spline.design/CKWF1KdvY5LNUrVL/scene.splinecode" /> */}

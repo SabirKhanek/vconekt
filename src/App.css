@@ -15,3 +15,12 @@
   background-color: #3498db;
   position: relative;
 }
+
+.hero_text {
+  display: inline-block;
+  transform-origin: left;
+  transform: rotateZ(-10deg);
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}

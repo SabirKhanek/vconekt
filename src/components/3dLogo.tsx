@@ -3,6 +3,7 @@ import Spline from "@splinetool/react-spline";
 import { Application } from "@splinetool/runtime";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
 
 export interface V3dProps {
   className?: string;
@@ -15,8 +16,10 @@ export function V3d({}: V3dProps) {
     spline.current = splineApp;
     if (!is3dModelLoaded) setIs3dModelLoaded(true);
   };
+  const preloader = usePreloader();
 
   useEffect(() => {
+    preloader.registerResource("hero3d");
     const onMouseMove = (e: MouseEvent) => {
       // console.log(e.clientX, e.clientY);
       const mouseX = e.clientX;
@@ -51,6 +54,7 @@ export function V3d({}: V3dProps) {
 
   useGSAP(() => {
     if (!is3dModelLoaded) return;
+    preloader.updateStatus("hero3d", RESOURCE_STATUS.LOADED);
     const logo = spline.current?.findObjectById(
       "4105c047-d140-4582-9486-75af7f9aa712"
     );
@@ -58,7 +62,7 @@ export function V3d({}: V3dProps) {
       // logo.position.x -= 35;
       if (logo) {
         const tl = gsap.timeline({});
-        // tl.set(logo.scale, { x: 2, y: 2, z: 2 });
+        tl.set(logo.scale, { x: 1, y: 1, z: 1 });
         // tl.to(logo.scale, {
         //   x: 1,
         //   y: 1,
