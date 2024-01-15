@@ -10,6 +10,10 @@ import { AboutUs } from "./sections/about_us.js";
 import { V3d } from "./components/3dLogo.js";
 import { FluidCursor } from "./components/fluidCursor.jsx";
 import { Preloader } from "./components/preloader.js";
+import { NeedHelp } from "./sections/need_help.js";
+import { CompletedStories } from "./sections/completed_stories.js";
+import { ContactUs } from "./sections/contact_us.js";
+import { RecentWork } from "./sections/recent_work.js";
 
 export default function App() {
   let smoother: any;
@@ -36,23 +40,12 @@ export default function App() {
             alt=""
           />
           <Navbar />
-
           <Hero id="hero" />
           <AboutUs id="about_us" />
-          <section className="relative h-[100vh] flex justify-center items-center">
-            <div className="flex justify-center w-full gap-2">
-              <div data-speed={0.5} className="box"></div>
-              <div data-speed={1} className="box"></div>
-              <div data-speed={1.5} className="box"></div>
-            </div>
-          </section>
-          <section className="relative h-[100vh] flex justify-center items-center">
-            <div className="flex justify-center w-full gap-2">
-              <div data-speed={0.5} className="box"></div>
-              <div data-speed={1} className="box"></div>
-              <div data-speed={1.5} className="box"></div>
-            </div>
-          </section>
+          <NeedHelp id="need_help" />
+          <RecentWork id="recent_work" />
+          <CompletedStories id="success_stories" />
+          <ContactUs id="contact_us" />
         </main>
       </div>
     </div>

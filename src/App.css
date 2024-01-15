@@ -24,3 +24,9 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
+
+.hollow-text {
+  color: transparent;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;
+}

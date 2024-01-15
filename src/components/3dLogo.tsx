@@ -21,7 +21,7 @@ export function V3d({}: V3dProps) {
   useEffect(() => {
     preloader.registerResource("hero3d");
     const onMouseMove = (e: MouseEvent) => {
-      // console.log(e.clientX, e.clientY);
+      if (elementRef.current?.classList.contains("hidden")) return;
       const mouseX = e.clientX;
       const mouseY = e.clientY;
       const screenWidth = Math.max(
@@ -105,6 +105,7 @@ export function V3d({}: V3dProps) {
                   elementRef.current?.classList.add("z-[3]");
                   // Remove the class 'z-0' if it was previously added
                   elementRef.current?.classList.remove("z-10");
+                  // elementRef.current?.classList.add("hidden");
                 },
                 onLeaveBack: () => {
                   console.log("leave back");
@@ -119,8 +120,16 @@ export function V3d({}: V3dProps) {
           gsap.to(elementRef.current, {
             opacity: 0,
             scrollTrigger: {
-              //   markers: true,
-
+              // markers: true,
+              onLeave: () => {
+                elementRef.current?.classList.add("hidden");
+              },
+              onLeaveBack: () => {
+                elementRef.current?.classList.remove("hidden");
+              },
+              onEnterBack: () => {
+                elementRef.current?.classList.remove("hidden");
+              },
               trigger: "#about_us",
               start: "top top",
 

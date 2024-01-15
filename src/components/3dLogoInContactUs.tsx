@@ -1,14 +1,17 @@
 import Spline from "@splinetool/react-spline";
 import { Application } from "@splinetool/runtime";
 import { HTMLProps, useEffect, useRef, useState } from "react";
-import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
 
-export interface V3dAboutUSProps extends HTMLProps<HTMLDivElement> {
+export interface V3dContactUsProps extends HTMLProps<HTMLDivElement> {
   scale?: number;
   parentRef?: React.RefObject<HTMLDivElement>;
 }
 
-export function V3dAboutUS({ scale, parentRef, ...props }: V3dAboutUSProps) {
+export function V3dContactUs({
+  scale,
+  parentRef,
+  ...props
+}: V3dContactUsProps) {
   const [is3dModelLoaded, setIs3dModelLoaded] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const spline = useRef<Application>();
@@ -16,13 +19,8 @@ export function V3dAboutUS({ scale, parentRef, ...props }: V3dAboutUSProps) {
     spline.current = splineApp;
     if (!is3dModelLoaded) setIs3dModelLoaded(true);
   };
-  const preloader = usePreloader();
 
   useEffect(() => {
-    preloader.registerResource("dummyResource");
-    setTimeout(() => {
-      preloader.updateStatus("dummyResource", RESOURCE_STATUS.LOADED);
-    }, 3000);
     const onMouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
@@ -64,10 +62,10 @@ export function V3dAboutUS({ scale, parentRef, ...props }: V3dAboutUSProps) {
       logo.scale.x = scale || 1;
       logo.scale.y = scale || 1;
       logo.scale.z = scale || 1;
-      //   logo.position.x -= 35;
+      logo.position.x += 5;
       if (parentRef?.current) {
-        logo.position.y -= parentRef.current.clientHeight / 4;
-        logo.position.x -= parentRef.current.clientWidth / 4;
+        // logo.position.y -= 50;
+        // logo.position.x -= parentRef.current.clientWidth / 4;
       }
     }
   }, [is3dModelLoaded]);
