@@ -23,12 +23,8 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
           gsap.set("#section2-content", { backgroundColor: "transparent" });
         },
         onEnterBack: () => {
-          // Add the class 'z-10' when leaving the viewport
-          // Remove the class 'z-0' if it was previously added
           contenRef.current?.classList.add("reflected");
         },
-
-        // markers: true,
       },
     });
     tl.to("#section2-content", {
@@ -46,7 +42,7 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
     >
       <div
         id="section2-content-wrapper"
-        className="h-screen w-full perspective-container flex justify-center items-center"
+        className="h-screen w-full flex justify-center items-center"
       >
         <div
           style={{ backgroundColor: "#333333", borderRadius: "50px" }}

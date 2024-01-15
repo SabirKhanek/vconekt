@@ -1,6 +1,7 @@
 #section2-content {
   transform: perspective(1000px) translateZ(-4000px) rotateY(-90deg);
   /* scale: 0.1; */
+  will-change: transform;
   opacity: 0.3;
 }
 

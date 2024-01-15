@@ -43,7 +43,7 @@ export default function App() {
           <Hero id="hero" />
           <AboutUs id="about_us" />
           <NeedHelp id="need_help" />
-          <RecentWork id="recent_work" />
+          <RecentWork id="recent_work" />;
           <CompletedStories id="success_stories" />
           <ContactUs id="contact_us" />
         </main>
