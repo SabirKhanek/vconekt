@@ -22,7 +22,7 @@ export function V3dAboutUS({ scale, parentRef, ...props }: V3dAboutUSProps) {
     preloader.registerResource("dummyResource");
     setTimeout(() => {
       preloader.updateStatus("dummyResource", RESOURCE_STATUS.LOADED);
-    }, 3000);
+    }, 6000);
     const onMouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
