@@ -1,7 +1,7 @@
 import { HTMLProps, useRef } from "react";
 import {
   getResponsiveClasses,
-//   getResponsiveWidth,
+  //   getResponsiveWidth,
 } from "../shared/constants/getResponsiveClasses";
 // import { Button } from "../components/button";
 import { useGSAP } from "@gsap/react";
@@ -103,8 +103,10 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                 (3 / 5),
               transformOrigin: "bottom center",
             }}
-            className="bg-blue-500 service-card bottom-0 left-0 absolute"
-          ></div>
+            className="bg-blue-500 service-card bottom-0 left-0 absolute flex justify-center items-center p-10 text-center text-white"
+          >
+            <span>Don't mind me I am in development</span>
+          </div>
         </div>
         <div
           className={`w-full flex flex-col z-10 justify-between items-start h-full`}
