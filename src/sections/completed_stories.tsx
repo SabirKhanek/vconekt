@@ -26,9 +26,9 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <section
       {...props}
-      className={` text-white relative h-screen w-full z-[2]  bg-transparent  ${getResponsiveClasses()}`}
+      className={` text-white relative flex justify-center items-center w-full z-[2]  bg-transparent  ${getResponsiveClasses()}`}
     >
-      <div className="absolute-centered rounded-3xl border w-full flex flex-col justify-center items-center border-white/65 px-20 py-10 gap-3">
+      <div className="rounded-3xl border w-full flex flex-col justify-center items-center border-white/65 px-20 py-10 gap-3">
         <span className="rounded-3xl text-xs bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Completed Stories!
         </span>
