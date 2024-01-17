@@ -34,7 +34,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   }, []);
   const calcCardWidth = () => {
     const slider = document.getElementById("service_slider");
-    return ((slider?.clientWidth || 1260) / 3) * (4 / 5);
+    return ((slider?.clientWidth || 1024) / 3) * (4 / 5);
   };
   const [cardWidth, setCardWidth] = useState(calcCardWidth());
 
@@ -60,13 +60,16 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         onEnter: () => {
           console.log("services entered");
         },
-        snap: [
-          0,
-          ...targets.map((v, index) => {
-            v;
-            return 0.125 * (index + 1);
-          }),
-        ],
+        snap: {
+          snapTo: [
+            0,
+            ...targets.map((v, index) => {
+              v;
+              return (0.25 / 2) * (index + 1);
+            }),
+          ],
+          duration: 0.25
+        },
       },
     });
     const animationProps = {
@@ -201,10 +204,10 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         `-=${dur / 2}`
       );
     });
-  }, [cardWidth]);
+  }, []);
   const [zIndexes, setZIndexes] = useState<number[]>([]);
   const [refreshFlag, setRefreshFlag] = useState({});
-
+  const [hiddenFlags, setHiddenFlags] = useState<boolean[]>([]);
   useEffect(() => {
     const targets = Array.from(document.querySelectorAll(".service-card"));
     const slider = document.getElementById("service_slider");
@@ -218,13 +221,31 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         return (targets.length + 1 - index) * 5;
       }
     });
-    console.log(zindarr);
+    const hiddenCards = [];
+
+    for (let i = 0; i < targets.length; i++) {
+      if (i < targets.length - 2) hiddenCards[i] = true;
+      else hiddenCards[i] = false;
+    }
+
+    targets.forEach((target, index) => {
+      const targetX = gsap.getProperty(target, "translateX");
+      if ((targetX as number) >= centeredPos) {
+        console.log(index, " reached");
+        if (index - 2 >= 0) {
+          console.log();
+          hiddenCards[index - 2] = false;
+        }
+      }
+    });
+    console.log(hiddenCards);
+    setHiddenFlags(hiddenCards);
     setZIndexes(zindarr as number[]);
   }, [refreshFlag]);
   return (
     <section
       {...props}
-      className={` text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
+      className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
       <div
         id="our_services_content"
@@ -247,8 +268,9 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                   borderRadius: "6px",
                   translate: "translateX(0)",
                   zIndex: zIndexes[index],
+                  display: hiddenFlags[index] ? "none" : "flex",
                 }}
-                className={`service-card bottom-0 left-0 absolute flex justify-center items-center p-10 text-white`}
+                className={`service-card black-gradient bottom-0 left-0 absolute flex justify-center items-center p-10 text-white`}
               >
                 <span className="w-full h-full inline-flex flex-col justify-between">
                   {/* <span>{cardDetails[index % cardDetails.length].logo}</span> */}

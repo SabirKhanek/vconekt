@@ -7,18 +7,25 @@ import SplitType from "split-type";
 export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
   useGSAP(() => {
     new SplitType("#how_can_we_text", {
-      types: "chars",
+      types: ["chars", "words"],
       charClass: "how_can_we_text_letter",
+      wordClass: "break-none",
     });
     const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
     cursorTimeline.to(".type_cursor", { opacity: 0.2, duration: 0.5 });
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: "#need_help", start: "top center" },
+      scrollTrigger: {
+        trigger: "#need_help",
+        start: "top center",
+      },
     });
     tl.to("#robot_avatar", {
       top: 0,
       duration: 1,
       ease: "bounce.out",
+      repeat: -1,
+      repeatDelay: 3,
+      yoyo: true,
     }).fromTo(
       ".how_can_we_text_letter",
       { display: "none" },
@@ -46,9 +53,9 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
                 id="how_can_we_text"
                 className=" font-orbit inline font-semibold text-4xl md:text-5xl "
               >
-                <span>How can we help </span>
+                <span className="break-none">How can we help</span>
                 {"  "}
-                <span className="text-primary"> You?</span>
+                <span className="text-primary">You?</span>
               </h2>
               <span className="ml-2 inline-block w-0.5 h-9 bg-primary type_cursor"></span>
             </div>

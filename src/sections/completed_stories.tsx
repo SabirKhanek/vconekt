@@ -13,7 +13,8 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
       duration: 2,
       scrollTrigger: {
         trigger: "#success_stories",
-        start: "top 25%",
+        start: "top 50%",
+        toggleActions: "play pause resume reset",
       },
       onUpdate: () => {
         const elems = document.getElementsByClassName("completed-counter");
