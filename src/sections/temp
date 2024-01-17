@@ -7,6 +7,8 @@ import {
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import gsap from "gsap";
+import { usePreloader } from "../shared/contexts/preloader";
+import { progress } from "framer-motion";
 
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const sliderContainerRef = useRef<HTMLDivElement>(null);
@@ -41,6 +43,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   useEffect(() => {
     setCardWidth(calcCardWidth());
   }, []);
+
   useGSAP(() => {
     const slider = document.getElementById("service_slider");
     if (!slider) return;
@@ -50,16 +53,15 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#our_services_content",
+        trigger: "#our_services",
         start: "top top",
         endTrigger: "#our_services",
         end: "bottom bottom",
         pin: true,
         pinnedContainer: "#our_services_content",
         scrub: true,
-        onEnter: () => {
-          console.log("services entered");
-        },
+        markers: true,
+        pinReparent: true,
         snap: [
           0,
           ...targets.map((v, index) => {
@@ -75,33 +77,18 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         y: 0,
         backgroundColor: "blue",
         scale: 1,
-        gradFrom: "#131A14",
-        gradTo: "black",
-        gradFromPer: 0,
-        gradToPer: 100,
-        gradDirection: "180deg",
       },
       center: {
         x: slider.clientWidth / 2 - cardWidth / 2,
         y: -(slider.clientHeight - cardWidth),
         backgroundColor: "red",
         scale: 1.2,
-        gradFrom: "#131A14",
-        gradTo: "#253426",
-        gradFromPer: 1.97,
-        gradToPer: 97.62,
-        gradDirection: 47,
       },
       end: {
         x: slider.clientWidth - cardWidth,
         y: 0,
         backgroundColor: "blue",
         scale: 1,
-        gradFrom: "#131A14",
-        gradTo: "black",
-        gradFromPer: 0,
-        gradToPer: 100,
-        gradDirection: 180,
       },
     };
     const radius = slider.clientWidth / 3;
@@ -133,9 +120,8 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         {
           x: animationProps.start.x,
           y: animationProps.start.y,
-          // backgroundColor: animationProps.start.backgroundColor,
-          background: `linear-gradient(${animationProps.start.gradDirection}deg, ${animationProps.start.gradFrom} ${animationProps.start.gradFromPer}%, ${animationProps.start.gradTo} ${animationProps.start.gradToPer}%)`,
-          scale: animationProps.start.scale,
+          backgroundColor: animationProps.start.backgroundColor,
+          zIndex: targets.length - index,
         },
         {
           motionPath: {
@@ -147,50 +133,71 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
             ],
           },
           onUpdate: () => {
+            const totalTime = dur * targets.length;
             const timeWithDelay = tl.duration();
             const delayProgress = tl.progress();
+
             const actualCurrentTime = timeWithDelay * delayProgress;
             const totalCurrentTime = actualCurrentTime + (dur / 2) * index;
             // const totalTimeProgress = totalCurrentTime / totalTime;
             //const totalTimeProgress = 0 // please map delayProgress (based on timeWithDelay) to totalTimeProgress (based on totalTime)
             const startTimeForTarget = index * dur;
             const currentTimeTarget = totalCurrentTime - startTimeForTarget;
-
             const progress = currentTimeTarget / dur; // want to get progress of individual tween keep in mind -=${dur/2}
-
             if (progress <= -1 || progress > 1) return;
 
-            let interpolations: {
-              [K in keyof (typeof animationProps)["start"]]: (typeof animationProps)["start"][K];
-            } = animationProps.start;
-            let gradient;
+            let zindex;
+            let interpolations: any = {};
             if (progress < 0.5) {
               interpolations = getInterpolations(
-                animationProps.start,
-                animationProps.center,
+                {
+                  backgroundColor: animationProps.start.backgroundColor,
+                  scale: animationProps.start.backgroundColor,
+                },
+                {
+                  backgroundColor: animationProps.center.backgroundColor,
+                  scale: animationProps.center.scale,
+                },
                 progress * 2
               );
-              gradient = `linear-gradient(${interpolations.gradDirection}deg, ${interpolations.gradFrom} ${interpolations.gradFromPer}%, ${interpolations.gradTo} ${interpolations.gradToPer}%)`;
+              // interPolatedColor = gsap.utils.interpolate(
+              //   animationProps.start.backgroundColor,
+              //   animationProps.center.backgroundColor,
+              //   progress * 2
+              // );
+              // interPolatedScale = gsap.utils.interpolate(
+              //   animationProps.start.scale,
+              //   animationProps.center.scale,
+              //   progress * 2
+              // );
+              zindex = targets.length - index;
             } else {
               interpolations = getInterpolations(
-                animationProps.center,
-                animationProps.end,
+                {
+                  backgroundColor: animationProps.center.backgroundColor,
+                  scale: animationProps.end.backgroundColor,
+                },
+                {
+                  backgroundColor: animationProps.end.backgroundColor,
+                  scale: animationProps.end.scale,
+                },
                 (progress - 0.5) * 2
               );
-              gradient = `linear-gradient(${interpolations.gradDirection}deg, ${interpolations.gradFrom} ${interpolations.gradFromPer}%, ${interpolations.gradTo} ${interpolations.gradToPer}%)`;
+
+              zindex = index;
             }
-            // if (index === 0) console.log(gradient);
+            console.log(interpolations);
             gsap.set(target, {
-              background: gradient,
+              backgroundColor: interpolations.backgroundColor,
               scale: interpolations.scale,
+              zIndex: zindex,
             });
-            setRefreshFlag({});
           },
           onComplete: () => {
             gsap.set(target, {
-              // backgroundColor: animationProps.end.backgroundColor,
-              scale: animationProps.end.scale,
-              background: `linear-gradient(${animationProps.end.gradDirection}deg, ${animationProps.end.gradFrom} ${animationProps.end.gradFromPer}%, ${animationProps.end.gradTo} ${animationProps.end.gradToPer}%)`,
+              backgroundColor: animationProps.end.backgroundColor,
+              scale: animationProps.end.backgroundColor,
+              zIndex: index,
               x: animationProps.end.x,
               y: animationProps.end.y,
             });
@@ -201,26 +208,14 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         `-=${dur / 2}`
       );
     });
+    // tl.pause();
+    // const but = document.getElementById("click_me");
+    // if (but)
+    //   but.onclick = () => {
+    //     tl.play();
+    //     setTimeout(() => tl.pause(), 500);
+    //   };
   }, [cardWidth]);
-  const [zIndexes, setZIndexes] = useState<number[]>([]);
-  const [refreshFlag, setRefreshFlag] = useState({});
-
-  useEffect(() => {
-    const targets = Array.from(document.querySelectorAll(".service-card"));
-    const slider = document.getElementById("service_slider");
-    if (!slider) return;
-    const centeredPos = slider?.clientWidth / 2 - cardWidth / 2;
-    const zindarr: number[] = targets.map((target, index) => {
-      const targetX = gsap.getProperty(target, "translateX");
-      if ((targetX as number) < centeredPos) {
-        return index * 5;
-      } else {
-        return (targets.length + 1 - index) * 5;
-      }
-    });
-    console.log(zindarr);
-    setZIndexes(zindarr as number[]);
-  }, [refreshFlag]);
   return (
     <section
       {...props}
@@ -231,12 +226,12 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         className={`absolute w-full -translate-x-1/2 top-0 left-1/2 h-screen py-[5vh] flex justify-center ${getResponsiveClasses()}`}
       >
         <div
-          className={`absolute bottom-[5vh] w-full h-1/2 max-w-5xl overflow`}
+          className={`absolute border border-white bottom-[5vh] w-full h-1/2 max-w-5xl overflow`}
           ref={sliderContainerRef}
           id="service_slider"
         >
-          {/* <div className="absolute h-full w-1left-1/2 -translate-x-1/2"></div> */}
-          {[1, 2, 3, 4, 5, 6, 7].reverse().map((v, index) => {
+          <div className="absolute h-full w-1 bg-white left-1/2 -translate-x-1/2"></div>
+          {[1, 2, 3, 4, 5, 6, 7].reverse().map((v) => {
             return (
               <div
                 key={v}
@@ -244,34 +239,10 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                   width: cardWidth,
                   height: cardWidth,
                   transformOrigin: "bottom center",
-                  borderRadius: "6px",
-                  translate: "translateX(0)",
-                  zIndex: zIndexes[index],
                 }}
-                className={`service-card bottom-0 left-0 absolute flex justify-center items-center p-10 text-white`}
+                className="bg-blue-500 service-card bottom-0 left-0 absolute flex justify-center items-center p-10 text-center text-white"
               >
-                <span className="w-full h-full inline-flex flex-col justify-between">
-                  {/* <span>{cardDetails[index % cardDetails.length].logo}</span> */}
-                  <img
-                    src={`${cardDetails[index % cardDetails.length].logo}`}
-                    alt=""
-                    className="w-10 h-10"
-                  />
-                  <div>
-                    <h2 className="text-left">
-                      {cardDetails[index % cardDetails.length].title}
-                    </h2>
-                    <p className="mt-2 text-left text-sm font-thin">
-                      {cardDetails[index % cardDetails.length].description}
-                    </p>
-                  </div>
-                  <a
-                    className="text-primary font-medium hover:underline text-left"
-                    href={cardDetails[index % cardDetails.length].link}
-                  >
-                    Learn more...
-                  </a>
-                </span>
+                <span>Don't mind me I am in development {v}</span>
               </div>
             );
           })}
@@ -311,27 +282,3 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
     </section>
   );
 }
-
-const cardDetails = [
-  {
-    logo: "cardIcon3.svg",
-    title: "Graphics & UI design",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
-    link: "#",
-  },
-  {
-    logo: "cardIcon1.svg",
-    title: "Web design & develoment",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
-    link: "#",
-  },
-  {
-    logo: "cardIcon2.svg",
-    title: "Digital Media Marketing",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
-    link: "#",
-  },
-];

@@ -3,9 +3,10 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 import { Hero } from "./sections/hero.js";
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, ScrollToPlugin);
 import "./App.css";
 import { AboutUs } from "./sections/about_us.js";
 import { V3d } from "./components/3dLogo.js";
@@ -26,6 +27,7 @@ export default function App() {
     //   effects: true,
     //   // smooth: 1.2,
     // });
+    gsap.to(window, { scrollTo: 0 });
   }, []);
   smoother;
   return (
