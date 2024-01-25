@@ -7,7 +7,7 @@ import {
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import gsap from "gsap";
-
+import { motion } from "framer-motion";
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -57,9 +57,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         pin: true,
         pinnedContainer: "#our_services_content",
         scrub: true,
-        onEnter: () => {
-          console.log("services entered");
-        },
+        onEnter: () => {},
         snap: {
           snapTo: [
             0,
@@ -68,7 +66,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
               return (0.25 / 2) * (index + 1);
             }),
           ],
-          duration: 0.25
+          duration: 0.25,
         },
       },
     });
@@ -231,20 +229,19 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
     targets.forEach((target, index) => {
       const targetX = gsap.getProperty(target, "translateX");
       if ((targetX as number) >= centeredPos) {
-        console.log(index, " reached");
         if (index - 2 >= 0) {
-          console.log();
           hiddenCards[index - 2] = false;
         }
       }
     });
-    console.log(hiddenCards);
     setHiddenFlags(hiddenCards);
     setZIndexes(zindarr as number[]);
   }, [refreshFlag]);
   return (
-    <section
-      {...props}
+    <motion.section
+      {...(props as any)}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
       className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
       <div
@@ -330,7 +327,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

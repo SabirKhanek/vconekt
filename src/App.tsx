@@ -17,6 +17,8 @@ import { CompletedStories } from "./sections/completed_stories.js";
 import { ContactUs } from "./sections/contact_us.js";
 import { RecentWork } from "./sections/recent_work.js";
 import { OurServices } from "./sections/our_service.js";
+import { OurBlog } from "./sections/our_blog.js";
+import Testimonial from "./sections/testimonial.js";
 
 export default function App() {
   let smoother: any;
@@ -50,6 +52,8 @@ export default function App() {
           <OurServices id="our_services" />
           <RecentWork id="recent_work" />;
           <CompletedStories id="success_stories" />
+          <OurBlog id="our_blog" />
+          <Testimonial id="testimonials" />
           <ContactUs id="contact_us" />
         </main>
       </div>

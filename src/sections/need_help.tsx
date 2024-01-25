@@ -4,6 +4,7 @@ import { Button } from "../components/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
+import { motion } from "framer-motion";
 export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
   useGSAP(() => {
     new SplitType("#how_can_we_text", {
@@ -38,8 +39,10 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
   }, []);
 
   return (
-    <section
-      {...props}
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      {...(props as any)}
       className={` text-white relative h-screen w-full z-[2]  bg-transparent justify-start ${getResponsiveClasses()}`}
     >
       <div className="flex flex-col justify-between h-full py-[10vh]">
@@ -93,6 +96,6 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
           <Button bg="gradient">Contact Us</Button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

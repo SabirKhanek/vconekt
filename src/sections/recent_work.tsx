@@ -4,7 +4,7 @@ import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
-
+import { motion } from "framer-motion";
 export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
   const [slideReelTimeline, setSlideReelTimeline] =
     useState<gsap.core.Timeline | null>();
@@ -102,8 +102,10 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
   const height = 150;
   const width = height * 1.84;
   return (
-    <section
-      {...props}
+    <motion.section
+      {...(props as any)}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
       className={` text-white relative h-screen w-full z-[2]  bg-transparent justify-start overflow-hidden`}
     >
       <div
@@ -167,6 +169,6 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         </p>
         <Button className="pointer-events-auto">View All Portfolio</Button>
       </div>
-    </section>
+    </motion.section>
   );
 }

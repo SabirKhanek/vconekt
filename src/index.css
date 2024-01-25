@@ -37,3 +37,16 @@ canvas {
   perspective: 500px;
   perspective-origin: center;
 }
+
+@keyframes animateBg {
+  0% {
+    background: radial-gradient(circle closest-side, #fff 0%, transparent 100%);
+  }
+  100% {
+    background: radial-gradient(
+      circle closest-side,
+      #fff 100%,
+      transparent 100%
+    );
+  }
+}
