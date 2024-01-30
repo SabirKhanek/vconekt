@@ -66,7 +66,7 @@ export default function App() {
           />
           <motion.div
             animate={{
-              x: ["16vw", "0vw", "16vw"],
+              x: ["20vw", "10vw", "20vw"],
               y: ["0vh", "40vh", "0vh"],
               transition: {
                 x: {
