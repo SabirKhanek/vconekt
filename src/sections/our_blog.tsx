@@ -3,8 +3,30 @@ import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { Button } from "../components/button";
 import { GoArrowRight } from "react-icons/go";
 import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { usePreloader } from "../shared/contexts/preloader";
 
 export function OurBlog({ ...props }: HTMLProps<HTMLElement>) {
+  const preloader = usePreloader();
+  useGSAP(() => {
+    const containers = Array.from(
+      document.getElementsByClassName("blog_image_container")
+    );
+  
+    containers.forEach((container) => {
+      gsap.to(container.children[0], {
+        y: "-30%",
+        scrollTrigger: {
+          trigger: container,
+          endTrigger: container,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+  }, [preloader.isLoaded]);
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
@@ -33,7 +55,13 @@ export function OurBlog({ ...props }: HTMLProps<HTMLElement>) {
             className="border-collapse border-white border-t border-b"
           >
             <div className="py-6  flex gap-4">
-              <img src={`https://picsum.photos/387/264?q=${v}`} alt="" />
+              <div className="blog_image_container w-[387px] h-[264px] shrink-0 overflow-hidden">
+                <img
+                  className="blog_images object-cover object-top h-[140%] w-full"
+                  src={`https://picsum.photos/387/369?q=${v}`}
+                  alt=""
+                />
+              </div>
               <div className="flex flex-col justify-between">
                 <div className="flex justify-between items-start gap-7">
                   <h2 className="font-orbit text-[36px] text-primary text-wrap font-semibold hover:underline">

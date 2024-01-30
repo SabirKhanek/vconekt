@@ -19,7 +19,7 @@ import { RecentWork } from "./sections/recent_work.js";
 import { OurServices } from "./sections/our_service.js";
 import { OurBlog } from "./sections/our_blog.js";
 import Testimonial from "./sections/testimonial.js";
-
+import { motion } from "framer-motion";
 export default function App() {
   let smoother: any;
   useLayoutEffect(() => {
@@ -44,6 +44,44 @@ export default function App() {
             src="/graph.png"
             className="absolute top-0 left-0  w-[25vw]"
             alt=""
+          />
+          <motion.div
+            animate={{
+              x: ["-12.5vw", "0vw", "-12.5vw"],
+              y: ["0vh", "50vh", "0vh"],
+              transition: {
+                x: {
+                  duration: 17, // adjust duration as needed
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                y: {
+                  duration: 25, // adjust duration as needed
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              },
+            }}
+            className="w-[25vw] left-0 fixed h-[25vw] rounded-full opacity-25 bg-primary blur-[5vw] pointer-events-none"
+          />
+          <motion.div
+            animate={{
+              x: ["16vw", "0vw", "16vw"],
+              y: ["0vh", "40vh", "0vh"],
+              transition: {
+                x: {
+                  duration: 25, // adjust duration as needed
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                y: {
+                  duration: 17, // adjust duration as needed
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+              },
+            }}
+            className="w-[30vw] right-0 fixed h-[30vw] rounded-full opacity-25 bg-primary blur-[8vw] pointer-events-none"
           />
           <Navbar />
           <Hero id="hero" />

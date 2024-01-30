@@ -1,9 +1,19 @@
-import { HTMLProps } from "react";
+import { HTMLProps, useState } from "react";
 import { motion } from "framer-motion";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
+import { AnimatedText } from "../components/animated_text";
+import { GlitchImage } from "../components/glitch_image";
+
 export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = (index: number) => {
+    if (index < 0 || index >= quotes.length) return;
+    if (index === activeIndex) return;
+    setActiveIndex(index);
+  };
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
@@ -23,9 +33,9 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
       </p>
       <div className="my-5 flex gap-3 text-white">
         <div className="flex-1 flex justify-center items-center">
-          <img src="https://picsum.photos/460/300" alt="" />
+          <GlitchImage src={quotes[activeIndex].img_src} width={460} />
         </div>
-        <div className="flex-1 relative flex gap-1">
+        <div className="flex-1 relative justify-between flex gap-1">
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-2">
@@ -43,17 +53,21 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
                   />
                 </svg>
               </div>
-              <p className="text-white my-2 text-3xl">
-                They know their stuff, and we are currently using them for more
-                projects.
-              </p>
+              <AnimatedText
+                text={quotes[activeIndex].quote_text || "This is a sample text"}
+                className="text-white my-2 text-3xl quote_text"
+              />
             </div>
 
             <div>
-              <p className="text-white font-light text-xl">John Doe</p>
-              <p className="text-white font-thin">
-                Director Fast Track Training
-              </p>
+              <AnimatedText
+                className="text-white font-light text-xl"
+                text={quotes[activeIndex].author}
+              />
+              <AnimatedText
+                className="text-white font-thin"
+                text={quotes[activeIndex].author_title}
+              />
             </div>
           </div>
           <div className="self-end flex gap-2">
@@ -71,6 +85,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="p-2 border border-white rounded-full"
+              onClick={() => handleNext(activeIndex - 1)}
             >
               <GoArrowLeft />
             </motion.button>
@@ -88,6 +103,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="p-2 border border-white rounded-full"
+              onClick={() => handleNext(activeIndex + 1)}
             >
               <GoArrowRight />
             </motion.button>
@@ -97,3 +113,18 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
     </motion.section>
   );
 }
+
+const quotes = [
+  {
+    quote_text: `They know their stuff, and we are currently using them for more projects.`,
+    author: "John Doe",
+    author_title: "Director Fast Track Training",
+    img_src: "/testimonial_1.jpg",
+  },
+  {
+    quote_text: `Yeah this is another text yayy.!`,
+    author: "Johnson Smith",
+    author_title: "Director Vconekt",
+    img_src: "/testimonial_2.jpg",
+  },
+];

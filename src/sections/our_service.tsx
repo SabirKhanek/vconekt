@@ -240,8 +240,6 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <motion.section
       {...(props as any)}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
       className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
       <div

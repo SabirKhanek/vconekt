@@ -14,8 +14,8 @@ export function FluidCursor({ className, ...props }) {
         VELOCITY_DISSIPATION: 0.99, // Controls how fast velocity dissipates/smoothens
         PRESSURE_DISSIPATION: 0.8, // Controls how fast pressure dissipates/smoothens
         PRESSURE_ITERATIONS: 20, // Number of iterations to solve pressure
-        CURL: 24, // Adds curl to the simulation for more realistic flow
-        SPLAT_RADIUS: 0.004, // Controls the radius of the splat (smoothing radius for adding density/velocity)
+        CURL: 20, // Adds curl to the simulation for more realistic flow
+        SPLAT_RADIUS: 0.003, // Controls the radius of the splat (smoothing radius for adding density/velocity)
       };
 
       let pointers = [];
@@ -813,11 +813,7 @@ export function FluidCursor({ className, ...props }) {
 
       function multipleSplats(amount) {
         for (let i = 0; i < amount; i++) {
-          const color = [
-            Math.random() * 255,
-            Math.random() * 255,
-            Math.random() * 255,
-          ];
+          const color = [Math.random(), Math.random(), Math.random()];
           const x = canvas.width * Math.random();
           const y = canvas.height * Math.random();
           const dx = 1000 * (Math.random() - 0.5);

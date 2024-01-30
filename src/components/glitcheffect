@@ -1,0 +1,89 @@
+// import { useGSAP } from "@gsap/react";
+// import gsap from "gsap";
+// import { HTMLProps, useEffect, useRef } from "react";
+
+// export function GlitchImage({
+//   src,
+//   width,
+//   ...props
+// }: HTMLProps<HTMLCanvasElement> & { src: string }) {
+//   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+//   useGSAP(() => {
+//     if (!canvasRef.current) return;
+//     const displayedCanvas = canvasRef.current;
+//     const dis_ctx = displayedCanvas.getContext("2d");
+//     if (!dis_ctx) return;
+//     const tempCanvas = document.createElement("canvas");
+//     tempCanvas.width = displayedCanvas.width;
+//     tempCanvas.height = displayedCanvas.height;
+//     const tempCtx = tempCanvas.getContext("2d");
+//     if (!tempCtx) return;
+
+//     const img = new Image();
+//     img.src = src;
+//     img.crossOrigin = "anonymous";
+//     img.width = +(width || 465);
+//     img.height = +(width || 465) * 0.65;
+//     img.style.objectFit = "cover";
+
+//     img.onload = () => {
+//       tempCtx.drawImage(img, 0, 0);
+//       const oldImageData = dis_ctx.getImageData(
+//         0,
+//         0,
+//         displayedCanvas.width,
+//         displayedCanvas.height
+//       );
+//       const newImageData = tempCtx.getImageData(
+//         0,
+//         0,
+//         tempCanvas.width,
+//         tempCanvas.height
+//       );
+//       const oldData = oldImageData.data;
+//       const newData = newImageData.data;
+
+//       let pixelOrder = [...Array(oldData.length / 4)].map((_, i) => i);
+//       for (let i = pixelOrder.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [pixelOrder[i], pixelOrder[j]] = [pixelOrder[j], pixelOrder[i]];
+//       }
+//       const chunkSize = 1000; // adjust as needed
+
+//       // Split pixelOrder into chunks
+//       const chunks = [];
+//       for (let i = 0; i < pixelOrder.length; i += chunkSize) {
+//         chunks.push(pixelOrder.slice(i, i + chunkSize));
+//       }
+
+//       // Animate each chunk separately
+//       chunks.forEach((chunk, index) => {
+//         gsap.to(chunk, {
+//           duration: 0.1, // adjust duration as needed
+//           delay: index * 0.1, // adjust delay as needed
+//           onStart: () => {
+//             chunk.forEach((pixel) => {
+//               oldData[pixel * 4] = newData[pixel * 4];
+//               oldData[pixel * 4 + 1] = newData[pixel * 4 + 1];
+//               oldData[pixel * 4 + 2] = newData[pixel * 4 + 2];
+//               oldData[pixel * 4 + 3] = newData[pixel * 4 + 3];
+//             });
+//           },
+//           onUpdate: () => {
+//             dis_ctx.putImageData(oldImageData, 0, 0);
+//           },
+//           ease: "none",
+//         });
+//       });
+//     };
+//   }, [src]);
+
+//   return (
+//     <canvas
+//       style={{ width: width, height: `${(width as number) * 0.65}px` }}
+//       {...props}
+//       ref={canvasRef}
+//     ></canvas>
+//   );
+// }

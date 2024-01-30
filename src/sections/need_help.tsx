@@ -17,17 +17,18 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#need_help",
-        start: "top center",
+        start: "25% center",
+        end: "25% top",
+        toggleActions: "play reverse play reverse",
       },
     });
+
     tl.to("#robot_avatar", {
       top: 0,
       duration: 1,
       ease: "bounce.out",
-      repeat: -1,
-      repeatDelay: 3,
-      yoyo: true,
-    }).fromTo(
+    });
+    tl.fromTo(
       ".how_can_we_text_letter",
       { display: "none" },
       {
