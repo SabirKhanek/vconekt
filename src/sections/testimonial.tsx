@@ -1,6 +1,9 @@
-import { HTMLProps, useState } from "react";
-import { motion } from "framer-motion";
-import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
+import { HTMLProps, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import {
+  getResponsiveClasses,
+  getResponsiveWidth,
+} from "../shared/constants/getResponsiveClasses";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 import { AnimatedText } from "../components/animated_text";
@@ -8,6 +11,8 @@ import { GlitchImage } from "../components/glitch_image";
 
 export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true });
 
   const handleNext = (index: number) => {
     if (index < 0 || index >= quotes.length) return;
@@ -16,11 +21,10 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
   };
   return (
     <motion.section
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ repeat: 0 }}
+      style={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }}
+      ref={ref}
       {...(props as any)}
-      className={`${getResponsiveClasses()} mt-28 my-10 w-full relative`}
+      className={`${getResponsiveClasses()} transition-all duration-300 mt-28 my-10 w-full relative`}
     >
       <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
         Testimonial
@@ -32,8 +36,13 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
         They say we're good for a reason
       </p>
       <div className="my-5 flex gap-3 text-white">
-        <div className="flex-1 flex justify-center items-center">
-          <GlitchImage src={quotes[activeIndex].img_src} width={460} />
+        <div className="flex-1 grow-0 flex justify-center items-center">
+          <GlitchImage
+            src={quotes[activeIndex].img_src}
+            width={
+              getResponsiveWidth() / 2 > 460 ? 460 : getResponsiveWidth() / 2
+            }
+          />
         </div>
         <div className="flex-1 relative justify-between flex gap-1">
           <div className="flex flex-col justify-between">

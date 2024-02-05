@@ -8,8 +8,10 @@ import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import gsap from "gsap";
 import { motion } from "framer-motion";
+import { useResponsive } from "../hooks/useResponsive";
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const sliderContainerRef = useRef<HTMLDivElement>(null);
+  const responsive = useResponsive();
   useGSAP(() => {
     const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
     cursorTimeline.to(".type_cursor", { opacity: 0.2, duration: 0.5 });
@@ -40,7 +42,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
 
   useEffect(() => {
     setCardWidth(calcCardWidth());
-  }, []);
+  }, [responsive.windowWidth]);
   useGSAP(() => {
     const slider = document.getElementById("service_slider");
     if (!slider) return;
@@ -202,7 +204,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         `-=${dur / 2}`
       );
     });
-  }, []);
+  }, [responsive.windowWidth]);
   const [zIndexes, setZIndexes] = useState<number[]>([]);
   const [refreshFlag, setRefreshFlag] = useState({});
   const [hiddenFlags, setHiddenFlags] = useState<boolean[]>([]);
@@ -265,7 +267,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                   zIndex: zIndexes[index],
                   display: hiddenFlags[index] ? "none" : "flex",
                 }}
-                className={`service-card black-gradient bottom-0 left-0 absolute flex justify-center items-center p-10 text-white`}
+                className={`service-card black-gradient bottom-0 left-0 absolute flex justify-center items-center p-5 text-white`}
               >
                 <span className="w-full h-full inline-flex flex-col justify-between">
                   {/* <span>{cardDetails[index % cardDetails.length].logo}</span> */}
@@ -302,7 +304,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
               <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
                 Our Services
               </span>
-              <p className="my-5 leading-relaxed text-5xl font-semibold font-orbit">
+              <p className="my-5 leading-relaxed  md:text-[40px] xl:text-5xl font-semibold font-orbit">
                 Maximize{" "}
                 <span className="text-primary inline-block " id="presence_text">
                   digital presence{" "}

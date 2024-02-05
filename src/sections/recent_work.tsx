@@ -68,7 +68,9 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         const currentPosition = gsap.getProperty(reels[reelIndex], "x");
 
         if (reelRight < 0 && reelRight >= -10) {
-          gsap.set(reels[reelIndex], { x: reelContainerRight - reelWidth });
+          gsap.set(reels[reelIndex], {
+            x: reelContainerRight - (reelWidth - 15),
+          });
         } else {
           gsap.set(reels[reelIndex], { x: (currentPosition as number) - 1 });
         }
@@ -99,7 +101,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
     setHoveredReel(null);
     slideReelTimeline?.resume();
   });
-  const height = 150;
+  const height = 160;
   const width = height * 1.84;
   return (
     <motion.section
@@ -114,7 +116,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         className="absolute h-[300px] top-1/2 -translate-y-1/2 z-0 overflow-y-visible overflow-x-hidden"
       >
         {[1, 2, 3, 4, 5, 1, 2].map((n, index) => {
-          const transformValue = `translateX(${(width + 10) * index}px)`;
+          const transformValue = `translateX(${(width + 15) * index}px)`;
           return (
             <div
               style={{
@@ -158,7 +160,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
           Recent Work
         </span>
-        <p className="max-w-[50%] my-5 leading-relaxed text-5xl font-semibold font-orbit">
+        <p className="max-w-[50%] my-5 !leading-tight text-4xl md:text-[40px] xl:text-5xl font-semibold font-orbit">
           Elevate your online presence with our integrated web, marketing, and
           design
           <br />

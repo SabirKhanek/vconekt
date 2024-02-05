@@ -1,5 +1,5 @@
 import { Navbar } from "./components/nav";
-import { useLayoutEffect } from "react";
+import { useCallback, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
@@ -20,6 +20,8 @@ import { OurServices } from "./sections/our_service.js";
 import { OurBlog } from "./sections/our_blog.js";
 import Testimonial from "./sections/testimonial.js";
 import { motion } from "framer-motion";
+import { loadSlim } from "tsparticles-slim";
+import Particles from "react-particles";
 export default function App() {
   let smoother: any;
   useLayoutEffect(() => {
@@ -32,19 +34,33 @@ export default function App() {
     gsap.to(window, { scrollTo: 0 });
   }, []);
   smoother;
+
+  const particlesInit = useCallback(async (engine: any) => {
+    console.log(engine);
+    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    //await loadFull(engine);
+    await loadSlim(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container: any) => {
+    console.log(container);
+  }, []);
   return (
     <div className="relative">
+      <Particles
+        init={particlesInit}
+        loaded={particlesLoaded}
+        className="z-[1] relative"
+        url="/particles_config.json"
+      />
       <FluidCursor className={"pointer-events-none"} />
       <V3d />
       <Preloader />
       <div id="scroll-wrapper" className="z-[5]">
         <main id="main-container">
           {/* <Spline scene="https://prod.spline.design/CKWF1KdvY5LNUrVL/scene.splinecode" /> */}
-          <img
-            src="/graph.png"
-            className="absolute top-0 left-0  w-[25vw]"
-            alt=""
-          />
           <motion.div
             animate={{
               x: ["-12.5vw", "0vw", "-12.5vw"],

@@ -30,7 +30,7 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
     tl.to("#section2-content", {
       transform: "perspective(1000px) rotateY(0deg) translateZ(0)",
       opacity: 1,
-      backgroundColor: "black",
+      backgroundColor: "#00000000",
       borderRadius: 0,
     });
   }, []);
@@ -48,14 +48,14 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
           style={{ backgroundColor: "#333333", borderRadius: "50px" }}
           id="section2-content"
           ref={contenRef}
-          className="w-full h-[85vh] flex justify-center transform- gap-5 items-start relative p-5 reflected"
+          className="w-full  flex justify-center transform- gap-5 items-start relative p-5 reflected"
         >
           <V3dAboutUS scale={0.7} parentRef={contenRef} />
           <div className="basis-1/2 shrink-0">
             <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
               About Us
             </span>
-            <h2 className="text-4xl  md:text-5xl font-mono font-semibold uppercase text-white my-3">
+            <h2 className="md:text-4xl  lg:text-5xl font-mono font-semibold uppercase text-white my-3">
               EMPOWERING DIGITAL GROWTH WITH 5 YEARS VCONeKT LLC IT SOLUTIONS
               EXPERTISE
             </h2>
