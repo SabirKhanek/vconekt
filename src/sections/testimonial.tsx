@@ -1,4 +1,4 @@
-import { HTMLProps, useRef, useState } from "react";
+import { HTMLProps, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   getResponsiveClasses,
@@ -13,6 +13,13 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true });
+  const isInView = useInView(ref);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isInView) handleNext((activeIndex + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  });
 
   const handleNext = (index: number) => {
     if (index < 0 || index >= quotes.length) return;

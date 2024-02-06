@@ -33,8 +33,8 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl text-xs bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Completed Stories!
         </span>
-        <span className="text-center text-3xl text-white font-orbit">
-          WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF OUR COUNTER.
+        <span className="text-center text-3xl text-white font-orbit font-bold">
+          WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS, CHECK SOME OF OUR COUNTER
         </span>
         <div className="flex justify-between w-3/4">
           <div className="flex flex-col gap-2">

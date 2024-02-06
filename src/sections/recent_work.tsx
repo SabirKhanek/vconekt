@@ -1,13 +1,15 @@
-import { HTMLProps, useState } from "react";
+import { HTMLProps, useEffect, useRef, useState } from "react";
 import { Button } from "../components/button";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
   const [slideReelTimeline, setSlideReelTimeline] =
     useState<gsap.core.Timeline | null>();
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref);
   const [hoveredReel, setHoveredReel] = useState<number | null>(null);
   //   const [isAnimating, setIsAnimating] = useState(false);
   useGSAP(() => {
@@ -101,14 +103,23 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
     setHoveredReel(null);
     slideReelTimeline?.resume();
   });
+
+  useEffect(() => {
+    if (isInView) {
+      slideReelTimeline?.play();
+    } else {
+      slideReelTimeline?.pause();
+    }
+  }, [isInView]);
   const height = 160;
   const width = height * 1.84;
   return (
     <motion.section
       {...(props as any)}
+      ref={ref}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className={` text-white relative h-screen w-full z-[2]  bg-transparent justify-start overflow-hidden`}
+      className={` text-white relative h-[80vh] w-full z-[2]  bg-transparent justify-start overflow-hidden`}
     >
       <div
         id="reel_container"
@@ -160,7 +171,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
           Recent Work
         </span>
-        <p className="max-w-[50%] my-5 !leading-tight text-4xl md:text-[40px] xl:text-5xl font-semibold font-orbit">
+        <p className=" my-5 !leading-tight text-[5vw] font-semibold font-orbit">
           Elevate your online presence with our integrated web, marketing, and
           design
           <br />

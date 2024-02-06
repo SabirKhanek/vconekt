@@ -22,6 +22,7 @@ import Testimonial from "./sections/testimonial.js";
 import { motion } from "framer-motion";
 import { loadSlim } from "tsparticles-slim";
 import Particles from "react-particles";
+import { Footer } from "./sections/footer.js";
 export default function App() {
   let smoother: any;
   useLayoutEffect(() => {
@@ -109,6 +110,7 @@ export default function App() {
           <OurBlog id="our_blog" />
           <Testimonial id="testimonials" />
           <ContactUs id="contact_us" />
+          <Footer/>
         </main>
       </div>
     </div>

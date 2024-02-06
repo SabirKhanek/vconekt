@@ -32,7 +32,7 @@ export function V3dContactUs({
         document.documentElement.clientHeight || 0,
         window.innerHeight || 0
       );
-      const sensivity = 0.1;
+      const sensivity = 0.2;
       const relativeX = mouseX / screenWidth;
       const relativeY = mouseY / screenHeight;
       const yRotation = (relativeX - 0.5) * Math.PI * 2 * sensivity;

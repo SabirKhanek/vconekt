@@ -7,33 +7,53 @@ import {
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import gsap from "gsap";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useResponsive } from "../hooks/useResponsive";
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const sliderContainerRef = useRef<HTMLDivElement>(null);
   const responsive = useResponsive();
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref);
   useGSAP(() => {
+    // const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
+    // cursorTimeline.to(".type_cursor", { opacity: 0.2, duration: 0.5 });
+    // new SplitType("#presence_text", {
+    //   types: "chars",
+    //   charClass: "presence_text_letter",
+    // });
+    // const textTimeline = gsap.timeline({
+    //   repeat: -1,
+    //   yoyo: true,
+    //   repeatDelay: 1,
+    // });
+    // textTimeline.fromTo(
+    //   ".presence_text_letter",
+    //   { display: "none" },
+    //   {
+    //     display: "inline-block",
+    //     duration: 0.01,
+    //     stagger: 0.04,
+    //   }
+    // );
+
+    new SplitType("#presence_text", {
+      types: ["chars", "words"],
+      charClass: "presence_letter",
+      wordClass: "break-none",
+    });
     const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
     cursorTimeline.to(".type_cursor", { opacity: 0.2, duration: 0.5 });
-    new SplitType("#presence_text", {
-      types: "chars",
-      charClass: "presence_text_letter",
-    });
-    const textTimeline = gsap.timeline({
-      repeat: -1,
-      yoyo: true,
-      repeatDelay: 1,
-    });
-    textTimeline.fromTo(
-      ".presence_text_letter",
-      { display: "none" },
+    const tl = gsap.timeline({});
+    tl.fromTo(
+      ".presence_letter",
+      { opacity: 0 },
       {
-        display: "inline-block",
+        opacity: 1,
         duration: 0.01,
         stagger: 0.04,
       }
     );
-  }, []);
+  }, [isInView]);
   const calcCardWidth = () => {
     const slider = document.getElementById("service_slider");
     return ((slider?.clientWidth || 1024) / 3) * (4 / 5);
@@ -79,7 +99,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         backgroundColor: "blue",
         scale: 1,
         gradFrom: "#131A14",
-        gradTo: "black",
+        gradTo: "#000000",
         gradFromPer: 0,
         gradToPer: 100,
         gradDirection: "180deg",
@@ -241,6 +261,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   }, [refreshFlag]);
   return (
     <motion.section
+      ref={ref}
       {...(props as any)}
       className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
@@ -304,13 +325,13 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
               <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
                 Our Services
               </span>
-              <p className="my-5 leading-relaxed  md:text-[40px] xl:text-5xl font-semibold font-orbit">
-                Maximize{" "}
-                <span className="text-primary inline-block " id="presence_text">
-                  digital presence{" "}
-                  <span className="ml-2 inline-block w-1 h-9 bg-primary type_cursor"></span>
-                </span>{" "}
+              <p
+                id="presence_text"
+                className="my-5 leading-relaxed  md:text-[40px] xl:text-5xl font-semibold font-orbit"
+              >
+                Maximize <span className="text-primary">digital presence </span>{" "}
                 with web, marketing, design.
+                <span className="ml-2 inline-block w-1 h-9 bg-primary presence_letter type_cursor"></span>
               </p>
             </div>
             <div className="basis-1/2 shrink-0 max-w-96">

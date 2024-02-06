@@ -18,7 +18,7 @@ export function Button({ className, bg, children, onClick }: ButtonProps) {
       className={`rounded-tr-xl rounded-bl-xl flex items-center ${className}`}
       onClick={() => onClick && onClick()}
     >
-      <span className="px-3 border-r border-white  py-1  text-white">
+      <span className="px-3 border-r border-white  py-2  text-white">
         {children}
       </span>
       <div className="px-2 text-white  flex justify-center items-center">

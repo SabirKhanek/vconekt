@@ -15,7 +15,7 @@ export function FluidCursor({ className, ...props }) {
         PRESSURE_DISSIPATION: 0.8, // Controls how fast pressure dissipates/smoothens
         PRESSURE_ITERATIONS: 20, // Number of iterations to solve pressure
         CURL: 20, // Adds curl to the simulation for more realistic flow
-        SPLAT_RADIUS: 0.003, // Controls the radius of the splat (smoothing radius for adding density/velocity)
+        SPLAT_RADIUS: 0.0015, // Controls the radius of the splat (smoothing radius for adding density/velocity)
       };
 
       let pointers = [];

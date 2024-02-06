@@ -31,7 +31,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
       {...props}
       className={`relative w-full h-[100vh] z-10 ${getResponsiveClasses()}`}
     >
-      <div className="h-screen flex justify-between items-center">
+      <div className="h-screen flex justify-between relative items-center">
         <div className="max-w-96">
           <h2 className="text-5xl text-white ">
             <span className="inline-block overflow-hidden">
@@ -67,7 +67,13 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
             </Button>
           </div>
         </div>
-        <span className="flex gap-1 items-center translate-x-1/2 -rotate-90">
+        <span
+          onClick={() => {
+            const ele = document.getElementById("about_us");
+            if (ele) smoothScrollToBottom(ele, 2000);
+          }}
+          className="flex absolute right-0 bottom-[25vh] gap-1 cursor-pointer items-center self-end -translate-y-1/2 translate-x-1/2 -rotate-90"
+        >
           <svg
             className="rotate-90 inline"
             width="16"
@@ -88,4 +94,35 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
       </div>
     </section>
   );
+}
+
+function smoothScrollToBottom(element: HTMLElement, duration: number): void {
+  const targetPosition: number =
+    element.offsetTop +
+    element.offsetHeight -
+    document.documentElement.clientHeight;
+  const startPosition: number = window.pageYOffset;
+  const distance: number = targetPosition - startPosition;
+  let startTime: number | null = null;
+
+  function animation(currentTime: number): void {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed: number = currentTime - startTime;
+    const scrollAmount: number = Math.floor(
+      easeInOutQuad(timeElapsed, startPosition, distance, duration)
+    );
+    window.scrollTo(0, scrollAmount);
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  function easeInOutQuad(t: number, b: number, c: number, d: number): number {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  }
+
+  requestAnimationFrame(animation);
 }

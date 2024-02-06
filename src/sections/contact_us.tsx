@@ -13,11 +13,11 @@ export function ContactUs({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl text-xs bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Contact Us
         </span>
-        <span className="text-center text-3xl text-white font-orbit">
-          LET'S CONNECT AND GROW YOUR BUSINESS TOGETHER:
+        <span className="text-center font-bold text-3xl text-white font-orbit">
+          LET'S CONNECT AND GROW YOUR BUSINESS TOGETHER
         </span>
-        <div className="relative h-40 w-full">
-          <V3dContactUs scale={0.4} />
+        <div className="relative h-44 w-full">
+          <V3dContactUs scale={0.45} />
           <motion.button
             initial={{
               background:

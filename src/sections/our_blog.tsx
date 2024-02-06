@@ -30,7 +30,7 @@ export function OurBlog({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <motion.section
       {...(props as any)}
-      className={`${getResponsiveClasses()} mt-28 my-10 w-full relative`}
+      className={`${getResponsiveClasses()} mt-28 my-10 w-full relative z-10`}
     >
       <div className="relative">
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
@@ -65,7 +65,7 @@ function BlogCard() {
       <div className="py-6  flex flex-col md:flex-row gap-4">
         <div className="blog_image_container w-full md:w-[387px] h-[264px] shrink-0 overflow-hidden">
           <img
-            className="blog_images object-cover object-top h-[140%] w-full"
+            className="blog_images object-cover object-top h-[140%] w-full cursor-pointer"
             src={`https://picsum.photos/387/369?q=${Math.random()}`}
             alt=""
           />
