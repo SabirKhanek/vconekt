@@ -99,6 +99,11 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         backgroundColor: "blue",
         scale: 1,
         gradFrom: "#131A14",
+        fadeGradFrom: "#000000",
+        fadeGradDirection: "0deg",
+        fadeGradFromPer: "15%",
+        fadeGradTo: "#00000000",
+        fadeGradToPer: "100%",
         gradTo: "#000000",
         gradFromPer: 0,
         gradToPer: 100,
@@ -109,6 +114,11 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         y: -(slider.clientHeight - cardWidth),
         backgroundColor: "red",
         scale: 1.2,
+        fadeGradFrom: "rgba(0,0,0,0)",
+        fadeGradDirection: "90deg",
+        fadeGradFromPer: "15%",
+        fadeGradTo: "#00000000",
+        fadeGradToPer: "100%",
         gradFrom: "#131A14",
         gradTo: "#253426",
         gradFromPer: 1.97,
@@ -120,6 +130,11 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
         y: 0,
         backgroundColor: "blue",
         scale: 1,
+        fadeGradFrom: "rgba(0,0,0,1)",
+        fadeGradDirection: "0deg",
+        fadeGradFromPer: "15%",
+        fadeGradTo: "#00000000",
+        fadeGradToPer: "100%",
         gradFrom: "#131A14",
         gradTo: "black",
         gradFromPer: 0,
@@ -170,6 +185,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
             ],
           },
           onUpdate: () => {
+            if (window.scrollY <= 0) return;
             const timeWithDelay = tl.duration();
             const delayProgress = tl.progress();
             const actualCurrentTime = timeWithDelay * delayProgress;
@@ -182,29 +198,34 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
             const progress = currentTimeTarget / dur; // want to get progress of individual tween keep in mind -=${dur/2}
 
             if (progress <= -1 || progress > 1) return;
-
+            console.log(target, progress);
             let interpolations: {
               [K in keyof (typeof animationProps)["start"]]: (typeof animationProps)["start"][K];
             } = animationProps.start;
             let gradient;
+            gradient;
             if (progress < 0.5) {
               interpolations = getInterpolations(
                 animationProps.start,
                 animationProps.center,
                 progress * 2
               );
-              gradient = `linear-gradient(${interpolations.gradDirection}deg, ${interpolations.gradFrom} ${interpolations.gradFromPer}%, ${interpolations.gradTo} ${interpolations.gradToPer}%)`;
+              gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
             } else {
               interpolations = getInterpolations(
                 animationProps.center,
                 animationProps.end,
                 (progress - 0.5) * 2
               );
-              gradient = `linear-gradient(${interpolations.gradDirection}deg, ${interpolations.gradFrom} ${interpolations.gradFromPer}%, ${interpolations.gradTo} ${interpolations.gradToPer}%)`;
+              gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
             }
-            // if (index === 0) console.log(gradient);
+            const fadeGradient = `linear-gradient(${interpolations.fadeGradDirection}, ${interpolations.fadeGradFrom} ${interpolations.fadeGradFromPer}, ${interpolations.fadeGradTo} ${interpolations.fadeGradToPer})`;
+
+            gsap.set(target.getElementsByClassName("fade_mask")[0], {
+              background: fadeGradient,
+            });
             gsap.set(target, {
-              background: gradient,
+              // background: gradient,
               scale: interpolations.scale,
             });
             setRefreshFlag({});
@@ -213,7 +234,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
             gsap.set(target, {
               // backgroundColor: animationProps.end.backgroundColor,
               scale: animationProps.end.scale,
-              background: `linear-gradient(${animationProps.end.gradDirection}deg, ${animationProps.end.gradFrom} ${animationProps.end.gradFromPer}%, ${animationProps.end.gradTo} ${animationProps.end.gradToPer}%)`,
+              // background: `linear-gradient(${animationProps.end.gradDirection}, ${animationProps.end.gradFrom} ${animationProps.end.gradFromPer}, ${animationProps.end.gradTo} ${animationProps.end.gradToPer})`,
               x: animationProps.end.x,
               y: animationProps.end.y,
             });
@@ -288,9 +309,9 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                   zIndex: zIndexes[index],
                   display: hiddenFlags[index] ? "none" : "flex",
                 }}
-                className={`service-card black-gradient bottom-0 left-0 absolute flex justify-center items-center p-5 text-white`}
+                className={`service-card black-gradient bottom-0 left-0 absolute flex justify-center items-center p-7 text-white`}
               >
-                <span className="w-full h-full inline-flex flex-col justify-between">
+                <span className="w-full h-full inline-flex flex-col gap-2">
                   {/* <span>{cardDetails[index % cardDetails.length].logo}</span> */}
                   <img
                     src={`${cardDetails[index % cardDetails.length].logo}`}
@@ -312,6 +333,15 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                     Learn more...
                   </a>
                 </span>
+                <div
+                  style={{
+                    background:
+                      "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  className="absolute left-0 top-0 inner_fade pointer-events-none fade_mask"
+                ></div>
               </div>
             );
           })}
