@@ -32,21 +32,21 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
       className={`relative w-full h-[100vh] z-10 ${getResponsiveClasses()}`}
     >
       <div className="h-screen flex justify-between relative items-center">
-        <div className="max-w-96">
-          <h2 className="text-5xl text-white ">
-            <span className="inline-block overflow-hidden">
+        <div className="max-w-lg">
+          <h2 className="text-5xl text-white font-orbit font-semibold">
+            <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Empowering the</span>
             </span>{" "}
-            <span className="inline-block overflow-hidden">
+            <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Future: Cutting-</span>
             </span>
-            <span className="inline-block overflow-hidden">
+            <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Solutions</span>
             </span>
-            <span className="inline-block overflow-hidden">
+            <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Edge Software</span>
             </span>{" "}
-            <span className="overflow-hidden inline-block">
+            <span className="overflow-hidden inline-block py-1">
               <span className="hero_text">Solutions</span>
             </span>
           </h2>
@@ -58,7 +58,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
             <br />
             Business Development
           </p>
-          <div className="flex items-center justify-between pointer-events-auto">
+          <div className="flex items-center gap-4 pointer-events-auto">
             <Button>
               <span className="font-orbit">Discover More</span>
             </Button>

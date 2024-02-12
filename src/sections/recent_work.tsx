@@ -119,7 +119,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
       ref={ref}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className={` text-white relative h-[80vh] w-full z-[2]  bg-transparent justify-start overflow-hidden`}
+      className={` text-white relative my-10 w-full z-[2]  bg-transparent justify-start overflow-hidden`}
     >
       <div
         id="reel_container"
@@ -166,12 +166,12 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         })}
       </div>
       <div
-        className={`absolute-centered w-full flex flex-col z-10 justify-start items-start h-full py-[10vh] pointer-events-none  ${getResponsiveClasses()}`}
+        className={`relative  w-full flex flex-col z-10 justify-start items-start h-full  pointer-events-none  ${getResponsiveClasses()}`}
       >
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
           Recent Work
         </span>
-        <p className=" my-5 !leading-tight text-[5vw] font-semibold font-orbit">
+        <p className=" my-5 heading !leading-tight text-[5vw] font-semibold font-orbit max-w-[80%]">
           Elevate your online presence with our integrated web, marketing, and
           design
           <br />
@@ -180,7 +180,9 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
             <span className="ml-2 inline-block w-1 h-9 bg-primary type_cursor"></span>
           </span>
         </p>
-        <Button className="pointer-events-auto">View All Portfolio</Button>
+        <Button className="pointer-events-auto font-orbit">
+          View All Portfolio
+        </Button>
       </div>
     </motion.section>
   );

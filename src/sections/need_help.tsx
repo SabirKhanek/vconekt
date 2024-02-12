@@ -1,11 +1,13 @@
-import { HTMLProps } from "react";
+import { HTMLProps, useRef } from "react";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { Button } from "../components/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref);
   useGSAP(() => {
     new SplitType("#how_can_we_text", {
       types: ["chars", "words"],
@@ -28,6 +30,10 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
       duration: 1,
       ease: "bounce.out",
     });
+  }, []);
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
     tl.fromTo(
       ".how_can_we_text_letter",
       { display: "none" },
@@ -37,10 +43,11 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
         stagger: 0.04,
       }
     );
-  }, []);
+  }, [isInView]);
 
   return (
     <motion.section
+      ref={ref}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       {...(props as any)}
@@ -61,7 +68,7 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
                 {"  "}
                 <span className="text-primary">You?</span>
               </h2>
-              <span className="ml-2 inline-block w-0.5 h-9 bg-primary type_cursor"></span>
+              <span className="ml-2 inline-block w-0.5 h-9 bg-primary type_cursor how_can_we_text_letter"></span>
             </div>
             <p className="font-light text-white max-w-96">
               We have a team of highly skilled and experienced professionals who
@@ -91,7 +98,7 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
               alt=""
             />
           </div>
-          <p className="font-orbit font-semibold text-4xl basis-3/4 shrink-0">
+          <p className="font-orbit small-heading font-semibold text-4xl basis-3/4 shrink-0">
             WHEN YOU NEED HELP, WE'RE JUST A CLICK AWAY.
           </p>
           <Button bg="gradient">Contact Us</Button>

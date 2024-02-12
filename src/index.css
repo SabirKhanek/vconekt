@@ -50,3 +50,16 @@ canvas {
     );
   }
 }
+
+.heading {
+  font-size: clamp(40px, 5vw, 60px);
+  font-family: Orbitron, Kanit, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 600;
+}
+
+.small-heading {
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 2.5rem;
+  font-weight: 600;
+}

@@ -1,6 +1,9 @@
 import { HTMLProps } from "react";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
-import { FaFacebook, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaSquareFacebook } from "react-icons/fa6";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { RxLinkedinLogo } from "react-icons/rx";
 
 export function Footer({}: HTMLProps<HTMLElement>) {
   return (
@@ -18,8 +21,12 @@ export function Footer({}: HTMLProps<HTMLElement>) {
         </div>
         <div className="flex-1">
           <ul className="flex flex-col gap-2">
-            <li className="cursor-pointer hover:underline">info & vconekt</li>
-            <li className="cursor-pointer hover:underline">+13108481237</li>
+            <li className="cursor-pointer hover:underline">
+              <a href="mailto:info@vconekt.com">info@vconekt.com</a>
+            </li>
+            <li className="cursor-pointer hover:underline">
+              <a href="tel:13108481237">+13108481237</a>
+            </li>
             <li className="cursor-pointer hover:underline">
               30 N GOULD ST STE 25084 SHERIDAN, WY 82801 
             </li>
@@ -32,22 +39,22 @@ export function Footer({}: HTMLProps<HTMLElement>) {
         </div>
       </div>
       <div className="py-3 flex items-center justify-between">
-        <div className="flex gap-2">
-          <p className="text-white/65 hover:text-white hover:underline text-sm cursor-pointer">
+        <div className="flex gap-7">
+          <p className="text-white/65 hover:text-white font-light  hover:underline text-sm cursor-pointer">
             © 2024 Vconekt. All rights reserved.
           </p>
-          <p className="text-white/65 hover:text-white hover:underline text-sm cursor-pointer">
+          <p className="text-white/65 hover:text-white font-light hover:underline text-sm cursor-pointer">
             Privacy Policy
           </p>
-          <p className="text-white/65 hover:text-white hover:underline text-sm cursor-pointer">
+          <p className="text-white/65 hover:text-white font-light hover:underline text-sm cursor-pointer">
             Terms and Conditions
           </p>
         </div>
         <div className="flex flex-1 flex-row-reverse items-center gap-3  text-primary">
-          <FaFacebook className="hover:scale-110 transition-all duration-150 cursor-pointer" />
-          <FaTiktok className="hover:scale-110 transition-all duration-150 cursor-pointer" />
-          <FaInstagram className="hover:scale-110 transition-all duration-150 cursor-pointer" />
-          <FaTwitter className="hover:scale-110 transition-all duration-150 cursor-pointer" />
+          <FaSquareFacebook className="hover:scale-110 transition-all duration-150 cursor-pointer" />
+          <RxLinkedinLogo className="hover:scale-110 transition-all duration-150 cursor-pointer" />
+          <AiFillInstagram className="hover:scale-110 transition-all duration-150 cursor-pointer" />
+          <FaSquareXTwitter className="hover:scale-110 transition-all duration-150 cursor-pointer" />
         </div>
       </div>
     </section>

@@ -13,11 +13,11 @@ export function ContactUs({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl text-xs bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Contact Us
         </span>
-        <span className="text-center font-bold text-3xl text-white font-orbit">
+        <span className="text-center small-heading font-bold text-3xl text-white font-orbit">
           LET'S CONNECT AND GROW YOUR BUSINESS TOGETHER
         </span>
-        <div className="relative h-44 w-full">
-          <V3dContactUs scale={0.45} />
+        <div className="relative h-52 w-full">
+          <V3dContactUs scale={0.5} />
           <motion.button
             initial={{
               background:
@@ -33,9 +33,9 @@ export function ContactUs({ ...props }: HTMLProps<HTMLElement>) {
               transform: "translateX(-50%) translateY(-50%)",
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="rounded-full  w-14 h-14 absolute-centered border border-primary p-2 flex justify-center items-center"
+            className="rounded-full  w-20 h-20 absolute-centered border border-primary p-2 flex justify-center items-center"
           >
-            <MdOutlineMail />
+            <MdOutlineMail className="text-3xl" />
           </motion.button>
         </div>
       </div>

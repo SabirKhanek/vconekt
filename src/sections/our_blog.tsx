@@ -30,14 +30,14 @@ export function OurBlog({ ...props }: HTMLProps<HTMLElement>) {
   return (
     <motion.section
       {...(props as any)}
-      className={`${getResponsiveClasses()} mt-28 my-10 w-full relative z-10`}
+      className={`${getResponsiveClasses()} my-10 w-full relative z-10`}
     >
       <div className="relative">
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Our Blog
         </span>
         <p
-          className="font-orbit font-semibold leading-tight text-5xl xl:text-[55px] text-white mt-5"
+          className="font-orbit font-semibold leading-tight heading text-white mt-5"
           style={{ textTransform: "capitalize" }}
         >
           WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST NEWS.

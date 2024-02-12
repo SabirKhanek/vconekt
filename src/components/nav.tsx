@@ -1,12 +1,15 @@
 import { NavHashLink } from "react-router-hash-link";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { Button } from "./button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
 
 export interface NavbarProps {
   className?: string;
 }
 export function Navbar({ className }: NavbarProps) {
+  const location = useLocation();
+  const preloader = usePreloader();
   return (
     <nav
       className={`absolute top-5 left-0 right-0 w-full z-[11] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
@@ -20,17 +23,39 @@ export function Navbar({ className }: NavbarProps) {
             <NavHashLink
               key={link.route}
               to={link.route}
+              onClick={() => {
+                preloader.registerResource("routeChange");
+                preloader.updateStatus("routeChange", RESOURCE_STATUS.LOADING);
+                setTimeout(() => {
+                  preloader.updateStatus("routeChange", RESOURCE_STATUS.LOADED);
+                }, 1000);
+              }}
               className={({ isActive }) =>
                 `${
                   isActive ? "text-primary" : "text-white"
-                } hover:text-primary/65 transition-all duration-150 font-sans cursor-pointer`
+                } hover:text-primary/65 transition-all relative duration-150 font-sans cursor-pointer`
               }
             >
               {link.name}
+              {location.pathname === link.route && ( // render this only when the route is active
+                <svg
+                  width="8"
+                  height="42"
+                  className="absolute left-1/2 -translate-x-1/2 -top-[50px]"
+                  viewBox="0 0 8 42"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.75 3.27835e-08C4.75 -0.414214 4.41421 -0.75 4 -0.75C3.58579 -0.75 3.25 -0.414214 3.25 -3.27835e-08L4.75 3.27835e-08ZM4 34C1.79086 34 -1.56447e-06 35.7909 -1.66103e-06 38C-1.7576e-06 40.2091 1.79086 42 4 42C6.20914 42 8 40.2091 8 38C8 35.7909 6.20914 34 4 34ZM3.25 -3.27835e-08L3.25 38L4.75 38L4.75 3.27835e-08L3.25 -3.27835e-08Z"
+                    fill="#B2E161"
+                  />
+                </svg>
+              )}
             </NavHashLink>
           );
         })}
-        <Button>Discover More!</Button>
+        <Button className="font-orbit text-sm">Discover More!</Button>
       </div>
     </nav>
   );

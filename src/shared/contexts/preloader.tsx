@@ -45,6 +45,7 @@ export function PreloaderProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    console.log("hi");
     const loadingCount = resources.filter(
       (res) => res.status === RESOURCE_STATUS.LOADING
     ).length;

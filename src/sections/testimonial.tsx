@@ -37,7 +37,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
         Testimonial
       </span>
       <p
-        className="font-orbit font-semibold text-[55px] text-white mt-5"
+        className="font-orbit font-semibold heading text-white mt-5"
         style={{ textTransform: "capitalize" }}
       >
         They say we're good for a reason

@@ -55,7 +55,7 @@ export const AboutUs = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
             <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
               About Us
             </span>
-            <h2 className="md:text-4xl font-orbit font-semibold uppercase text-white my-3">
+            <h2 className="leading-relaxed  md:text-[40px] xl:text-5xl font-orbit font-semibold uppercase text-white my-3">
               EMPOWERING DIGITAL GROWTH WITH 5 YEARS VCONeKT LLC IT SOLUTIONS
               EXPERTISE
             </h2>
