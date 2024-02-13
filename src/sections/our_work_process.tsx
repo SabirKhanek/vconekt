@@ -41,9 +41,10 @@ export function OurWorkProcess() {
         {process.map((v, i) => {
           return (
             <motion.div
-              initial={{ opacity: 0, x: -20, y: -20 }}
+              initial={{ opacity: 0, x: -20,scale: 0.8, y: -20 }}
               whileInView={{
                 opacity: 1,
+                scale:1,
                 x: 0,
                 y: 0,
                 transition: { duration: 0.4, delay: 0.5 * i },
