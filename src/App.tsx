@@ -56,7 +56,7 @@ export default function App() {
       <V3d />
       <Preloader />
       <div id="scroll-wrapper" className="z-[5]">
-        <main id="main-container">
+        <main id="main-container" className="overflow-x-hidden text-white">
           {/* <Spline scene="https://prod.spline.design/CKWF1KdvY5LNUrVL/scene.splinecode" /> */}
           <motion.div
             animate={{

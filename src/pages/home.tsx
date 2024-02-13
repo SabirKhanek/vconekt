@@ -12,7 +12,7 @@ export function Home() {
   return (
     <>
       <Hero id="hero" />
-      <AboutUs id="about_us" />
+      <AboutUs doAnimate id="about_us" />
       <NeedHelp id="need_help" />
       <OurServices id="our_services" />
       <RecentWork id="recent_work" />;

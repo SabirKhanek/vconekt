@@ -4,11 +4,14 @@ import { Application } from "@splinetool/runtime";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
+import { useLocation } from "react-router-dom";
 
 export interface V3dProps {
   className?: string;
 }
 export function V3d({}: V3dProps) {
+  const location = useLocation();
+
   const elementRef = useRef<HTMLDivElement>(null);
   const [is3dModelLoaded, setIs3dModelLoaded] = useState(false);
   const spline = useRef<Application>();
@@ -83,61 +86,6 @@ export function V3d({}: V3dProps) {
           z: 25,
           //   duration: 5,
         });
-        if (elementRef.current) {
-          gsap.to(
-            {},
-            {
-              scrollTrigger: {
-                trigger: "#hero",
-                start: "bottom top",
-                endTrigger: "#about_us",
-                end: "bottom top",
-                onEnter: () => {
-                  console.log("entered");
-                  // Add the class 'z-0' when entering the viewport
-                  elementRef.current?.classList.add("z-10");
-                  // Remove the class 'z-10' if it was previously added
-                  elementRef.current?.classList.remove("z-[3]");
-                },
-                onLeave: () => {
-                  console.log("left");
-                  // Add the class 'z-10' when leaving the viewport
-                  elementRef.current?.classList.add("z-[3]");
-                  // Remove the class 'z-0' if it was previously added
-                  elementRef.current?.classList.remove("z-10");
-                  // elementRef.current?.classList.add("hidden");
-                },
-                onLeaveBack: () => {
-                  console.log("leave back");
-                  // Add the class 'z-10' when leaving the viewport
-                  elementRef.current?.classList.add("z-[3]");
-                  // Remove the class 'z-0' if it was previously added
-                  elementRef.current?.classList.remove("z-10");
-                },
-              },
-            }
-          );
-          gsap.to(elementRef.current, {
-            opacity: 0,
-            scrollTrigger: {
-              // markers: true,
-              onLeave: () => {
-                elementRef.current?.classList.add("hidden");
-              },
-              onLeaveBack: () => {
-                elementRef.current?.classList.remove("hidden");
-              },
-              onEnterBack: () => {
-                elementRef.current?.classList.remove("hidden");
-              },
-              trigger: "#about_us",
-              start: "top top",
-
-              end: "center top",
-              scrub: true,
-            },
-          });
-        }
 
         // const tl2 = gsap.timeline({});
         // tl2.set("#section2_content", {
@@ -159,14 +107,70 @@ export function V3d({}: V3dProps) {
         // });
       }
     }
-  }, [is3dModelLoaded]);
+    if (elementRef.current) {
+      gsap.to(
+        {},
+        {
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "bottom top",
+            endTrigger: "#about_us",
+            end: "bottom top",
+            onEnter: () => {
+              console.log("entered");
+              // Add the class 'z-0' when entering the viewport
+              elementRef.current?.classList.add("z-10");
+              // Remove the class 'z-10' if it was previously added
+              elementRef.current?.classList.remove("z-[3]");
+            },
+            onLeave: () => {
+              console.log("left");
+              // Add the class 'z-10' when leaving the viewport
+              elementRef.current?.classList.add("z-[3]");
+              // Remove the class 'z-0' if it was previously added
+              elementRef.current?.classList.remove("z-10");
+              // elementRef.current?.classList.add("hidden");
+            },
+            onLeaveBack: () => {
+              console.log("leave back");
+              // Add the class 'z-10' when leaving the viewport
+              elementRef.current?.classList.add("z-[3]");
+              // Remove the class 'z-0' if it was previously added
+              elementRef.current?.classList.remove("z-10");
+            },
+          },
+        }
+      );
+      const about_us = document.getElementById("about_us");
+      console.log("About US: ", about_us);
+      gsap.to(elementRef.current, {
+        opacity: 0,
+        scrollTrigger: {
+          // markers: true,
+          onLeave: () => {
+            elementRef.current?.classList.add("hidden");
+          },
+          onLeaveBack: () => {
+            elementRef.current?.classList.remove("hidden");
+          },
+          onEnterBack: () => {
+            elementRef.current?.classList.remove("hidden");
+          },
+          trigger: about_us,
+          start: "top top",
 
+          end: "center top",
+          scrub: true,
+        },
+      });
+    }
+  }, [is3dModelLoaded, elementRef.current, location.pathname]);
   return (
     <div
       ref={elementRef}
       className={`min-h-screen fixed pointer-events-none z-[3] w-full top-0 left-0 ${
         is3dModelLoaded ? "" : "hidden"
-      }`}
+      } ${location.pathname !== "/" ? "!hidden" : ""}`}
     >
       <Spline
         id="spline"

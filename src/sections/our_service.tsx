@@ -14,6 +14,8 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const responsive = useResponsive();
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     // const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
     // cursorTimeline.to(".type_cursor", { opacity: 0.2, duration: 0.5 });
@@ -63,189 +65,199 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   useEffect(() => {
     setCardWidth(calcCardWidth());
   }, [responsive.windowWidth]);
-  useGSAP(() => {
-    const slider = document.getElementById("service_slider");
-    if (!slider) return;
-    const targets = Array.from(
-      document.querySelectorAll(".service-card")
-    ).reverse();
+  useGSAP(
+    () => {
+      if (!ref.current) return;
+      const slider = document.getElementById("service_slider");
+      if (!slider) return;
+      const targets = Array.from(
+        document.querySelectorAll(".service-card")
+      ).reverse();
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#our_services_content",
-        start: "top top",
-        endTrigger: "#our_services",
-        end: "bottom bottom",
-        pin: true,
-        pinnedContainer: "#our_services_content",
-        scrub: true,
-        onEnter: () => {},
-        snap: {
-          snapTo: [
-            0,
-            ...targets.map((v, index) => {
-              v;
-              return (0.25 / 2) * (index + 1);
-            }),
-          ],
-          duration: 0.25,
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top top",
+          end: "bottom bottom",
+          pin: true,
+          pinSpacing: false,
+          pinnedContainer: contentRef.current,
+          scrub: true,
+          onEnter: () => {},
+          snap: {
+            snapTo: [
+              0,
+              ...targets.map((v, index) => {
+                v;
+                return (0.25 / 2) * (index + 1);
+              }),
+            ],
+            duration: 0.25,
+          },
         },
-      },
-    });
-    const animationProps = {
-      start: {
-        x: 0,
-        y: 0,
-        backgroundColor: "blue",
-        scale: 1,
-        gradFrom: "#131A14",
-        fadeGradFrom: "#000000",
-        fadeGradDirection: "0deg",
-        fadeGradFromPer: "15%",
-        fadeGradTo: "#00000000",
-        fadeGradToPer: "100%",
-        gradTo: "#000000",
-        gradFromPer: 0,
-        gradToPer: 100,
-        gradDirection: "180deg",
-      },
-      center: {
-        x: slider.clientWidth / 2 - cardWidth / 2,
-        y: -(slider.clientHeight - cardWidth),
-        backgroundColor: "red",
-        scale: 1.2,
-        fadeGradFrom: "rgba(0,0,0,0)",
-        fadeGradDirection: "90deg",
-        fadeGradFromPer: "15%",
-        fadeGradTo: "#00000000",
-        fadeGradToPer: "100%",
-        gradFrom: "#131A14",
-        gradTo: "#253426",
-        gradFromPer: 1.97,
-        gradToPer: 97.62,
-        gradDirection: 47,
-      },
-      end: {
-        x: slider.clientWidth - cardWidth,
-        y: 0,
-        backgroundColor: "blue",
-        scale: 1,
-        fadeGradFrom: "rgba(0,0,0,1)",
-        fadeGradDirection: "0deg",
-        fadeGradFromPer: "15%",
-        fadeGradTo: "#00000000",
-        fadeGradToPer: "100%",
-        gradFrom: "#131A14",
-        gradTo: "black",
-        gradFromPer: 0,
-        gradToPer: 100,
-        gradDirection: 180,
-      },
-    };
-    const radius = slider.clientWidth / 3;
-    const dur = 2;
-    var controlPoint1 = {
-      x: animationProps.center.x - radius,
-      y: animationProps.center.y / 2,
-    };
-    var controlPoint2 = {
-      x: animationProps.center.x + radius,
-      y: animationProps.center.y / 2,
-    };
+      });
+      const animationProps = {
+        start: {
+          x: 0,
+          y: 0,
+          backgroundColor: "blue",
+          scale: 1,
+          gradFrom: "#131A14",
+          fadeGradFrom: "#000000",
+          fadeGradDirection: "0deg",
+          fadeGradFromPer: "15%",
+          fadeGradTo: "#00000000",
+          fadeGradToPer: "100%",
+          gradTo: "#000000",
+          gradFromPer: 0,
+          gradToPer: 100,
+          gradDirection: "180deg",
+        },
+        center: {
+          x: slider.clientWidth / 2 - cardWidth / 2,
+          y: -(slider.clientHeight - cardWidth),
+          backgroundColor: "red",
+          scale: 1.2,
+          fadeGradFrom: "rgba(0,0,0,0)",
+          fadeGradDirection: "90deg",
+          fadeGradFromPer: "15%",
+          fadeGradTo: "#00000000",
+          fadeGradToPer: "100%",
+          gradFrom: "#131A14",
+          gradTo: "#253426",
+          gradFromPer: 1.97,
+          gradToPer: 97.62,
+          gradDirection: 47,
+        },
+        end: {
+          x: slider.clientWidth - cardWidth,
+          y: 0,
+          backgroundColor: "blue",
+          scale: 1,
+          fadeGradFrom: "rgba(0,0,0,1)",
+          fadeGradDirection: "0deg",
+          fadeGradFromPer: "15%",
+          fadeGradTo: "#00000000",
+          fadeGradToPer: "100%",
+          gradFrom: "#131A14",
+          gradTo: "black",
+          gradFromPer: 0,
+          gradToPer: 100,
+          gradDirection: 180,
+        },
+      };
+      const radius = slider.clientWidth / 3;
+      const dur = 2;
+      var controlPoint1 = {
+        x: animationProps.center.x - radius,
+        y: animationProps.center.y / 2,
+      };
+      var controlPoint2 = {
+        x: animationProps.center.x + radius,
+        y: animationProps.center.y / 2,
+      };
 
-    const getInterpolations = (startObj: any, endObj: any, progress: any) => {
-      const interpolations: any = {};
-      Object.keys(startObj).forEach((key) => {
-        interpolations[key] = gsap.utils.interpolate(
-          startObj[key],
-          endObj[key],
-          progress
+      const getInterpolations = (startObj: any, endObj: any, progress: any) => {
+        const interpolations: any = {};
+        Object.keys(startObj).forEach((key) => {
+          interpolations[key] = gsap.utils.interpolate(
+            startObj[key],
+            endObj[key],
+            progress
+          );
+        });
+        return interpolations;
+      };
+
+      gsap.utils.toArray(targets).forEach((target: any, index) => {
+        tl.fromTo(
+          target,
+          {
+            x: animationProps.start.x,
+            y: animationProps.start.y,
+            // backgroundColor: animationProps.start.backgroundColor,
+            background: `linear-gradient(${animationProps.start.gradDirection}deg, ${animationProps.start.gradFrom} ${animationProps.start.gradFromPer}%, ${animationProps.start.gradTo} ${animationProps.start.gradToPer}%)`,
+            scale: animationProps.start.scale,
+          },
+          {
+            motionPath: {
+              path: [
+                controlPoint1,
+                { x: animationProps.center.x, y: animationProps.center.y }, // Control Point 1
+                controlPoint2,
+                { x: animationProps.end.x, y: animationProps.end.y },
+              ],
+            },
+            onUpdate: () => {
+              if (window.scrollY <= 0) return;
+              const timeWithDelay = tl.duration();
+              const delayProgress = tl.progress();
+              const actualCurrentTime = timeWithDelay * delayProgress;
+              const totalCurrentTime = actualCurrentTime + (dur / 2) * index;
+              // const totalTimeProgress = totalCurrentTime / totalTime;
+              //const totalTimeProgress = 0 // please map delayProgress (based on timeWithDelay) to totalTimeProgress (based on totalTime)
+              const startTimeForTarget = index * dur;
+              const currentTimeTarget = totalCurrentTime - startTimeForTarget;
+
+              const progress = currentTimeTarget / dur; // want to get progress of individual tween keep in mind -=${dur/2}
+
+              if (progress <= -1 || progress > 1) return;
+              let interpolations: {
+                [K in keyof (typeof animationProps)["start"]]: (typeof animationProps)["start"][K];
+              } = animationProps.start;
+              let gradient;
+              gradient;
+              if (progress < 0.5) {
+                interpolations = getInterpolations(
+                  animationProps.start,
+                  animationProps.center,
+                  progress * 2
+                );
+                gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
+              } else {
+                interpolations = getInterpolations(
+                  animationProps.center,
+                  animationProps.end,
+                  (progress - 0.5) * 2
+                );
+                gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
+              }
+              const fadeGradient = `linear-gradient(${interpolations.fadeGradDirection}, ${interpolations.fadeGradFrom} ${interpolations.fadeGradFromPer}, ${interpolations.fadeGradTo} ${interpolations.fadeGradToPer})`;
+
+              gsap.set(target.getElementsByClassName("fade_mask")[0], {
+                background: fadeGradient,
+              });
+              gsap.set(target, {
+                // background: gradient,
+                scale: interpolations.scale,
+              });
+              setRefreshFlag({});
+            },
+            onComplete: () => {
+              gsap.set(target, {
+                // backgroundColor: animationProps.end.backgroundColor,
+                scale: animationProps.end.scale,
+                // background: `linear-gradient(${animationProps.end.gradDirection}, ${animationProps.end.gradFrom} ${animationProps.end.gradFromPer}, ${animationProps.end.gradTo} ${animationProps.end.gradToPer})`,
+                x: animationProps.end.x,
+                y: animationProps.end.y,
+              });
+            },
+            ease: "none",
+            duration: dur,
+          },
+          `-=${dur / 2}`
         );
       });
-      return interpolations;
-    };
-
-    gsap.utils.toArray(targets).forEach((target: any, index) => {
-      tl.fromTo(
-        target,
-        {
-          x: animationProps.start.x,
-          y: animationProps.start.y,
-          // backgroundColor: animationProps.start.backgroundColor,
-          background: `linear-gradient(${animationProps.start.gradDirection}deg, ${animationProps.start.gradFrom} ${animationProps.start.gradFromPer}%, ${animationProps.start.gradTo} ${animationProps.start.gradToPer}%)`,
-          scale: animationProps.start.scale,
-        },
-        {
-          motionPath: {
-            path: [
-              controlPoint1,
-              { x: animationProps.center.x, y: animationProps.center.y }, // Control Point 1
-              controlPoint2,
-              { x: animationProps.end.x, y: animationProps.end.y },
-            ],
-          },
-          onUpdate: () => {
-            if (window.scrollY <= 0) return;
-            const timeWithDelay = tl.duration();
-            const delayProgress = tl.progress();
-            const actualCurrentTime = timeWithDelay * delayProgress;
-            const totalCurrentTime = actualCurrentTime + (dur / 2) * index;
-            // const totalTimeProgress = totalCurrentTime / totalTime;
-            //const totalTimeProgress = 0 // please map delayProgress (based on timeWithDelay) to totalTimeProgress (based on totalTime)
-            const startTimeForTarget = index * dur;
-            const currentTimeTarget = totalCurrentTime - startTimeForTarget;
-
-            const progress = currentTimeTarget / dur; // want to get progress of individual tween keep in mind -=${dur/2}
-
-            if (progress <= -1 || progress > 1) return;
-            console.log(target, progress);
-            let interpolations: {
-              [K in keyof (typeof animationProps)["start"]]: (typeof animationProps)["start"][K];
-            } = animationProps.start;
-            let gradient;
-            gradient;
-            if (progress < 0.5) {
-              interpolations = getInterpolations(
-                animationProps.start,
-                animationProps.center,
-                progress * 2
-              );
-              gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
-            } else {
-              interpolations = getInterpolations(
-                animationProps.center,
-                animationProps.end,
-                (progress - 0.5) * 2
-              );
-              gradient = `linear-gradient(${interpolations.gradDirection}, ${interpolations.gradFrom} ${interpolations.gradFromPer}, ${interpolations.gradTo} ${interpolations.gradToPer})`;
-            }
-            const fadeGradient = `linear-gradient(${interpolations.fadeGradDirection}, ${interpolations.fadeGradFrom} ${interpolations.fadeGradFromPer}, ${interpolations.fadeGradTo} ${interpolations.fadeGradToPer})`;
-
-            gsap.set(target.getElementsByClassName("fade_mask")[0], {
-              background: fadeGradient,
-            });
-            gsap.set(target, {
-              // background: gradient,
-              scale: interpolations.scale,
-            });
-            setRefreshFlag({});
-          },
-          onComplete: () => {
-            gsap.set(target, {
-              // backgroundColor: animationProps.end.backgroundColor,
-              scale: animationProps.end.scale,
-              // background: `linear-gradient(${animationProps.end.gradDirection}, ${animationProps.end.gradFrom} ${animationProps.end.gradFromPer}, ${animationProps.end.gradTo} ${animationProps.end.gradToPer})`,
-              x: animationProps.end.x,
-              y: animationProps.end.y,
-            });
-          },
-          ease: "none",
-          duration: dur,
-        },
-        `-=${dur / 2}`
-      );
-    });
-  }, [responsive.windowWidth]);
+      return () => {
+        tl.kill();
+      };
+    },
+    {
+      dependencies: [responsive.windowWidth, ref.current, contentRef.current],
+      scope: ref,
+      revertOnUpdate: true,
+    }
+  );
   const [zIndexes, setZIndexes] = useState<number[]>([]);
   const [refreshFlag, setRefreshFlag] = useState({});
   const [hiddenFlags, setHiddenFlags] = useState<boolean[]>([]);
@@ -284,9 +296,11 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
     <motion.section
       ref={ref}
       {...(props as any)}
+      id="our_services"
       className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
       <div
+        ref={contentRef}
         id="our_services_content"
         className={`absolute w-full -translate-x-1/2 top-0 left-1/2 h-screen py-[5vh] flex justify-center ${getResponsiveClasses()}`}
       >

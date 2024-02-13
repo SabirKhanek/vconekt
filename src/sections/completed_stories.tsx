@@ -1,9 +1,10 @@
-import { HTMLProps } from "react";
+import { HTMLProps, useRef } from "react";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
+  const ref = useRef<HTMLElement>(null);
   useGSAP(() => {
     const obj = { projects: 0, stories: 0, advisors: 0 };
     gsap.to(obj, {
@@ -12,7 +13,7 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
       advisors: 15,
       duration: 2,
       scrollTrigger: {
-        trigger: "#success_stories",
+        trigger: ref.current,
         start: "top 50%",
         toggleActions: "play pause resume reset",
       },
@@ -23,9 +24,10 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
         elems[2].innerHTML = parseInt(obj.advisors.toString()).toString();
       },
     });
-  });
+  }, [ref.current]);
   return (
     <section
+      ref={ref}
       {...props}
       className={` text-white relative my-28 flex justify-center items-center w-full z-[2]  bg-transparent  ${getResponsiveClasses()}`}
     >
