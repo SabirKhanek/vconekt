@@ -21,7 +21,7 @@ export function Projects() {
               </Link>
               <span className="text-primary">/</span>
               <Link to={"/about_us"} className="hover:underline cursor-pointer">
-                About Us
+                Projects
               </Link>
             </div>
           </div>
@@ -29,7 +29,7 @@ export function Projects() {
       </div>
       <div className="relative z-[2] responsive">
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
-          Our Work
+          Projects
         </span>
         <h2 className="heading">
           Explore Our Diverse Portfolio of Success{" "}
