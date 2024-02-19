@@ -1,14 +1,22 @@
+import { HTMLProps } from "react";
 import { FaPlus } from "react-icons/fa";
 
-export interface ButtonProps {
+export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   className?: string;
   children?: React.ReactNode;
   bg?: "gradient" | "grey";
   onClick?: () => void;
 }
-export function Button({ className, bg, children, onClick }: ButtonProps) {
+export function Button({
+  className,
+  bg,
+  children,
+  onClick,
+  ...props
+}: ButtonProps) {
   return (
     <button
+      {...(props as any)}
       style={{
         background:
           bg === "grey"

@@ -53,6 +53,14 @@ canvas {
 
 .heading {
   font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.3;
+  font-family: Orbitron, Kanit, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 600;
+}
+
+.large-heading {
+  font-size: clamp(40px, 8vw, 80px);
   font-family: Orbitron, Kanit, ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 600;

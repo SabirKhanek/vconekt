@@ -45,8 +45,8 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         y: -30,
         scrollTrigger: {
           trigger: "#recent_work",
-          start: "-25% top",
-          end: "+25% top",
+          start: "-50% top",
+          end: "+50% top",
           scrub: true,
         },
       }

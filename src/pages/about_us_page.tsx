@@ -12,7 +12,7 @@ export function AboutUsPage() {
     <>
       <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-40 pb-24">
         <h2 className="heading uppercase ">About US</h2>
-        <div className="flex items-center gap-3 font-orbit font-medium text-xl">
+        <div className="flex items-center gap-3 font-orbit font-medium ">
           <Link
             to={"/"}
             className="hover:underline cursor-pointer text-primary"
@@ -51,11 +51,13 @@ export function AboutUsPage() {
               Mastering the art of web development, tips and tricks
             </div>
           </span>
-          <img
-            src="https://picsum.photos/1200/616"
-            className="aspect-auto object-cover w-full h-auto"
-            alt=""
-          />
+          <div className="cursor-pointer">
+            <img
+              src="https://picsum.photos/1200/616"
+              className="aspect-auto object-cover w-full h-auto"
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <Testimonial id="testimonial" />
