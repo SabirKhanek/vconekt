@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { motion, useInView } from "framer-motion";
+import { Bot3D } from "../components/bot";
 export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref);
@@ -90,13 +91,8 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
           </div>
         </div>
         <div className="relative rounded-3xl px-6 py-9 flex justify-between items-center border-white/65 border-2 pointer-events-none">
-          <div className="h-[50vh] w-full -top-[51vh] absolute left-1/2 -translate-x-1/2 overflow-hidden">
-            <img
-              src="/robot.png"
-              className="absolute h-full top-[50vh] w-auto  left-1/2 -translate-x-1/2"
-              id="robot_avatar"
-              alt=""
-            />
+          <div className="h-[244px] w-full -top-[244px] absolute left-1/2 -translate-x-1/2 overflow-hidden">
+            <Bot3D scale={1.5} />
           </div>
           <p className="font-orbit small-heading font-semibold text-4xl basis-3/4 shrink-0">
             WHEN YOU NEED HELP, WE'RE JUST A CLICK AWAY.
