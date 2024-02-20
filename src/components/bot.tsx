@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import Spline from "@splinetool/react-spline";
 import { Application } from "@splinetool/runtime";
+import { useInView } from "framer-motion";
 import gsap from "gsap";
 import { HTMLProps, useEffect, useRef, useState } from "react";
 
@@ -23,9 +24,7 @@ export function Bot3D({ scale, ...props }: Bot3DProps) {
       "424e2cb5-1cda-412c-8291-203803687215"
     );
     if (!bot) return;
-    console.log(bot);
     const rotationAmount = direction !== "left" ? -0.36 : -2.45;
-    console.log("rotationAmount", rotationAmount);
     gsap.to(bot.rotation, { y: rotationAmount, duration: 1 });
   }, [direction]);
 
@@ -35,11 +34,7 @@ export function Bot3D({ scale, ...props }: Bot3DProps) {
       window.innerWidth || 0
     );
     const mouseX = e.clientX;
-    // console.log({
-    //   screenWidth,
-    //   mouseX,
-    //   direction: mouseX < screenWidth / 2 ? "left" : "right",
-    // });
+
     if (mouseX < screenWidth / 2) {
       setDirection("left");
     } else if (mouseX > screenWidth / 2) {
@@ -62,12 +57,20 @@ export function Bot3D({ scale, ...props }: Bot3DProps) {
       bot.scale.y = scaleAmnt;
       bot.scale.z = scaleAmnt;
     }
+  }, [is3dModelLoaded]);
 
-    window.addEventListener("mousemove", onMouseMove);
+  const isInView = useInView(elementRef);
+  useEffect(() => {
+    if (isInView) {
+      window.addEventListener("mousemove", onMouseMove);
+    } else {
+      window.removeEventListener("mousemove", onMouseMove);
+    }
+
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [is3dModelLoaded]);
+  }, [isInView]);
 
   return (
     <div
