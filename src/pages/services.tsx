@@ -4,6 +4,9 @@ import { ServiceType, services } from "../shared/constants/services";
 import { AnimatedList } from "../components/animatedList";
 import { Button } from "../components/button";
 import { useRouteChange } from "../shared/hooks/useRouteChange";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export function ServicesPage() {
   return (
@@ -35,9 +38,17 @@ export function ServicesPage() {
         </div>
       </div>
 
-      <div className="relative z-[2]">
+      <div
+        style={{ height: `${services.length * 100}vh` }}
+        className="relative z-[2] mb-10"
+      >
         {services.map((service, index) => (
-          <Service key={index} index={index} {...service}></Service>
+          <Service
+            isLast={index === services.length - 1}
+            key={index}
+            index={index}
+            {...service}
+          ></Service>
         ))}
       </div>
     </>
@@ -51,15 +62,62 @@ function Service({
   slug,
   Illustration,
   index,
-}: ServiceType & { index: number }) {
+  isLast = false,
+}: ServiceType & { index: number; isLast?: boolean }) {
   const navigate = useRouteChange();
   const isEven = (index + 1) % 2 === 0;
+  const ref = useRef<HTMLDivElement>(null);
+  const animation = () => {
+    const container = ref.current;
+    if (!container) return;
+    const content = container.children[0];
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        pinnedContainer: content,
+        pin: true,
+        endTrigger: isLast ? document.documentElement : container,
+        end: isLast ? "bottom bottom" : "bottom top",
+        pinSpacing: false,
+        scrub: true,
+      },
+    });
+
+    tl.fromTo(
+      content,
+      {
+        x: document.documentElement.clientWidth + 550,
+        y: -content.clientHeight - 1,
+        transform: "perspective(500px) rotateY(5deg)",
+        z: -500,
+      },
+      {
+        x: isLast ? 0 : -content.clientWidth - 10,
+        y: isLast ? 0 : document.documentElement.clientHeight,
+        transform: isLast
+          ? "perspective(500px) rotateY(0)"
+          : "perspective(500px) rotateY(-10deg)",
+        z: isLast ? 0 : 300,
+      }
+    );
+  };
+
+  useGSAP(animation, { scope: ref, dependencies: [ref] });
   return (
-    <div className="relative h-screen">
+    <div
+      ref={ref}
+      className={`h-[200vh] w-full overflow-hidden absolute`}
+      style={{
+        top: `${index * 100}vh`,
+        height: isLast ? "100vh" : "200vh",
+      }}
+    >
       <div
         className={`responsive grid  ${
           isEven ? "grid-cols-[0.4fr_0.6fr]" : "grid-cols-[0.6fr_0.4fr]"
-        } gap-10 absolute-centered`}
+        } gap-10 top-0 left-0 `}
       >
         <div className={`flex flex-col gap-5`}>
           <h2 className="heading">
