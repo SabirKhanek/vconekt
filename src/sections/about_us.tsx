@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { FaStar } from "react-icons/fa";
 import { V3dAboutUS } from "../components/3dLogoInAboutUs";
 import { motion } from "framer-motion";
+import { AnimatedList } from "../components/animatedList";
 export const AboutUs = React.memo(
   ({
     doAnimate,
@@ -110,34 +111,15 @@ export const AboutUs = React.memo(
                 media management. Our mission is to help businesses grow with
                 exceptional IT services.
               </p>
-              <ul className="my-1 mb-2 ">
-                {[
+
+              <AnimatedList
+                items={[
                   "Web Design & Development",
                   "Improve online visibility, traffic, and rankings",
                   "Graphics & UI/ UX Design",
                   "Social Media Marketing",
-                ].map((text, index) => (
-                  <motion.li
-                    initial={{ display: "hidden", opacity: 0, translateY: 15 }}
-                    whileInView={{
-                      display: "flex",
-                      opacity: 1,
-                      translateY: 0,
-                      transition: { duration: 0.2, delay: 0.2 * index },
-                    }}
-                    key={index}
-                    className="flex items-center gap-1 my-1"
-                  >
-                    <img
-                      src="/check_li_icon.png"
-                      height={17}
-                      width={17}
-                      alt=""
-                    />
-                    <span className="text-white text-sm font-thin">{text}</span>
-                  </motion.li>
-                ))}
-              </ul>
+                ]}
+              />
               <span className="bg-[#191919] -skew-x-[30deg] block w-fit py-1 px-5">
                 <span className="flex justify-center items-center skew-x-[30deg] w-fit gap-2">
                   <img src="/rating_icon.png" width={20} alt="" />

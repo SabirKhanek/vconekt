@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { V3dContactUs } from "../components/3dLogoInContactUs";
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion,  useInView } from "framer-motion";
+import {  useRef } from "react";
 import { Button } from "../components/button";
 import useHover from "../shared/hooks/useHover";
 import { GoArrowRight } from "react-icons/go";
 import { useGSAP } from "@gsap/react";
-// import gsap from "gsap";
+import gsap from "gsap";
 
 export function Projects() {
   return (
@@ -68,33 +68,22 @@ export function ProjectCard() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const imageRef = useRef<HTMLDivElement>(null);
-  const hovered = useHover(ref);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const hovered = useHover(ref);
+  const hoveredButton = useHover(buttonRef);
   useGSAP(() => {
     const but = buttonRef.current;
     if (!but) return;
-    // const tl = gsap.timeline();
-    // tl.to(but, {
-    //   left: hovered.cursorX,
-    //   top: hovered.cursorY,
-    // }).fromTo(
-    //   but,
-    //   {
-    //     background:
-    //       "radial-gradient(circle closest-side, #fff 0%, transparent 0%)",
-    //     scale: 1,
-    //   },
-    //   {
-    //     x: "-50%",
-    //     y: "-50%",
-    //     background:
-    //       "radial-gradient(circle closest-side, #fff 100%, transparent 100%)",
-    //     scale: 1.2,
-    //     color: "#000",
-    //   }
-    // );
+    const tl = gsap.timeline();
+    tl.to(but, {
+      x: hovered.cursorX - but.clientWidth / 2,
+      y: hovered.cursorY - but.clientHeight / 2,
+      scale: hoveredButton.isHovered ? 1.2 : hovered.isHovered ? 1 : 0,
+      ease: "none",
+      duration: 0.005,
+    });
   }, [hovered]);
-  useEffect(() => {}, [hovered]);
   return (
     <motion.div
       ref={ref}
@@ -103,39 +92,32 @@ export function ProjectCard() {
     >
       <div
         ref={imageRef}
-        className="w-full cursor-pointer group relative justify-self-start self-start overflow-hidden"
+        className="w-full cursor-pointer group relative justify-self-start self-start "
       >
-        <img
-          src={`https://picsum.photos/500?q=${Math.random()}`}
-          className="w-full aspect-[1.1608/1] object-cover group-hover:scale-110 transition-all duration-200 ease-in-out"
-          alt=""
-        />
-        {hovered.isHovered && (
+        <div className="overflow-hidden">
+          <img
+            src={`https://picsum.photos/500?q=${Math.random()}`}
+            className="w-full aspect-[1.1608/1] object-cover group-hover:scale-110 over transition-all duration-200 ease-in-out"
+            alt=""
+          />
+        </div>
+        {
           <motion.button
             ref={buttonRef}
             initial={{
               background:
                 "radial-gradient(circle closest-side, #fff 0%, transparent 0%)",
-              scale: 1,
             }}
             whileHover={{
               background:
                 "radial-gradient(circle closest-side, #fff 100%, transparent 100%)",
-              scale: 1.2,
               color: "#000",
             }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            style={{
-              left:
-                hovered.cursorX - (buttonRef.current?.clientWidth || 50) / 2,
-              top:
-                hovered.cursorY - (buttonRef.current?.clientHeight || 50) / 2,
-            }}
-            className="p-3 absolute rounded-full bg-transparent border border-white hover:scale-110 transition-all duration-150"
+            className="p-3 absolute left-0 top-0 rounded-full bg-transparent border border-white hover:scale-110 transition-all duration-150"
           >
             <GoArrowRight className="-rotate-[30deg] text-3xl" />
           </motion.button>
-        )}
+        }
       </div>
 
       <div>

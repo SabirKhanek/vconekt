@@ -6,7 +6,7 @@ export function Footer({}: HTMLProps<HTMLElement>) {
     <section className={`${getResponsiveClasses()} relative z-10 py-5`}>
       <div className="flex justify-between items-start pb-3 border-b border-white/45 flex-wrap text-white">
         <div className="flex-1">
-          <img className="" src="./logo.png" alt="" />
+          <img className="" src="/logo.png" alt="" />
         </div>
         <div className="flex-1">
           <ul className="flex flex-col gap-2">
@@ -30,7 +30,7 @@ export function Footer({}: HTMLProps<HTMLElement>) {
         </div>
         <div className="flex-1 flex flex-row-reverse gap-1 items-center">
           {[1, 2, 3].map((v) => (
-            <img src="./footer_img.svg" className="w-16 h-16" key={v}></img>
+            <img src="/footer_img.svg" className="w-16 h-16" key={v}></img>
           ))}
         </div>
       </div>
