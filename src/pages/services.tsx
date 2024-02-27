@@ -39,7 +39,7 @@ export function ServicesPage() {
       </div>
 
       <div
-        style={{ height: `${services.length * 100}vh` }}
+        style={{ height: `${services.length * 180}vh` }}
         className="relative z-[2] mb-10"
       >
         {services.map((service, index) => (
@@ -72,46 +72,88 @@ function Service({
     if (!container) return;
     const content = container.children[0];
 
-    const tl = gsap.timeline({
+    const ftl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: "top top",
         pinnedContainer: content,
         pin: true,
         endTrigger: isLast ? document.documentElement : container,
-        end: isLast ? "bottom bottom" : "bottom top",
+        end: isLast ? "bottom bottom" : "center top",
         pinSpacing: false,
         scrub: true,
       },
     });
 
-    tl.fromTo(
+    const stl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "+1vh top",
+        pinnedContainer: content,
+        pin: true,
+        pinSpacing: false,
+        endTrigger: container,
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    if (isLast) {
+      ftl.fromTo(
+        content,
+        {
+          x: document.documentElement.clientWidth + 550,
+          y: -content.clientHeight - 1,
+          transform: "perspective(500px) rotateY(5deg)",
+          z: -500,
+        },
+        {
+          x: 0,
+          y: 0,
+          transform: "perspective(500px) rotateY(0)",
+          z: 0,
+        }
+      );
+      return;
+    }
+
+    ftl.fromTo(
       content,
       {
-        x: document.documentElement.clientWidth + 550,
-        y: -content.clientHeight - 1,
-        transform: "perspective(500px) rotateY(5deg)",
-        z: -500,
+        y: -content.clientHeight - 500,
+        top: 0,
+        z: -1000,
+        transform: "perspective(1000px)",
+        rotatey: "-15deg",
       },
       {
-        x: isLast ? 0 : -content.clientWidth - 10,
-        y: isLast ? 0 : document.documentElement.clientHeight,
-        transform: isLast
-          ? "perspective(500px) rotateY(0)"
-          : "perspective(500px) rotateY(-10deg)",
-        z: isLast ? 0 : 300,
+        y: (document.documentElement.clientHeight - content.clientHeight) / 2,
+        top: "50vh",
+        z: 0,
+        transform: "perspective(1000px)",
+        rotateY: "0",
       }
     );
+
+    stl.to(content, {
+      y: document.documentElement.clientHeight,
+      transform: "perspective(1000px)",
+      rotateY: "10deg",
+      opacity: 0,
+      z: 400,
+      x: index % 2 === 0 ? 100 : -100,
+    });
   };
 
   useGSAP(animation, { scope: ref, dependencies: [ref] });
   return (
     <div
       ref={ref}
-      className={`h-[200vh] w-full overflow-hidden absolute`}
+      className={`h-[200vh] w-full overflow-hidden absolute pointer-events-none`}
       style={{
-        top: `${index * 100}vh`,
+        top: `${index * 180}vh`,
         height: isLast ? "100vh" : "200vh",
+        zIndex: index,
       }}
     >
       <div
@@ -136,7 +178,7 @@ function Service({
           />
           <Button
             onClick={() => navigate(`/services/${slug}`)}
-            className="self-start"
+            className="self-start pointer-events-auto"
           >
             <span className="text-sm px-2">Learn More</span>
           </Button>
