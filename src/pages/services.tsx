@@ -5,7 +5,7 @@ import { AnimatedList } from "../components/animatedList";
 import { Button } from "../components/button";
 import { useRouteChange } from "../shared/hooks/useRouteChange";
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
+import { ReactRef, useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 export function ServicesPage() {
@@ -38,20 +38,42 @@ export function ServicesPage() {
         </div>
       </div>
 
-      <div
-        style={{ height: `${services.length * 180}vh` }}
-        className="relative z-[2] mb-10"
-      >
-        {services.map((service, index) => (
-          <Service
-            isLast={index === services.length - 1}
-            key={index}
-            index={index}
-            {...service}
-          ></Service>
-        ))}
-      </div>
+      <Services />
     </>
+  );
+}
+
+function Services() {
+  const ref = useRef<HTMLDivElement>(null);
+  // useEffect(() => {
+  //   if (!ref.current) return;
+  //   const height = Array.from(ref.current?.children).reduce((tot, cur) => {
+  //     const currentHeight = cur.clientHeight;
+  //     console.log({ height: currentHeight, element: cur });
+  //     return tot + currentHeight;
+  //   }, 0);
+  //   const upperPad =
+  //     (document.documentElement.clientHeight -
+  //       ref.current.children[0].clientHeight) /
+  //     2;
+  //   // ref.current.style.setProperty("height", `${height}px`);
+  // }, []);
+  return (
+    <div
+      ref={ref}
+      style={{ height: `${services.length * 180}vh` }}
+      className="relative z-[2] mb-10"
+    >
+      {services.map((service, index) => (
+        <Service
+          parentRef={ref}
+          isLast={index === services.length - 1}
+          key={index}
+          index={index}
+          {...service}
+        ></Service>
+      ))}
+    </div>
   );
 }
 
@@ -63,7 +85,8 @@ function Service({
   Illustration,
   index,
   isLast = false,
-}: ServiceType & { index: number; isLast?: boolean }) {
+  parentRef,
+}: ServiceType & { index: number; isLast?: boolean; parentRef: ReactRef }) {
   const navigate = useRouteChange();
   const isEven = (index + 1) % 2 === 0;
   const ref = useRef<HTMLDivElement>(null);
@@ -78,22 +101,9 @@ function Service({
         start: "top top",
         pinnedContainer: content,
         pin: true,
-        endTrigger: isLast ? document.documentElement : container,
+        endTrigger: isLast ? parentRef.current : container,
         end: isLast ? "bottom bottom" : "center top",
         pinSpacing: false,
-        scrub: true,
-      },
-    });
-
-    const stl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "+1vh top",
-        pinnedContainer: content,
-        pin: true,
-        pinSpacing: false,
-        endTrigger: container,
-        end: "bottom top",
         scrub: true,
       },
     });
@@ -109,13 +119,26 @@ function Service({
         },
         {
           x: 0,
-          y: 0,
+          y: (document.documentElement.clientHeight - content.clientHeight) / 2,
           transform: "perspective(500px) rotateY(0)",
           z: 0,
         }
       );
       return;
     }
+
+    const stl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "+1vh top",
+        pinnedContainer: content,
+        pin: true,
+        pinSpacing: false,
+        endTrigger: container,
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
     ftl.fromTo(
       content,
@@ -152,7 +175,7 @@ function Service({
       className={`h-[200vh] w-full overflow-hidden absolute pointer-events-none`}
       style={{
         top: `${index * 180}vh`,
-        height: isLast ? "100vh" : "200vh",
+        height: "200vh",
         zIndex: index,
       }}
     >
