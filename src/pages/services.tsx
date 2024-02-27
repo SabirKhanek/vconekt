@@ -31,7 +31,8 @@ export function ServicesPage() {
               Our Services
             </span>
             <h2 className="heading max-w-3xl mt-3">
-              We provide a variety of IT services through Vconekt LLC.
+              We provide a variety of IT services through{" "}
+              <span className="text-primary">Vconekt LLC</span>.
             </h2>
           </div>
           <V3dContactUs scale={1} />
@@ -45,19 +46,20 @@ export function ServicesPage() {
 
 function Services() {
   const ref = useRef<HTMLDivElement>(null);
-  // useEffect(() => {
-  //   if (!ref.current) return;
-  //   const height = Array.from(ref.current?.children).reduce((tot, cur) => {
-  //     const currentHeight = cur.clientHeight;
-  //     console.log({ height: currentHeight, element: cur });
-  //     return tot + currentHeight;
-  //   }, 0);
-  //   const upperPad =
-  //     (document.documentElement.clientHeight -
-  //       ref.current.children[0].clientHeight) /
-  //     2;
-  //   // ref.current.style.setProperty("height", `${height}px`);
-  // }, []);
+
+  useGSAP(() => {
+    if (!ref.current) return;
+    const container = ref.current;
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: `-${document.documentElement.clientHeight / 2} center`,
+        endTrigger: container,
+        end: `+${document.documentElement.clientHeight * 2} bottom`,
+        snap: { snapTo: 1, duration: 1, ease: "linear" },
+      },
+    });
+  }, []);
   return (
     <div
       ref={ref}
@@ -104,6 +106,7 @@ function Service({
         endTrigger: isLast ? parentRef.current : container,
         end: isLast ? "bottom bottom" : "center top",
         pinSpacing: false,
+        snap: { snapTo: 1, duration: 1, ease: "linear" },
         scrub: true,
       },
     });
@@ -134,6 +137,7 @@ function Service({
         pinnedContainer: content,
         pin: true,
         pinSpacing: false,
+        snap: { snapTo: 0.9, duration: 1, ease: "linear" },
         endTrigger: container,
         end: "bottom top",
         scrub: true,
@@ -143,7 +147,7 @@ function Service({
     ftl.fromTo(
       content,
       {
-        y: -content.clientHeight - 500,
+        y: -content.clientHeight - 370,
         top: 0,
         z: -1000,
         transform: "perspective(1000px)",

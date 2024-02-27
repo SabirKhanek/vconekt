@@ -121,7 +121,7 @@ export const services = [
     ),
     what_is_content: {
       tag: "SEO",
-      heading: "Search EngineOptimization",
+      heading: "Search Engine Optimization",
       body: "Boost your online visibility and drive organic traffic with our Search Engine Optimization (SEO) services at Vconekt LLC. Our dedicated team employs strategic optimization techniques, keyword analysis, and content enhancements to propel your website to the forefront of search engine rankings. Elevate your digital presence and outshine competitors with our tailored SEO solutions.",
     },
     what_is_included: [

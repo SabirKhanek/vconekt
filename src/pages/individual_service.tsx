@@ -124,8 +124,7 @@ function WhatIsIncludedSection({ what_is_included, title }: ServiceType) {
         What is included?
       </span>
       <h2 className="heading my-3">
-        Benefits of
-        {title.split(" ").slice(0, -1).join(" ")}{" "}
+        Benefits of {title.split(" ").slice(0, -1).join(" ")}{" "}
         <span className="text-primary">{title.split(" ").slice(-1)[0]}</span>
       </h2>
       <div className="grid-cols-3 my-10 grid gap-10">
