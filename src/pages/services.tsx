@@ -61,8 +61,8 @@ function Services() {
   return (
     <div
       ref={ref}
-      style={{ height: `${services.length * 180}vh` }}
-      className="relative z-[2] mb-10 overflow-hidden"
+      style={{ height: `${services.length * 180 + 20}vh` }}
+      className="relative z-[2] overflow-hidden"
     >
       {services.map((service, index) => (
         <Service
