@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { V3dContactUs } from "../components/3dLogoInContactUs";
 import { ServiceType, services } from "../shared/constants/services";
 import { AnimatedList } from "../components/animatedList";
 import { Button } from "../components/button";
@@ -11,7 +10,7 @@ import gsap from "gsap";
 export function ServicesPage() {
   return (
     <>
-      <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-40 pb-24">
+      <div className="flex justify-center items-center flex-col  text-white relative z-10 gap-4 pt-40 pb-24">
         <h2 className="heading uppercase ">Services</h2>
         <div className="flex items-center gap-3 font-orbit font-medium ">
           <Link
@@ -35,7 +34,8 @@ export function ServicesPage() {
               <span className="text-primary">Vconekt LLC</span>.
             </h2>
           </div>
-          <V3dContactUs scale={1} />
+
+          {/* <V3dContactUs scale={1} /> */}
         </div>
       </div>
 
@@ -177,6 +177,7 @@ function Service({
     <div
       ref={ref}
       className={`h-[200vh] w-full overflow-hidden absolute pointer-events-none`}
+      id={index === 0 ? "services" : ""}
       style={{
         top: `${index * 180}vh`,
         height: "200vh",

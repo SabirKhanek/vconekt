@@ -24,7 +24,7 @@ export function Footer({}: HTMLProps<HTMLElement>) {
               <a href="tel:13108481237">+13108481237</a>
             </li>
             <li className="cursor-pointer hover:underline">
-              30 N GOULD ST STE 25084 SHERIDAN, WY 82801 
+              30 N GOULD ST STE 25084 SHERIDAN, WY 82801
             </li>
           </ul>
         </div>

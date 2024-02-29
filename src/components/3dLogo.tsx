@@ -1,4 +1,4 @@
-import { useGSAP } from "@gsap/react";
+import { ReactRef, useGSAP } from "@gsap/react";
 import Spline from "@splinetool/react-spline";
 import { Application } from "@splinetool/runtime";
 import gsap from "gsap";
@@ -8,8 +8,9 @@ import { useLocation } from "react-router-dom";
 
 export interface V3dProps {
   className?: string;
+  nextElRef?: ReactRef;
 }
-export function V3d({}: V3dProps) {
+export function V3d({ nextElRef }: V3dProps) {
   const location = useLocation();
 
   const elementRef = useRef<HTMLDivElement>(null);
@@ -57,120 +58,105 @@ export function V3d({}: V3dProps) {
 
   useGSAP(() => {
     if (!is3dModelLoaded) return;
+    if (!elementRef.current) return;
+    let NextEle =
+      nextElRef?.current ||
+      document.getElementById(
+        location.pathname === "/"
+          ? "about_us"
+          : location.pathname === "/services"
+          ? "services"
+          : ""
+      );
+
     preloader.updateStatus("hero3d", RESOURCE_STATUS.LOADED);
     const logo = spline.current?.findObjectById(
       "4105c047-d140-4582-9486-75af7f9aa712"
     );
     if (logo) {
-      // logo.position.x -= 35;
       if (logo) {
         const tl = gsap.timeline({});
         tl.set(logo.scale, { x: 1, y: 1, z: 1 });
-        // tl.to(logo.scale, {
-        //   x: 1,
-        //   y: 1,
-        //   z: 1,
-        //   duration: 1,
-        //   delay: 1,
-        // });
+
         tl.to(logo.scale, {
           scrollTrigger: {
-            trigger: "#hero",
+            trigger: elementRef.current,
             start: "top 0px",
             end: "center top",
-            endTrigger: "#about_us",
+            endTrigger: NextEle,
             scrub: true,
           },
           x: 25,
           y: 25,
           z: 25,
-          //   duration: 5,
         });
-
-        // const tl2 = gsap.timeline({});
-        // tl2.set("#section2_content", {
-        //   transform: "translateZ(-10000px)",
-        //   rotateY: "-90deg",
-        // });
-        // tl2.to("#section2_content", {
-        //   scrollTrigger: {
-        //     markers: true,
-        //     trigger: "#section1",
-        //     start: "center 0x",
-        //     end: "bottom 100%",
-        //     endTrigger: "#section2",
-        //     scrub: true,
-        //   },
-        //   transform: `translateZ(0px)`,
-        //   rotateY: "0deg",
-        //   duration: 1,
-        // });
       }
     }
-    if (elementRef.current) {
-      gsap.to(
-        {},
-        {
-          scrollTrigger: {
-            trigger: "#hero",
-            start: "bottom top",
-            endTrigger: "#about_us",
-            end: "bottom top",
-            onEnter: () => {
-              console.log("entered");
-              // Add the class 'z-0' when entering the viewport
-              elementRef.current?.classList.add("z-10");
-              // Remove the class 'z-10' if it was previously added
-              elementRef.current?.classList.remove("z-[3]");
-            },
-            onLeave: () => {
-              console.log("left");
-              // Add the class 'z-10' when leaving the viewport
-              elementRef.current?.classList.add("z-[3]");
-              // Remove the class 'z-0' if it was previously added
-              elementRef.current?.classList.remove("z-10");
-              // elementRef.current?.classList.add("hidden");
-            },
-            onLeaveBack: () => {
-              console.log("leave back");
-              // Add the class 'z-10' when leaving the viewport
-              elementRef.current?.classList.add("z-[3]");
-              // Remove the class 'z-0' if it was previously added
-              elementRef.current?.classList.remove("z-10");
-            },
-          },
-        }
-      );
-      const about_us = document.getElementById("about_us");
-      console.log("About US: ", about_us);
-      gsap.to(elementRef.current, {
-        opacity: 0,
+
+    gsap.to(
+      {},
+      {
         scrollTrigger: {
-          // markers: true,
+          trigger: elementRef.current,
+          start: "bottom top",
+          endTrigger: NextEle,
+          end: "bottom top",
+          onEnter: () => {
+            console.log("entered");
+            // Add the class 'z-0' when entering the viewport
+            elementRef.current?.classList.add("z-10");
+            // Remove the class 'z-10' if it was previously added
+            elementRef.current?.classList.remove("z-[3]");
+          },
           onLeave: () => {
-            elementRef.current?.classList.add("hidden");
+            console.log("left");
+            // Add the class 'z-10' when leaving the viewport
+            elementRef.current?.classList.add("z-[3]");
+            // Remove the class 'z-0' if it was previously added
+            elementRef.current?.classList.remove("z-10");
+            // elementRef.current?.classList.add("hidden");
           },
           onLeaveBack: () => {
-            elementRef.current?.classList.remove("hidden");
+            console.log("leave back");
+            // Add the class 'z-10' when leaving the viewport
+            elementRef.current?.classList.add("z-[3]");
+            // Remove the class 'z-0' if it was previously added
+            elementRef.current?.classList.remove("z-10");
           },
-          onEnterBack: () => {
-            elementRef.current?.classList.remove("hidden");
-          },
-          trigger: about_us,
-          start: "top top",
-
-          end: "center top",
-          scrub: true,
         },
-      });
-    }
-  }, [is3dModelLoaded, elementRef.current, location.pathname]);
+      }
+    );
+
+    gsap.to(elementRef.current, {
+      opacity: 0,
+      scrollTrigger: {
+        onLeave: () => {
+          elementRef.current?.classList.add("hidden");
+        },
+        onLeaveBack: () => {
+          elementRef.current?.classList.remove("hidden");
+        },
+        onEnterBack: () => {
+          elementRef.current?.classList.remove("hidden");
+        },
+        trigger: NextEle,
+        start: "top top",
+
+        end: "center top",
+        scrub: true,
+      },
+    });
+  }, [is3dModelLoaded, elementRef.current, nextElRef, location.pathname]);
   return (
     <div
       ref={elementRef}
       className={`min-h-screen fixed pointer-events-none z-[3] w-full top-0 left-0 ${
         is3dModelLoaded ? "" : "hidden"
-      } ${location.pathname !== "/" ? "!hidden" : ""}`}
+      } ${
+        location.pathname !== "/" && location.pathname !== "/services"
+          ? "!hidden"
+          : ""
+      }`}
     >
       <Spline
         id="spline"

@@ -24,7 +24,7 @@ export function ContactUsPage() {
     <>
       <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-36 pb-24">
         <div className="relative flex justify-center flex-col items-center h-64">
-          <V3dContactUs scale={0.5} />
+          <V3dContactUs scale={0.7} />
 
           <div
             ref={ref}
