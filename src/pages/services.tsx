@@ -6,6 +6,7 @@ import { useRouteChange } from "../shared/hooks/useRouteChange";
 import { useRef } from "react";
 import { ReactRef, useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ContactUs } from "../sections/contact_us";
 
 export function ServicesPage() {
   return (
@@ -40,6 +41,7 @@ export function ServicesPage() {
       </div>
 
       <Services />
+      <ContactUs />
     </>
   );
 }
