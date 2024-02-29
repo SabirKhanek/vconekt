@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { ReactRef, useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ContactUs } from "../sections/contact_us";
+import Testimonial from "../sections/testimonial";
 
 export function ServicesPage() {
   return (
@@ -39,8 +40,9 @@ export function ServicesPage() {
           {/* <V3dContactUs scale={1} /> */}
         </div>
       </div>
-
       <Services />
+      <Testimonial />
+
       <ContactUs />
     </>
   );
