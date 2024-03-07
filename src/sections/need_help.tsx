@@ -65,28 +65,25 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
                 id="how_can_we_text"
                 className=" font-orbit inline font-semibold text-4xl md:text-5xl "
               >
-                <span className="break-none">How can we help</span>
+                <span className="break-none">How may we serve</span>
                 {"  "}
-                <span className="text-primary">You?</span>
+                <span className="text-primary">you</span> best?
               </h2>
               <span className="ml-2 inline-block w-0.5 h-9 bg-primary type_cursor how_can_we_text_letter"></span>
             </div>
             <p className="font-light text-white max-w-96">
-              We have a team of highly skilled and experienced professionals who
-              are dedicated to providing high-quality services to our clients.
+              Dedicated experts crafting top-tier solutions, enhancing your
+              experience with excellence.
             </p>
           </div>
           <div className="basis-96 shrink-0">
             <p className="font-light">
-              We offer expert IT services because we have a team of highly
-              skilled and experienced professionals who are dedicated to
-              providing the best possible solutions to meet our clients’ needs.
-              Our team stays up-to-date with the latest technologies and trends
-              in the industry, allowing us to provide cutting-edge solutions
-              that help our clients achieve their business goals. Additionally,
-              we pride ourselves on our ability to provide exceptional customer
-              service and support, ensuring that our clients are satisfied with
-              our work every step of the way.
+              Step into the realm of VconektLLC, where our expert team crafts
+              personalized IT solutions to match your business needs. Embracing
+              the ever-evolving landscape of innovation, we curate
+              forward-thinking strategies that redefine industry standards.
+              We're here to support you every step of the way, ensuring your
+              experience with us is smooth and successful.
             </p>
           </div>
         </div>
@@ -94,8 +91,8 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
           <div className="h-[244px] w-full -top-[244px] absolute left-1/2 -translate-x-1/2 overflow-hidden">
             <Bot3D scale={1.5} />
           </div>
-          <p className="font-orbit small-heading font-semibold text-4xl basis-3/4 shrink-0">
-            WHEN YOU NEED HELP, WE'RE JUST A CLICK AWAY.
+          <p className="font-orbit small-heading font-semibold uppercase text-4xl basis-3/4 shrink-0">
+            We stand ready to assist you in one click.
           </p>
           <Button bg="gradient">Contact Us</Button>
         </div>

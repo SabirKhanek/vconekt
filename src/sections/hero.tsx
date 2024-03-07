@@ -35,28 +35,28 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
         <div className="max-w-lg">
           <h2 className="text-5xl text-white font-orbit font-semibold">
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Empowering the</span>
+              <span className="hero_text">Transform Your</span>
             </span>{" "}
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Future: Cutting-</span>
+              <span className="hero_text">Business With</span>
             </span>
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Solutions</span>
+              <span className="hero_text">Next-Generation</span>
             </span>
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Edge Software</span>
+              <span className="hero_text">Tech Solutions</span>
             </span>{" "}
-            <span className="overflow-hidden inline-block py-1">
-              <span className="hero_text">Solutions</span>
-            </span>
           </h2>
           <p
             id="hero_subtext"
             className="hero_subtext text-primary my-5 font-medium pl-2 border-l-4 border-primary"
           >
-            Bring Force of Artificial Intelligence To Your
+            Step into the future of technology with Vconekt LLC, your gateway
             <br />
-            Business Development
+            to{" "}
+            <span className="font-medium">
+              IT consulting for digital transformation
+            </span>
           </p>
           <div className="flex items-center gap-4 pointer-events-auto">
             <Button>

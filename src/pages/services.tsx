@@ -31,9 +31,9 @@ export function ServicesPage() {
             <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
               Our Services
             </span>
-            <h2 className="heading max-w-3xl mt-3">
-              We provide a variety of IT services through{" "}
-              <span className="text-primary">Vconekt LLC</span>.
+            <h2 className="heading max-w-4xl mt-3">
+              Empower Your Digital Future with Proactive IT maintenance services
+              at <span className="text-primary">Vconekt LLC</span>.
             </h2>
           </div>
 

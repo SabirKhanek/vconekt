@@ -67,8 +67,7 @@ export const AboutUs = React.memo(
                 About Us
               </span>
               <h2 className="leading-relaxed  md:text-[40px] xl:text-5xl font-orbit font-semibold uppercase text-white my-3">
-                EMPOWERING DIGITAL GROWTH WITH 5 YEARS VCONeKT LLC IT SOLUTIONS
-                EXPERTISE
+                Vconekt LLC: Igniting Innovation, Empowering Transformation.
               </h2>
             </div>
             <div ref={vidContainerRef}>
@@ -106,21 +105,24 @@ export const AboutUs = React.memo(
                 </div>
               </div>
               <p className="py-2 font-thin text-white  text-sm">
-                Vconket LLC is an IT agency in Wyoming, USA specializing in
-                UI/UX, graphic designing, WordPress development, SEO, and social
-                media management. Our mission is to help businesses grow with
-                exceptional IT services.
+                At Vconekt LLC, we are more than just a technology company - we
+                are architects of innovation, proactive IT support for
+                businesses, champions of transformation, and your trusted
+                partner in the digital realm. With over 5 years of experience in
+                the industry, we have honed our expertise to deliver
+                unparalleled solutions and consulting services that drive
+                success for businesses worldwide.
               </p>
 
               <AnimatedList
                 items={[
                   "Web Design & Development",
-                  "Improve online visibility, traffic, and rankings",
-                  "Graphics & UI/ UX Design",
-                  "Social Media Marketing",
+                  "SEO & Digital Marketing",
+                  "Digital Transformation Consulting",
+                  "Custom Software Development",
                 ]}
               />
-              <span className="bg-[#191919] -skew-x-[30deg] block w-fit py-1 px-5">
+              <span className="bg-[#191919] -skew-x-[30deg] mt-3 block w-fit py-1 px-5">
                 <span className="flex justify-center items-center skew-x-[30deg] w-fit gap-2">
                   <img src="/rating_icon.png" width={20} alt="" />
                   <span className="text-lg text-white">5.0</span>

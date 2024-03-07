@@ -373,20 +373,23 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
                 id="presence_text"
                 className="my-5 leading-relaxed  md:text-[40px] xl:text-5xl font-semibold font-orbit"
               >
-                Maximize <span className="text-primary">digital presence </span>{" "}
-                with web, marketing, design.
+                Building Bridges to{" "}
+                <span className="text-primary">Digital Brilliance</span>{" "}
+                Together with Vconekt LLC
                 <span className="ml-2 inline-block w-1 h-9 bg-primary presence_letter type_cursor"></span>
               </p>
             </div>
             <div className="basis-1/2 shrink-0 max-w-96">
               <p className="text-white text-sm font-light pt-10">
-                Success is not a destination, it’s a journey. Let us be your
-                partner in that journey and help you achieve your digital goals.
-                Our expert team of web developers, social media marketers, and
-                UI/UX designers are committed to providing you with top-notch
-                services that will drive your business forward. With us by your
-                side, the sky is the limit. Let’s start this journey together
-                and make your digital dreams a reality.
+                Embark on a Digital Journey with VconektLLC. Our Comprehensive
+                IT solutions for startups and Services are your compass in the
+                vast terrain of online innovation. From Web Design and
+                Development to Mobile App Creation, Search Engine Optimization,
+                and beyond, we offer a holistic approach to elevate your digital
+                presence. Let us guide you through the intricacies of the
+                digital world, transforming challenges into opportunities and
+                aspirations into achievements. Explore our array of services and
+                redefine your online narrative with VconektLLC.
               </p>
             </div>
           </div>
@@ -401,21 +404,21 @@ const cardDetails = [
     logo: "cardIcon3.svg",
     title: "Graphics & UI design",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
+      "Transforming visions into digital realities with Web Design & Development expertise.",
     link: "#",
   },
   {
     logo: "cardIcon1.svg",
     title: "Web design & develoment",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
+      "Elevate brand aesthetics and user experiences with our Graphic and UI Design solutions.",
     link: "#",
   },
   {
     logo: "cardIcon2.svg",
     title: "Digital Media Marketing",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id morbi accumsan cras laoreet.",
+      "Drive audience engagement and brand visibility with tailored Digital Media Marketing strategies.",
     link: "#",
   },
 ];
