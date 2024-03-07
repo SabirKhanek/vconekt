@@ -145,9 +145,11 @@ export const AboutUs = React.memo(
                 </span>
               </span>
               <span className="text-white font-thin text-sm">
-                <span className="text-primary">Vision:</span> Our vision at
-                Vconket LLC is to empower businesses with innovative IT
-                solutions that unlock their full potential in the digital world.
+                <span className="text-primary">Vision:</span> Innovating
+                limitless possibilities, we redefine the digital landscape with
+                IT support tailored to business needs, empowering businesses to
+                thrive through visionary strategies and innovative solutions at
+                our core.
               </span>
             </div>
           </div>
