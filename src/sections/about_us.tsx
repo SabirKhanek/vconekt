@@ -13,6 +13,10 @@ export const AboutUs = React.memo(
   }: HTMLProps<HTMLElement> & { doAnimate?: boolean }) => {
     const vidContainerRef = useRef<HTMLDivElement>(null);
     const contenRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef(null);
+    const sectionRef = useRef(null);
+    // const [isInView, setIsInView] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
     const animateTarget = {
       transform: "perspective(1000px) rotateY(0deg) translateZ(0)",
       opacity: 1,
@@ -20,10 +24,12 @@ export const AboutUs = React.memo(
       borderRadius: 0,
     };
     useGSAP(() => {
+      if (!sectionRef.current) return;
+      if (!contenRef.current) return;
       if (doAnimate) {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: "#section2-content-wrapper",
+            trigger: wrapperRef.current,
             start: "top top",
             endTrigger: `#${props.id}` || "#about_us",
 
@@ -39,19 +45,70 @@ export const AboutUs = React.memo(
             },
           },
         });
-        tl.to("#section2-content", animateTarget);
+        tl.to(contenRef.current, animateTarget);
       } else {
-        gsap.set("#section2-content", animateTarget);
+        gsap.set(contenRef.current, animateTarget);
       }
-    }, []);
+    }, [sectionRef.current, contenRef.current]);
+
+    useGSAP(() => {
+      if (!sectionRef.current) return;
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          endTrigger: sectionRef.current,
+          start: "top top",
+          end: "bottom center",
+          // markers: true,
+          onEnter: () => {
+            play();
+          },
+          onLeave: () => {
+            stop();
+          },
+          onEnterBack: () => {
+            play();
+          },
+          onLeaveBack: () => {
+            stop();
+          },
+        },
+      });
+    }, [sectionRef.current]);
+
+    const play = () => {
+      if (!videoRef.current) return;
+      videoRef.current.muted = false;
+      gsap.to(videoRef.current, { volume: 1, duration: 2 });
+      console.log("play");
+
+      videoRef.current
+        .play()
+        .then(() => {})
+        .catch(() => {
+          if (!videoRef.current) return;
+          videoRef.current.muted = true;
+          videoRef.current.play();
+        });
+    };
+    const stop = () => {
+      if (!videoRef.current) return;
+      gsap.to(videoRef.current, { volume: 0, duration: 2 });
+
+      console.log("stop");
+      videoRef.current.pause();
+    };
+
     return (
       <section
         {...props}
+        ref={sectionRef}
         className={`relative w-full ${
           doAnimate ? "h-[250vh]" : "h-screen"
         } z-[2] flex bg-transparent justify-start ${getResponsiveClasses()}`}
       >
         <div
+          ref={wrapperRef}
           id="section2-content-wrapper"
           className="h-screen w-full flex justify-center items-center"
         >
@@ -78,31 +135,18 @@ export const AboutUs = React.memo(
                     ? vidContainerRef.current?.clientWidth / 1.94
                     : "auto",
                 }}
-                className="basis-1/2 shrink-0"
+                className="basis-1/2 shrink-0 aspect-[1.94/1] rounded-xl overflow-hidden pointer-events-auto"
               >
-                <div className="relative">
-                  <span className="absolute-centered">
-                    <span className="flex justify-center items-center rounded-full cursor-pointer bg-primary/40 text-primary p-7">
-                      <svg
-                        width="28"
-                        height="32"
-                        viewBox="0 0 28 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M27.5 15.134C28.1667 15.5189 28.1667 16.4811 27.5 16.866L2 31.5885C1.33333 31.9734 0.499998 31.4922 0.499999 30.7224L0.5 1.27757C0.5 0.507767 1.33333 0.0266411 2 0.411541L27.5 15.134Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                  <img
-                    className="object-cover w-full h-full object-center rounded-2xl"
-                    src="https://picsum.photos/538/277?grayscale"
-                    alt=""
-                  />
-                </div>
+                <video
+                  src="vconekt_about_us.mp4"
+                  // muted
+                  ref={videoRef}
+                  // controls
+                  loop
+                  autoPlay
+                  width={"100%"}
+                  height={"100%"}
+                />
               </div>
               <p className="py-2 font-thin text-white  text-sm">
                 At Vconekt LLC, we are more than just a technology company - we

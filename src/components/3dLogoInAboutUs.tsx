@@ -1,7 +1,7 @@
 import Spline from "@splinetool/react-spline";
 import { Application } from "@splinetool/runtime";
 import { HTMLProps, useEffect, useRef, useState } from "react";
-import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
+// import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
 
 export interface V3dAboutUSProps extends HTMLProps<HTMLDivElement> {
   scale?: number;
@@ -16,13 +16,13 @@ export function V3dAboutUS({ scale, parentRef, ...props }: V3dAboutUSProps) {
     spline.current = splineApp;
     if (!is3dModelLoaded) setIs3dModelLoaded(true);
   };
-  const preloader = usePreloader();
+  // const preloader = usePreloader();
 
   useEffect(() => {
-    preloader.registerResource("dummyResource");
-    setTimeout(() => {
-      preloader.updateStatus("dummyResource", RESOURCE_STATUS.LOADED);
-    }, 6000);
+    // preloader.registerResource("dummyResource");
+    // setTimeout(() => {
+    //   preloader.updateStatus("dummyResource", RESOURCE_STATUS.LOADED);
+    // }, 6000);
     const onMouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
