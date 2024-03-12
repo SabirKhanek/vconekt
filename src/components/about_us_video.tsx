@@ -1,32 +1,42 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
+// import { getResponsiveWidth } from "../shared/constants/getResponsiveClasses";
+
 export function AboutUsVideo() {
+  const videoContainer = useRef<HTMLDivElement>(null);
+  const scrollContainer = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    if (!videoContainer.current) return;
+    if (!scrollContainer.current) return;
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: scrollContainer.current,
+        start: "top top",
+        // markers: true,
+        pin: true,
+        pinSpacing: false,
+        pinnedContainer: videoContainer.current,
+        end: "bottom bottom",
+      },
+    });
+  }, [videoContainer.current, scrollContainer.current]);
   return (
-    <div className={`responsive relative w-full`}>
-      <span className="absolute-centered flex flex-col justify-center items-center gap-3">
-        <span className="flex justify-center items-center rounded-full cursor-pointer bg-[#B2E062] text-black p-7">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 28 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M27.5 15.134C28.1667 15.5189 28.1667 16.4811 27.5 16.866L2 31.5885C1.33333 31.9734 0.499998 31.4922 0.499999 30.7224L0.5 1.27757C0.5 0.507767 1.33333 0.0266411 2 0.411541L27.5 15.134Z"
-              fill="none"
-              stroke="black"
-            />
-          </svg>
-        </span>
-        <div className="w-full bg-[#B2E062] text-black font-medium text-2xl p-4">
-          Mastering the art of web development, tips and tricks
-        </div>
-      </span>
-      <div className="cursor-pointer">
-        <img
-          src="https://picsum.photos/1200/616"
-          className="aspect-auto object-cover w-full h-auto"
-          alt=""
-        />
+    <div ref={scrollContainer} className="h-[300vh]">
+      <div
+        ref={videoContainer}
+        style={{}}
+        className={`responsive relative aspect-[1.98/1] w-full`}
+      >
+        <video
+          src="/vconekt_about_us.mp4"
+          muted
+          autoPlay
+          loop
+          // controls
+          width={"100%"}
+          height={"100%"}
+        ></video>
       </div>
     </div>
   );
