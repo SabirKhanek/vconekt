@@ -23,7 +23,7 @@ export function Preloader({ ...props }) {
   }, [preloader.isLoaded]);
 
   useGSAP(() => {
-    console.log(progress);
+    // console.log(progress);
     gsap.to("#progress_line", {
       width: `${progress * 100}%`,
     });

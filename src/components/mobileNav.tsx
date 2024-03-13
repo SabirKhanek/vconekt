@@ -73,6 +73,7 @@ function Nav({ ...props }: MobileNavProps) {
         zIndex: 20,
         background: "rgba(0, 0, 0, 0.64)",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        top: "-100vh",
         // backdropFilter: "blur(12.1px)",
       }}
       // animate={{ top: nav.isNavOpened ? "0" : "-100vh" }}

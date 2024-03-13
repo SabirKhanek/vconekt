@@ -67,6 +67,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   }, [responsive.windowWidth]);
   useGSAP(
     () => {
+      if (responsive.windowWidth < 1024) return;
       if (!ref.current) return;
       const slider = document.getElementById("service_slider");
       if (!slider) return;
@@ -292,12 +293,13 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
     setHiddenFlags(hiddenCards);
     setZIndexes(zindarr as number[]);
   }, [refreshFlag]);
+  if (responsive.windowWidth < 1024) return null;
   return (
     <motion.section
       ref={ref}
       {...(props as any)}
       id="our_services"
-      className={`text-white relative h-[300vh] flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
+      className={`text-white hidden  relative h-[300vh] lg:flex justify-center overflow-hidden items-center w-full z-[2]  bg-transparent`}
     >
       <div
         ref={contentRef}

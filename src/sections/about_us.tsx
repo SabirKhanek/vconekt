@@ -117,7 +117,7 @@ export const AboutUs = React.memo(
               style={{ backgroundColor: "#333333", borderRadius: "50px" }}
               id="section2-content"
               ref={contenRef}
-              className={`w-full grid grid-cols-1 sm:grid-cols-2 justify-center transform- gap-5 items-start relative ${
+              className={`w-full grid grid-cols-1 sm:flex sm:items-start justify-center transform- gap-5 relative ${
                 doAnimate ? "p-5" : "p-0"
               } reflected`}
             >
@@ -126,7 +126,7 @@ export const AboutUs = React.memo(
                 scale={0.7}
                 parentRef={contenRef}
               />
-              <div className="basis-1/2 shrink-0">
+              <div className="sm:basis-1/2 sm:shrink-0">
                 <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
                   About Us
                 </span>
@@ -134,7 +134,7 @@ export const AboutUs = React.memo(
                   Vconekt LLC: Igniting Innovation, Empowering Transform ation.
                 </h2>
               </div>
-              <div className="basis-1/2 shrink-0" ref={vidContainerRef}>
+              <div className="sm:basis-1/2 sm:shrink-0" ref={vidContainerRef}>
                 <div className="basis-1/2 w-full shrink-0 aspect-[1.94/1] rounded-xl overflow-hidden pointer-events-auto">
                   <video
                     src="vconekt_about_us.mp4"

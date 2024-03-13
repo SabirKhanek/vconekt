@@ -9,7 +9,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
   const [slideReelTimeline, setSlideReelTimeline] =
     useState<gsap.core.Timeline | null>();
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
   const [hoveredReel, setHoveredReel] = useState<number | null>(null);
   //   const [isAnimating, setIsAnimating] = useState(false);
   useGSAP(() => {
@@ -171,7 +171,7 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
         <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
           Recent Work
         </span>
-        <p className=" my-5 heading !leading-tight text-[5vw] font-semibold font-orbit max-w-[80%]">
+        <p className=" my-5 heading max-lm:!text-[34px] max-lm:!max-h-full !leading-tight text-[5vw] font-semibold font-orbit max-w-[80%]">
           Elevate your online presence with our integrated web, marketing, and
           design
           <br />
