@@ -20,7 +20,7 @@ export function Navbar({ className }: NavbarProps) {
       className={`absolute top-5 left-0 right-0 w-full z-[11] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
     >
       <Link to={"/"}>
-        <img src="/logo.png" className="scale-75" alt="Logo" />
+        <img src="/logo.png" className="w-[75%] h-auto" alt="Logo" />
       </Link>
       <div className="hidden 843:flex items-center gap-4 text-sm 939:text-base 939:gap-6 ">
         {navlinks.map((link) => {

@@ -22,10 +22,10 @@ export function AboutUsVideo() {
     });
   }, [videoContainer.current, scrollContainer.current]);
   return (
-    <div ref={scrollContainer} className="h-[300vh]">
+    <div ref={scrollContainer} className="h-[300vh] pointer-events-none">
       <div
         ref={videoContainer}
-        className="h-screen flex flex-col justify-center items-center"
+        className="h-screen flex pointer-events-auto flex-col justify-center items-center"
       >
         <div
           style={{}}

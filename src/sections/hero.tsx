@@ -33,7 +33,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
     >
       <div className="h-screen flex justify-between relative items-center">
         <div className="max-w-lg">
-          <h2 className="text-5xl text-white font-orbit font-semibold">
+          <h2 className="text-4xl flex flex-col   xs:text-5xl text-white font-orbit font-semibold">
             <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Transform Your</span>
             </span>{" "}
@@ -49,16 +49,14 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
           </h2>
           <p
             id="hero_subtext"
-            className="hero_subtext text-primary my-5 font-medium pl-2 border-l-4 border-primary"
+            className="hero_subtext text-primary my-5 max-w-lg w-full break-normal font-medium pl-2 border-l-4 border-primary"
           >
-            Step into the future of technology with Vconekt LLC, your gateway
-            <br />
-            to{" "}
+            Step into the future of technology with Vconekt LLC, your gateway to{" "}
             <span className="font-medium">
               IT consulting for digital transformation
             </span>
           </p>
-          <div className="flex items-center gap-4 pointer-events-auto">
+          <div className="flex items-center gap-4 text-[12px] 384:text-sm xs:text-base pointer-events-auto">
             <Button>
               <span className="font-orbit">Discover More</span>
             </Button>
@@ -72,7 +70,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
             const ele = document.getElementById("about_us");
             if (ele) smoothScrollToBottom(ele, 2000);
           }}
-          className="flex absolute right-0 bottom-[25vh] gap-1 cursor-pointer items-center self-end -translate-y-1/2 translate-x-1/2 -rotate-90"
+          className="sm:flex hidden absolute right-0 bottom-[25vh] gap-1 cursor-pointer items-center self-end -translate-y-1/2 translate-x-1/2 -rotate-90"
         >
           <svg
             className="rotate-90 inline"

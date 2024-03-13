@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { HTMLProps,useRef } from "react";
+import { HTMLProps, useEffect, useRef } from "react";
 
 export function GlitchImage({
   src,
@@ -8,6 +8,12 @@ export function GlitchImage({
   ...props
 }: HTMLProps<HTMLCanvasElement> & { src: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    console.log(canvasRef.current.parentElement?.clientWidth);
+    width = canvasRef.current.parentElement!.clientWidth;
+  }, [canvasRef.current]);
 
   useGSAP(() => {
     if (!canvasRef.current) return;

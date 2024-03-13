@@ -26,7 +26,7 @@ export function ServicesPage() {
             Services
           </Link>
         </div>
-        <div className="relative py-9 z-[2] responsive">
+        <div className="relative pt-36 lm:py-9 z-[2] responsive">
           <div className="relative z-10">
             <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
               Our Services
@@ -189,8 +189,8 @@ function Service({
       }}
     >
       <div
-        className={`responsive grid  ${
-          isEven ? "grid-cols-[0.4fr_0.6fr]" : "grid-cols-[0.6fr_0.4fr]"
+        className={`responsive grid grid-cols-1  ${
+          isEven ? "sm:grid-cols-[0.4fr_0.6fr]" : "sm:grid-cols-[0.6fr_0.4fr]"
         } gap-10 top-0 left-0 `}
       >
         <div className={`flex flex-col gap-5`}>
@@ -220,7 +220,7 @@ function Service({
             isEven ? "-order-1" : ""
           }`}
         >
-          <Illustration className="max-w-[450px] max-h-[450] w-full h-auto" />
+          <Illustration className="max-w-[450px] hidden sm:block max-h-[450] w-full h-auto" />
         </div>
       </div>
     </div>

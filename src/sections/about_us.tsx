@@ -80,7 +80,7 @@ export const AboutUs = React.memo(
       if (!videoRef.current) return;
       videoRef.current.muted = false;
       gsap.to(videoRef.current, { volume: 1, duration: 2 });
-      console.log("play");
+      // console.log("play");
 
       videoRef.current
         .play()
@@ -95,110 +95,149 @@ export const AboutUs = React.memo(
       if (!videoRef.current) return;
       gsap.to(videoRef.current, { volume: 0, duration: 2 });
 
-      console.log("stop");
+      // console.log("stop");
       videoRef.current.pause();
     };
 
     return (
-      <section
-        {...props}
-        ref={sectionRef}
-        className={`relative w-full ${
-          doAnimate ? "h-[250vh]" : "h-screen"
-        } z-[2] flex bg-transparent justify-start ${getResponsiveClasses()}`}
-      >
-        <div
-          ref={wrapperRef}
-          id="section2-content-wrapper"
-          className="h-screen w-full flex justify-center items-center"
+      <>
+        <section
+          {...props}
+          ref={sectionRef}
+          className={`relative w-full ${
+            doAnimate ? "h-[250vh]" : "h-screen"
+          } z-[2] flex bg-transparent justify-start ${getResponsiveClasses()}`}
         >
           <div
-            style={{ backgroundColor: "#333333", borderRadius: "50px" }}
-            id="section2-content"
-            ref={contenRef}
-            className="w-full  flex justify-center transform- gap-5 items-start relative p-5 reflected"
+            ref={wrapperRef}
+            id="section2-content-wrapper"
+            className="h-screen w-full flex justify-center items-center"
           >
-            <V3dAboutUS scale={0.7} parentRef={contenRef} />
-            <div className="basis-1/2 shrink-0">
-              <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
-                About Us
-              </span>
-              <h2 className="leading-relaxed  md:text-[40px] xl:text-5xl font-orbit font-semibold uppercase text-white my-3">
-                Vconekt LLC: Igniting Innovation, Empowering Transformation.
-              </h2>
-            </div>
-            <div ref={vidContainerRef}>
-              <div
-                style={{
-                  width: "100%",
-                  height: vidContainerRef.current?.clientWidth
-                    ? vidContainerRef.current?.clientWidth / 1.94
-                    : "auto",
-                }}
-                className="basis-1/2 shrink-0 aspect-[1.94/1] rounded-xl overflow-hidden pointer-events-auto"
-              >
-                <video
-                  src="vconekt_about_us.mp4"
-                  // muted
-                  ref={videoRef}
-                  // controls
-                  loop
-                  autoPlay
-                  width={"100%"}
-                  height={"100%"}
-                />
-              </div>
-              <p className="py-2 font-thin text-white  text-sm">
-                At Vconekt LLC, we are more than just a technology company - we
-                are architects of innovation, proactive IT support for
-                businesses, champions of transformation, and your trusted
-                partner in the digital realm. With over 5 years of experience in
-                the industry, we have honed our expertise to deliver
-                unparalleled solutions and consulting services that drive
-                success for businesses worldwide.
-              </p>
-
-              <AnimatedList
-                items={[
-                  "Web Design & Development",
-                  "SEO & Digital Marketing",
-                  "Digital Transformation Consulting",
-                  "Custom Software Development",
-                ]}
+            <div
+              style={{ backgroundColor: "#333333", borderRadius: "50px" }}
+              id="section2-content"
+              ref={contenRef}
+              className={`w-full grid grid-cols-1 sm:grid-cols-2 justify-center transform- gap-5 items-start relative ${
+                doAnimate ? "p-5" : "p-0"
+              } reflected`}
+            >
+              <V3dAboutUS
+                className="sm:block hidden"
+                scale={0.7}
+                parentRef={contenRef}
               />
-              <span className="bg-[#191919] -skew-x-[30deg] mt-3 block w-fit py-1 px-5">
-                <span className="flex justify-center items-center skew-x-[30deg] w-fit gap-2">
-                  <img src="/rating_icon.png" width={20} alt="" />
-                  <span className="text-lg text-white">5.0</span>
-                  <motion.div className="flex justify-center items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((_, i) => {
-                      return (
-                        <motion.span
-                          key={i}
-                          initial={{ opacity: 0 }}
-                          whileInView={{
-                            opacity: 1,
-                            transition: { duration: 0.2, delay: i * 0.2 },
-                          }}
-                        >
-                          <FaStar className="text-[#FF3D2E]" />
-                        </motion.span>
-                      );
-                    })}
-                  </motion.div>
+              <div className="basis-1/2 shrink-0">
+                <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
+                  About Us
                 </span>
-              </span>
-              <span className="text-white font-thin text-sm">
-                <span className="text-primary">Vision:</span> Innovating
-                limitless possibilities, we redefine the digital landscape with
-                IT support tailored to business needs, empowering businesses to
-                thrive through visionary strategies and innovative solutions at
-                our core.
-              </span>
+                <h2 className="leading-tight whitespace-break-spaces text-[30px] sm:text-[36px]  md:text-[40px] xl:text-5xl font-orbit font-semibold uppercase text-white my-3">
+                  Vconekt LLC: Igniting Innovation, Empowering Transform ation.
+                </h2>
+              </div>
+              <div className="basis-1/2 shrink-0" ref={vidContainerRef}>
+                <div className="basis-1/2 w-full shrink-0 aspect-[1.94/1] rounded-xl overflow-hidden pointer-events-auto">
+                  <video
+                    src="vconekt_about_us.mp4"
+                    // muted
+                    ref={videoRef}
+                    // controls
+                    loop
+                    autoPlay
+                    width={"100%"}
+                    height={"100%"}
+                  />
+                </div>
+                <p className="py-2 font-thin text-white hidden sm:block  text-sm">
+                  At Vconekt LLC, we are more than just a technology company -
+                  we are architects of innovation, proactive IT support for
+                  businesses, champions of transformation, and your trusted
+                  partner in the digital realm. With over 5 years of experience
+                  in the industry, we have honed our expertise to deliver
+                  unparalleled solutions and consulting services that drive
+                  success for businesses worldwide.
+                </p>
+
+                <div className="hidden sm:block">
+                  <AnimatedList
+                    items={[
+                      "Web Design & Development",
+                      "SEO & Digital Marketing",
+                      "Digital Transformation Consulting",
+                      "Custom Software Development",
+                    ]}
+                  />
+                </div>
+
+                <RatingComponent className="hidden sm:block" />
+
+                <span className="text-white hidden sm:block font-thin text-sm">
+                  <span className="text-primary">Vision:</span> Revolutionizing
+                  the digital landscape, we offer bespoke IT support tailored to
+                  businesses' needs, unlocking limitless potential for growth
+                  and success.
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="mt-5 relative z-[2] responsive">
+          <p className="py-2 font-thin text-white sm:hidden  text-sm">
+            At Vconekt LLC, we are more than just a technology company - we are
+            architects of innovation, proactive IT support for businesses,
+            champions of transformation, and your trusted partner in the digital
+            realm. With over 5 years of experience in the industry, we have
+            honed our expertise to deliver unparalleled solutions and consulting
+            services that drive success for businesses worldwide.
+          </p>
+          <div className="sm:hidden">
+            <AnimatedList
+              items={[
+                "Web Design & Development",
+                "SEO & Digital Marketing",
+                "Digital Transformation Consulting",
+                "Custom Software Development",
+              ]}
+            />
+          </div>
+          <RatingComponent className="sm:hidden" />
+
+          <span className="text-white sm:hidden font-thin text-sm">
+            <span className="text-primary">Vision:</span> Revolutionizing the
+            digital landscape, we offer bespoke IT support tailored to
+            businesses' needs, unlocking limitless potential for growth and
+            success.
+          </span>
+        </section>
+      </>
     );
   }
 );
+
+export function RatingComponent({ className }: { className?: string }) {
+  return (
+    <span
+      className={`bg-[#191919] -skew-x-[30deg] mt-3 block w-fit py-1 px-5 ${className}`}
+    >
+      <span className="flex justify-center items-center skew-x-[30deg] w-fit gap-2">
+        <img src="/rating_icon.png" width={20} alt="" />
+        <span className="text-lg text-white">5.0</span>
+        <motion.div className="flex justify-center items-center gap-1">
+          {[1, 2, 3, 4, 5].map((_, i) => {
+            return (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: { duration: 0.2, delay: i * 0.2 },
+                }}
+              >
+                <FaStar className="text-[#FF3D2E]" />
+              </motion.span>
+            );
+          })}
+        </motion.div>
+      </span>
+    </span>
+  );
+}

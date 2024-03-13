@@ -1,13 +1,10 @@
 import { HTMLProps, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  getResponsiveClasses,
-  getResponsiveWidth,
-} from "../shared/constants/getResponsiveClasses";
+import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 import { AnimatedText } from "../components/animated_text";
-import { GlitchImage } from "../components/glitch_image";
+import FadingImage from "./fadingImage";
 
 export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,7 +28,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
       style={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }}
       ref={ref}
       {...(props as any)}
-      className={`${getResponsiveClasses()} transition-all duration-300 mt-28 my-10 w-full relative`}
+      className={`${getResponsiveClasses()} transition-all  z-[2] duration-300 mt-28 my-10 w-full relative`}
     >
       <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
         Testimonial
@@ -42,13 +39,11 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
       >
         They say we're good for a reason
       </p>
-      <div className="my-5 flex gap-3 text-white">
-        <div className="flex-1 grow-0 flex justify-center items-center">
-          <GlitchImage
+      <div className="grid grid-cols-1 mt-7 md:grid-cols-[4fr_6fr]  gap-3 text-white">
+        <div className="w-full flex justify-center items-center overflow-hidden">
+          <FadingImage
+            className="aspect-[1.98/1.3]  rounded-xl"
             src={quotes[activeIndex].img_src}
-            width={
-              getResponsiveWidth() / 2 > 460 ? 460 : getResponsiveWidth() / 2
-            }
           />
         </div>
         <div className="flex-1 relative justify-between flex gap-1">
@@ -71,7 +66,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
               </div>
               <AnimatedText
                 text={quotes[activeIndex].quote_text || "This is a sample text"}
-                className="text-white my-2 text-3xl quote_text"
+                className="text-white min-h-[100px] my-2 text-3xl quote_text"
               />
             </div>
 

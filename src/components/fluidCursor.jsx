@@ -833,7 +833,7 @@ export function FluidCursor({ className, ...props }) {
         }
       }
 
-      window.addEventListener("mousemove", (e) => {
+      const mousemove = (e) => {
         pointers[0].moved = pointers[0].down;
         pointers[0].dx = (e.clientX - pointers[0].x) * 10.0;
         pointers[0].dy = (e.clientY - pointers[0].y) * 10.0;
@@ -841,36 +841,29 @@ export function FluidCursor({ className, ...props }) {
         pointers[0].y = e.clientY;
         // console.log(e.clientX, e.clientX, e.clientY, e.clientY);
         // console.log(pointers[0].x, e.offsetX);
-      });
-
-      window.addEventListener(
-        "touchmove",
-        (e) => {
-          e.preventDefault();
-          const touches = e.targetTouches;
-          for (let i = 0; i < touches.length; i++) {
-            let pointer = pointers[i];
-            pointer.moved = pointer.down;
-            pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
-            pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
-            pointer.x = touches[i].clientX;
-            pointer.y = touches[i].clientY;
-          }
-        },
-        false
-      );
-
-      window.addEventListener("mousemove", () => {
+      };
+      const touchmove = (e) => {
+        // e.preventDefault();
+        const touches = e.targetTouches;
+        for (let i = 0; i < touches.length; i++) {
+          let pointer = pointers[i];
+          pointer.moved = pointer.down;
+          pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
+          pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
+          pointer.x = touches[i].clientX;
+          pointer.y = touches[i].clientY;
+        }
+      };
+      const mousemove2 = () => {
         pointers[0].down = true;
         pointers[0].color = [
           Math.random() + 0.2,
           Math.random() + 0.2,
           Math.random() + 0.2,
         ];
-      });
-
-      window.addEventListener("touchstart", (e) => {
-        e.preventDefault();
+      };
+      const touchstart = (e) => {
+        // e.preventDefault();
         const touches = e.targetTouches;
         for (let i = 0; i < touches.length; i++) {
           if (i >= pointers.length) pointers.push(new pointerPrototype());
@@ -885,86 +878,33 @@ export function FluidCursor({ className, ...props }) {
             Math.random() + 0.2,
           ];
         }
-      });
-
-      window.addEventListener("mouseleave", () => {
+      };
+      const mouseleave = () => {
         pointers[0].down = false;
-      });
-
-      window.addEventListener("touchend", (e) => {
+      };
+      const touchend = (e) => {
         const touches = e.changedTouches;
         for (let i = 0; i < touches.length; i++)
           for (let j = 0; j < pointers.length; j++)
             if (touches[i].identifier == pointers[j].id)
               pointers[j].down = false;
-      });
+      };
+      window.addEventListener("mousemove", mousemove);
+      // window.addEventListener("touchmove", touchmove, false);
+      window.addEventListener("mousemove", mousemove2);
+      // window.addEventListener("touchmove", mousemove2);
+      // window.addEventListener("touchstart", touchstart);
+      window.addEventListener("mouseleave", mouseleave);
+      // window.addEventListener("touchend", touchend);
 
       return () => {
-        window.removeEventListener("mousemove", (e) => {
-          pointers[0].moved = pointers[0].down;
-          pointers[0].dx = (e.clientX - pointers[0].x) * 10.0;
-          pointers[0].dy = (e.clientY - pointers[0].y) * 10.0;
-          pointers[0].x = e.clientX;
-          pointers[0].y = e.clientY;
-          // console.log(e.clientX, e.clientX, e.clientY, e.clientY);
-          // console.log(pointers[0].x, e.offsetX);
-        });
-
-        window.removeEventListener(
-          "touchmove",
-          (e) => {
-            e.preventDefault();
-            const touches = e.targetTouches;
-            for (let i = 0; i < touches.length; i++) {
-              let pointer = pointers[i];
-              pointer.moved = pointer.down;
-              pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
-              pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
-              pointer.x = touches[i].clientX;
-              pointer.y = touches[i].clientY;
-            }
-          },
-          false
-        );
-
-        window.removeEventListener("mousemove", () => {
-          pointers[0].down = true;
-          pointers[0].color = [
-            Math.random() + 0.2,
-            Math.random() + 0.2,
-            Math.random() + 0.2,
-          ];
-        });
-
-        window.removeEventListener("touchstart", (e) => {
-          e.preventDefault();
-          const touches = e.targetTouches;
-          for (let i = 0; i < touches.length; i++) {
-            if (i >= pointers.length) pointers.push(new pointerPrototype());
-
-            pointers[i].id = touches[i].identifier;
-            pointers[i].down = true;
-            pointers[i].x = touches[i].clientX;
-            pointers[i].y = touches[i].clientY;
-            pointers[i].color = [
-              Math.random() + 0.2,
-              Math.random() + 0.2,
-              Math.random() + 0.2,
-            ];
-          }
-        });
-
-        window.removeEventListener("mouseleave", () => {
-          pointers[0].down = false;
-        });
-
-        window.removeEventListener("touchend", (e) => {
-          const touches = e.changedTouches;
-          for (let i = 0; i < touches.length; i++)
-            for (let j = 0; j < pointers.length; j++)
-              if (touches[i].identifier == pointers[j].id)
-                pointers[j].down = false;
-        });
+        window.removeEventListener("mousemove", mousemove);
+        // window.removeEventListener("touchmove", touchmove, false);
+        // window.removeEventListener("touchmove", mousemove2);
+        window.removeEventListener("mousemove", mousemove2);
+        // window.removeEventListener("touchstart", touchstart);
+        window.removeEventListener("mouseleave", mouseleave);
+        // window.removeEventListener("touchend", touchend);
       };
     }
   }, []);

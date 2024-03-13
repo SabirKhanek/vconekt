@@ -95,7 +95,7 @@ function BlogCard() {
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex justify-between items-start gap-7">
-            <h2 className="font-orbit text-[36px] text-primary text-wrap font-semibold hover:underline">
+            <h2 className="font-orbit text-[36px] text-primary text-wrap small-heading cursor-pointer font-semibold hover:underline">
               7 ESSENTIAL STEPS FOR A ROBUST IT STRATEGY: THE ULTIMATE GUIDE
             </h2>
             <motion.button
@@ -111,7 +111,7 @@ function BlogCard() {
                 color: "#000",
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="p-3 rounded-full bg-transparent border border-white hover:scale-110 transition-all duration-150"
+              className="p-3 hidden lg:flex 520:flex 768:hidden rounded-full bg-transparent border border-white hover:scale-110 transition-all duration-150"
             >
               <GoArrowRight className="-rotate-[30deg] text-3xl" />
             </motion.button>

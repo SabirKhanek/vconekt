@@ -37,14 +37,14 @@ export function OurWorkProcess() {
         <span className="text-primary">Process</span>
       </h2>
 
-      <div className="mt-7 grid grid-cols-3 gap-4">
+      <div className="mt-7 grid grid-cols-1 md:grid-cols-3 gap-4">
         {process.map((v, i) => {
           return (
             <motion.div
-              initial={{ opacity: 0, x: -20,scale: 0.8, y: -20 }}
+              initial={{ opacity: 0, x: -20, scale: 0.8, y: -20 }}
               whileInView={{
                 opacity: 1,
-                scale:1,
+                scale: 1,
                 x: 0,
                 y: 0,
                 transition: { duration: 0.4, delay: 0.5 * i },
@@ -57,7 +57,7 @@ export function OurWorkProcess() {
               </span>
               <div>
                 <h1 className="font-orbit text-2xl font-semibold">{v.name}</h1>
-                <div className="flex flex-col gap-3 mt-3">
+                <div className="flex flex-row md:flex-col gap-3 mt-3">
                   {v.substeps.map((sv, si) => {
                     return (
                       <div key={si}>

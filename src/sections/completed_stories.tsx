@@ -31,39 +31,39 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
       {...props}
       className={` text-white relative my-28 flex justify-center items-center w-full z-[2]  bg-transparent  ${getResponsiveClasses()}`}
     >
-      <div className="rounded-3xl border w-full flex flex-col justify-center items-center border-white/65 lg:px-20 py-10 px-10 gap-3">
+      <div className="rounded-3xl border w-full flex flex-col justify-center items-center border-white/65 lg:px-20 py-10 md:px-10 px-5 gap-3">
         <span className="rounded-3xl text-xs bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
           Completed Stories!
         </span>
         <span className="text-center text-3xl small-heading text-white font-orbit">
           WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS, CHECK SOME OF OUR COUNTER
         </span>
-        <div className="flex justify-between w-3/4">
-          <div className="flex flex-col gap-2">
-            <span className="completed-counter hollow-text font-orbit text-6xl font-semibold">
+        <div className="flex flex-col gap-y-6 600:flex-row justify-between w-3/4">
+          <div className="flex flex-col text-center 600:text-left gap-2">
+            <span className="completed-counter  hollow-text font-orbit text-5xl md:text-6xl  font-semibold">
               0
             </span>
-            <span className="font-orbit text-xl text-primary">
+            <span className="font-orbit text-lg md:text-xl text-primary">
               Projects
               <br />
               Completed
             </span>
           </div>
-          <div className="flex flex-col gap-2">
-            <span className="completed-counter hollow-text font-orbit text-6xl font-semibold">
+          <div className="flex flex-col text-center 600:text-center  gap-2">
+            <span className="completed-counter hollow-text font-orbit text-5xl md:text-6xl  font-semibold">
               0
             </span>
-            <span className="font-orbit text-xl text-primary">
+            <span className="font-orbit text-lg md:text-xl text-primary">
               Our
               <br />
               Happy Clients
             </span>
           </div>
-          <div className="flex flex-col gap-2">
-            <span className="completed-counter hollow-text font-orbit text-6xl font-semibold">
+          <div className="flex flex-col text-center gap-2 600:text-right">
+            <span className="completed-counter hollow-text font-orbit text-5xl md:text-6xl  font-semibold">
               0
             </span>
-            <span className="font-orbit text-xl text-primary">
+            <span className="font-orbit text-lg md:text-xl text-primary">
               Team
               <br />
               Advisors

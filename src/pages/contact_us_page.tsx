@@ -30,7 +30,7 @@ export function ContactUsPage() {
             ref={ref}
             className="flex relative z-10 justify-center items-center flex-col font-semibold gap-4"
           >
-            <div className=" relative  text-9xl font-orbit uppercase">
+            <div className=" relative leading-none xl-heading font-orbit uppercase">
               <div className="opacity-0">
                 LETS TALK
                 <br />
@@ -69,15 +69,15 @@ export function ContactUsPage() {
           <span className="text-primary"> Let's Connect.</span>
         </h2>
         <div
-          className="w-full my-3 px-20 py-10"
+          className="w-full my-3 px-10 md:px-20 py-10"
           style={{
             background:
               "linear-gradient(45.84deg, #131A14 1.97%, #253426 97.02%)",
           }}
         >
           <form action="">
-            <div className="flex items-center gap-4 font-orbit">
-              <div className="flex  flex-1 flex-col gap-1">
+            <div className="flex flex-wrap items-center gap-4 font-orbit">
+              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your name?</label>
                 <input
                   placeholder="your name?"
@@ -86,7 +86,7 @@ export function ContactUsPage() {
                   className="p-2 bg-black text-white outline-none"
                 />
               </div>
-              <div className="flex  flex-1 flex-col gap-1">
+              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your email?</label>
                 <input
                   placeholder="Your Email"
@@ -96,8 +96,8 @@ export function ContactUsPage() {
                 />
               </div>
             </div>
-            <div className="flex my-3 items-center gap-4 font-orbit">
-              <div className="flex  flex-1 flex-col gap-1">
+            <div className="flex flex-wrap my-3 items-center gap-4 font-orbit">
+              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your phone number?</label>
                 <input
                   placeholder="phone number"
@@ -106,7 +106,7 @@ export function ContactUsPage() {
                   className="p-2 bg-black text-white outline-none"
                 />
               </div>
-              <div className="flex  flex-1 flex-col gap-1">
+              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">Your Country?</label>
                 <input
                   type="text"
@@ -126,7 +126,7 @@ export function ContactUsPage() {
                 style={{ background: "rgba(19, 26, 20, 1)" }}
               />
             </div>
-            <div className="flex items-center mt-3 gap-3">
+            <div className="flex flex-wrap items-center mt-3 gap-3">
               <Button type="submit">Submit</Button>
               <p className="text-sm">
                 OR YOU CAN EMAIL US HERE:{" "}

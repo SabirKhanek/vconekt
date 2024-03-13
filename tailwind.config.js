@@ -1,6 +1,8 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import daisyui from "daisyui";
 import theme from "daisyui/src/theming/themes";
+const pixelMap = {};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -25,10 +27,15 @@ export default {
         960: "960px",
         520: "520px",
         "3xl": "1920px",
+        720: "720px",
         lm: "525px",
         "4xl": "2560px",
         939: "939px",
         843: "843px",
+        768: "768px",
+        600: "600px",
+        922: "922px",
+        384: "384px",
       },
     },
   },

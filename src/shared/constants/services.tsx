@@ -116,7 +116,7 @@ export const services = [
       <img
         {...(props as HTMLProps<HTMLImageElement>)}
         src="/seo.png"
-        className={`max-h-[450px] w-auto h-full `}
+        className={`max-h-[450px] w-auto h-full ${props.className}`}
       ></img>
     ),
     what_is_content: {
