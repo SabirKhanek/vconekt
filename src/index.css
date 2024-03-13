@@ -70,4 +70,17 @@ canvas {
   font-size: clamp(28px, 4vw, 36px);
   line-height: 2.5rem;
   font-weight: 600;
+  font-family: Orbitron, Kanit, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.xs-heading {
+  font-size: clamp(28px, 3vw, 24px);
+  line-height: 2.5rem;
+  font-weight: 600;
+  font-family: Orbitron, Kanit, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.backdrop-filter-wkit {
+  -webkit-backdrop-filter: "blur(12.1px)";
 }

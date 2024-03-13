@@ -29,8 +29,11 @@ export function Preloader({ ...props }) {
     });
   }, [progress]);
   return !preloader.isLoaded ? (
-    <div {...props} className={`h-screen w-screen fixed bg-black z-50`}>
-      <div className="h-1 w-0  bg-primary" id="progress_line"></div>
+    <div {...props} className={`h-screen w-screen fixed bg-black z-[15]`}>
+      <div
+        className="h-1 w-0  bg-primary relative z-50"
+        id="progress_line"
+      ></div>
     </div>
   ) : null;
 }

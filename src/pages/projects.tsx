@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { V3dContactUs } from "../components/3dLogoInContactUs";
-import { motion,  useInView } from "framer-motion";
-import {  useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "../components/button";
 import useHover from "../shared/hooks/useHover";
 import { GoArrowRight } from "react-icons/go";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 
 export function Projects() {
   return (
@@ -40,13 +41,14 @@ export function Projects() {
           Explore Our Diverse Portfolio of Success{" "}
           <span className="text-primary">Stories</span>
         </h2>
-        <div className="flex gap-10 my-3 mb-10">
+        <div className="flex flex-col 520:flex-row gap-10 my-3 mb-10">
           {[1, 2].map((v) => {
             return (
               <div
                 key={v}
-                style={{ transform: v === 2 ? "translateY(-75px)" : "" }}
-                className="flex flex-col gap-10 flex-1"
+                className={`flex flex-col gap-10 flex-1 ${
+                  v === 2 ? "520:-translate-y-[75px]" : ""
+                }`}
               >
                 <ProjectCard />
                 <ProjectCard />
@@ -65,7 +67,7 @@ export function Projects() {
 }
 
 export function ProjectCard() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(ref, { once: true });
   const imageRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -84,9 +86,15 @@ export function ProjectCard() {
       duration: 0.005,
     });
   }, [hovered]);
+  const navigate = useRouteChange();
   return (
-    <motion.div
+    <motion.a
       ref={ref}
+      href="/projects/best_guitar_instruments"
+      onClick={(e) => {
+        e.preventDefault();
+        navigate("/projects/best_guitar_instruments");
+      }}
       style={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 100 }}
       className="flex relative flex-col w-full gap-3 transition-all duration-500 ease-in-out"
     >
@@ -129,6 +137,50 @@ export function ProjectCard() {
           Guitar Instruments provides top-quality guitars that sound amazing.
         </p>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
+
+export interface Project {
+  title: string;
+  slug: string;
+  involvements: string[];
+  targetUrl: string;
+  about: string;
+  mainThumb: { src: string; type: "image" };
+  samples: { src: string; type: "image" | "video" }[];
+  review: {
+    authorName: string;
+    authorImage: string;
+    authorCompany: string;
+    text: string;
+  };
+}
+
+export const projects: Project[] = [
+  {
+    title: "Best Guitar Instruments",
+    about:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    involvements: ["Mobile App", "Web App", "E-commerce"],
+    mainThumb: {
+      src: `https://picsum.photos/590/443?t=${Math.random()}`,
+      type: "image",
+    },
+    review: {
+      text: "Olga is one of the smartest designers I have ever worked with. One of her outstanding skills as a designer is that she is a great listener. She will take client requirements and expertly solve complex problems. She can take her vast design experience and combine it with technology to come up with fantastic designs on point, and on time. Her many award winning designs speak for her talent and process.",
+      authorCompany: "Director Fast Track Company",
+      authorImage: `https://picsum.photos/80?t=${Math.random()}`,
+      authorName: "John Doe",
+    },
+    samples: [
+      { src: "/vconekt_about_us.mp4", type: "video" },
+      {
+        src: `https://picsum.photos/1200/592?t=${Math.random()}`,
+        type: "image",
+      },
+    ],
+    slug: "best_guitar_instruments",
+    targetUrl: "#",
+  },
+];

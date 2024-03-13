@@ -25,18 +25,22 @@ export function AboutUsVideo() {
     <div ref={scrollContainer} className="h-[300vh]">
       <div
         ref={videoContainer}
-        style={{}}
-        className={`responsive relative aspect-[1.98/1] w-full`}
+        className="h-screen flex flex-col justify-center items-center"
       >
-        <video
-          src="/vconekt_about_us.mp4"
-          muted
-          autoPlay
-          loop
-          // controls
-          width={"100%"}
-          height={"100%"}
-        ></video>
+        <div
+          style={{}}
+          className={`responsive relative aspect-[1.98/1] w-full`}
+        >
+          <video
+            src="/vconekt_about_us.mp4"
+            muted
+            autoPlay
+            loop
+            // controls
+            width={"100%"}
+            height={"100%"}
+          ></video>
+        </div>
       </div>
     </div>
   );

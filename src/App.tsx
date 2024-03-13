@@ -42,7 +42,8 @@ export default function App() {
   }, []);
 
   const particlesLoaded = useCallback(async (container: any) => {
-    console.log(container);
+    // console.log(container);
+    container;
   }, []);
   return (
     <div className="relative">
@@ -52,6 +53,7 @@ export default function App() {
         className="z-[1] relative"
         url="/particles_config.json"
       />
+
       <FluidCursor className={"pointer-events-none"} />
       <V3d />
       <Preloader />

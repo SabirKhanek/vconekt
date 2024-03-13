@@ -57,9 +57,9 @@ export const AboutUs = React.memo(
         scrollTrigger: {
           trigger: sectionRef.current,
           endTrigger: sectionRef.current,
-          start: "top top",
+          start: `${doAnimate ? "top" : "-60%"} top`,
           end: "bottom center",
-          // markers: true,
+
           onEnter: () => {
             play();
           },

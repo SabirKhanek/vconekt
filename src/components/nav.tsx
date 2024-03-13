@@ -3,6 +3,9 @@ import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { Button } from "./button";
 import { Link, useLocation } from "react-router-dom";
 import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
+import { MenuButton } from "./MenuButton";
+import { useNavSwitch } from "../shared/contexts/navSwitch";
+import { MobileNav } from "./mobileNav";
 
 export interface NavbarProps {
   className?: string;
@@ -10,6 +13,8 @@ export interface NavbarProps {
 export function Navbar({ className }: NavbarProps) {
   const location = useLocation();
   const preloader = usePreloader();
+  const nav = useNavSwitch();
+
   return (
     <nav
       className={`absolute top-5 left-0 right-0 w-full z-[11] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
@@ -17,7 +22,7 @@ export function Navbar({ className }: NavbarProps) {
       <Link to={"/"}>
         <img src="/logo.png" className="scale-75" alt="Logo" />
       </Link>
-      <div className="flex items-center gap-6">
+      <div className="hidden 843:flex items-center gap-4 text-sm 939:text-base 939:gap-6 ">
         {navlinks.map((link) => {
           return (
             <NavHashLink
@@ -57,11 +62,28 @@ export function Navbar({ className }: NavbarProps) {
         })}
         <Button className="font-orbit text-sm">Discover More!</Button>
       </div>
+
+      <button
+        onClick={() => nav.switchNav(!nav.isNavOpened)}
+        className="!rounded-full bg-white 843:hidden flex justify-center items-center p-3"
+      >
+        <span className="inline-flex w-4 h-4 justify-center items-center">
+          <MenuButton
+            isOpen={nav.isNavOpened}
+            strokeWidth="1.5"
+            color="#000000"
+            transition={{ ease: "easeOut", duration: 0.2 }}
+            width="16"
+            height="12"
+          />
+        </span>
+        <MobileNav></MobileNav>
+      </button>
     </nav>
   );
 }
 
-const navlinks = [
+export const navlinks = [
   { name: "Home", route: "/" },
   { name: "About Us", route: "/about_us" },
   { name: "Services", route: "/services" },
