@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-export function FluidCursor({ className, ...props }) {
-  const canvasRef = useRef();
+export function useFluidCursor({ canvasRef }) {
   useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current;
@@ -908,11 +907,5 @@ export function FluidCursor({ className, ...props }) {
       };
     }
   }, []);
-  return (
-    <canvas
-      ref={canvasRef}
-      className={`${className} fixed w-full h-full`}
-      {...props}
-    ></canvas>
-  );
+  return;
 }

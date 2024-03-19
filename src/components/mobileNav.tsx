@@ -97,7 +97,7 @@ function Nav({ ...props }: MobileNavProps) {
         </span>
       </button>
       <div className="p-10 pt-[20vh]">
-        <h2 className="text-5xl flex flex-col gap-4 text-white font-orbit font-semibold">
+        <h2 className="text-4xl 380:text-5xl flex flex-col gap-4 text-white font-orbit font-semibold">
           {navlinks.map((link, i) => {
             return (
               <span key={i} className="inline-block overflow-hidden py-1">

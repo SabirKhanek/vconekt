@@ -92,3 +92,28 @@ canvas {
   -webkit-backdrop-filter: "blur(12.1px)";
   backdrop-filter: blur(12.1px);
 }
+
+/* In your CSS or tailwindcss file */
+@variants responsive {
+  .tw-sm-heading {
+    @apply text-[30px];
+  }
+
+  @screen sm {
+    .tw-sm-heading {
+      @apply sm:text-[36px];
+    }
+  }
+
+  @screen md {
+    .tw-sm-heading {
+      @apply md:text-[40px];
+    }
+  }
+
+  @screen xl {
+    .tw-sm-heading {
+      @apply xl:text-5xl;
+    }
+  }
+}

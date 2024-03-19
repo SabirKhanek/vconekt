@@ -22,17 +22,17 @@ export function AboutUsVideo() {
     });
   }, [videoContainer.current, scrollContainer.current]);
   return (
-    <div ref={scrollContainer} className="h-[300vh] pointer-events-none">
+    <div ref={scrollContainer} className="650:h-[300vh] pointer-events-none">
       <div
         ref={videoContainer}
-        className="h-screen flex pointer-events-auto flex-col justify-center items-center"
+        className="650:h-screen flex pointer-events-auto flex-col justify-center items-center"
       >
         <div
           style={{}}
           className={`responsive relative aspect-[1.98/1] w-full`}
         >
           <video
-            src="/vconekt_about_us.mp4"
+            src="/recent_projects.mp4"
             muted
             autoPlay
             loop

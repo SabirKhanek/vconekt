@@ -5,13 +5,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { usePreloader } from "../shared/contexts/preloader";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 
 export function Hero({ ...props }: HTMLProps<HTMLElement>) {
   const preloader = usePreloader();
   useGSAP(() => {
     const tl = gsap.timeline();
     new SplitType("#hero_subtext", {
-      types: ["chars"],
+      types: ["chars", "words"],
       charClass: "subtext_char",
     });
     tl.fromTo(
@@ -26,6 +27,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
       }
     ).fromTo(".subtext_char", { opacity: 0 }, { opacity: 1, stagger: 0.02 });
   }, [preloader.isLoaded]);
+  const navigate = useRouteChange();
   return (
     <section
       {...props}
@@ -57,10 +59,10 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
             </span>
           </p>
           <div className="flex items-center gap-4 text-[12px] 384:text-sm xs:text-base pointer-events-auto">
-            <Button>
+            <Button onClick={() => navigate("/services")}>
               <span className="font-orbit">Discover More</span>
             </Button>
-            <Button bg="grey">
+            <Button onClick={() => navigate("/contact_us")} bg="grey">
               <span className="font-orbit">Contact Us</span>
             </Button>
           </div>

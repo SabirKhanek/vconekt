@@ -78,8 +78,8 @@ export const AboutUs = React.memo(
 
     const play = () => {
       if (!videoRef.current) return;
-      videoRef.current.muted = false;
-      gsap.to(videoRef.current, { volume: 1, duration: 2 });
+      // videoRef.current.muted = false;
+      // gsap.to(videoRef.current, { volume: 1, duration: 2 });
       // console.log("play");
 
       videoRef.current
@@ -93,7 +93,7 @@ export const AboutUs = React.memo(
     };
     const stop = () => {
       if (!videoRef.current) return;
-      gsap.to(videoRef.current, { volume: 0, duration: 2 });
+      // gsap.to(videoRef.current, { volume: 0, duration: 2 });
 
       // console.log("stop");
       videoRef.current.pause();
@@ -138,7 +138,7 @@ export const AboutUs = React.memo(
                 <div className="basis-1/2 w-full shrink-0 aspect-[1.94/1] rounded-xl overflow-hidden pointer-events-auto">
                   <video
                     src="vconekt_about_us.mp4"
-                    // muted
+                    muted
                     ref={videoRef}
                     // controls
                     loop
@@ -180,7 +180,7 @@ export const AboutUs = React.memo(
             </div>
           </div>
         </section>
-        <section className="mt-5 relative z-[2] responsive">
+        <section className="-mt-20 relative z-[2] responsive">
           <p className="py-2 font-thin text-white sm:hidden  text-sm">
             At Vconekt LLC, we are more than just a technology company - we are
             architects of innovation, proactive IT support for businesses,

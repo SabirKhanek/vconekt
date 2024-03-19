@@ -6,6 +6,7 @@ import { RESOURCE_STATUS, usePreloader } from "../shared/contexts/preloader";
 import { MenuButton } from "./MenuButton";
 import { useNavSwitch } from "../shared/contexts/navSwitch";
 import { MobileNav } from "./mobileNav";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 
 export interface NavbarProps {
   className?: string;
@@ -14,7 +15,7 @@ export function Navbar({ className }: NavbarProps) {
   const location = useLocation();
   const preloader = usePreloader();
   const nav = useNavSwitch();
-
+  const navigate = useRouteChange();
   return (
     <nav
       className={`absolute top-5 left-0 right-0 w-full z-[11] flex justify-between items-center ${getResponsiveClasses()} ${className}`}
@@ -60,7 +61,12 @@ export function Navbar({ className }: NavbarProps) {
             </NavHashLink>
           );
         })}
-        <Button className="font-orbit text-sm">Discover More!</Button>
+        <Button
+          onClick={() => navigate("/services")}
+          className="font-orbit text-sm"
+        >
+          Discover More!
+        </Button>
       </div>
 
       <button

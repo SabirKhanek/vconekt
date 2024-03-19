@@ -4,14 +4,170 @@ import {
   //   getResponsiveWidth,
 } from "../shared/constants/getResponsiveClasses";
 // import { Button } from "../components/button";
-import { useGSAP } from "@gsap/react";
+import { ReactRef, useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import gsap from "gsap";
 import { motion, useInView } from "framer-motion";
 import { useResponsive } from "../hooks/useResponsive";
+
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
-  const sliderContainerRef = useRef<HTMLDivElement>(null);
   const responsive = useResponsive();
+
+  if (responsive.windowWidth < 1024)
+    return (
+      <ServiceSectionSmall
+        responsive={responsive}
+        {...props}
+      ></ServiceSectionSmall>
+    );
+  else
+    return (
+      <ServiceSectionLarge
+        responsive={responsive}
+        {...props}
+      ></ServiceSectionLarge>
+    );
+}
+
+function ServiceSectionSmall({
+  responsive,
+  ...props
+}: { responsive: ReturnType<typeof useResponsive> } & HTMLProps<HTMLElement>) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        endTrigger: scrollContainerRef.current,
+        pin: true,
+        pinnedContainer: containerRef.current,
+        pinSpacing: false,
+        scrub: true,
+        snap: {
+          snapTo: [0, 0.2, 0.4, 0.6, 0.8, 1],
+          ease: "linear",
+        },
+      },
+    });
+
+    tl.to(
+      {},
+      {
+        onUpdate: () => {
+          const progress = tl.progress();
+          // console.log(progress);
+          // console.log({
+          //   progress,
+          //   scrollWidth: sliderRef.current?.scrollWidth,
+          //   scrollBy: progress * (sliderRef.current?.scrollWidth || 0),
+          // });
+          sliderRef.current?.scroll({
+            left: progress * sliderRef.current.scrollWidth,
+            behavior: "instant",
+          });
+        },
+        scrub: true,
+      }
+    );
+  }, []);
+  return (
+    <>
+      <div
+        {...(props as any)}
+        ref={scrollContainerRef}
+        className="responsive relative z-[2] h-[300vh] -mt-14"
+      >
+        <div
+          ref={containerRef}
+          className="h-screen flex flex-col justify-center"
+        >
+          <span className="rounded-3xl w-fit bg-primary/15 text-primary px-5 py-2 uppercase font-orbit">
+            Our Services
+          </span>
+          <p className="heading max-lm:!text-[34px] max-lm:!max-h-full !leading-tight text-[5vw] font-semibold font-orbit my-5">
+            Building Bridges to Digital Brilliance Together with Vconekt LLC
+          </p>
+          <ServiceCardSliderSmall sliderRef={sliderRef} />
+        </div>
+      </div>
+      <p className="relative z-[2] responsive -mt-10">
+        Embark on a Digital Journey with VconektLLC. Our Comprehensive IT
+        solutions for startups and Services are your compass in the vast terrain
+        of online innovation. From Web Design and Development to Mobile App
+        Creation, Search Engine Optimization, and beyond, we offer a holistic
+        approach to elevate your digital presence. Let us guide you through the
+        intricacies of the digital world, transforming challenges into
+        opportunities and aspirations into achievements. Explore our array of
+        services and redefine your online narrative with VconektLLC.
+      </p>
+    </>
+  );
+}
+
+function ServiceCardSliderSmall({ sliderRef }: { sliderRef: ReactRef }) {
+  return (
+    <div
+      id={"service_slider"}
+      ref={sliderRef}
+      className="flex items-center justify-start overflow-x-auto no-scrollbar gap-7"
+    >
+      {[...Array(5)].map((_, i, arr) => {
+        return (
+          <ServiceCard
+            index={i}
+            total={arr.length}
+            key={i}
+            {...cardDetails[i % (cardDetails.length - 1)]}
+          ></ServiceCard>
+        );
+      })}
+    </div>
+  );
+}
+
+function ServiceCard({
+  description,
+  link,
+  logo,
+  title,
+}: // index,
+// total,
+(typeof cardDetails)[0] & { index: number; total: number }) {
+  return (
+    <div
+      style={{
+        transformOrigin: "bottom center",
+        borderRadius: "6px",
+        display: "flex",
+      }}
+      className={`w-72 h-72 aspect-square black-gradient snap-center flex justify-center items-center p-7 text-white`}
+    >
+      <span className="w-full h-full inline-flex flex-col gap-2">
+        <img src={logo} alt="" className="w-10 h-10" />
+        <div>
+          <h2 className="text-left">{title}</h2>
+          <p className="mt-2 text-left text-sm font-thin">{description}</p>
+        </div>
+        <a
+          className="text-primary font-medium hover:underline text-left"
+          href={link}
+        >
+          Learn more...
+        </a>
+      </span>
+    </div>
+  );
+}
+
+function ServiceSectionLarge({
+  responsive,
+  ...props
+}: { responsive: ReturnType<typeof useResponsive> } & HTMLProps<HTMLElement>) {
+  const sliderContainerRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -263,6 +419,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const [refreshFlag, setRefreshFlag] = useState({});
   const [hiddenFlags, setHiddenFlags] = useState<boolean[]>([]);
   useEffect(() => {
+    if (responsive.windowWidth < 1024) return;
     const targets = Array.from(document.querySelectorAll(".service-card"));
     const slider = document.getElementById("service_slider");
     if (!slider) return;
@@ -293,7 +450,7 @@ export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
     setHiddenFlags(hiddenCards);
     setZIndexes(zindarr as number[]);
   }, [refreshFlag]);
-  if (responsive.windowWidth < 1024) return null;
+
   return (
     <motion.section
       ref={ref}

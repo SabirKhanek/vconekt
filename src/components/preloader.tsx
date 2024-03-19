@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePreloader } from "../shared/contexts/preloader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -6,7 +6,7 @@ import gsap from "gsap";
 export function Preloader({ ...props }) {
   const [progress, setProgress] = useState(0);
   const preloader = usePreloader();
-
+const progresLineRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     setProgress(
       (preloader.resources.length - preloader.loadingCount) /
@@ -24,7 +24,7 @@ export function Preloader({ ...props }) {
 
   useGSAP(() => {
     // console.log(progress);
-    gsap.to("#progress_line", {
+    gsap.to(progresLineRef.current, {
       width: `${progress * 100}%`,
     });
   }, [progress]);
@@ -33,6 +33,7 @@ export function Preloader({ ...props }) {
       <div
         className="h-1 w-0  bg-primary relative z-50"
         id="progress_line"
+        ref={progresLineRef}
       ></div>
     </div>
   ) : null;

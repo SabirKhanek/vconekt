@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, ScrollToPlugin);
 import "./App.css";
 
 import { V3d } from "./components/3dLogo.js";
-import { FluidCursor } from "./components/fluidCursor.jsx";
+import { FluidCursor } from "./components/fluidCursor.tsx";
 import { Preloader } from "./components/preloader.js";
 
 import { motion } from "framer-motion";

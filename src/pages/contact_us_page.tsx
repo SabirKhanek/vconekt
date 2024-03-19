@@ -65,8 +65,9 @@ export function ContactUsPage() {
       </div>
       <div className="relative z-[2] responsive">
         <h2 className="heading">
-          Discussing You, Your Company, Your Product, and Your Objectives -
-          <span className="text-primary"> Let's Connect.</span>
+          Let's embark on this journey together.{" "}
+          <span className="text-primary"> Reach out now,</span> and let the
+          magic unfold.
         </h2>
         <div
           className="w-full my-3 px-10 md:px-20 py-10"

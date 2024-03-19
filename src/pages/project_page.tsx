@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useRouteChange } from "../shared/hooks/useRouteChange";
-import { useEffect,useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Project, ProjectCard, projects } from "./projects";
 import { Link } from "react-router-dom";
 import { GoArrowRight } from "react-icons/go";
@@ -213,6 +213,15 @@ export function SliderNavigator({
       sliderRef.current?.removeEventListener("scrollend", ev);
     };
   }, [sliderRef.current]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      scrollToSample((activeIndex + 1) & (samples.length - 1));
+    }, 2_000);
+    return () => {
+      clearInterval(interval);
+    };
+  });
   return (
     <div className="flex justify-center items-center gap-3 my-5">
       {samples.map((_, i) => (

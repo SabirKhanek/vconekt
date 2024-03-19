@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { usePreloader } from "../shared/contexts/preloader";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 
 interface Blogs extends HTMLProps<HTMLElement> {
   onPage?: boolean;
@@ -31,6 +32,7 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
       });
     });
   }, [preloader.isLoaded]);
+  const navigate = useRouteChange();
   return (
     <motion.section
       {...(props as any)}
@@ -42,12 +44,17 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
             Our Blog
           </span>
           <p
-            className="font-orbit font-semibold leading-tight heading text-white mt-5"
+            className="font-orbit font-semibold  heading text-white mt-5 max-lm:!text-[34px] max-lm:!max-h-full !leading-tight text-[5vw]"
             style={{ textTransform: "capitalize" }}
           >
             WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST NEWS.
           </p>
-          <Button className="absolute bottom-0 right-0">View All</Button>
+          <Button
+            onClick={() => navigate("/blogs")}
+            className="absolute bottom-0 right-0"
+          >
+            View All
+          </Button>
         </div>
       ) : (
         <div className="max-w-[80%] w-full mb-16">
