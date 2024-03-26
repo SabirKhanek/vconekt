@@ -43,15 +43,24 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
           <span className="rounded-3xl bg-primary/15 text-primary px-5 py-2 uppercase font-orbit ">
             Our Blog
           </span>
-          <p
-            className="font-orbit font-semibold  heading text-white mt-5 max-lm:!text-[34px] max-lm:!max-h-full !leading-tight text-[5vw]"
-            style={{ textTransform: "capitalize" }}
-          >
-            WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST NEWS.
-          </p>
+          <div className="flex flex-col gap-1">
+            <p
+              className="font-orbit font-semibold  heading text-white mt-5 max-lm:!text-[34px] max-lm:!max-h-full !leading-tight text-[5vw]"
+              style={{ textTransform: "capitalize" }}
+            >
+              WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST
+              NEWS.
+            </p>
+            <Button
+              onClick={() => navigate("/blogs")}
+              className="sm:hidden w-fit"
+            >
+              View All
+            </Button>
+          </div>
           <Button
             onClick={() => navigate("/blogs")}
-            className="absolute bottom-0 right-0"
+            className="absolute !hidden sm:!flex bottom-0 right-0"
           >
             View All
           </Button>

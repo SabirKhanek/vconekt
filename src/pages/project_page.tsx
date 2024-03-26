@@ -17,7 +17,7 @@ export function ProjectPage() {
     const projectToFind = projects.find((p) => p.slug === slug);
     if (projectToFind) setProject(projectToFind);
     else navigate("/projects");
-  }, []);
+  }, [slug]);
   if (!project) return;
   //   console.log(project);
   return (
@@ -131,8 +131,8 @@ export function ProjectPage() {
       <div className="my-20">
         <h2 className="heading">More Projects</h2>
         <div className="my-2 flex gap-10 flex-col md:flex-row items-center">
-          <ProjectCard></ProjectCard>
-          <ProjectCard></ProjectCard>
+          <ProjectCard project={projects[0]}></ProjectCard>
+          <ProjectCard project={projects[1]}></ProjectCard>
         </div>
       </div>
 

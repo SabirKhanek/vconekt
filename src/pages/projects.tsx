@@ -42,7 +42,7 @@ export function Projects() {
           <span className="text-primary">Stories</span>
         </h2>
         <div className="flex flex-col 520:flex-row gap-10 my-3 mb-10">
-          {[1, 2].map((v) => {
+          {[1, 2].map((v, i) => {
             return (
               <div
                 key={v}
@@ -50,9 +50,9 @@ export function Projects() {
                   v === 2 ? "520:-translate-y-[75px]" : ""
                 }`}
               >
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
+                <ProjectCard project={projects[i % projects.length]} />
+                <ProjectCard project={projects[(i + 1) % projects.length]} />
+                <ProjectCard project={projects[(i + 2) % projects.length]} />
               </div>
             );
           })}
@@ -66,7 +66,7 @@ export function Projects() {
   );
 }
 
-export function ProjectCard() {
+export function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(ref, { once: true });
   const imageRef = useRef<HTMLDivElement>(null);
@@ -90,10 +90,10 @@ export function ProjectCard() {
   return (
     <motion.a
       ref={ref}
-      href="/projects/best_guitar_instruments"
+      href={`/projects/${project.slug}`}
       onClick={(e) => {
         e.preventDefault();
-        navigate("/projects/best_guitar_instruments");
+        navigate(`/projects/${project.slug}`);
       }}
       style={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 100 }}
       className="flex relative flex-col w-full gap-3 transition-all duration-500 ease-in-out"
@@ -129,13 +129,8 @@ export function ProjectCard() {
       </div>
 
       <div>
-        <h2 className="font-orbit font-semibold text-3xl">
-          Best Guitar Instruments
-        </h2>
-        <p className="text-sm font-light">
-          We design an affiliate website for best guitar instruments. Best
-          Guitar Instruments provides top-quality guitars that sound amazing.
-        </p>
+        <h2 className="font-orbit font-semibold text-3xl">{project.title}</h2>
+        <p className="text-sm font-light">{project.short_desc}</p>
       </div>
     </motion.a>
   );
@@ -155,10 +150,13 @@ export interface Project {
     authorCompany: string;
     text: string;
   };
+  short_desc: string;
 }
 
 export const projects: Project[] = [
   {
+    short_desc:
+      "Best guitar Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, officiis?",
     title: "Best Guitar Instruments",
     about:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -181,6 +179,79 @@ export const projects: Project[] = [
       },
     ],
     slug: "best_guitar_instruments",
+    targetUrl: "#",
+  },
+  {
+    short_desc:
+      "Activ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, officiis?",
+    title: "Activ",
+    about:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    involvements: ["Mobile App", "Web App", "E-commerce"],
+    mainThumb: {
+      src: `https://picsum.photos/590/443?t=${Math.random()}`,
+      type: "image",
+    },
+    review: {
+      text: "Olga is one of the smartest designers I have ever worked with. One of her outstanding skills as a designer is that she is a great listener. She will take client requirements and expertly solve complex problems. She can take her vast design experience and combine it with technology to come up with fantastic designs on point, and on time. Her many award winning designs speak for her talent and process.",
+      authorCompany: "Director Fast Track Company",
+      authorImage: `https://picsum.photos/80?t=${Math.random()}`,
+      authorName: "John Doe",
+    },
+    samples: [
+      { src: "/activ_1.png", type: "image" },
+      {
+        src: `/activ_2.png`,
+        type: "image",
+      },
+    ],
+    slug: "activ",
+    targetUrl: "#",
+  },
+  {
+    short_desc:
+      "Fast track Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, officiis?",
+    title: "Fast Track",
+    about:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    involvements: ["Mobile App", "Web App", "E-commerce"],
+    mainThumb: {
+      src: `https://picsum.photos/590/443?t=${Math.random()}`,
+      type: "image",
+    },
+    review: {
+      text: "Olga is one of the smartest designers I have ever worked with. One of her outstanding skills as a designer is that she is a great listener. She will take client requirements and expertly solve complex problems. She can take her vast design experience and combine it with technology to come up with fantastic designs on point, and on time. Her many award winning designs speak for her talent and process.",
+      authorCompany: "Director Fast Track Company",
+      authorImage: `https://picsum.photos/80?t=${Math.random()}`,
+      authorName: "John Doe",
+    },
+    samples: [{ src: "/fast_track_1.png", type: "image" }],
+    slug: "fast_track",
+    targetUrl: "#",
+  },
+  {
+    short_desc:
+      "Boldare Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, officiis?",
+    title: "Boldare",
+    about:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    involvements: ["Mobile App", "Web App", "E-commerce"],
+    mainThumb: {
+      src: `https://picsum.photos/590/443?t=${Math.random()}`,
+      type: "image",
+    },
+    review: {
+      text: "Olga is one of the smartest designers I have ever worked with. One of her outstanding skills as a designer is that she is a great listener. She will take client requirements and expertly solve complex problems. She can take her vast design experience and combine it with technology to come up with fantastic designs on point, and on time. Her many award winning designs speak for her talent and process.",
+      authorCompany: "Director Fast Track Company",
+      authorImage: `https://picsum.photos/80?t=${Math.random()}`,
+      authorName: "John Doe",
+    },
+    samples: [
+      { src: "/boldare_1.png", type: "image" },
+      { src: "/boldare_2.png", type: "image" },
+      { src: "/boldare_3.png", type: "image" },
+    ],
+    slug: "boldare",
     targetUrl: "#",
   },
 ];
