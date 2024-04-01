@@ -563,14 +563,14 @@ const cardDetails = [
     logo: "cardIcon3.svg",
     title: "Graphics & UI design",
     description:
-      "Transforming visions into digital realities with Web Design & Development expertise.",
+      "Elevate brand aesthetics and user experiences with our Graphic and UI Design solutions.",
     link: "#",
   },
   {
     logo: "cardIcon1.svg",
     title: "Web design & develoment",
     description:
-      "Elevate brand aesthetics and user experiences with our Graphic and UI Design solutions.",
+      "Transforming visions into digital realities with Web Design & Development expertise.",
     link: "#",
   },
   {
