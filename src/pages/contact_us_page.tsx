@@ -4,13 +4,38 @@ import { Button } from "../components/button";
 import { useGSAP } from "@gsap/react";
 import { usePreloader } from "../shared/contexts/preloader";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { FaSpinner } from "react-icons/fa";
 
 export function ContactUsPage() {
   const preloader = usePreloader();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (event: any) => {
+    event.preventDefault();
+    if (isLoading) return;
+    setIsLoading(true);
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "b34add74-f2ab-4e88-8726-71b179289688");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+    }
+    setIsLoading(false);
+  };
   useGSAP(() => {
     if (!isInView) return;
     const tl = gsap.timeline({});
@@ -76,13 +101,14 @@ export function ContactUsPage() {
               "linear-gradient(45.84deg, #131A14 1.97%, #253426 97.02%)",
           }}
         >
-          <form action="">
+          <form onSubmit={onSubmit}>
             <div className="flex flex-wrap items-center gap-4 font-orbit">
               <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your name?</label>
                 <input
                   placeholder="your name?"
                   type="text"
+                  name="name"
                   style={{ background: "rgba(19, 26, 20, 1)" }}
                   className="p-2 bg-black text-white outline-none"
                 />
@@ -92,6 +118,7 @@ export function ContactUsPage() {
                 <input
                   placeholder="Your Email"
                   type="text"
+                  name="email"
                   style={{ background: "rgba(19, 26, 20, 1)" }}
                   className="p-2 bg-black text-white outline-none"
                 />
@@ -103,6 +130,7 @@ export function ContactUsPage() {
                 <input
                   placeholder="phone number"
                   type="text"
+                  name="phone"
                   style={{ background: "rgba(19, 26, 20, 1)" }}
                   className="p-2 bg-black text-white outline-none"
                 />
@@ -112,6 +140,7 @@ export function ContactUsPage() {
                 <input
                   type="text"
                   placeholder="country"
+                  name="country"
                   style={{ background: "rgba(19, 26, 20, 1)" }}
                   className="p-2 bg-black text-white outline-none"
                 />
@@ -120,7 +149,7 @@ export function ContactUsPage() {
             <div className="flex  flex-1 flex-col gap-1">
               <label htmlFor="">Your project is about?</label>
               <textarea
-                name=""
+                name="project_details"
                 id=""
                 rows={7}
                 className="resize-none p-2 bg-black text-white outline-none"
@@ -129,6 +158,7 @@ export function ContactUsPage() {
             </div>
             <div className="flex flex-wrap items-center mt-3 gap-3">
               <Button type="submit">Submit</Button>
+              {isLoading && <FaSpinner className="animate-spin"></FaSpinner>}
               <p className="text-sm">
                 OR YOU CAN EMAIL US HERE:{" "}
                 <a

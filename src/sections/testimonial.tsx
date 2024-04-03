@@ -127,15 +127,39 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
 
 const quotes = [
   {
-    quote_text: `They know their stuff, and we are currently using them for more projects.`,
-    author: "John Doe",
-    author_title: "Director Fast Track Training",
+    quote_text: `Awesome to work with. Great communication and very knowledgeable.`,
+    author: "Unknown",
+    author_title: "Customer",
     img_src: "/testimonial_1.jpg",
   },
   {
-    quote_text: `Yeah this is another text yayy.!`,
-    author: "Johnson Smith",
-    author_title: "Director Vconekt",
+    quote_text: `Very satisfied with Khakan. Will rehire him for another contract`,
+    author: "Unknown",
+    author_title: "Customer",
     img_src: "/testimonial_2.jpg",
+  },
+  {
+    quote_text: `All work done as per requirements and within the given timeline. Thanks for all your efforts.`,
+    author: "Unknown",
+    author_title: "Customer",
+    img_src: "/testimonial_2.jpg",
+  },
+  {
+    quote_text: `Very responsive, quick, committed and knowledgable. Highly recommend to trust this developer.`,
+    author: "Unknown",
+    author_title: "Customer",
+    img_src: "/testimonial_2.jpg",
+  },
+  {
+    quote_text: `Khakan is faster than i expected.i was not expecting such fast result with such perfection! highly recommended. Thanks for helping!`,
+    author: "Unknown",
+    author_title: "Customer",
+    img_src: "/testimonial_2.jpg",
+  },
+  {
+    quote_text: `Excellent work Done on time. Highly Recommended!!!!`,
+    author: "Unknown",
+    author_title: "Customer",
+    img_src: "/testimonial_3.png",
   },
 ];

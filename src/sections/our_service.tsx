@@ -9,6 +9,7 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import { motion, useInView } from "framer-motion";
 import { useResponsive } from "../hooks/useResponsive";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 
 export function OurServices({ ...props }: HTMLProps<HTMLElement>) {
   const responsive = useResponsive();
@@ -132,8 +133,8 @@ function ServiceCardSliderSmall({ sliderRef }: { sliderRef: ReactRef }) {
 function ServiceCard({
   description,
   link,
-  logo,
   title,
+  index,
 }: // index,
 // total,
 (typeof cardDetails)[0] & { index: number; total: number }) {
@@ -147,7 +148,11 @@ function ServiceCard({
       className={`w-72 h-72 aspect-square black-gradient snap-center flex justify-center items-center p-7 text-white`}
     >
       <span className="w-full h-full inline-flex flex-col gap-2">
-        <img src={logo} alt="" className="w-10 h-10" />
+        <img
+          src={cardIcons[index % cardIcons.length]}
+          alt=""
+          className="w-10 h-10"
+        />
         <div>
           <h2 className="text-left">{title}</h2>
           <p className="mt-2 text-left text-sm font-thin">{description}</p>
@@ -450,6 +455,7 @@ function ServiceSectionLarge({
     setHiddenFlags(hiddenCards);
     setZIndexes(zindarr as number[]);
   }, [refreshFlag]);
+  const navigate = useRouteChange();
 
   return (
     <motion.section
@@ -469,7 +475,7 @@ function ServiceSectionLarge({
           id="service_slider"
         >
           {/* <div className="absolute h-full w-1left-1/2 -translate-x-1/2"></div> */}
-          {[1, 2, 3, 4, 5, 6, 7].reverse().map((v, index) => {
+          {[...Array(cardDetails.length)].reverse().map((v, index) => {
             return (
               <div
                 key={v}
@@ -487,7 +493,7 @@ function ServiceSectionLarge({
                 <span className="w-full h-full inline-flex flex-col gap-2">
                   {/* <span>{cardDetails[index % cardDetails.length].logo}</span> */}
                   <img
-                    src={`${cardDetails[index % cardDetails.length].logo}`}
+                    src={`${cardIcons[index % cardIcons.length]}`}
                     alt=""
                     className="w-10 h-10"
                   />
@@ -502,6 +508,11 @@ function ServiceSectionLarge({
                   <a
                     className="text-primary font-medium hover:underline text-left"
                     href={cardDetails[index % cardDetails.length].link}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      navigate(cardDetails[index % cardDetails.length].link);
+                    }}
                   >
                     Learn more...
                   </a>
@@ -557,27 +568,66 @@ function ServiceSectionLarge({
     </motion.section>
   );
 }
-
+const cardIcons = ["cardIcon1.svg", "cardIcon2.svg", "cardIcon3.svg"];
 const cardDetails = [
   {
-    logo: "cardIcon3.svg",
     title: "Graphics & UI design",
     description:
       "Elevate brand aesthetics and user experiences with our Graphic and UI Design solutions.",
-    link: "#",
+    link: "/services/ui_ux",
   },
   {
-    logo: "cardIcon1.svg",
     title: "Web design & develoment",
     description:
       "Transforming visions into digital realities with Web Design & Development expertise.",
-    link: "#",
+    link: "/services/web_design_and_development",
   },
   {
-    logo: "cardIcon2.svg",
     title: "Digital Media Marketing",
     description:
       "Drive audience engagement and brand visibility with tailored Digital Media Marketing strategies.",
     link: "#",
+  },
+  {
+    title: "Mobile App Development",
+    description:
+      "In your hand, we sculpt captivating mobile experiences that empower brand exploration like never before.",
+    link: "/services/mobile_app_dev",
+  },
+  {
+    title: "Search Engine Optimization",
+    description:
+      "We guide your brand through digital waters, navigating search algorithms to boost online visibility and ride waves of organic traffic to success.",
+    link: "/services/seo",
+  },
+  {
+    title: "Artificial Intelligence",
+    description:
+      "In the data realm, we architect innovation, weaving intelligence into your business fabric, crafting automated solutions that anticipate, adapt, and evolve, unlocking endless possibilities.",
+    link: "/services/ai",
+  },
+  {
+    title: "Blockchain",
+    description:
+      "We pioneer trust in the digital frontier, using blockchain to secure transactions and forge transparent pathways to a future where trust is currency.",
+    link: "/services/blockchain",
+  },
+  {
+    title: "Social Media Management",
+    description:
+      "We spark conversations, ignite passions, and forge loyal bonds from tweets to trends, bridging the digital divide with engaging content.",
+    link: "/services/social_media_management",
+  },
+  {
+    title: "Ads Management",
+    description:
+      "As conductors on the digital stage, we orchestrate campaigns that resonate with your audience's rhythm, captivating hearts, minds, and clicks with every beat.",
+    link: "/services/ads_management",
+  },
+  {
+    title: "Unity Game Development",
+    description:
+      "We code dreams into reality, crafting immersive worlds where players become heroes, triumphing over challenges in epic quests.",
+    link: "/services/unity_game_development",
   },
 ];
