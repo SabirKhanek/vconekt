@@ -20,7 +20,7 @@ export function ContactUsPage() {
     setIsLoading(true);
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "b34add74-f2ab-4e88-8726-71b179289688");
+    formData.append("access_key", "1023af79-b3fc-4485-bb6b-6405532b6ac2");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
