@@ -10,7 +10,7 @@ export interface V3dProps {
   className?: string;
   nextElRef?: ReactRef;
 }
-export function V3d({ nextElRef }: V3dProps) {
+export default function V3d({ nextElRef }: V3dProps) {
   const location = useLocation();
 
   const elementRef = useRef<HTMLDivElement>(null);

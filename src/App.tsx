@@ -8,8 +8,10 @@ import ScrollToPlugin from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, ScrollToPlugin);
 import "./App.css";
 
-import { V3d } from "./components/3dLogo.js";
-import { FluidCursor } from "./components/fluidCursor.tsx";
+import { lazy } from 'react';
+
+const V3d = lazy(() => import("./components/3dLogo.js"));
+const FluidCursor = lazy(() => import("./components/fluidCursor.tsx"));
 import { Preloader } from "./components/preloader.js";
 
 import { motion } from "framer-motion";

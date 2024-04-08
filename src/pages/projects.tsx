@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRouteChange } from "../shared/hooks/useRouteChange";
 
-export function Projects() {
+export default function Projects() {
   return (
     <>
       <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-36 pb-24">

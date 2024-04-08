@@ -6,6 +6,7 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import { motion, useInView } from "framer-motion";
 import { Bot3D } from "../components/bot";
+import { useRouteChange } from "../shared/hooks/useRouteChange";
 export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
@@ -45,7 +46,7 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
       }
     );
   }, [isInView]);
-
+  const navigate = useRouteChange();
   return (
     <motion.section
       ref={ref}
@@ -94,7 +95,11 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
           <p className="font-orbit small-heading font-semibold uppercase text-4xl basis-3/4 shrink-0">
             We stand ready to assist you in one click.
           </p>
-          <Button bg="gradient" className="self-start md:self-auto">
+          <Button
+            onClick={() => navigate("contact_us")}
+            bg="gradient"
+            className="self-start md:self-auto pointer-events-auto"
+          >
             Contact Us
           </Button>
         </div>

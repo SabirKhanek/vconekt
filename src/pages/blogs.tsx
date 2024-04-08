@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { OurBlog } from "../sections/our_blog";
 
-export function BlogsPage() {
+export default function BlogsPage() {
   return (
     <div>
       <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-36 pb-24">

@@ -9,7 +9,7 @@ import gsap from "gsap";
 import { ContactUs } from "../sections/contact_us";
 import Testimonial from "../sections/testimonial";
 
-export function ServicesPage() {
+export default function ServicesPage() {
   return (
     <>
       <div className="flex justify-center items-center flex-col  text-white relative z-10 gap-4 pt-40 pb-24">

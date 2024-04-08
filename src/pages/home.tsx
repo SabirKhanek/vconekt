@@ -8,7 +8,7 @@ import { OurServices } from "../sections/our_service";
 import { RecentWork } from "../sections/recent_work";
 import Testimonial from "../sections/testimonial";
 
-export function Home() {
+export default function Home() {
   return (
     <>
       <Hero id="hero" />

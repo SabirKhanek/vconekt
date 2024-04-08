@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { GoArrowRight } from "react-icons/go";
 import { motion } from "framer-motion";
 import { ContactUs } from "../sections/contact_us";
-export function ProjectPage() {
+export default function ProjectPage() {
   const slug = useParams()["slug"];
   const navigate = useRouteChange();
   if (!slug) {

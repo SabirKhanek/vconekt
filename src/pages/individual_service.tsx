@@ -9,7 +9,9 @@ import { AboutUsVideo } from "../components/about_us_video";
 import { RecentWork } from "../sections/recent_work";
 import Testimonial from "../sections/testimonial";
 import { ContactUs } from "../sections/contact_us";
-export function IndividualServicePage({ ...props }: HTMLProps<HTMLDivElement>) {
+export default function IndividualServicePage({
+  ...props
+}: HTMLProps<HTMLDivElement>) {
   const slug = useParams()["slug"];
   const navigate = useNavigate();
   if (!slug) return;

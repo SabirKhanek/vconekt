@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { FaSpinner } from "react-icons/fa";
 
-export function ContactUsPage() {
+export default function ContactUsPage() {
   const preloader = usePreloader();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref);

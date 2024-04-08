@@ -7,7 +7,7 @@ import Testimonial from "../sections/testimonial";
 import { OurWorkProcess } from "../sections/our_work_process";
 import { AboutUsVideo } from "../components/about_us_video";
 
-export function AboutUsPage() {
+export default function AboutUsPage() {
   return (
     <>
       <div className="flex justify-center items-center flex-col z-[2] text-white relative  gap-4 pt-40 pb-24">

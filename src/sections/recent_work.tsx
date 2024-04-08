@@ -1,16 +1,18 @@
-import { HTMLProps, useEffect, useRef, useState } from "react";
+import React, { HTMLProps, useEffect, useRef, useState } from "react";
 import { Button } from "../components/button";
 import { getResponsiveClasses } from "../shared/constants/getResponsiveClasses";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { motion, useInView } from "framer-motion";
-export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
+import { useRouteChange } from "../shared/hooks/useRouteChange";
+export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
   const [slideReelTimeline, setSlideReelTimeline] =
     useState<gsap.core.Timeline | null>();
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const [hoveredReel, setHoveredReel] = useState<number | null>(null);
+  const navigate = useRouteChange()
   //   const [isAnimating, setIsAnimating] = useState(false);
   useGSAP(() => {
     const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
@@ -123,10 +125,13 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
     >
       <div
         id="reel_container"
-        style={{ width: (width + 10) * 7, height: height * 1.3 }}
-        className="absolute h-[300px] top-1/2 -translate-y-1/2 z-0 overflow-y-visible overflow-x-hidden"
+        style={{
+          width: (width + 10) * recent_reel.length,
+          height: height * 1.3,
+        }}
+        className="absolute origin-center h-[300px] top-1/2 -translate-y-1/2 z-0 overflow-y-visible overflow-x-hidden"
       >
-        {[1, 2, 3, 4, 5, 1, 2].map((n, index) => {
+        {recent_reel.map((n, index) => {
           const transformValue = `translateX(${(width + 15) * index}px)`;
           return (
             <div
@@ -155,11 +160,13 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
                 }}
                 className="service-reel-item-inner p-1 h-full border border-white/65 absolute "
               >
-                <img
-                  src={`/service_reel_${n}.png`}
-                  className="object-cover w-full h-full"
-                  alt=""
-                />
+                <a href={n.target} target="_blank">
+                  <img
+                    src={`/portfolio/${n.src}`}
+                    className="object-cover w-full h-full"
+                    alt=""
+                  />
+                </a>
               </div>
             </div>
           );
@@ -180,10 +187,41 @@ export function RecentWork({ ...props }: HTMLProps<HTMLElement>) {
             <span className="ml-2 inline-block w-1 h-9 bg-primary type_cursor"></span>
           </span>
         </p>
-        <Button className="pointer-events-auto font-orbit">
+        <Button
+          onClick={() => navigate("/projects")}
+          className="pointer-events-auto font-orbit"
+        >
           View All Portfolio
         </Button>
       </div>
     </motion.section>
   );
-}
+});
+
+const recent_reel = [
+  { src: "3_monkeys.png", target: "#" },
+  { src: "aaron.png", target: "#" },
+  { src: "activ_on.png", target: "#" },
+  { src: "bank_info.png", target: "#" },
+  { src: "Bath Fitter.png", target: "#" },
+  { src: "boldare.png", target: "#" },
+  { src: "cmmhc.png", target: "#" },
+  { src: "crave_timing_system.png", target: "#" },
+  { src: "dragon_smoke.png", target: "#" },
+  { src: "elite_exterior_cleaning.png", target: "#" },
+  { src: "fast_track.png", target: "#" },
+  { src: "fishing_gun.png", target: "#" },
+  { src: "guitar_instrument.png", target: "#" },
+  { src: "james_whitney_co.png", target: "#" },
+  { src: "malik_opal.png", target: "#" },
+  { src: "marjan.png", target: "#" },
+  { src: "motor_helmets.png", target: "#" },
+  { src: "reca.png", target: "#" },
+  { src: "shisha_n_vape.png", target: "#" },
+  { src: "shisha_shop.png", target: "#" },
+  { src: "smarter_swipe.png", target: "#" },
+  { src: "sports_hub.png", target: "#" },
+  { src: "vconekt.png", target: "#" },
+  { src: "vconekt_store.png", target: "#" },
+  { src: "yulu.png", target: "#" },
+];

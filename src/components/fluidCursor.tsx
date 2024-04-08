@@ -1,7 +1,7 @@
 import { HTMLProps, useRef } from "react";
 import { useFluidCursor } from "./fluidCursorHook";
 
-export function FluidCursor({
+export default function FluidCursor({
   className,
   ...props
 }: HTMLProps<HTMLCanvasElement>) {
