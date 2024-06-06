@@ -128,20 +128,20 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
 const quotes = [
   {
     quote_text: `Awesome to work with. Great communication and very knowledgeable.`,
-    author: "Unknown",
+    author: "Jennifer Bradley",
     author_title: "Customer",
     img_src: "/testimonial_1.jpg",
   },
   {
     quote_text: `Very satisfied with Khakan. Will rehire him for another contract`,
-    author: "Unknown",
-    author_title: "Customer",
+    author: "Kade Rossey",
+    author_title: "CEO, Pibborafi",
     img_src: "/testimonial_2.jpg",
   },
   {
     quote_text: `All work done as per requirements and within the given timeline. Thanks for all your efforts.`,
-    author: "Unknown",
-    author_title: "Customer",
+    author: "Rick Mulder",
+    author_title: "Owner, Dock Hand",
     img_src: "/testimonial_2.jpg",
   },
   {
@@ -162,4 +162,36 @@ const quotes = [
     author_title: "Customer",
     img_src: "/testimonial_3.png",
   },
+  // {
+  //   quote_text:
+  //     "Great work!! Would definitely rehire him again if I have more business projects!",
+  //   author: "Shams El-Akabawy",
+  //   author_title: "a",
+  // },
+  // {
+  //   quote_text: "Fast work, great results",
+  //   author: "Andrew Reisman",
+  // },
+  // {
+  //   quote_text:
+  //     "We wish to express our deepest appreciation to VConekt for all the wonderful work done. VConekt is professional and always easy to do business with. Hayder, our representative with VConekt, is available and responsive, consistently ensuring diligence and excellence in all services received.",
+  //   author: "Joe Talic",
+  //   author_title: "CEO, Aaron Signature",
+  // },
+  // {
+  //   quote_text:
+  //     "Very responsive, quick, committed and knowledgable. Highly recommend to trust this developer.",
+  // },
+  // {
+  //   quote_text:
+  //     "Khakan Hayder was GREAT to work with and had good communication and technical abilities in identifying the issue and resolving it without effecting whole project, He was so quick to apply, with professional attitude!! He also guide me how to improve it. I will work with him in the future and so should you!",
+  // },
+  // {
+  //   quote_text:
+  //     "Khakan was very quick to apply for the job and get it done, our issue was sorted within a an hour. Great work. Would definitely use him again",
+  // },
+  // {
+  //   quote_text:
+  //     "Excellent job done! Needed to get a few things worked on in my react native project. Everything was completed successfully and in a timely manner. It was a pleasure!",
+  // },
 ];

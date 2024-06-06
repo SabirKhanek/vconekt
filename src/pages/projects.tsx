@@ -105,7 +105,7 @@ export function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         <div className="overflow-hidden">
           <img
             src={project.mainThumb.src}
-            className="w-full aspect-[1.1608/1] object-cover group-hover:scale-110 over transition-all duration-200 ease-in-out"
+            className="w-full aspect-[1.33/1] object-cover group-hover:scale-110 over transition-all duration-200 ease-in-out"
             alt=""
           />
         </div>
@@ -189,7 +189,7 @@ export const projects: Project[] = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     involvements: ["Mobile App", "Web App", "E-commerce"],
     mainThumb: {
-      src: `cuts_steak.png`,
+      src: `Activcon.png`,
       type: "image",
     },
     review: {
@@ -202,6 +202,10 @@ export const projects: Project[] = [
       { src: "/activ_1.png", type: "image" },
       {
         src: `/activ_2.png`,
+        type: "image",
+      },
+      {
+        src: `/Activcon-1.png`,
         type: "image",
       },
     ],

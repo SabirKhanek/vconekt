@@ -20,7 +20,7 @@ export default function ContactUsPage() {
     setIsLoading(true);
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "1db36cb6-0124-4a37-b335-b5d65c259e04");
+    formData.append("access_key", "3e1b1aa6-bc61-44a9-b596-25f58b98cd5d");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
