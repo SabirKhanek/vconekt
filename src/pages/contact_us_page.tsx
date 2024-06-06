@@ -162,10 +162,10 @@ export default function ContactUsPage() {
               <p className="text-sm">
                 OR YOU CAN EMAIL US HERE:{" "}
                 <a
-                  href="mailto:info@vconekt.com"
+                  href="mailto:contact@vconekt.com"
                   className="hover:underline cursor-pointer"
                 >
-                  info@vconekt.com
+                  contact@vconekt.com
                 </a>
               </p>
             </div>
