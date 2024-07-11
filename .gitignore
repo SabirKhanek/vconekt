@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+.htaccess
+
 # next.js
 /.next/
 /out/
