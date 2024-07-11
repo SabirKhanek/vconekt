@@ -41,16 +41,16 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
   if (testimonials.length <= 0) return;
   return (
     <motion.section
-      style={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }}
+      // style={{ opacity: inView ? 1 : 0, y: inView ? 0 : 100 }}
       ref={ref}
       {...(props as any)}
       className={`${'responsive'} relative  z-[2] my-10 mt-28 w-full transition-all duration-300`}
     >
-      <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary ">
+      <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
         Testimonial
       </span>
       <p
-        className="font-orbit heading mt-5 font-semibold text-white"
+        className="heading mt-5 font-orbit font-semibold text-white"
         style={{ textTransform: 'capitalize' }}
       >
         They say we're good for a reason
