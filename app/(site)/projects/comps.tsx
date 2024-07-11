@@ -1,10 +1,11 @@
-import useHover from "@/components/use-hover";
-import { useGSAP } from "@gsap/react";
-import { useInView } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { useRef } from "react";
-import {motion } from "framer-motion"
-import { GoArrowRight } from "react-icons/go";
+import useHover from '@/components/use-hover';
+import { useGSAP } from '@gsap/react';
+import { useInView } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { GoArrowRight } from 'react-icons/go';
+import gsap from 'gsap';
 export function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(ref, { once: true });
