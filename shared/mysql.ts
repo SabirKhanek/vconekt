@@ -8,5 +8,4 @@ export async function initConnection() {
   }
   return db;
 }
-
 initConnection();

@@ -44,7 +44,7 @@ export function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       >
         <div className="overflow-hidden">
           <img
-            src={project.mainThumb.src}
+            src={`/${project.mainThumb.src}`}
             className="over aspect-[1.33/1] w-full object-cover transition-all duration-200 ease-in-out group-hover:scale-110"
             alt=""
           />

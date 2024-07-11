@@ -49,12 +49,12 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
     >
       {!onPage ? (
         <div className="relative">
-          <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary ">
+          <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
             Our Blog
           </span>
           <div className="flex flex-col gap-1">
             <p
-              className="font-orbit heading  max-lm:!text-[34px] max-lm:!max-h-full mt-5 text-[5vw] font-semibold !leading-tight text-white"
+              className="heading mt-5  font-orbit text-[5vw] font-semibold !leading-tight text-white max-lm:!max-h-full max-lm:!text-[34px]"
               style={{ textTransform: 'capitalize' }}
             >
               WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST
@@ -72,7 +72,7 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
         </div>
       ) : (
         <div className="mb-16 w-full max-w-[80%]">
-          <h2 className="font-orbit heading">
+          <h2 className="heading font-orbit">
             Illuminating the Digital{' '}
             <span className="text-primary">Landscape</span>
           </h2>
@@ -120,12 +120,12 @@ function BlogCard({
         </div>
         <div className="flex w-full flex-col justify-between">
           <div className="flex w-full items-start justify-between gap-7">
-            <Link href={`/blogs/${blog.slug}`}>
-              <h2 className="font-orbit small-heading cursor-pointer text-wrap text-[36px] font-semibold text-primary hover:underline">
+            <Link href={`/vc-blogs/${blog.slug}`}>
+              <h2 className="small-heading cursor-pointer text-wrap font-orbit text-[36px] font-semibold text-primary hover:underline">
                 {blog.blog_title}
               </h2>
             </Link>
-            <Link href={`/blogs/${blog.slug}`}>
+            <Link href={`/vc-blogs/${blog.slug}`}>
               <motion.button
                 initial={{
                   background:
@@ -139,7 +139,7 @@ function BlogCard({
                   color: '#000'
                 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="520:flex 768:hidden hidden rounded-full border border-white bg-transparent p-3 transition-all duration-150 hover:scale-110 lg:flex"
+                className="hidden rounded-full border border-white bg-transparent p-3 transition-all duration-150 hover:scale-110 520:flex 768:hidden lg:flex"
               >
                 <GoArrowRight className="-rotate-[30deg] text-3xl" />
               </motion.button>

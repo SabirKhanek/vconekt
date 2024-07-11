@@ -1,10 +1,9 @@
-import path from 'path';
 import { drizzle } from 'drizzle-orm/mysql2'; // Use MySQL specific drizzle import
 import mysql from 'mysql2/promise'; // Import MySQL client
 import * as schema from './schema';
 import { Logger } from 'drizzle-orm';
-import { config } from 'dotenv';
-config();
+// import { config } from 'dotenv';
+// config();
 
 // config({ path: path.join(__dirname, "..", "..", "..", ".env") });
 let { MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD } = process.env;
