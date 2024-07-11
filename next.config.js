@@ -4,7 +4,12 @@ const nextConfig = {
     domains: ['utfs.io']
   },
   reactStrictMode: false,
-  eslint: { ignoreDuringBuilds: true }
+  eslint: { ignoreDuringBuilds: true },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['vconekt.com']
+    }
+  }
 };
 
 module.exports = nextConfig;
