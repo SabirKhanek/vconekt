@@ -1,0 +1,1 @@
+ALTER TABLE `blogs` ADD `updated_at` timestamp;
