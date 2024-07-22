@@ -8,13 +8,24 @@ import { ContactUs } from '@/components/site/sections/contact_us';
 import Testimonial from '@/components/site/sections/testimonial';
 import Link from 'next/link';
 import { AnimatedList } from '@/components/site/animatedList';
+import Head from 'next/head';
 
 export default function ServicesPage() {
   return (
     <>
       <div className="relative z-10 flex flex-col  items-center justify-center gap-4 pb-24 pt-40 text-white">
+        <Head>
+          <meta
+            name="title"
+            content="VConekt | Full-Scale IT Solutions | Web & App Dev, SEO, AI & More"
+          />
+          <meta
+            name="description"
+            content="VConekt empowers businesses with comprehensive IT solutions. We deliver custom web & app development, SEO, AI, graphic design, UI/UX, SMM, SEM, and Unity game development. Grow with us!"
+          />
+        </Head>
         <h2 className="heading uppercase ">Services</h2>
-        <div className="font-orbit flex items-center gap-3 font-medium ">
+        <div className="flex items-center gap-3 font-orbit font-medium ">
           <Link
             href={'/'}
             className="cursor-pointer text-primary hover:underline"
@@ -26,9 +37,9 @@ export default function ServicesPage() {
             Services
           </Link>
         </div>
-        <div className="lm:py-9 responsive relative z-[2] pt-36">
+        <div className="responsive relative z-[2] pt-36 lm:py-9">
           <div className="relative z-10">
-            <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary ">
+            <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
               Our Services
             </span>
             <h2 className="heading mt-3 max-w-4xl">

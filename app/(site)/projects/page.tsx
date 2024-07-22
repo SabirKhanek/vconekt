@@ -10,11 +10,22 @@ import useHover from '@/components/use-hover';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ProjectCard, projects } from './comps';
+import Head from 'next/head';
 
 export default function Projects() {
   return (
     <>
       <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
+        <Head>
+          <meta
+            name="title"
+            content="VConekt Projects | Showcasing Innovation & Success Stories"
+          />
+          <meta
+            name="description"
+            content="Explore VConekt's transformative projects! We craft cutting-edge web, app, and digital solutions that drive real results for businesses. Get inspired today!"
+          />
+        </Head>
         <div className="relative flex h-64 flex-col items-center justify-center">
           <V3dContactUs scale={0.7} />
 
@@ -70,5 +81,3 @@ export default function Projects() {
     </>
   );
 }
-
-

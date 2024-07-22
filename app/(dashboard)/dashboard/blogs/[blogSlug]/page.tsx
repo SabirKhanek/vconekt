@@ -95,7 +95,11 @@ const CreateFormSchema = z.object({
   blog_thumbnail: z
     .array(ImgSchema)
     .max(1, 'You can only add 1 thumbnail')
-    .min(1, 'You must add cover thumbnail!')
+    .min(1, 'You must add cover thumbnail!'),
+  meta_title: z.string(),
+  meta_description: z.string(),
+  image_alt: z.string(),
+  target_keywords: z.string()
 });
 
 type CreateSchemaType = z.infer<typeof CreateFormSchema>;
@@ -114,7 +118,11 @@ function CreateBlog() {
       ],
       blog_thumbnail: [],
       blog_slug: '',
-      blog_title: ''
+      blog_title: '',
+      image_alt: '',
+      meta_description: '',
+      meta_title: '',
+      target_keywords: ''
     }
   });
   const { toast } = useToast();
@@ -130,7 +138,13 @@ function CreateBlog() {
         blog_content: v.blog_content,
         blog_thumbnail: v.blog_thumbnail.at(0)!.url,
         blog_title: v.blog_title,
-        slug: v.blog_slug
+        slug: v.blog_slug,
+        metadata: {
+          image_alt: v.image_alt,
+          meta_description: v.meta_description,
+          meta_title: v.meta_title,
+          target_keyword: v.target_keywords
+        }
       });
       toast({ title: 'Blog was created!' });
       router.push(`/dashboard/blogs/${v.blog_slug}`);
@@ -196,6 +210,74 @@ function CreateBlog() {
                 <FormLabel>Blog Slug</FormLabel>
                 <FormControl>
                   <Input disabled placeholder="Enter blog title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="my-3 flex items-center gap-5">
+          <FormField
+            control={form.control}
+            name="meta_title"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Meta Title</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter meta title"
+                    {...field}
+                    onChange={(e) => {
+                      field.onChange(e);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="meta_description"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Meta Description</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter meta description" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="my-3 flex items-center gap-5">
+          <FormField
+            control={form.control}
+            name="image_alt"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Image Alt</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter title image alt"
+                    {...field}
+                    onChange={(e) => {
+                      field.onChange(e);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="target_keywords"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Target Keywords</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter target keyword" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

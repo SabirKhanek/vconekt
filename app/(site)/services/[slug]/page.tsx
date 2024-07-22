@@ -10,6 +10,10 @@ import Testimonial from '@/components/site/sections/testimonial';
 import { ContactUs } from '@/components/site/sections/contact_us';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Head from 'next/head';
+
+
+
 export default function IndividualServicePage() {
   const slug = useParams()['slug'];
   const navigate = useRouter().push;
@@ -20,7 +24,15 @@ export default function IndividualServicePage() {
     return;
   }
   return (
-    <div  className="relative z-[2]">
+    <div className="relative z-[2]">
+      <Head>
+        {service.meta_title && (
+          <meta name="title" content={service.meta_title} />
+        )}
+        {service.meta_description && (
+          <meta name="title" content={service.meta_description} />
+        )}
+      </Head>
       <HeroSection {...service} />
       <WhatIsSection {...service} />
       <WhatIsIncludedSection {...service} />

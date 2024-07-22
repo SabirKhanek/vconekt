@@ -7,6 +7,7 @@ import { useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 import { FaSpinner } from 'react-icons/fa';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function ContactUsPage() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,12 +50,21 @@ export default function ContactUsPage() {
       <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
         <div className="relative flex h-64 flex-col items-center justify-center">
           <V3dContactUs scale={0.7} />
-
+          <Head>
+            <meta
+              name="title"
+              content="VConekt Contact Us | Let's Talk About Your Business Growth"
+            />
+            <meta
+              name="description"
+              content="Ready to unlock your business potential? Contact VConekt today! We're passionate about crafting custom IT solutions to fuel your success. Get in touch!"
+            />
+          </Head>
           <div
             ref={ref}
             className="relative z-10 flex flex-col items-center justify-center gap-4 font-semibold"
           >
-            <div className=" xl-heading font-orbit relative uppercase leading-none">
+            <div className=" xl-heading relative font-orbit uppercase leading-none">
               <div className="opacity-0">
                 LETS TALK
                 <br />
@@ -69,7 +79,7 @@ export default function ContactUsPage() {
                 </h2>
               </div>
             </div>
-            <div className="font-orbit flex items-center gap-3  font-medium ">
+            <div className="flex items-center gap-3 font-orbit  font-medium ">
               <Link
                 href={'/'}
                 className="cursor-pointer text-primary hover:underline"
@@ -101,7 +111,7 @@ export default function ContactUsPage() {
           }}
         >
           <form onSubmit={onSubmit}>
-            <div className="font-orbit flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4 font-orbit">
               <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your name?</label>
                 <input
@@ -123,7 +133,7 @@ export default function ContactUsPage() {
                 />
               </div>
             </div>
-            <div className="font-orbit my-3 flex flex-wrap items-center gap-4">
+            <div className="my-3 flex flex-wrap items-center gap-4 font-orbit">
               <div className="flex min-w-[250px] flex-1 flex-col gap-1">
                 <label htmlFor="">What's your phone number?</label>
                 <input

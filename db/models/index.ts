@@ -32,5 +32,11 @@ export const blogs = mysqlTable('blogs', {
   blog_content_slate: json('blog_content_slate').$type<Value>().default([]),
   updated_at: timestamp('updated_at', {
     mode: 'date'
-  }).$onUpdate(() => new Date())
+  }).$onUpdate(() => new Date()),
+  metadata: json('metadata').default({}).$type<{
+    meta_title?: string;
+    meta_description?: string;
+    image_alt?: string;
+    target_keyword?: string;
+  }>()
 });

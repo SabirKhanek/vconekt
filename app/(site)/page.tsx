@@ -8,10 +8,21 @@ import { OurBlog } from '@/components/site/sections/our_blog';
 import { OurServices } from '@/components/site/sections/our_service';
 import { RecentWork } from '@/components/site/sections/recent_work';
 import Testimonial from '@/components/site/sections/testimonial';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <meta
+          name="title"
+          content="VConekt | Best-in-Class IT Solutions for Businesses Globally"
+        />
+        <meta
+          name="description"
+          content="VConekt is your trusted IT partner for growth. We craft custom web design, SEO, & digital transformation solutions to empower businesses worldwide."
+        />
+      </Head>
       <Hero id="hero" />
       <AboutUs doAnimate id="about_us" />
       <NeedHelp id="need_help" />

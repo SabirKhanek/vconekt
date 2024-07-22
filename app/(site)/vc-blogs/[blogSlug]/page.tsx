@@ -1,7 +1,28 @@
 import { getBlogBySlug } from '@/app/actions/blogs';
+import { Metadata, ResolvingMetadata } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import showdown from 'showdown';
+
+export async function generateMetadata(
+  {
+    params
+  }: {
+    params: { blogSlug: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.blogSlug;
+  const blog = await getBlogBySlug(slug);
+
+  return {
+    title: blog?.metadata?.meta_title,
+    description: blog?.metadata?.meta_description,
+    keywords: blog?.metadata?.target_keyword
+  };
+}
+
 export default async function BlogPage({
   params
 }: {
@@ -16,13 +37,27 @@ export default async function BlogPage({
 
     return (
       <div className="responsive relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
+        <Head>
+          {blog.metadata?.meta_title && (
+            <meta name={'title'} content={blog.metadata.meta_title} />
+          )}
+          {blog.metadata?.meta_description && (
+            <meta
+              name={'description'}
+              content={blog.metadata.meta_description}
+            />
+          )}
+          {blog.metadata?.target_keyword && (
+            <meta name={'keywords'} content={blog.metadata.target_keyword} />
+          )}
+        </Head>
         <div className="responsive max-w-screen-768 ">
-          <h1 className="font-orbit text-center text-5xl font-bold text-primary">
+          <h1 className="text-center font-orbit text-5xl font-bold text-primary">
             {blog.blog_title}
           </h1>
           <div className="my-5 aspect-[1/0.3] w-full">
             <Image
-              alt="blog-thumbnail"
+              alt={blog.metadata?.meta_description || ''}
               width={500}
               height={250}
               className=" !h-full !w-full object-cover object-center"
@@ -35,7 +70,7 @@ export default async function BlogPage({
             </p>
           )}
           <div
-            className="prose prose-neutral prose-strong:text-white prose-headings:text-primary mx-auto text-white"
+            className="prose prose-neutral mx-auto text-white prose-headings:text-primary prose-strong:text-white"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>

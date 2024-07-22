@@ -1,10 +1,13 @@
-'use client';
 import { HTMLProps } from 'react';
 
-export const services = [
+const services_with_metas = [
   {
     slug: 'web_design_and_development',
     title: 'Web Design & Development',
+    meta_title:
+      "VConekt's Website Development Service for Your Business Growth",
+    meta_description:
+      "Get a custom website built by VConket's expert web developers. We deliver high-performing websites that drive results.",
     description:
       'We sculpt digital realms where imagination meets functionality, crafting online experiences that resonate with your audience and leave a lasting impression on every click.',
     highlights: [
@@ -29,10 +32,6 @@ export const services = [
       {
         heading: 'Improved UI',
         body: 'A well-designed and developed website provides a positive user experience that can lead to increased engagement and conversions.'
-      },
-      {
-        heading: 'Brand Credibility',
-        body: "A professional-looking website can help establish your brand's credibility and build trust with potential customers."
       },
       {
         heading: 'Brand Credibility',
@@ -105,6 +104,9 @@ export const services = [
   {
     slug: 'seo',
     title: 'Search Engine Optimiztion',
+    meta_title: "VConket's SEO Services - Supercharge Your Google Rankings",
+    meta_description:
+      "Increase website traffic and leads with VConket's proven SEO strategies. We optimize your business for search engines and user experience.",
     description:
       'We are the navigators of the digital sea, charting courses through search algorithms to elevate your online presence, guiding your brand to the shores of visibility, where waves of organic traffic crash upon the sands of success.',
     highlights: [
@@ -155,6 +157,10 @@ export const services = [
   {
     slug: 'ai',
     title: 'Artificial Intelligence',
+    meta_title:
+      "VConket's AI Solutions to Automate, Analyze & Grow Your Business",
+    meta_description:
+      'VConket helps businesses leverage AI for automation, marketing, and data analysis. Explore our cutting-edge AI solutions.',
     description:
       'In the realm of data, we are the architects of innovation, weaving threads of intelligence into the fabric of your business, creating automated solutions that anticipate, adapt, and evolve, unlocking the door to a world of endless possibilities.',
     highlights: [
@@ -205,53 +211,60 @@ export const services = [
   {
     slug: 'ui_ux',
     title: 'UI/UX & Graphic Design',
+    meta_title: 'VConket: Award-Winning UI/UX & Graphic Design Services',
+    meta_description:
+      "Create user-friendly interfaces and eye-catching visuals with VConket's UI/UX and graphic design services. Let's craft your brand identity.",
     description:
-      'With the stroke of a pixel, we paint portraits of engagement, crafting interfaces that dance with delight and designs that whisper stories, inviting users on journeys of discovery through immersive landscapes of creativity.',
+      'With the stroke of a pixel, we paint the soul of your brand, creating visual symphonies that captivate and engage, weaving narratives through design that resonate with users and elevate your digital presence to an art form.',
     highlights: [
-      'UI/UX for augmented reality (AR) applications',
-      'Brand-centric approach to aesthetics',
-      'Visual storytelling techniques',
-      'User-centric UI/UX design services'
+      'User-centered design for optimal experiences.',
+      'Wireframing and prototyping for iterative development.',
+      'Graphic design for branding and identity.',
+      'Interactive design elements for engagement.'
     ],
     Illustration: ({ ...props }: HTMLProps<HTMLElement>) => (
       <img
         {...(props as HTMLProps<HTMLImageElement>)}
-        src="/ui_ux.png"
+        src="/design.png"
         className={`h-[100px] w-[100px] ${props.className}`}
       ></img>
     ),
     what_is_content: {
-      tag: 'Graphics & UI/UX',
-      heading: 'graphic and ui/ux design service',
-      body: 'Graphics and UI/UX design services typically include creating visually appealing and user-friendly interfaces for websites, applications, and digital products. This involves designing and implementing elements such as icons, images, typography, and color schemes to enhance the user experience and make the product or website easy to navigate and understand.'
+      tag: 'UI/UX',
+      heading: 'UI/UX & Graphic Design',
+      body: 'Elevate your brand with our UI/UX & Graphic Design services at Vconekt LLC. Our talented designers blend creativity with functionality, crafting visually stunning and user-friendly designs. From intuitive user interfaces to captivating graphics, we focus on delivering exceptional digital experiences that leave a lasting impression.'
     },
     what_is_included: [
       {
-        heading: 'Layout',
-        body: 'This refers to how the various elements of your design are arranged on the screen. A good layout should be aesthetically pleasing, easy to navigate, and make it clear what the user should do next.'
+        heading: 'Improved Usability',
+        body: 'User-centered design ensures intuitive navigation and ease of use, enhancing user satisfaction.'
       },
       {
-        heading: 'Color',
-        body: 'The right color scheme can help create a specific mood or emotion, as well as help organize content and highlight important elements..'
+        heading: 'Increased Engagement',
+        body: 'Interactive elements and visually appealing designs boost user engagement and retention.'
       },
       {
-        heading: 'Typography',
-        body: 'The choice of font and its size, weight, and style can affect the readability and impact of your text, as well as contribute to the overall look and feel of your design.'
+        heading: 'Brand Identity',
+        body: 'Consistent and creative graphic design establishes a strong and memorable brand identity.'
       },
       {
-        heading: 'Images & Icons',
-        body: 'The use of images and icons can help break up large blocks of text and provide visual cues to guide the user through your product.'
+        heading: 'Prototyping & Testing',
+        body: 'Wireframing and prototyping allow for iterative testing, ensuring optimal functionality and design.'
       },
       {
-        heading: 'Accessibility',
-        body: 'Good UI/UX design should take into account the needs of all users, including those with disabilities or different devices. This includes considerations such as text size, color contrast, and alternative text for images.'
+        heading: 'Customer Loyalty',
+        body: 'Exceptional user experiences foster customer loyalty and encourage repeat interactions.'
       },
       {
-        heading: 'User Interaction',
-        body: 'The way users interact with your product is a crucial element of UI/UX design. This includes everything from the placement of buttons and links to the design of user forms and feedback messages.'
+        heading: 'Cross-Platform Design',
+        body: 'Responsive design ensures a seamless experience across all devices and platforms.'
       }
     ]
-  },
+  }
+];
+
+export const services = [
+  ...services_with_metas,
   {
     slug: 'blockchain',
     title: 'Blockchain Technology',

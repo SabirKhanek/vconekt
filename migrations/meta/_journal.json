@@ -22,6 +22,13 @@
       "when": 1720575407932,
       "tag": "0002_loose_captain_america",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1721621290352,
+      "tag": "0003_mean_paibok",
+      "breakpoints": true
     }
   ]
 }

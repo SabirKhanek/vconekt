@@ -1,0 +1,1 @@
+ALTER TABLE `blogs` ADD `metadata` json DEFAULT ('{}');
