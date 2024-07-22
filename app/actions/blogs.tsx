@@ -34,7 +34,8 @@ export async function editBlog(
       blog_content: obj.content,
       blog_thumbnail: obj.thumbnail,
       blog_content_slate: obj.content_obj,
-      slug: obj.slug
+      slug: obj.slug,
+      metadata: obj.metadata
     })
     .where(eq(schema.blogs.id, id));
   return true;
