@@ -358,7 +358,11 @@ function EditBlog({
         }
       ],
       blog_slug: syncedBlog.slug,
-      blog_title: syncedBlog.blog_title
+      blog_title: syncedBlog.blog_title,
+      image_alt: syncedBlog.metadata?.image_alt,
+      meta_description: syncedBlog.metadata?.meta_description,
+      meta_title: syncedBlog.metadata?.meta_title,
+      target_keywords: syncedBlog.metadata?.target_keyword
     }
   });
   const { toast } = useToast();
@@ -371,7 +375,13 @@ function EditBlog({
         content_obj: v.blog_content_slate,
         content: v.blog_content,
         thumbnail: v.blog_thumbnail.at(0)!.url,
-        title: v.blog_title
+        title: v.blog_title,
+        metadata: {
+          image_alt: v.image_alt,
+          meta_description: v.meta_description,
+          meta_title: v.meta_title,
+          target_keyword: v.target_keywords
+        }
       });
       toast({ title: 'Blog was updated!' });
       resync();
@@ -442,6 +452,74 @@ function EditBlog({
                 <FormLabel>Blog Slug</FormLabel>
                 <FormControl>
                   <Input disabled placeholder="Enter blog title" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="my-3 flex items-center gap-5">
+          <FormField
+            control={form.control}
+            name="meta_title"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Meta Title</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter meta title"
+                    {...field}
+                    onChange={(e) => {
+                      field.onChange(e);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="meta_description"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Meta Description</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter meta description" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="my-3 flex items-center gap-5">
+          <FormField
+            control={form.control}
+            name="image_alt"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Image Alt</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Enter title image alt"
+                    {...field}
+                    onChange={(e) => {
+                      field.onChange(e);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="target_keywords"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Target Keywords</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter target keyword" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

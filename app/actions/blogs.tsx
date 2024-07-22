@@ -24,6 +24,7 @@ export async function editBlog(
     thumbnail?: string;
     content?: string;
     content_obj: Value;
+    metadata: InferInsertModel<typeof schema.blogs>['metadata'];
   }
 ) {
   const res = await db
