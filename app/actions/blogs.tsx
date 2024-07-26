@@ -1,10 +1,11 @@
 'use server';
 import { schema } from '@/db';
-import { db } from '@/shared/mysql';
+import { initConnection } from '@/shared/mysql';
 import { Value } from '@udecode/plate-common';
 import { eq, InferInsertModel } from 'drizzle-orm';
 
 export async function getBlogs() {
+  const db = await initConnection();
   return (await db.select().from(schema.blogs)).map((v) => {
     const { blog_content, blog_content_slate, ...blog } = v;
     return blog;
@@ -12,6 +13,7 @@ export async function getBlogs() {
 }
 
 export async function createBlog(blog: InferInsertModel<typeof schema.blogs>) {
+  const db = await initConnection();
   const res = await db.insert(schema.blogs).values(blog);
   return true;
 }
@@ -27,6 +29,7 @@ export async function editBlog(
     metadata: InferInsertModel<typeof schema.blogs>['metadata'];
   }
 ) {
+  const db = await initConnection();
   const res = await db
     .update(schema.blogs)
     .set({
@@ -42,6 +45,7 @@ export async function editBlog(
 }
 
 export async function getBlogBySlug(slug: string) {
+  const db = await initConnection();
   const blog = await db
     .select()
     .from(schema.blogs)
@@ -50,6 +54,7 @@ export async function getBlogBySlug(slug: string) {
 }
 
 export async function deleteBlog(id: number) {
+  const db = await initConnection();
   const res = await db.delete(schema.blogs).where(eq(schema.blogs.id, id));
   return true;
 }

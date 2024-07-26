@@ -54,6 +54,7 @@ const services_with_metas = [
   {
     slug: 'mobile_app_dev',
     title: 'Mobile App Development',
+    video: '/recent_projects.mp4',
     description:
       'In the palm of your hand, we breathe life into ideas, sculpting mobile masterpieces that blend seamless design with captivating functionality, empowering users to explore, engage, and experience your brand like never before.',
     highlights: [
@@ -156,6 +157,7 @@ const services_with_metas = [
   },
   {
     slug: 'ai',
+    video:"/ai.mp4",
     title: 'Artificial Intelligence',
     meta_title:
       "VConket's AI Solutions to Automate, Analyze & Grow Your Business",
@@ -268,6 +270,7 @@ export const services = [
   {
     slug: 'blockchain',
     title: 'Blockchain Technology',
+    video: '/blockchain.mp4',
     description:
       'In the digital frontier, we are the pioneers of trust, wielding the power of block-chain to forge unbreakable chains of transparency, securing transactions and building bridges to a future where trust is the currency of choice.',
     highlights: [
@@ -317,6 +320,7 @@ export const services = [
   },
   {
     slug: 'social_media_management',
+    video: '/social.mp4',
     title: 'Social Media Management',
     description:
       'From tweets to trends, we orchestrate symphonies of engagement, crafting content that sparks conversations, ignites passions, and transforms followers into loyalists, forging bonds that transcend the digital divide.',
@@ -367,6 +371,7 @@ export const services = [
   },
   {
     slug: 'ads_management',
+    video: '/ads',
     title: 'Ads Management',
     description:
       'In the spotlight of the digital stage, we are the conductors of attention, orchestrating campaigns that resonate with the rhythm of your audience, captivating hearts, minds, and clicks with every beat.',
@@ -418,6 +423,7 @@ export const services = [
   {
     slug: 'unity_game_development',
     title: 'Unity Game Development',
+    video: '/unity.mp4',
     description:
       'With lines of code, we weave dreams into reality, sculpting immersive worlds where players become heroes, embarking on epic quests through landscapes of wonder and adventure, where every challenge is a triumph waiting to be won.',
     highlights: [

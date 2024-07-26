@@ -60,11 +60,11 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
               WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST
               NEWS.
             </p>
-            <Link href="/blogs">
+            <Link href="/vc-blogs">
               <Button className="w-fit sm:hidden">View All</Button>
             </Link>
           </div>
-          <Link href="/blogs">
+          <Link href="/vc-blogs">
             <Button className="absolute bottom-0 right-0 !hidden sm:!flex">
               View All
             </Button>

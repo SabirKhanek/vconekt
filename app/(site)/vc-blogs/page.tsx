@@ -30,7 +30,7 @@ export default function BlogsPage() {
                 Home
               </Link>
               <span className="text-primary">/</span>
-              <Link href={'/blogs'} className="cursor-pointer hover:underline">
+              <Link href={'/vc-blogs'} className="cursor-pointer hover:underline">
                 Blogs
               </Link>
             </div>

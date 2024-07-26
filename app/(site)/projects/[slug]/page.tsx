@@ -146,91 +146,59 @@ export default function ProjectPage() {
 }
 
 function AssetSlider({ samples }: { samples: Project['samples'] }) {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  // const responsive = useResponsive();
-  // const width = useMemo(() => {
-  //   return getResponsiveWidth();
-  // }, [responsive]);
-  if (samples.length <= 0) return null;
-  return (
-    <div className="my-10">
-      <div
-        ref={sliderRef}
-        className="responsive no-scrollbar flex aspect-[1.98/1] w-full  snap-x snap-mandatory overflow-x-auto scroll-smooth p-0 duration-150 ease-in-out"
-      >
-        {samples.map((sample, index) => {
-          let align = 'center';
-          if (index === 0) align = 'start';
-          if (index === samples.length - 1) align = 'end';
-          return (
-            <div
-              key={index}
-              style={{ scrollSnapAlign: align }}
-              className="flex h-full w-full shrink-0 basis-full items-center justify-center"
-            >
-              {sample.type === 'image' ? (
-                <SliderImage sample={sample}></SliderImage>
-              ) : (
-                <SliderVideo sample={sample}></SliderVideo>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      <SliderNavigator
-        samples={samples}
-        sliderRef={sliderRef}
-      ></SliderNavigator>
-    </div>
-  );
-}
-
-function SliderNavigator({
-  sliderRef,
-  samples
-}: {
-  sliderRef: React.RefObject<HTMLDivElement>;
-  samples: Project['samples'];
-}) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollToSample = (index: number) => {
-    if (!sliderRef.current) return;
-    sliderRef.current.scroll({
-      left: sliderRef.current.clientWidth * index,
-      behavior: 'smooth'
-    });
-  };
-  useEffect(() => {
-    if (!sliderRef.current) return;
-    const ev = () => {
-      if (!sliderRef.current) return;
-      const index = Math.round(
-        sliderRef.current.scrollLeft / sliderRef.current.clientWidth
-      );
-      setActiveIndex(index);
-    };
-    sliderRef.current.onscrollend = ev;
-    return () => {
-      sliderRef.current?.removeEventListener('scrollend', ev);
-    };
-  }, [sliderRef.current]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderRef = useRef<any>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      scrollToSample((activeIndex + 1) & (samples.length - 1));
-    }, 2_000);
-    return () => {
-      clearInterval(interval);
-    };
-  });
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % samples.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [samples.length]);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      const translateX = -currentIndex * 100;
+      sliderRef.current.style.transform = `translateX(${translateX}%)`;
+      sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
+    }
+  }, [currentIndex]);
+
+  if (samples.length <= 0) return null;
+
+  return (
+    <div className="my-10 overflow-hidden">
+      <div ref={sliderRef} className="flex aspect-[1.98/1] w-full">
+        {samples.map((sample, index) => (
+          <div
+            key={index}
+            className="flex h-full w-full shrink-0 basis-full items-center justify-center"
+          >
+            {sample.type === 'image' ? (
+              <SliderImage sample={sample} />
+            ) : (
+              <SliderVideo sample={sample} />
+            )}
+          </div>
+        ))}
+      </div>
+      <SliderNavigator
+        samples={samples}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+      />
+    </div>
+  );
+}
+function SliderNavigator({ samples, currentIndex, setCurrentIndex }: any) {
   return (
     <div className="my-5 flex items-center justify-center gap-3">
-      {samples.map((_, i) => (
+      {samples.map((_: any, i: any) => (
         <div
           key={i}
-          onClick={() => scrollToSample(i)}
+          onClick={() => setCurrentIndex(i)}
           className={`h-4 w-4 rounded-full border ${
-            activeIndex === i ? 'boder-primary bg-primary' : 'border-white'
+            currentIndex === i ? 'border-primary bg-primary' : 'border-white'
           } cursor-pointer transition-all duration-500 ease-in-out`}
         ></div>
       ))}

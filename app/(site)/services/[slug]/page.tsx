@@ -12,8 +12,6 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Head from 'next/head';
 
-
-
 export default function IndividualServicePage() {
   const slug = useParams()['slug'];
   const navigate = useRouter().push;
@@ -37,7 +35,7 @@ export default function IndividualServicePage() {
       <WhatIsSection {...service} />
       <WhatIsIncludedSection {...service} />
       <div className="relative z-10 my-20">
-        <AboutUsVideo />
+        <AboutUsVideo src={service.video} />
       </div>
       <RecentWork />
       <Testimonial />
@@ -97,7 +95,7 @@ function WhatIsSection({ what_is_content }: ServiceType) {
       className="responsive grid grid-cols-[1.4fr_2fr] gap-5"
     >
       <div className="relative">
-        <V3dContactUs />
+        <V3dContactUs scale={1} />
       </div>
 
       <div className="responsive relative z-[2]">

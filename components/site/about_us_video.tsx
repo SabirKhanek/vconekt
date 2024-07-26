@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import React, { useRef } from 'react';
 // import { getResponsiveWidth } from "../shared/constants/getResponsiveClasses";
 
-export function AboutUsVideo() {
+export function AboutUsVideo({ src }: { src?: string }) {
   const videoContainer = useRef<HTMLDivElement>(null);
   const scrollContainer = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -27,18 +27,18 @@ export function AboutUsVideo() {
     <div
       ref={scrollContainer}
       id="scroll_container"
-      className="650:h-[300vh] pointer-events-none  "
+      className="pointer-events-none 650:h-[300vh]  "
     >
       <div
         ref={videoContainer}
-        className="650:h-screen pointer-events-auto flex flex-col items-center justify-center"
+        className="pointer-events-auto flex flex-col items-center justify-center 650:h-screen"
       >
         <div
           style={{}}
           className={`responsive relative aspect-[1.98/1] w-full`}
         >
           <video
-            src="/recent_projects.mp4"
+            src={src || '/recent_projects.mp4'}
             muted
             autoPlay
             loop

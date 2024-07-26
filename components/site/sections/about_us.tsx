@@ -108,6 +108,7 @@ export const AboutUs = React.memo(
             doAnimate ? 'h-[250vh]' : 'h-screen'
           } z-[2] flex justify-start bg-transparent ${'responsive'}`}
         >
+          <div className="absolute z-50 h-full w-full bg-transparent"></div>
           <div
             ref={wrapperRef}
             id="section2-content-wrapper"
@@ -127,17 +128,17 @@ export const AboutUs = React.memo(
                 parentRef={contenRef}
               />
               <div className="sm:shrink-0 sm:basis-1/2">
-                <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary ">
+                <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
                   About Us
                 </span>
-                <h2 className="font-orbit my-3 whitespace-break-spaces text-[30px]  font-semibold uppercase leading-tight text-white sm:text-[36px] md:text-[40px] xl:text-5xl">
+                <h2 className="my-3 whitespace-break-spaces font-orbit text-[30px]  font-semibold uppercase leading-tight text-white sm:text-[36px] md:text-[40px] xl:text-5xl">
                   Vconekt LLC: Igniting Innovation, Empowering Transform ation.
                 </h2>
               </div>
               <div className="sm:shrink-0 sm:basis-1/2" ref={vidContainerRef}>
                 <div className="pointer-events-auto aspect-[1.94/1] w-full shrink-0 basis-1/2 overflow-hidden rounded-xl">
                   <video
-                    src="vconekt_about_us.mp4"
+                    src="recent_projects.mp4"
                     muted
                     ref={videoRef}
                     // controls

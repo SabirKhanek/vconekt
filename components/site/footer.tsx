@@ -1,5 +1,6 @@
 'use client';
 import { getResponsiveClasses } from '@/constants';
+import Link from 'next/link';
 import { HTMLProps } from 'react';
 
 export function Footer({}: HTMLProps<HTMLElement>) {
@@ -40,12 +41,12 @@ export function Footer({}: HTMLProps<HTMLElement>) {
           <p className="cursor-pointer text-sm font-light  text-white/65 hover:text-white hover:underline">
             © 2024 Vconekt. All Rights Reserved.
           </p>
-          <p className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
+          <Link href="/privacy-policy" className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
             Privacy Policy
-          </p>
-          <p className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
+          </Link>
+          <Link href="/terms-of-service" className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
             Terms and Conditions
-          </p>
+          </Link>
         </div>
         <div className="flex flex-1 flex-row-reverse items-center gap-3  text-primary">
           <a href="https://x.com/vconektofficial">
