@@ -1,4 +1,11 @@
+import { Metadata } from 'next';
 import Showdown from 'showdown';
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions',
+  description: `VConekt's Terms & Conditions outline the legal agreement between us and our users. This page details the terms of service for using our website and services.
+`
+};
 
 export default function TermsOfServicePage() {
   const showdown_converter = new Showdown.Converter();
@@ -6,11 +13,9 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
-      <h2 className="heading uppercase">
-        Terms of Service
-      </h2>
+      <h2 className="heading uppercase">Terms of Service</h2>
       <div
-        className="prose prose-neutral prose-a:text-white prose-ul:marker:text-primary mx-auto text-white prose-headings:my-3 prose-headings:text-primary prose-strong:text-white"
+        className="prose prose-neutral mx-auto text-white prose-headings:my-3 prose-headings:text-primary prose-a:text-white prose-strong:text-white prose-ul:marker:text-primary"
         dangerouslySetInnerHTML={{ __html: htmlcontent }}
       ></div>
     </div>
