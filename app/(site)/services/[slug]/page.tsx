@@ -109,7 +109,7 @@ function WhatIsSection({ what_is_content }: ServiceType) {
           </span>
         </h2>
         <p className=" py-3 font-light">{what_is_content.body}</p>
-        <Link href={'/contact_us'}>
+        <Link href={'/contact-us'}>
           <Button>
             <span className="text-sm">Let's Connect</span>
           </Button>

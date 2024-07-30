@@ -11,11 +11,11 @@ export function ContactUs({ ...props }: HTMLProps<HTMLElement>) {
       {...props}
       className={` responsive relative z-[2] h-screen w-full  max-w-5xl bg-transparent text-white`}
     >
-      <div className="absolute-centered 520:px-20 flex w-full flex-col items-center justify-center gap-3 rounded-3xl border border-white/65 px-10 py-10">
-        <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 text-xs uppercase text-primary ">
+      <div className="absolute-centered flex w-full flex-col items-center justify-center gap-3 rounded-3xl border border-white/65 px-10 py-10 520:px-20">
+        <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit text-xs uppercase text-primary ">
           Contact Us
         </span>
-        <span className="small-heading font-orbit max-w-2xl text-center text-3xl font-bold text-white">
+        <span className="small-heading max-w-2xl text-center font-orbit text-3xl font-bold text-white">
           Bridge to Prosperity: Connect Today, Thrive Tomorrow
         </span>
         <div className="relative h-52 w-full">
@@ -23,7 +23,7 @@ export function ContactUs({ ...props }: HTMLProps<HTMLElement>) {
             <V3dContactUs scale={0.5} />
           </Nossr>
 
-          <Link href="/contact_us">
+          <Link href="/contact-us">
             <motion.button
               initial={{
                 background:

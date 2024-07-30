@@ -88,7 +88,7 @@ export default function ContactUsPage() {
               </Link>
               <span className="text-primary">/</span>
               <Link
-                href={'/contact_us'}
+                href={'/contact-us'}
                 className="cursor-pointer hover:underline"
               >
                 Contact Us

@@ -104,7 +104,9 @@ export default function Blogs() {
                       </div>
                     )}
                   </TableCell>
-                  <TableCell>{t.blog_title}</TableCell>
+                  <TableCell>
+                    <Link href={`/${t.slug}`}>{t.blog_title}</Link>
+                  </TableCell>
                   <TableCell>{t.slug}</TableCell>
                   <TableCell className="">
                     {t.created_at && formatDate(new Date(t.created_at))}

@@ -22,7 +22,7 @@ export function Navbar({ className }: NavbarProps) {
       <Link href={'/'}>
         <img src="/logo.png" className="h-auto w-[75%]" alt="Logo" />
       </Link>
-      <div className="843:flex 939:text-base 939:gap-6 hidden items-center gap-4 text-sm ">
+      <div className="hidden items-center gap-4 text-sm 843:flex 939:gap-6 939:text-base ">
         {navlinks.map((link, i) => {
           const isActive = link.route === location;
           return (
@@ -62,7 +62,7 @@ export function Navbar({ className }: NavbarProps) {
 
       <button
         onClick={() => nav.switchNav(!nav.isNavOpened)}
-        className="843:hidden flex items-center justify-center !rounded-full bg-white p-3"
+        className="flex items-center justify-center !rounded-full bg-white p-3 843:hidden"
       >
         <span className="inline-flex h-4 w-4 items-center justify-center">
           <MenuButton
@@ -84,9 +84,9 @@ export function Navbar({ className }: NavbarProps) {
 
 export const navlinks = [
   { name: 'Home', route: '/' },
-  { name: 'About Us', route: '/about_us' },
+  { name: 'About Us', route: '/about-us' },
   { name: 'Services', route: '/services' },
   { name: 'Projects', route: '/projects' },
-  { name: 'Blogs', route: '/vc-blogs' },
+  { name: 'Blogs', route: '/blogs' },
   { name: 'Contact Us', route: '/contact_us' }
 ];

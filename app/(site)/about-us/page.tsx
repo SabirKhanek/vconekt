@@ -31,7 +31,7 @@ export default function AboutUsPage() {
             Home
           </Link>
           <span className="text-primary">/</span>
-          <Link href={'/about_us'} className="cursor-pointer hover:underline">
+          <Link href={'/about-us'} className="cursor-pointer hover:underline">
             About Us
           </Link>
         </div>

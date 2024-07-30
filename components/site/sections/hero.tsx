@@ -33,7 +33,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
     >
       <div className="relative flex h-screen items-center justify-between">
         <div className="max-w-lg">
-          <h2 className="xs:text-5xl font-orbit flex   flex-col text-4xl font-semibold text-white">
+          <h2 className="flex flex-col font-orbit   text-4xl font-semibold text-white xs:text-5xl">
             <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Transform Your</span>
             </span>{' '}
@@ -56,13 +56,13 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
               IT consulting for digital transformation
             </span>
           </p>
-          <div className="384:text-sm xs:text-base pointer-events-auto flex items-center gap-4 text-[12px]">
+          <div className="pointer-events-auto flex items-center gap-4 text-[12px] 384:text-sm xs:text-base">
             <Link href="/services">
               <Button>
                 <span className="font-orbit">Discover More</span>
               </Button>
             </Link>
-            <Link href={'/contact_us'}>
+            <Link href={'/contact-us'}>
               <Button bg="grey">
                 <span className="font-orbit">Contact Us</span>
               </Button>
@@ -89,7 +89,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
               fill="#B2E161"
             />
           </svg>
-          <span className="font-orbit break-keep text-primary">
+          <span className="break-keep font-orbit text-primary">
             Scroll&nbsp;Down
           </span>
         </span>

@@ -57,13 +57,13 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
       <div className="flex h-full flex-col justify-between py-[10vh]">
         <div className="mb-2 flex w-full flex-col justify-between gap-2 md:flex-row">
           <div className="shrink-0 items-center md:basis-1/2">
-            <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary ">
+            <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
               Need Help?
             </span>
             <div className="my-3 w-[80%]">
               <h2
                 id="how_can_we_text"
-                className=" font-orbit inline text-4xl font-semibold md:text-5xl "
+                className=" inline font-orbit text-4xl font-semibold md:text-5xl "
               >
                 <span className="break-none">How may we serve</span>
                 {'  '}
@@ -91,10 +91,10 @@ export function NeedHelp({ ...props }: HTMLProps<HTMLElement>) {
           <div className="absolute -top-[244px] left-1/2 hidden h-[244px] w-full -translate-x-1/2 overflow-hidden md:block">
             <Bot3D scale={1.5} />
           </div>
-          <p className="font-orbit small-heading shrink-0 basis-3/4 text-4xl font-semibold uppercase">
+          <p className="small-heading shrink-0 basis-3/4 font-orbit text-4xl font-semibold uppercase">
             We stand ready to assist you in one click.
           </p>
-          <Link href="/contact_us">
+          <Link href="/contact-us">
             <Button
               bg="gradient"
               className="pointer-events-auto self-start md:self-auto"

@@ -60,11 +60,11 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
               WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST
               NEWS.
             </p>
-            <Link href="/vc-blogs">
+            <Link href="/blogs">
               <Button className="w-fit sm:hidden">View All</Button>
             </Link>
           </div>
-          <Link href="/vc-blogs">
+          <Link href="/blogs">
             <Button className="absolute bottom-0 right-0 !hidden sm:!flex">
               View All
             </Button>
@@ -120,12 +120,12 @@ function BlogCard({
         </div>
         <div className="flex w-full flex-col justify-between">
           <div className="flex w-full items-start justify-between gap-7">
-            <Link href={`/vc-blogs/${blog.slug}`}>
+            <Link href={`/${blog.slug}`}>
               <h2 className="small-heading cursor-pointer text-wrap font-orbit text-[36px] font-semibold text-primary hover:underline">
                 {blog.blog_title}
               </h2>
             </Link>
-            <Link href={`/vc-blogs/${blog.slug}`}>
+            <Link href={`/${blog.slug}`}>
               <motion.button
                 initial={{
                   background:

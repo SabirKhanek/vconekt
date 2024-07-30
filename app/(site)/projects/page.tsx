@@ -40,7 +40,7 @@ export default function Projects() {
               </Link>
               <span className="text-primary">/</span>
               <Link
-                href={'/about_us'}
+                href={'/about-us'}
                 className="cursor-pointer hover:underline"
               >
                 Projects
