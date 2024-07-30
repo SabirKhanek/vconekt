@@ -26,7 +26,7 @@ export function Footer({}: HTMLProps<HTMLElement>) {
               <a href="tel:13108481237">+13108481237</a>
             </li>
             <li className="cursor-pointer hover:underline">
-              30 N GOULD ST STE 25084 SHERIDAN, WY 82801
+              7901 4th St N#19454 St. Pertersburg, FL 33702
             </li>
           </ul>
         </div>
@@ -41,10 +41,16 @@ export function Footer({}: HTMLProps<HTMLElement>) {
           <p className="cursor-pointer text-sm font-light  text-white/65 hover:text-white hover:underline">
             © 2024 Vconekt. All Rights Reserved.
           </p>
-          <Link href="/privacy-policy" className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
+          <Link
+            href="/privacy-policy"
+            className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline"
+          >
             Privacy Policy
           </Link>
-          <Link href="/terms-of-service" className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
+          <Link
+            href="/terms-of-service"
+            className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline"
+          >
             Terms and Conditions
           </Link>
         </div>
