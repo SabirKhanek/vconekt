@@ -112,7 +112,7 @@ const uploadFileResponseSchema = z.object({
   url: z.string().url()
 });
 
-export const ProjectSchema = z.object({
+const ProjectSchema = z.object({
   title: z
     .string()
     .min(1, 'Title is required')
