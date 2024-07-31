@@ -1,18 +1,16 @@
-'use client';
 import { V3dContactUs } from '@/components/site/3dLogoInContactUs';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Button } from '@/components/site/button';
-import { GoArrowRight } from 'react-icons/go';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import useHover from '@/components/use-hover';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { ProjectCard, projects } from './comps';
-import Head from 'next/head';
 
-export default function Projects() {
+import Link from 'next/link';
+import { Project, ProjectCard, projects } from './comps';
+import Head from 'next/head';
+import { getProjects } from '@/app/actions/projects';
+
+export default async function Projects() {
+  let projects: Project[] = [];
+  try {
+    projects = await getProjects();
+  } catch (err) {}
+  console.log(projects);
   return (
     <>
       <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
@@ -58,25 +56,29 @@ export default function Projects() {
           <span className="text-primary">Stories</span>
         </h2>
         <div className="my-3 mb-10 flex flex-col gap-10 520:flex-row">
-          {[1, 2].map((v, i) => {
+          {[0, 1].map((v, i) => {
+            const half = Math.ceil(projects.length / 2);
+            const projectSubset =
+              i === 0 ? projects.slice(0, half) : projects.slice(half);
+
             return (
               <div
                 key={v}
                 className={`flex flex-1 flex-col gap-10 ${
-                  v === 2 ? '520:-translate-y-[75px]' : ''
+                  i === 1 ? '520:-translate-y-[75px]' : ''
                 }`}
               >
-                <ProjectCard project={projects[i % projects.length]} />
-                <ProjectCard project={projects[(i + 1) % projects.length]} />
-                <ProjectCard project={projects[(i + 2) % projects.length]} />
+                {projectSubset.map((project, j) => (
+                  <ProjectCard key={j} project={project} />
+                ))}
               </div>
             );
           })}
         </div>
         <hr className="mx-auto my-0 mb-5 h-0.5 max-w-2xl bg-white/30" />
-        <div className="my-10 flex items-center justify-center">
+        {/* <div className="my-10 flex items-center justify-center">
           <Button>Load More</Button>
-        </div>
+        </div> */}
       </div>
     </>
   );

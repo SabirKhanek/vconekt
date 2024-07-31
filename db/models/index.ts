@@ -40,3 +40,37 @@ export const blogs = mysqlTable('blogs', {
     target_keyword?: string;
   }>()
 });
+
+export const projects = mysqlTable('projects', {
+  id: int('id').primaryKey().autoincrement(),
+  title: varchar('title', { length: 255 }).notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  involvements: json('involvements').$type<string[]>().notNull(),
+  targetUrl: text('target_url').notNull(),
+  about: text('about').notNull(),
+  mainThumb: json('main_thumb')
+    .$type<{ src: string; type: 'image' }>()
+    .notNull(),
+  samples: json('samples')
+    .$type<{ src: string; type: 'image' | 'video' }[]>()
+    .notNull(),
+  review: json('review')
+    .$type<{
+      authorName: string;
+      authorImage: string;
+      authorCompany: string;
+      text: string;
+    }>()
+    .notNull(),
+  short_desc: text('short_desc').notNull(),
+  created_at: timestamp('created_at').defaultNow(),
+  updated_at: timestamp('updated_at', { mode: 'date' }).$onUpdate(
+    () => new Date()
+  ),
+  metadata: json('metadata').default({}).$type<{
+    meta_title?: string;
+    meta_description?: string;
+    image_alt?: string;
+    target_keyword?: string;
+  }>()
+});

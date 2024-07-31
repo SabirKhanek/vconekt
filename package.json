@@ -107,6 +107,7 @@
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.22.8",
     "drizzle-orm": "^0.31.4",
+    "emblor": "^1.4.4",
     "eslint": "8.48.0",
     "eslint-config-next": "^14.0.1",
     "framer-motion": "^10.18.0",

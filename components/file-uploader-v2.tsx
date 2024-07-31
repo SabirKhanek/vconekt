@@ -1,14 +1,19 @@
 'use client';
+
 import { OurFileRouter } from '@/app/api/uploadthing/core';
 import { UploadDropzone } from '@uploadthing/react';
 import { Trash } from 'lucide-react';
 import Image from 'next/image';
-import { UploadFileResponse } from 'uploadthing/client';
+import { UploadFileResponse as UploadFileResponseBase } from 'uploadthing/client';
 import { IMG_MAX_LIMIT as IMG_DEFAULT_LIMIT } from './forms/product-form';
 import { Button } from './ui/button';
 import { useToast } from './ui/use-toast';
 
-interface ImageUploadProps {
+interface UploadFileResponse extends UploadFileResponseBase {
+  type: 'image' | 'video';
+}
+
+interface FileUploadProps {
   onChange?: (uploads: UploadFileResponse[]) => void;
   onRemove: (value: UploadFileResponse[]) => void;
   value: UploadFileResponse[];
@@ -20,22 +25,24 @@ export default function FileUpload({
   onRemove,
   value,
   imageLimit
-}: ImageUploadProps) {
+}: FileUploadProps) {
   const IMG_MAX_LIMIT = imageLimit || IMG_DEFAULT_LIMIT;
   const { toast } = useToast();
+
   const onDeleteFile = (key: string) => {
-    const files = value;
-    let filteredFiles = files.filter((item) => item.key !== key);
+    const filteredFiles = value.filter((item) => item.key !== key);
     onRemove(filteredFiles);
   };
+
   const onUpdateFile = (newFiles: UploadFileResponse[]) => {
     onChange && onChange([...value, ...newFiles]);
   };
+
   return (
     <div>
       <div className="mb-4 flex items-center gap-4">
         {!!value.length &&
-          value?.map((item) => (
+          value.map((item) => (
             <div
               key={item.key}
               className="relative h-[200px] w-[200px] overflow-hidden rounded-md"
@@ -51,12 +58,20 @@ export default function FileUpload({
                 </Button>
               </div>
               <div>
-                <Image
-                  fill
-                  className="object-cover"
-                  alt="Image"
-                  src={item.fileUrl || ''}
-                />
+                {item.type === 'image' ? (
+                  <Image
+                    fill
+                    className="object-cover"
+                    alt="Image"
+                    src={item.url || ''}
+                  />
+                ) : (
+                  <video
+                    controls
+                    className="h-full w-full object-cover"
+                    src={item.url || ''}
+                  />
+                )}
               </div>
             </div>
           ))}
@@ -65,7 +80,7 @@ export default function FileUpload({
         {value.length < IMG_MAX_LIMIT && (
           <UploadDropzone<OurFileRouter>
             className="ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300 py-2 dark:bg-zinc-800"
-            endpoint="imageUploader"
+            endpoint="imageOrVideo"
             config={{ mode: 'auto', appendOnPaste: true }}
             content={{
               allowedContent({ isUploading }) {
@@ -73,17 +88,21 @@ export default function FileUpload({
                   return (
                     <>
                       <p className="mt-2 animate-pulse text-sm text-slate-400">
-                        Img Uploading...
+                        Uploading...
                       </p>
                     </>
                   );
               }
             }}
             onClientUploadComplete={(res) => {
-              // Do something with the response
-              const data: UploadFileResponse[] | undefined = res;
+              const data = res as UploadFileResponse[];
               if (data) {
-                onUpdateFile(data);
+                onUpdateFile(
+                  data.map((d) => ({
+                    ...d,
+                    type: getFileTypeFromExtension(d.name)
+                  }))
+                );
               }
             }}
             onUploadError={(error: Error) => {
@@ -93,7 +112,7 @@ export default function FileUpload({
                 description: error.message
               });
             }}
-            onUploadBegin={() => {
+            onUploadBegin={({}) => {
               // Do something once upload begins
             }}
           />
@@ -102,3 +121,19 @@ export default function FileUpload({
     </div>
   );
 }
+const getFileTypeFromExtension = (filename: string): 'image' | 'video' => {
+  const extension = filename.split('.').pop()?.toLowerCase();
+
+  if (!extension) return 'image';
+
+  const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
+  const videoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'mkv', 'webm'];
+
+  if (imageExtensions.includes(extension)) {
+    return 'image';
+  } else if (videoExtensions.includes(extension)) {
+    return 'video';
+  } else {
+    return 'image';
+  }
+};

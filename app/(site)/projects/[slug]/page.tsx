@@ -1,25 +1,29 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
 // import { Project, ProjectCard, projects } from './projects';
 import { GoArrowRight } from 'react-icons/go';
 import { motion } from 'framer-motion';
 import { ContactUs } from '@/components/site/sections/contact_us';
-import { ProjectCard, Project, projects } from '../comps';
-import { useParams, useRouter } from 'next/navigation';
+import { Project, ProjectCard } from '../comps';
+import { notFound, redirect, useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-export default function ProjectPage() {
-  const slug = useParams()['slug'];
-  const navigate = useRouter().push;
+import { getProjectBySlug, getProjects } from '@/app/actions/projects';
+import { AssetSlider, MotionButton } from './asset-slider';
+export default async function ProjectPage({
+  params
+}: {
+  params: { slug: string };
+}) {
+  const slug = params.slug;
   if (!slug) {
-    navigate('/projects');
+    redirect('/projects');
   }
-  const [project, setProject] = useState<Project>();
-  useEffect(() => {
-    const projectToFind = projects.find((p) => p.slug === slug);
-    if (projectToFind) setProject(projectToFind);
-    else navigate('/projects');
-  }, [slug]);
-  if (!project) return;
+  const project = await getProjectBySlug(slug as string);
+  let projects: Project[] = [];
+  try {
+    projects = await getProjects();
+  } catch (err: any) {}
+  if (!project) {
+    return notFound();
+  }
   //   console.log(project);
   return (
     <div className="responsive relative z-[2] pt-44 ">
@@ -62,26 +66,8 @@ export default function ProjectPage() {
           </ul>
           <p className="flex items-center gap-2 pt-4 font-orbit text-xl text-primary">
             <span>Visit Website</span>
-            <motion.a
-              href={project.targetUrl}
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate(project.targetUrl);
-              }}
-              initial={{
-                background:
-                  'radial-gradient(circle closest-side, #fff 0%, transparent 0%)',
-                color: '#fff'
-              }}
-              whileHover={{
-                background:
-                  'radial-gradient(circle closest-side, #fff 100%, transparent 100%)',
-                color: '#000'
-              }}
-              className="rounded-full border border-white bg-transparent  p-1 transition-all duration-150 hover:scale-110"
-            >
-              <GoArrowRight className="-rotate-[30deg] text-lg" />
-            </motion.a>
+
+            <MotionButton href={project.targetUrl} />
           </p>
         </div>
         {/* About Project */}
@@ -142,84 +128,5 @@ export default function ProjectPage() {
         <ContactUs></ContactUs>
       </div>
     </div>
-  );
-}
-
-function AssetSlider({ samples }: { samples: Project['samples'] }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef<any>(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % samples.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [samples.length]);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      const translateX = -currentIndex * 100;
-      sliderRef.current.style.transform = `translateX(${translateX}%)`;
-      sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
-    }
-  }, [currentIndex]);
-
-  if (samples.length <= 0) return null;
-
-  return (
-    <div className="my-10 overflow-hidden">
-      <div ref={sliderRef} className="flex aspect-[1.98/1] w-full">
-        {samples.map((sample, index) => (
-          <div
-            key={index}
-            className="flex h-full w-full shrink-0 basis-full items-center justify-center"
-          >
-            {sample.type === 'image' ? (
-              <SliderImage sample={sample} />
-            ) : (
-              <SliderVideo sample={sample} />
-            )}
-          </div>
-        ))}
-      </div>
-      <SliderNavigator
-        samples={samples}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
-    </div>
-  );
-}
-function SliderNavigator({ samples, currentIndex, setCurrentIndex }: any) {
-  return (
-    <div className="my-5 flex items-center justify-center gap-3">
-      {samples.map((_: any, i: any) => (
-        <div
-          key={i}
-          onClick={() => setCurrentIndex(i)}
-          className={`h-4 w-4 rounded-full border ${
-            currentIndex === i ? 'border-primary bg-primary' : 'border-white'
-          } cursor-pointer transition-all duration-500 ease-in-out`}
-        ></div>
-      ))}
-    </div>
-  );
-}
-
-function SliderImage({ sample }: { sample: Project['samples'][number] }) {
-  return (
-    <img src={sample.src} className="aspect-auto h-full w-auto max-w-full" />
-  );
-}
-
-function SliderVideo({ sample }: { sample: Project['samples'][number] }) {
-  return (
-    <video
-      src={sample.src}
-      autoPlay
-      muted
-      loop
-      className="aspect-auto h-full w-auto max-w-full"
-    ></video>
   );
 }
