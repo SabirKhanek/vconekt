@@ -9,7 +9,9 @@ export default async function Projects() {
   let projects: Project[] = [];
   try {
     projects = await getProjects();
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
   console.log(projects);
   return (
     <>
