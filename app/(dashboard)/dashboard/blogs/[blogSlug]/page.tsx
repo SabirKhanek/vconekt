@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -408,6 +409,7 @@ function EditBlog({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Cover Thumbnail</FormLabel>
+              <FormDescription>Thumbnail Dimensions: 380x260</FormDescription>
               <FormControl>
                 <FileUpload
                   onChange={field.onChange}

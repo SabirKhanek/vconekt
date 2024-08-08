@@ -111,20 +111,23 @@ function BlogCard({
       className="border-collapse border-b border-t border-white transition-all duration-200"
     >
       <div className="flex  flex-col gap-4 py-6 md:flex-row">
-        <div className="blog_image_container h-[264px] w-full shrink-0 overflow-hidden md:w-[387px]">
+        <div className="blog_image_container_d h-[260px] w-full shrink-0 overflow-hidden md:w-[380px]">
           <img
-            className="blog_images h-[140%] w-full cursor-pointer object-cover object-top"
+            className="blog_images_d h-[100%] w-full cursor-pointer object-cover object-center"
             src={blog.blog_thumbnail}
             alt=""
           />
         </div>
         <div className="flex w-full flex-col justify-between">
           <div className="flex w-full items-start justify-between gap-7">
-            <Link href={`/${blog.slug}`}>
-              <h2 className="small-heading cursor-pointer text-wrap font-orbit text-[36px] font-semibold text-primary hover:underline">
-                {blog.blog_title}
-              </h2>
-            </Link>
+            <div className="flex-col gap-1">
+              <Link href={`/${blog.slug}`}>
+                <h2 className="small-heading cursor-pointer text-wrap font-orbit text-[36px] font-semibold text-primary hover:underline">
+                  {blog.blog_title}
+                </h2>
+              </Link>
+              <p>{blog.metadata?.meta_description}</p>
+            </div>
             <Link href={`/${blog.slug}`}>
               <motion.button
                 initial={{

@@ -70,7 +70,7 @@ export default async function BlogPage({
             </p>
           )}
           <div
-            className="prose prose-neutral mx-auto text-white prose-headings:text-primary prose-strong:text-white"
+            className="prose prose-neutral mx-auto text-white prose-headings:text-primary prose-strong:text-white prose-li:marker:text-primary"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>

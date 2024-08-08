@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'VConect LLC',
-  description: ''
+  description: '',
+  other: {
+    'google-site-verification': 'ukpQKHpukZTxpOGv-LdCvWGfXeOW7tVQbGMYxj2Z3ZY'
+  }
 };
 
 export default async function RootLayout({

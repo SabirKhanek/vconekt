@@ -2,7 +2,7 @@ import { HTMLProps } from 'react';
 
 const services_with_metas = [
   {
-    slug: 'web_design_and_development',
+    slug: 'web-design-and-development',
     title: 'Web Design & Development',
     meta_title:
       "VConekt's Website Development Service for Your Business Growth",
@@ -52,7 +52,7 @@ const services_with_metas = [
     ]
   },
   {
-    slug: 'mobile_app_dev',
+    slug: 'mobile-app-dev',
     title: 'Mobile App Development',
     video: '/recent_projects.mp4',
     description:
@@ -157,7 +157,7 @@ const services_with_metas = [
   },
   {
     slug: 'ai',
-    video:"/ai.mp4",
+    video: '/ai.mp4',
     title: 'Artificial Intelligence',
     meta_title:
       "VConket's AI Solutions to Automate, Analyze & Grow Your Business",
@@ -211,7 +211,7 @@ const services_with_metas = [
     ]
   },
   {
-    slug: 'ui_ux',
+    slug: 'ui-ux',
     title: 'UI/UX & Graphic Design',
     meta_title: 'VConket: Award-Winning UI/UX & Graphic Design Services',
     meta_description:
@@ -319,7 +319,7 @@ export const services = [
     ]
   },
   {
-    slug: 'social_media_management',
+    slug: 'social-media-management',
     video: '/social.mp4',
     title: 'Social Media Management',
     description:
@@ -370,7 +370,7 @@ export const services = [
     ]
   },
   {
-    slug: 'ads_management',
+    slug: 'ads-management',
     video: '/ads',
     title: 'Ads Management',
     description:
@@ -421,7 +421,7 @@ export const services = [
     ]
   },
   {
-    slug: 'unity_game_development',
+    slug: 'unity-game-development',
     title: 'Unity Game Development',
     video: '/unity.mp4',
     description:
