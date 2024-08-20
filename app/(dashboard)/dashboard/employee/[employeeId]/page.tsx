@@ -1,3 +1,9 @@
+/**
+ * Renders the employee page for the specified employee ID.
+ * This page includes a breadcrumb navigation and a product form.
+ * The product form allows the user to view and edit the employee's information.
+ * The available product categories are "shirts" and "pants".
+ */
 import BreadCrumb from '@/components/breadcrumb';
 import { ProductForm } from '@/components/forms/product-form';
 import { ScrollArea } from '@/components/ui/scroll-area';

@@ -1,3 +1,9 @@
+/**
+ * Renders the authentication page, including a login form and a logo section.
+ * The page is divided into two columns, with the login form on the right and the logo section on the left.
+ * The login form is implemented using the `UserAuthForm` component.
+ * The page also includes links to the terms of service and privacy policy.
+ */
 import { Metadata } from 'next';
 import Link from 'next/link';
 import UserAuthForm from '@/components/forms/user-auth-form';

@@ -1,3 +1,9 @@
+/**
+ * The `page` function is the main entry point for the employee dashboard page. It fetches employee data from an API, calculates pagination details, and renders the employee table with the fetched data.
+ *
+ * @param {paramsProps} searchParams - An object containing the search parameters from the URL, including the current page, page limit, and search query.
+ * @returns {JSX.Element} - The rendered employee dashboard page.
+ */
 import BreadCrumb from '@/components/breadcrumb';
 import { columns } from '@/components/tables/employee-tables/columns';
 import { EmployeeTable } from '@/components/tables/employee-tables/employee-table';

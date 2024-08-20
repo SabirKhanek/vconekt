@@ -1,3 +1,15 @@
+/**
+ * The Blogs component displays a table of blog posts, allowing users to view, edit, and delete blog entries.
+ *
+ * The component fetches the list of blogs from the server using the `getBlogs` function, and stores the data in the `blogs` state.
+ * It then renders a table with columns for the blog ID, thumbnail, title, slug, and creation date.
+ *
+ * Users can click on the "Create New Blog" button to navigate to the blog creation page.
+ * They can also click on the "Edit" button to edit a specific blog, or the "Delete" button to delete a blog.
+ *
+ * The `handleDelete` function is used to delete a blog post, which updates the `blogs` state to remove the deleted blog.
+ * The `handleOnCreate` function is called when a new blog is created, which refetches the list of blogs.
+ */
 'use client';
 import { deleteBlog, getBlogs } from '@/app/actions/blogs';
 import { Button } from '@/components/ui/button';

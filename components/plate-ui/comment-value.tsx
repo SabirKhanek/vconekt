@@ -1,3 +1,8 @@
+/**
+ * Renders a comment value input field with edit actions (cancel and save buttons).
+ * The comment value input field is styled using the `inputVariants` function, and the buttons are styled using the `buttonVariants` function.
+ * This component is typically used within a comment section or a comment thread.
+ */
 'use client';
 
 import React from 'react';
@@ -5,7 +10,7 @@ import React from 'react';
 import { cn } from '@udecode/cn';
 import {
   CommentEditActions,
-  CommentEditTextarea,
+  CommentEditTextarea
 } from '@udecode/plate-comments';
 
 import { buttonVariants } from './button';

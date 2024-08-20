@@ -1,3 +1,7 @@
+/**
+ * The main page component for the Kanban board feature.
+ * Renders the breadcrumb, page title, new task dialog, and the Kanban board itself.
+ */
 import BreadCrumb from '@/components/breadcrumb';
 import { KanbanBoard } from '@/components/kanban/kanban-board';
 import NewTaskDialog from '@/components/kanban/new-task-dialog';

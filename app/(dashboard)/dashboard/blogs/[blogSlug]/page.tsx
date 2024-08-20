@@ -1,3 +1,12 @@
+/**
+ * The `EditBlogPage` component is responsible for rendering the edit blog page in the dashboard. It fetches the blog data based on the `blogSlug` parameter, and provides a form for editing the blog's content, metadata, and thumbnail.
+ *
+ * The component uses the `react-hook-form` library to manage the form state and validation, and the `zodResolver` from `@hookform/resolvers/zod` to validate the form data against a Zod schema.
+ *
+ * The `CreateBlog` and `EditBlog` sub-components handle the creation and editing of the blog, respectively. They use various UI components from the `@/components/ui` module to render the form fields and buttons.
+ *
+ * The `formatDate` function is a utility function that formats a given `Date` object into a human-readable string.
+ */
 'use client';
 
 import { createBlog, editBlog, getBlogBySlug } from '@/app/actions/blogs';

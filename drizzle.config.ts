@@ -1,3 +1,7 @@
+/**
+ * Drizzle configuration for the application.
+ * This file sets up the database connection and other Drizzle-related settings.
+ */
 import type { Config } from 'drizzle-kit';
 import { config } from 'dotenv';
 

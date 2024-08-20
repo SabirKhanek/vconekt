@@ -1,3 +1,13 @@
+/**
+ * This file contains the data for the application, including user information and navigation items.
+ *
+ * The `User` type represents a user of the application, with properties such as `id`, `name`, `company`, `role`, `verified`, and `status`.
+ * The `users` array contains a list of sample user data.
+ *
+ * The `Employee` type represents an employee of the application, with properties such as `id`, `first_name`, `last_name`, `email`, `phone`, `gender`, `date_of_birth`, `street`, `city`, `state`, `country`, `zipcode`, `longitude`, `latitude`, `job`, and `profile_picture`.
+ *
+ * The `navItems` array contains the navigation items for the application, with properties such as `title`, `href`, `icon`, and `label`.
+ */
 import { Icons } from '@/components/icons';
 import { NavItem, SidebarNavItem } from '@/types';
 

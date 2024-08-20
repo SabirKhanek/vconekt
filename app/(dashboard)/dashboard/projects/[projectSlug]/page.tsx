@@ -1,3 +1,15 @@
+/**
+ * The `EditProject` component is responsible for rendering the edit project form. It takes in the `syncedProject` object, which contains the project data, and a `resync` function to refresh the project data.
+ *
+ * The component uses the `useForm` hook from `react-hook-form` to manage the form state and validation. The form fields include the project title, slug, involvements, target URL, about, short description, main thumbnail, samples, and review information.
+ *
+ * When the form is submitted, the `handleSubmit` function is called, which updates the project data using the `editProject` function from the `@/app/actions/projects` module. If the update is successful, a success toast message is displayed, and the `resync` function is called to refresh the project data.
+ *
+ * @param {Object} props - The component props.
+ * @param {InferSelectModel<typeof schema.projects>} props.syncedProject - The project data to be edited.
+ * @param {() => any} props.resync - A function to refresh the project data.
+ * @returns {JSX.Element} - The `EditProject` component.
+ */
 'use client';
 
 import { createBlog, editBlog, getBlogBySlug } from '@/app/actions/blogs';
