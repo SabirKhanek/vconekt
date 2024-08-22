@@ -50,15 +50,15 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
       {!onPage ? (
         <div className="relative">
           <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
-            Our Blog
+            Get Insight and Tips
           </span>
           <div className="flex flex-col gap-1">
             <p
               className="heading mt-5  font-orbit text-[5vw] font-semibold !leading-tight text-white max-lm:!max-h-full max-lm:!text-[34px]"
               style={{ textTransform: 'capitalize' }}
             >
-              WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS. CHECK SOME OF LATEST
-              NEWS.
+              Stay up-to-date with the latest trends and best practices in the
+              digital world through our informative blogs.
             </p>
             <Link href="/blogs">
               <Button className="w-fit sm:hidden">View All</Button>

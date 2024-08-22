@@ -88,5 +88,5 @@ export const navlinks = [
   { name: 'Services', route: '/services' },
   { name: 'Projects', route: '/projects' },
   { name: 'Blogs', route: '/blogs' },
-  { name: 'Contact Us', route: '/contact_us' }
+  { name: 'Contact Us', route: '/contact-us' }
 ];

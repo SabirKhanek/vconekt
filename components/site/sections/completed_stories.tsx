@@ -32,14 +32,15 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
       className={` relative z-[2] my-28 flex w-full items-center justify-center bg-transparent  text-white  ${'responsive'}`}
     >
       <div className="flex w-full flex-col items-center justify-center gap-3 rounded-3xl border border-white/65 px-5 py-10 md:px-10 lg:px-20">
-        <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 text-xs uppercase text-primary ">
-          Completed Stories!
+        <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit text-xs uppercase text-primary ">
+          A Glimpse into Our Journey
         </span>
-        <span className="small-heading font-orbit text-center text-3xl text-white">
-          WE DO AWESOME CONTRIBUTE FOR OUR CLIENTS, CHECK SOME OF OUR COUNTER
+        <span className="small-heading text-center font-orbit text-3xl text-white">
+          Explore our impressive track record of delivering exceptional digital
+          solutions.
         </span>
-        <div className="600:flex-row flex w-3/4 flex-col justify-between gap-y-6">
-          <div className="600:text-left flex flex-col gap-2 text-center">
+        <div className="flex w-3/4 flex-col justify-between gap-y-6 600:flex-row">
+          <div className="flex flex-col gap-2 text-center 600:text-left">
             <span className="completed-counter  hollow-text font-orbit text-5xl font-semibold  md:text-6xl">
               0
             </span>
@@ -49,7 +50,7 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
               Completed
             </span>
           </div>
-          <div className="600:text-center flex flex-col gap-2  text-center">
+          <div className="flex flex-col gap-2 text-center  600:text-center">
             <span className="completed-counter hollow-text font-orbit text-5xl font-semibold  md:text-6xl">
               0
             </span>
@@ -59,7 +60,7 @@ export function CompletedStories({ ...props }: HTMLProps<HTMLElement>) {
               Happy Clients
             </span>
           </div>
-          <div className="600:text-right flex flex-col gap-2 text-center">
+          <div className="flex flex-col gap-2 text-center 600:text-right">
             <span className="completed-counter hollow-text font-orbit text-5xl font-semibold  md:text-6xl">
               0
             </span>

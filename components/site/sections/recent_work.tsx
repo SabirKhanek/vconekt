@@ -182,12 +182,12 @@ export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
       <div
         className={`pointer-events-none  relative z-10 flex h-full w-full flex-col items-start  justify-start  ${'responsive'}`}
       >
-        <span className="font-orbit rounded-3xl bg-primary/15 px-5 py-2 uppercase text-primary">
-          Recent Work
+        <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary">
+          Our Recent Projects
         </span>
-        <p className=" heading max-lm:!text-[34px] max-lm:!max-h-full font-orbit my-5 max-w-[80%] text-[5vw] font-semibold !leading-tight">
-          Elevate your online presence with our integrated web, marketing, and
-          design
+        <p className=" heading my-5 max-w-[80%] font-orbit text-[5vw] font-semibold !leading-tight max-lm:!max-h-full max-lm:!text-[34px]">
+          Elevate Your Online Presence and Drive Your Business Forward with
+          Measurable, Impactful and Sustainable Results.
           <br />
           <span className="inline-block text-primary " id="service_text">
             services.{' '}
@@ -195,8 +195,8 @@ export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
           </span>
         </p>
         <Link href="/projects">
-          <Button className="font-orbit pointer-events-auto">
-            View All Portfolio
+          <Button className="pointer-events-auto font-orbit">
+            Check Our Portfolio
           </Button>
         </Link>
       </div>

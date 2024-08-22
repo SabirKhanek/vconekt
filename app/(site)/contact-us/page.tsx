@@ -182,11 +182,15 @@ export default function ContactUsPage() {
         </div>
       </div>
       <div className="responsive relative z-[2]">
-        <img
-          src="/map.png"
-          className="my-9 w-full cursor-pointer grayscale transition-all duration-200 ease-in-out hover:grayscale-0"
-          alt=""
-        />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3524.9391694766897!2d-82.64400792396726!3d27.90416997619675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e21b8b333333%3A0x7c7f4a5f8e4b4b4b!2s7901%204th%20St%20N%2C%20St.%20Petersburg%2C%20FL%2033702!5e0!3m2!1sen!2sus!4v1652345678901!5m2!1sen!2sus"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen={true}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </>
   );

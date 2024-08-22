@@ -41,30 +41,35 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
               <span className="hero_text">Business With</span>
             </span>
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Next-Generation</span>
+              <span className="hero_text">Our Design,</span>
             </span>
             <span className="inline-block overflow-hidden py-1">
-              <span className="hero_text">Tech Solutions</span>
-            </span>{' '}
+              <span className="hero_text">Development and</span>
+            </span>
+            <span className="inline-block overflow-hidden p-0 py-1">
+              <span className="hero_text">Marketing Expertise</span>
+            </span>
+            {/* <span className="inline-block overflow-hidden py-1">
+              <span className="hero_text">Expertise</span>
+            </span>{' '} */}
           </h2>
           <p
             id="hero_subtext"
             className="hero_subtext my-5 w-full max-w-lg break-normal border-l-4 border-primary pl-2 font-medium text-primary"
           >
-            Step into the future of technology with Vconekt LLC, your gateway to{' '}
-            <span className="font-medium">
-              IT consulting for digital transformation
-            </span>
+            Beyond code and campaigns, VConekt LLC delivers unmatched design,
+            development and marketing solutions that drive growth for your
+            business.
           </p>
           <div className="pointer-events-auto flex items-center gap-4 text-[12px] 384:text-sm xs:text-base">
             <Link href="/services">
               <Button>
-                <span className="font-orbit">Discover More</span>
+                <span className="font-orbit">Our Services</span>
               </Button>
             </Link>
             <Link href={'/contact-us'}>
               <Button bg="grey">
-                <span className="font-orbit">Contact Us</span>
+                <span className="font-orbit">Get a Quote</span>
               </Button>
             </Link>
           </div>
