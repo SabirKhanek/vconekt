@@ -73,13 +73,14 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
       ) : (
         <div className="mb-16 w-full max-w-[80%]">
           <h2 className="heading font-orbit">
-            Illuminating the Digital{' '}
-            <span className="text-primary">Landscape</span>
+            Stay Ahead of the Curve with{' '}
+            <span className="text-primary">Expert Insights</span>
           </h2>
           <p className="max-w-[350px] text-sm font-light">
-            Discover the fusion of art, tech, and strategy that drives our
-            immersive brand experiences. Your sneak peek into tomorrow's digital
-            landscape starts here.
+            Discover valuable insights, tips, and trends in design, development,
+            and marketing through our informative blog.Our articles are curated
+            to help you stay ahead of the competition and achieve your digital
+            goals.
           </p>
         </div>
       )}

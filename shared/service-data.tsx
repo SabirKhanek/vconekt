@@ -2,7 +2,7 @@ import { HTMLProps } from 'react';
 
 const services_with_metas = [
   {
-    slug: 'web-design-and-development',
+    slug: 'website-development',
     title: 'Web Design & Development',
     meta_title:
       "VConekt's Website Development Service for Your Business Growth",
@@ -54,6 +54,8 @@ const services_with_metas = [
   {
     slug: 'mobile-app-dev',
     title: 'Mobile App Development',
+    meta_title: 'Your Meta Title for Mobile App Development',
+    meta_description: 'Your Meta Description for Mobile App Development',
     video: '/recent_projects.mp4',
     description:
       'In the palm of your hand, we breathe life into ideas, sculpting mobile masterpieces that blend seamless design with captivating functionality, empowering users to explore, engage, and experience your brand like never before.',
@@ -156,7 +158,7 @@ const services_with_metas = [
     ]
   },
   {
-    slug: 'ai',
+    slug: 'artificial intelligence',
     video: '/ai.mp4',
     title: 'Artificial Intelligence',
     meta_title:
@@ -211,7 +213,7 @@ const services_with_metas = [
     ]
   },
   {
-    slug: 'ui-ux',
+    slug: 'ui-ux-graphic-design',
     title: 'UI/UX & Graphic Design',
     meta_title: 'VConket: Award-Winning UI/UX & Graphic Design Services',
     meta_description:
@@ -268,8 +270,12 @@ const services_with_metas = [
 export const services = [
   ...services_with_metas,
   {
-    slug: 'blockchain',
+    slug: 'blockchain-development',
     title: 'Blockchain Technology',
+    meta_title:
+      "VConket's Blockchain Development Expertise | Navigate the Future",
+    meta_description:
+      'VConket builds secure and innovative blockchain applications. Explore how blockchain can transform your business.',
     video: '/blockchain.mp4',
     description:
       'In the digital frontier, we are the pioneers of trust, wielding the power of block-chain to forge unbreakable chains of transparency, securing transactions and building bridges to a future where trust is the currency of choice.',
@@ -319,9 +325,12 @@ export const services = [
     ]
   },
   {
-    slug: 'social-media-management',
-    video: '/social.mp4',
+    slug: 'social-media-marketing',
     title: 'Social Media Management',
+    meta_title: "VConket's Social Media Management & Marketing Services",
+    meta_description:
+      "Reach new customers and build brand loyalty with VConket's data-driven social media marketing strategies.",
+    video: '/social.mp4',
     description:
       'From tweets to trends, we orchestrate symphonies of engagement, crafting content that sparks conversations, ignites passions, and transforms followers into loyalists, forging bonds that transcend the digital divide.',
     highlights: [
@@ -371,8 +380,11 @@ export const services = [
   },
   {
     slug: 'ads-management',
-    video: '/ads',
     title: 'Ads Management',
+    meta_title: 'Expert Ads Management from VConket | Maximize Your ROI',
+    meta_description:
+      "Get the most out of your ad campaigns with VConket's professional ads management services. We optimize for conversions and maximize your return on ad spend.",
+    video: '/ads',
     description:
       'In the spotlight of the digital stage, we are the conductors of attention, orchestrating campaigns that resonate with the rhythm of your audience, captivating hearts, minds, and clicks with every beat.',
     highlights: [
@@ -423,6 +435,10 @@ export const services = [
   {
     slug: 'unity-game-development',
     title: 'Unity Game Development',
+    meta_title:
+      "VConket's Unity Development Services | Bring Your Games to Life",
+    meta_description:
+      "Develop engaging and immersive games with VConket's skilled Unity game developers. We turn your game concepts into reality.",
     video: '/unity.mp4',
     description:
       'With lines of code, we weave dreams into reality, sculpting immersive worlds where players become heroes, embarking on epic quests through landscapes of wonder and adventure, where every challenge is a triumph waiting to be won.',

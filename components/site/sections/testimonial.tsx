@@ -47,13 +47,13 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
       className={`${'responsive'} relative  z-[2] my-10 mt-28 w-full transition-all duration-300`}
     >
       <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
-        Testimonial
+        Testimonials
       </span>
       <p
         className="heading mt-5 font-orbit font-semibold text-white"
         style={{ textTransform: 'capitalize' }}
       >
-        They say we're good for a reason
+        Hear From Our Satisfied Clients
       </p>
       <div className="mt-7 grid grid-cols-1 gap-3  text-white md:grid-cols-[4fr_6fr]">
         <div className="flex w-full items-center justify-center overflow-hidden">

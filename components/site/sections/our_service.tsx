@@ -87,7 +87,8 @@ function ServiceSectionSmall({
             Our Digital Services
           </span>
           <p className="heading my-5 font-orbit text-[5vw] font-semibold !leading-tight max-lm:!max-h-full max-lm:!text-[34px]">
-            Tailored Digital Solutions for Your Business Growth
+            Tailored <span className="text-primary">Digital Solutions</span> for
+            Your Business Growth
           </p>
           <ServiceCardSliderSmall sliderRef={sliderRef} />
         </div>
@@ -530,29 +531,30 @@ function ServiceSectionLarge({
           <div className="flex w-full justify-between gap-6">
             <div className="shrink-0 basis-1/2">
               <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary">
-                Our Services
+                Our Digital Services
               </span>
               <p
                 id="presence_text"
                 className="my-5 font-orbit  font-semibold leading-relaxed md:text-[40px] xl:text-5xl"
               >
-                Building Bridges to{' '}
-                <span className="text-primary">Digital Brilliance</span>{' '}
-                Together with Vconekt LLC
+                Tailored <span className="text-primary">Digital Solutions</span>{' '}
+                For Your Business Growth
                 <span className="presence_letter type_cursor ml-2 inline-block h-9 w-1 bg-primary"></span>
               </p>
             </div>
             <div className="max-w-96 shrink-0 basis-1/2">
               <p className="pt-10 text-sm font-light text-white">
-                Embark on a Digital Journey with VconektLLC. Our Comprehensive
-                IT solutions for startups and Services are your compass in the
-                vast terrain of online innovation. From Web Design and
-                Development to Mobile App Creation, Search Engine Optimization,
-                and beyond, we offer a holistic approach to elevate your digital
-                presence. Let us guide you through the intricacies of the
-                digital world, transforming challenges into opportunities and
-                aspirations into achievements. Explore our array of services and
-                redefine your online narrative with VconektLLC.
+                VConekt is a leading software development and digital marketing
+                company specializing in innovative digital solutions. Our
+                experienced team offers a comprehensive suite of services,
+                including web development, mobile app development, SEO, PPC,
+                SMM, automation, lead generation and 360-degree digital
+                marketing. We craft stunning, responsive websites optimized for
+                search engines, create intuitive mobile apps, and employ
+                effective digital marketing strategies to boost your online
+                visibility, drive traffic, and generate leads. With a focus on
+                quality, innovation, and client satisfaction, we are committed
+                to helping your business thrive in the digital age.
               </p>
             </div>
           </div>
