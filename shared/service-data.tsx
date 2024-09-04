@@ -478,3 +478,5 @@ export function getServiceBySlug(slug: string) {
 }
 const service = services[0];
 export type ServiceType = typeof service;
+
+//******** */
