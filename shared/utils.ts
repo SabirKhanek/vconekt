@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export function generateSlug(input: string): string {
   return input
@@ -18,3 +18,10 @@ export const ImgSchema = z.object({
   fileUrl: z.string(),
   url: z.string()
 });
+
+export function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200; // Average reading speed
+  const wordCount = content.trim().split(/\s+/).length;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  return readingTime;
+}

@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import showdown from 'showdown';
+import { calculateReadingTime } from '@/shared/utils';
 
 export async function generateMetadata(
   {
@@ -34,6 +35,7 @@ export default async function BlogPage({
     if (!blog) return notFound();
     const showdown_converter = new showdown.Converter();
     const content = showdown_converter.makeHtml(blog.blog_content);
+    const readingTime = calculateReadingTime(blog.blog_content);
 
     return (
       <div className="responsive relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
@@ -64,11 +66,12 @@ export default async function BlogPage({
               src={blog.blog_thumbnail}
             ></Image>
           </div>
-          {blog.created_at && (
-            <p className="text-white/60">
-              Posted at: {formatDate(new Date(blog.created_at))}
-            </p>
-          )}
+          <div className="flex justify-between text-white/60">
+            {blog.created_at && (
+              <p>Posted on: {formatDate(new Date(blog.created_at))}</p>
+            )}
+            <p>{readingTime} min read</p>
+          </div>
           <div
             className="prose prose-neutral mx-auto text-white prose-headings:text-primary prose-strong:text-white prose-li:marker:text-primary"
             dangerouslySetInnerHTML={{ __html: content }}
@@ -76,10 +79,12 @@ export default async function BlogPage({
         </div>
       </div>
     );
-  } catch (err) {
+  } catch (error) {
+    console.error('Error in BlogPage:', error);
     return notFound();
   }
 }
+
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', {
     day: 'numeric',
@@ -87,6 +92,7 @@ function formatDate(date: Date) {
     year: 'numeric'
   });
 }
+
 // export default function Test() {
 //   return <></>;
 // }

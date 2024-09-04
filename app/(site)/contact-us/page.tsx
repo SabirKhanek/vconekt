@@ -99,9 +99,9 @@ export default function ContactUsPage() {
       </div>
       <div className="responsive relative z-[2]">
         <h2 className="heading">
-          Let's embark on this journey together.{' '}
-          <span className="text-primary"> Reach out now,</span> and let the
-          magic unfold.
+          Contact us today to discuss your{' '}
+          <span className="text-primary"> project & explore,</span> how our
+          innovative digital solutions can help you achieve your goals.
         </h2>
         <div
           className="my-3 w-full px-10 py-10 md:px-20"

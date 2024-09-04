@@ -9,8 +9,9 @@ import SiteLayout from './layoutContents';
 // };
 
 export const metadata: Metadata = {
-  title: 'Vconekt LLC',
-  description: 'Get your dream projects built with the help of Vconekt Wizards',
+  title: 'VConekt | Best-in-Class IT Solutions for Businesses Globally',
+  description:
+    'VConekt empowers businesses with comprehensive IT solutions. We deliver custom web & app development, SEO, AI, graphic design, UI/UX, SMM, SEM, and Unity game development. Grow with us! ',
   other: {
     'google-site-verification': 'ukpQKHpukZTxpOGv-LdCvWGfXeOW7tVQbGMYxj2Z3ZY'
   }

@@ -1,11 +1,12 @@
 'use client';
-import React, { HTMLProps, useEffect, useMemo, useRef, useState } from 'react';
+import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import SplitType from 'split-type';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '../button';
+
 export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
   const [slideReelTimeline, setSlideReelTimeline] =
     useState<gsap.core.Timeline | null>();
@@ -13,30 +14,58 @@ export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true });
   const [hoveredReel, setHoveredReel] = useState<number | null>(null);
-  //   const [isAnimating, setIsAnimating] = useState(false);
   const reel_container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const cursorTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-    cursorTimeline.to('.type_cursor', { opacity: 0.2, duration: 0.5 });
-    new SplitType('#service_text', {
-      types: 'chars',
-      charClass: 'service_text_letter'
-    });
+    cursorTimeline.to('.type_cursor', { opacity: 0.2, duration: 0.3 });
+
+    const words = ['Measurable', 'Impactful', 'Sustainable'];
     const textTimeline = gsap.timeline({
       repeat: -1,
-      yoyo: true,
       repeatDelay: 1
     });
-    textTimeline.fromTo(
-      '.service_text_letter',
-      { display: 'none' },
-      {
-        display: 'inline-block',
-        duration: 0.01,
-        stagger: 0.04
+
+    words.forEach((word, index) => {
+      if (index > 0) {
+        textTimeline.set(
+          `#${words[index - 1]}`,
+          { display: 'none' },
+          `>${index * 3 - 0.5}`
+        );
       }
-    );
+      textTimeline.set(
+        `#${word}`,
+        { display: 'inline-block' },
+        `>${index * 3}`
+      );
+
+      const splitWord = new SplitType(`#${word}`, {
+        types: 'chars',
+        charClass: `${word}_letter`
+      });
+
+      textTimeline.fromTo(
+        `.${word}_letter`,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.05,
+          stagger: 0.05
+        },
+        `>${index * 3}`
+      );
+
+      textTimeline.to(
+        `.${word}_letter`,
+        {
+          opacity: 0,
+          duration: 0.05,
+          stagger: 0.05
+        },
+        `>${index * 3 + 2.5}`
+      );
+    });
 
     const reels = document.getElementsByClassName('service_reel_item');
     const reel_container_ref = reel_container.current;
@@ -48,7 +77,6 @@ export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
       duration: 0.01,
       onRepeatComplete: (reelIndex: number) => {
         const reelContainerLeft = reel_container_ref?.clientLeft;
-        // const reelLeft = reels[reelIndex].getBoundingClientRect().left;
         const reelRight = reels[reelIndex].getBoundingClientRect().right;
         const reelContainerRight =
           reelContainerLeft || 0 + (reel_container_ref?.clientWidth || 0);
@@ -185,14 +213,26 @@ export const RecentWork = React.memo(({ ...props }: HTMLProps<HTMLElement>) => {
         <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary">
           Our Recent Projects
         </span>
-        <p className=" heading my-5 max-w-[80%] font-orbit text-[5vw] font-semibold !leading-tight max-lm:!max-h-full max-lm:!text-[34px]">
-          Elevate Your Online Presence and Drive Your Business Forward with
-          Measurable, Impactful and Sustainable Results.
+        <p className="heading my-5 max-w-[80%] font-orbit text-[5vw] font-semibold !leading-tight max-lm:!max-h-full max-lm:!text-[34px]">
+          Elevate Your Online Presence and Drive Your Business Forward with{' '}
           <br />
-          <span className="inline-block text-primary " id="service_text">
-            services.{' '}
-            <span className="type_cursor ml-2 inline-block h-9 w-1 bg-primary"></span>
-          </span>
+          <span className="inline-block text-primary">
+            <span className="relative inline-block min-w-[200px]">
+              {' '}
+              {/* Adjust min-width as needed */}
+              <span id="Measurable" style={{ display: 'none' }}>
+                Measurable
+              </span>
+              <span id="Impactful" style={{ display: 'none' }}>
+                Impactful
+              </span>
+              <span id="Sustainable" style={{ display: 'none' }}>
+                Sustainable
+              </span>
+              <span className="type_cursor ml-2 inline-block h-9 w-1 bg-primary"></span>
+            </span>
+          </span>{' '}
+          Results.
         </p>
         <Link href="/projects">
           <Button className="pointer-events-auto font-orbit">

@@ -53,7 +53,7 @@ export default function Testimonial({ ...props }: HTMLProps<HTMLElement>) {
         className="heading mt-5 font-orbit font-semibold text-white"
         style={{ textTransform: 'capitalize' }}
       >
-        They say we're good for a reason
+        Hear From Our Satisfied Clients
       </p>
       <div className="mt-7 grid grid-cols-1 gap-3  text-white md:grid-cols-[4fr_6fr]">
         <div className="flex w-full items-center justify-center overflow-hidden">
