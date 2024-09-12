@@ -12,9 +12,15 @@ export function Footer({}: HTMLProps<HTMLElement>) {
         </div>
         <div className="min-w-[250px] flex-1">
           <ul className="flex flex-col gap-2">
-            <li className="cursor-pointer hover:underline">Our Story</li>
-            <li className="cursor-pointer hover:underline">Contact</li>
-            <li className="cursor-pointer hover:underline">News & Press</li>
+            <li className="cursor-pointer hover:underline">
+              <Link href="/about-us">Our Story</Link>
+            </li>
+            <li className="cursor-pointer hover:underline">
+              <Link href="/contact-us">Contact</Link>
+            </li>
+            <li className="cursor-pointer hover:underline">
+              <Link href="/blogs">News & Press</Link>
+            </li>
           </ul>
         </div>
         <div className="min-w-[250px] flex-1">

@@ -8,11 +8,13 @@ import { useInView } from 'framer-motion';
 import { FaSpinner } from 'react-icons/fa';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 export default function ContactUsPage() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref);
   const [isLoading, setIsLoading] = useState(false);
+  const [thankYouMessage, setThankYouMessage] = useState('');
 
   const onSubmit = async (event: any) => {
     event.preventDefault();
@@ -30,7 +32,11 @@ export default function ContactUsPage() {
     const data = await response.json();
 
     if (data.success) {
+      setThankYouMessage('Thank You!');
       event.target.reset();
+      setTimeout(() => {
+        setThankYouMessage('');
+      }, 5000); // Message disappears after 5 seconds
     } else {
       console.log('Error', data);
     }
@@ -179,6 +185,11 @@ export default function ContactUsPage() {
               </p>
             </div>
           </form>
+          {thankYouMessage && (
+            <p className="mt-4 rounded border border-primary bg-[#131A14] p-3 font-orbit text-lg font-semibold text-primary transition-opacity duration-500 ease-in-out">
+              {thankYouMessage}
+            </p>
+          )}
         </div>
       </div>
       <div className="responsive relative z-[2]">
