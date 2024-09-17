@@ -36,7 +36,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 export default function EditBlogPage() {
-  const blogSlug = useParams().blogSlug;
+  const blogSlug = useParams()?.blogSlug;
   const [syncedBlog, setSyncedBlog] =
     useState<InferSelectModel<typeof schema.blogs>>();
   const mode = blogSlug !== 'new' ? 'edit' : 'new';
