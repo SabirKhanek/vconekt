@@ -13,7 +13,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 export default function IndividualServicePage() {
-  const slug = useParams()['slug'];
+  const slug = useParams()?.['slug'] ?? '';
   const navigate = useRouter().push;
   if (!slug) return;
   const service = getServiceBySlug(slug as string);
