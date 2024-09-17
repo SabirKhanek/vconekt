@@ -49,7 +49,7 @@ import { UploadFileResponse } from 'uploadthing/client';
 import { z } from 'zod';
 
 export default function EditProjectPage() {
-  const blogSlug = useParams().projectSlug;
+  const blogSlug = useParams()?.projectSlug;
   const [syncedProject, setSyncedProject] =
     useState<InferSelectModel<typeof schema.projects>>();
   const mode = blogSlug !== 'new' ? 'edit' : 'new';
