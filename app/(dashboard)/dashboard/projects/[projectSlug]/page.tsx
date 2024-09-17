@@ -128,7 +128,7 @@ const ProjectSchema = z.object({
   title: z
     .string()
     .min(1, 'Title is required')
-    .max(100, 'Title should not exceed 100 characters'),
+    .max(200, 'Title should not exceed 200 characters'),
   slug: z
     .string()
     .min(1, 'Slug is required')
@@ -143,7 +143,7 @@ const ProjectSchema = z.object({
   about: z
     .string()
     .min(1, 'About is required')
-    .max(500, 'About should not exceed 500 characters'),
+    .max(1500, 'About should not exceed 1500 characters'),
   mainThumb: uploadFileResponseSchema.extend({
     type: z.literal('image')
   }),
@@ -459,11 +459,7 @@ function CreateProject() {
                 <FormItem className="flex-1">
                   <FormLabel>Author's company</FormLabel>
                   <FormControl>
-                    <Input
-                      disabled
-                      placeholder="Enter author's company"
-                      {...field}
-                    />
+                    <Input placeholder="Enter author's company" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

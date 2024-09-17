@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap && node --experimental-modules scripts/generate-sitemap.mjs",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier . --write",
@@ -118,6 +119,7 @@
     "net": "^1.0.2",
     "next": "^14.2.3",
     "next-auth": "^5.0.0-beta.18",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.6.12",
     "postcss": "8.4.28",
@@ -160,9 +162,10 @@
     "@types/prismjs": "^1.26.4",
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "globby": "^14.0.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
-    "prettier": "3.0.3",
+    "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.14"
   }
 }

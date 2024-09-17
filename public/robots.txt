@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vconekt.com
+
+# Sitemaps
+Sitemap: https://vconekt.com/sitemap.xml
+Sitemap: https://vconekt.com/server-sitemap.xml
