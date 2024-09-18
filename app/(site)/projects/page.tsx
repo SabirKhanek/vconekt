@@ -1,7 +1,6 @@
 import { V3dContactUs } from '@/components/site/3dLogoInContactUs';
-
 import Link from 'next/link';
-import { Project, ProjectCard, projects } from './comps';
+import { Project, ProjectCard } from './comps';
 import Head from 'next/head';
 import { getProjects } from '@/app/actions/projects';
 
@@ -10,9 +9,9 @@ export default async function Projects() {
   try {
     projects = await getProjects();
   } catch (err) {
-    console.log(err);
+    console.error('Failed to fetch projects:', err);
   }
-  console.log(projects);
+
   return (
     <>
       <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
