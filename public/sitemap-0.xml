@@ -1,293 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vconekt.com/server-sitemap.xml</loc>
-    <lastmod>2024-09-17T11:46:53.431Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-  <url>
-    <loc>https://vconekt.com/(dashboard)/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://vconekt.com/(dashboard)/not-found</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
+<url>
+  <loc>https://www.vconekt.com/</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/about-us</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/blogs</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/contact-us</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/ui_ux</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/web_design_and_development</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/mobile_app_dev</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/seo</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/privacy-policy</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/terms-of-service</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/website-development</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/mobile-app-dev</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/artificial-intelligence</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/ui-ux-graphic-design</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/blockchain-development</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/social-media-marketing</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/ads-management</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/services/unity-game-development</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects/activ</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects/boldare</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects/shisha-shop</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects/shisha-vape-canada</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.vconekt.com/projects/best-guitar-instruments</loc>
+  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
-  <url>
-    <loc>https://vconekt.com/actions/blogs</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <url>
-    <loc>https://vconekt.com/actions/projects</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/actions/testimonials</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/layoutContents</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/not-found</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/about-us/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/about-us/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/blogs/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/blogs/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/contact-us/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/contact-us/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/privacy-policy/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/projects/comps</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/projects/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/projects/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/services/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/terms-of-service/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/[blogSlug]/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/auth/(signin)/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/blogs/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/employee/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/kanban/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/profile/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/projects/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/testimonials/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/user/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/projects/[slug]/asset-slider</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/projects/[slug]/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/services/[slug]/layout</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(site)/services/[slug]/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/blogs/[blogSlug]/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc
-      >https://vconekt.com/(dashboard)/dashboard/employee/[employeeId]/page</loc
-    >
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc
-      >https://vconekt.com/(dashboard)/dashboard/projects/[projectSlug]/page</loc
-    >
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://vconekt.com/(dashboard)/dashboard/user/[userId]/page</loc>
-    <lastmod>2024-09-17T11:46:53.432Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
 </urlset>
