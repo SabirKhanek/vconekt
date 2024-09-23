@@ -16,7 +16,11 @@ export async function generateMetadata(
 
   return {
     title: service?.meta_title,
-    description: service?.meta_description
+    description: service?.meta_description,
+    robots: 'index, follow',
+    alternates: {
+      canonical: `https://www.vconekt.com/services/${slug}`
+    }
   };
 }
 

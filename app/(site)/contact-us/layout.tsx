@@ -3,9 +3,12 @@ import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: `VConekt Contact Us | Let's Talk About Your Business Growth`,
-  description: `Ready to unlock your business potential? Contact VConekt today! We're passionate about crafting custom IT solutions to fuel your success. Get in touch!`
+  description: `Ready to unlock your business potential? Contact VConekt today! We're passionate about crafting custom IT solutions to fuel your success. Get in touch!`,
+  robots: 'index, follow',
+  alternates: {
+    canonical: 'https://www.vconekt.com/contact-us'
+  }
 };
-
 export default function ContactUsLayout({
   children
 }: {

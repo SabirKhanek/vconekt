@@ -3,7 +3,11 @@ import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: `VConekt Projects | Showcasing Innovation & Success Stories`,
-  description: `Explore VConekt's transformative projects! We craft cutting-edge web, app, and digital solutions that drive real results for businesses. Get inspired today!`
+  description: `Explore VConekt's transformative projects! We craft cutting-edge web, app, and digital solutions that drive real results for businesses. Get inspired today!`,
+  robots: 'index, follow',
+  alternates: {
+    canonical: 'https://www.vconekt.com/projects'
+  }
 };
 
 export default function ProjectsLayout({

@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   description: 'Get your dream projects built with the help of Vconekt Wizards',
   other: {
     'google-site-verification': 'ukpQKHpukZTxpOGv-LdCvWGfXeOW7tVQbGMYxj2Z3ZY'
+  },
+  robots: 'index, follow',
+  alternates: {
+    canonical: 'https://www.vconekt.com'
   }
 };
 
