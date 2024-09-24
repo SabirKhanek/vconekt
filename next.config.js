@@ -13,31 +13,27 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: 'http://vconekt.com/:path*',
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'vconekt.com'
+          }
+        ],
         destination: 'https://www.vconekt.com/:path*',
         permanent: true
       },
       {
-        source: 'https://vconekt.com',
-        destination: 'https://www.vconekt.com',
-        permanent: true
-      },
-      {
-        source: 'https://vconekt.com/',
-        destination: 'https://www.vconekt.com/',
-        permanent: true
-      },
-      {
-        source: 'https://vconekt.com/:path*',
-        destination: 'https://www.vconekt.com/:path*',
-        permanent: true
-      },
-      {
-        source: 'https://vconekt.com/projects/:subpath*',
+        source: '/projects/:subpath*',
+        has: [
+          {
+            type: 'host',
+            value: 'vconekt.com'
+          }
+        ],
         destination: 'https://www.vconekt.com/projects/:subpath*',
         permanent: true
       },
-      // New specific redirects
       {
         source: '/services/artificial intelligence',
         destination: 'https://www.vconekt.com/services/artificial-intelligence',
@@ -60,16 +56,6 @@ const nextConfig = {
       },
       {
         source: '/www.website.com',
-        destination: 'https://www.vconekt.com',
-        permanent: true
-      },
-      {
-        source: 'https://vconekt.com/www.website.com',
-        destination: 'https://www.vconekt.com',
-        permanent: true
-      },
-      {
-        source: 'https://www.vconekt.com/www.website.com',
         destination: 'https://www.vconekt.com',
         permanent: true
       },
