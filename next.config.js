@@ -24,10 +24,17 @@ const nextConfig = {
         permanent: true
       },
       {
-        source: '/projects/:subpath*',
-        destination: 'https://vconekt.com/projects/:subpath*',
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'vconekt.com'
+          }
+        ],
+        destination: 'https://vconekt.com/:path*',
         permanent: true
       },
+      // Keep your existing service-specific redirects
       {
         source: '/services/artificial intelligence',
         destination: 'https://vconekt.com/services/artificial-intelligence',
@@ -46,11 +53,6 @@ const nextConfig = {
       {
         source: '/services/web_design_and_development',
         destination: 'https://vconekt.com/services/website-development',
-        permanent: true
-      },
-      {
-        source: '/www.website.com',
-        destination: 'https://vconekt.com',
         permanent: true
       }
     ];
