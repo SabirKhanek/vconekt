@@ -19,7 +19,9 @@ export default function AboutUsPage() {
           />
           <meta
             name="description"
-            content="VConekt crafts strategic web & app design, development, SEO, and digital transformation to propel your business. Learn why we're different."
+            content="VConekt crafts strategic web & app design, 
+            development, SEO, and digital transformation to propel your business.
+             Learn why we're different."
           />
         </Head>
         <h2 className="heading uppercase ">About US</h2>

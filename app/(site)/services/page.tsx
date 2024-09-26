@@ -17,11 +17,12 @@ export default function ServicesPage() {
         <Head>
           <meta
             name="title"
-            content="VConekt | Full-Scale IT Solutions | Web & App Dev, SEO, AI & More"
+            content="VConekt | Full-Scale Digital Services | Web & App Dev, SEO, AI & More"
           />
           <meta
             name="description"
-            content="VConekt empowers businesses with comprehensive IT solutions. We deliver custom web & app development, SEO, AI, graphic design, UI/UX, SMM, SEM, and Unity game development. Grow with us!"
+            content="VConekt empowers businesses with comprehensive digital services. We deliver custom web & app development,
+             SEO, PPC, SMM, AI, graphic design, and Unity game development."
           />
         </Head>
         <h2 className="heading uppercase ">Services</h2>

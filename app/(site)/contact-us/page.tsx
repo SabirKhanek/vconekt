@@ -63,7 +63,8 @@ export default function ContactUsPage() {
             />
             <meta
               name="description"
-              content="Ready to unlock your business potential? Contact VConekt today! We're passionate about crafting custom IT solutions to fuel your success. Get in touch!"
+              content="Ready to unlock your business potential? Contact VConekt today! We're passionate about crafting 
+              custom IT solutions to fuel your success. Get in touch!"
             />
           </Head>
           <div

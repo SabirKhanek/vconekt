@@ -12,11 +12,11 @@ export default function BlogsPage() {
           <Head>
             <meta
               name="title"
-              content="VConekt Projects | Showcasing Innovation & Success Stories"
+              content="VConekt Blog | Insights & Strategies for Business Growth"
             />
             <meta
               name="description"
-              content="Explore VConekt's transformative projects! We craft cutting-edge web, app, and digital solutions that drive real results for businesses. Get inspired today!"
+              content="Explore the VConekt Blog for expert insights and actionable strategies to fuel business growth. Discover the latest trends in SEO, web design, digital transformation, and more. "
             />
           </Head>
 
