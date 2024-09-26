@@ -246,13 +246,11 @@ function CreateProject() {
                   onChange={(v) => {
                     if (v.at(0)) {
                       form.setValue('mainThumb', { ...v[0], type: 'image' });
-                    } else {
-                      form.setValue('mainThumb', undefined);
                     }
                   }}
                   value={field.value ? [field.value] : []}
                   imageLimit={1}
-                  onRemove={() => form.setValue('mainThumb', undefined)}
+                  onRemove={field.onChange}
                 />
               </FormControl>
               <FormMessage />
@@ -423,15 +421,11 @@ function CreateProject() {
                           ...v[0],
                           type: 'image'
                         });
-                      } else {
-                        form.setValue('review.authorImage', undefined);
                       }
                     }}
                     value={field.value ? [field.value] : []}
                     imageLimit={1}
-                    onRemove={() =>
-                      form.setValue('review.authorImage', undefined)
-                    }
+                    onRemove={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />
@@ -589,18 +583,17 @@ function EditProject({
     if (isLoading) return;
     setIsLoading(true);
     try {
+      console.log(v);
       await editProject({
         ...v,
         involvements: v.involvements.map((v) => v.trim()),
-        mainThumb: v.mainThumb
-          ? {
-              src: v.mainThumb.url,
-              type: v.mainThumb.type
-            }
-          : null, // Set to null if mainThumb is undefined
+        mainThumb: {
+          src: v.mainThumb.url,
+          type: v.mainThumb.type
+        },
         review: {
           ...v.review,
-          authorImage: v.review.authorImage?.url || null // Set to null if authorImage is undefined
+          authorImage: v.review.authorImage.url
         },
         samples: v.samples.map((v) => ({ src: v.url, type: v.type })),
         id: syncedProject.id
@@ -637,13 +630,11 @@ function EditProject({
                   onChange={(v) => {
                     if (v.at(0)) {
                       form.setValue('mainThumb', { ...v[0], type: 'image' });
-                    } else {
-                      form.setValue('mainThumb', null);
                     }
                   }}
                   value={field.value ? [field.value] : []}
                   imageLimit={1}
-                  onRemove={() => form.setValue('mainThumb', null)}
+                  onRemove={field.onChange}
                 />
               </FormControl>
               <FormMessage />
@@ -814,13 +805,11 @@ function EditProject({
                           ...v[0],
                           type: 'image'
                         });
-                      } else {
-                        form.setValue('review.authorImage', null);
                       }
                     }}
                     value={field.value ? [field.value] : []}
                     imageLimit={1}
-                    onRemove={() => form.setValue('review.authorImage', null)}
+                    onRemove={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />
