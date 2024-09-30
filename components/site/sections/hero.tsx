@@ -33,7 +33,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
     >
       <div className="relative flex h-screen items-center justify-between">
         <div className="max-w-lg">
-          <h2 className="flex flex-col font-orbit   text-4xl font-semibold text-white xs:text-5xl">
+          <h1 className="flex flex-col font-orbit   text-4xl font-semibold text-white xs:text-5xl">
             <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Transform Your</span>
             </span>{' '}
@@ -52,7 +52,7 @@ export function Hero({ ...props }: HTMLProps<HTMLElement>) {
             {/* <span className="inline-block overflow-hidden py-1">
               <span className="hero_text">Expertise</span>
             </span>{' '} */}
-          </h2>
+          </h1>
           <p
             id="hero_subtext"
             className="hero_subtext my-5 w-full max-w-lg break-normal border-l-4 border-primary pl-2 font-medium text-primary"

@@ -8,128 +8,143 @@
 
 
 <url>
-  <loc>https://www.vconekt.com/</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/about-us</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/about-us</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/blogs</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/blogs</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/contact-us</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/contact-us</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/ui_ux</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/ui-ux-graphic-design</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/web_design_and_development</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/website-development</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/mobile_app_dev</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/mobile-app-dev</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/seo</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/seo</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/privacy-policy</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/privacy-policy</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/terms-of-service</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/terms-of-service</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/website-development</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/artificial%20intelligence</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/mobile-app-dev</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/blockchain-development</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/artificial-intelligence</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/social-media-marketing</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/ui-ux-graphic-design</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/ads-management</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/blockchain-development</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/services/unity-game-development</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/social-media-marketing</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/shisha-shop</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/ads-management</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/shisha-vape-canada</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/services/unity-game-development</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/fast-track-life-uk</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects/activ</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/canadian-green-academy</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects/boldare</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/banded-opal</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects/shisha-shop</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/the-reca-blog</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects/shisha-vape-canada</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/vconekt-store</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://www.vconekt.com/projects/best-guitar-instruments</loc>
-  <lastmod>2024-09-18T13:04:49+00:00</lastmod>
+  <loc>https://vconekt.com/projects/activ</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vconekt.com/projects/boldare</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vconekt.com/projects/best-guitar-instruments</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vconekt.com/projects/best-fishing-gun</loc>
+  <lastmod>2024-09-24T09:30:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 

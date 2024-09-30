@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: `Explore the VConekt Blog for expert insights and actionable strategies to fuel business growth. Discover the latest trends in SEO, web design, digital transformation, and more.`,
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://www.vconekt.com/blogs'
+    canonical: 'https://vconekt.com/blogs'
   }
 };
 

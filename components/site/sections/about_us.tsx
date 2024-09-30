@@ -198,7 +198,8 @@ export const AboutUs = React.memo(
             understand your goals and deliver solutions that exceed your
             expectations. We are committed to delivering measurable results that
             drive your business forward while prioritizing quality and
-            efficiency in our work.
+            efficiency in our work. Moreover, VConekt is the best digital
+            marketing agency for small businesses in the USA.
           </p>
           <div className="sm:hidden">
             <AnimatedList

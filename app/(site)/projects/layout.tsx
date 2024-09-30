@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: `Explore VConekt's transformative projects! We craft cutting-edge web, app, and digital solutions that drive real results for businesses. Get inspired today!`,
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://www.vconekt.com/projects'
+    canonical: 'https://vconekt.com/projects'
   }
 };
 

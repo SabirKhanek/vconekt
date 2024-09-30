@@ -19,7 +19,7 @@ export async function generateMetadata(
     description: service?.meta_description,
     robots: 'index, follow',
     alternates: {
-      canonical: `https://www.vconekt.com/services/${slug}`
+      canonical: `https://vconekt.com/services/${slug}`
     }
   };
 }

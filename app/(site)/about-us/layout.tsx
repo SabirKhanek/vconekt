@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: `VConekt crafts strategic web & app design, development, SEO, and digital transformation to propel your business. Learn why we're different.`,
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://www.vconekt.com/about-us'
+    canonical: 'https://vconekt.com/about-us'
   }
 };
 

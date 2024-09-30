@@ -9,14 +9,15 @@ import SiteLayout from './layoutContents';
 // };
 
 export const metadata: Metadata = {
-  title: 'Vconekt LLC',
-  description: 'Get your dream projects built with the help of Vconekt Wizards',
+  title: 'VConekt | Digital Marketing Agency | Web & App Development Agency ',
+  description:
+    'VConekt is your all-in-one digital marketing agency offering comprehensive services including web and mobile app development, SEO, PPC, SMM, AI solutions, graphic design, and Unity game development.',
   other: {
     'google-site-verification': 'ukpQKHpukZTxpOGv-LdCvWGfXeOW7tVQbGMYxj2Z3ZY'
   },
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://www.vconekt.com'
+    canonical: 'https://vconekt.com'
   }
 };
 
