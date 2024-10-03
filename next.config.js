@@ -17,7 +17,7 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.vconekt.com'
+            value: 'vconekt.com'
           }
         ],
         destination: 'https://vconekt.com/:path*',
