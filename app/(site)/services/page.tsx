@@ -8,22 +8,11 @@ import { ContactUs } from '@/components/site/sections/contact_us';
 import Testimonial from '@/components/site/sections/testimonial';
 import Link from 'next/link';
 import { AnimatedList } from '@/components/site/animatedList';
-import Head from 'next/head';
 
 export default function ServicesPage() {
   return (
     <>
       <div className="relative z-10 flex flex-col  items-center justify-center gap-4 pb-24 pt-40 text-white">
-        <Head>
-          <meta
-            name="title"
-            content="VConekt | Full-Scale IT Solutions | Web & App Dev, SEO, AI & More"
-          />
-          <meta
-            name="description"
-            content="VConekt empowers businesses with comprehensive IT solutions. We deliver custom web & app development, SEO, AI, graphic design, UI/UX, SMM, SEM, and Unity game development. Grow with us!"
-          />
-        </Head>
         <h2 className="heading uppercase ">Services</h2>
         <div className="flex items-center gap-3 font-orbit font-medium ">
           <Link

@@ -50,15 +50,17 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
       {!onPage ? (
         <div className="relative">
           <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
-            Get Insight and Tips
+            Stay Ahead of the Curve with Expert Insights
           </span>
           <div className="flex flex-col gap-1">
             <p
               className="heading mt-5  font-orbit text-[5vw] font-semibold !leading-tight text-white max-lm:!max-h-full max-lm:!text-[34px]"
               style={{ textTransform: 'capitalize' }}
             >
-              Stay up-to-date with the latest trends and best practices in the
-              digital world through our informative blogs.
+              Discover valuable insights, tips, and trends in design,
+              development, and marketing through our informative blog. Our
+              articles are curated to help you stay ahead of the competition and
+              achieve your digital goals.
             </p>
             <Link href="/blogs">
               <Button className="w-fit sm:hidden">View All</Button>

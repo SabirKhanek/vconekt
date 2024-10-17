@@ -596,6 +596,66 @@ const cardDetails = [
     link: '/services/seo'
   },
   {
+    title: 'B2B Marketing Solutions',
+    description:
+      'Unlock your B2B potential with customized digital marketing strategies designed to meet your unique business objectives.',
+    link: '/'
+  },
+  {
+    title: 'Strategic Outsourcing',
+    description:
+      'Enhance your marketing flexibility with our strategic outsourcing solutions, allowing you to focus on core business functions effortlessly.',
+    link: '/'
+  },
+  {
+    title: 'Digital Marketing Services',
+    description:
+      'Experience innovative digital marketing services that leverage data-driven insights to achieve exceptional results and maximize engagement.',
+    link: '/'
+  },
+  {
+    title: 'Custom Application',
+    description:
+      'Transform your business operations with our tailored application development services, creating innovative solutions that drive efficiency and growth.',
+    link: '/'
+  },
+  {
+    title: 'AI Chatbot Development',
+    description:
+      'Revolutionize customer service with our AI chatbot development, providing intelligent, responsive solutions that enhance user experience and operational efficiency.',
+    link: '/'
+  },
+  {
+    title: 'Pay Per Click Services',
+    description:
+      'Maximize your ROI with our expertly managed PPC marketing services, targeting the right audience for effective and efficient campaigns.',
+    link: '/'
+  },
+  {
+    title: 'Content Marketing Services',
+    description:
+      'Elevate your brand with high-quality, engaging content marketing strategies that align with your business goals and attract your target audience.',
+    link: '/'
+  },
+  {
+    title: 'CRO Services',
+    description:
+      'Optimize your website for maximum conversions using our CRO services, enhancing user experience to boost sales and customer satisfaction.',
+    link: '/'
+  },
+  {
+    title: 'eCommerce Services',
+    description:
+      'Drive online sales growth with our specialized eCommerce marketing services focused on SEO, paid advertising, and user experience optimization.',
+    link: '/'
+  },
+  {
+    title: 'Online Marketplace Services',
+    description:
+      'Increase visibility and sales on platforms like Amazon with our expert online marketplace marketing services tailored to build strong brand presence.',
+    link: '/'
+  },
+  {
     title: 'Artificial Intelligence',
     description:
       'In the data realm, we architect innovation, weaving intelligence into your business fabric, crafting automated solutions that anticipate, adapt, and evolve, unlocking endless possibilities.',

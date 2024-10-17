@@ -54,8 +54,10 @@ const services_with_metas = [
   {
     slug: 'mobile-app-dev',
     title: 'Mobile App Development',
-    meta_title: 'Your Meta Title for Mobile App Development',
-    meta_description: 'Your Meta Description for Mobile App Development',
+    meta_title:
+      '"Expert Mobile App Development Services | Custom Solutions for iOS & Android"',
+    meta_description:
+      'Elevate your business with our top-notch mobile app development services. Our team specializes in creating custom solutions for iOS and Android platforms. Contact us today for innovative mobile app development!',
     video: '/recent_projects.mp4',
     description:
       'In the palm of your hand, we breathe life into ideas, sculpting mobile masterpieces that blend seamless design with captivating functionality, empowering users to explore, engage, and experience your brand like never before.',

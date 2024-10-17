@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Showdown from 'showdown';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions',
+  title: 'Vconekt Terms & Conditions',
   description: `VConekt's Terms & Conditions outline the legal agreement between us and our users. This page details the terms of service for using our website and services.
 `
 };

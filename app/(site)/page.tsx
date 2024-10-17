@@ -16,11 +16,11 @@ export default function Home() {
       <Head>
         <meta
           name="title"
-          content="VConekt | Best-in-Class IT Solutions for Businesses Globally"
+          content="VConekt | Digital Marketing Agency | Web & App Development Agency "
         />
         <meta
           name="description"
-          content="VConekt is your trusted IT partner for growth. We craft custom web design, SEO, & digital transformation solutions to empower businesses worldwide."
+          content="VConekt is your all-in-one digital marketing agency offering comprehensive services including web and mobile app development, SEO, PPC, SMM, AI solutions, graphic design, and Unity game development."
         />
       </Head>
       <Hero id="hero" />
