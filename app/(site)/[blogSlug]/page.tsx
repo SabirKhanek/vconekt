@@ -52,9 +52,10 @@ export default async function BlogPage({
           )}
         </Head>
         <div className="responsive max-w-screen-768 ">
-          <h1 className="text-center font-orbit text-5xl font-bold text-primary">
+          <h1 className="mb-4 text-center font-orbit text-5xl font-bold text-primary">
             {blog.blog_title}
           </h1>
+
           <div className="my-5 aspect-[1/0.3] w-full">
             <Image
               alt={blog.metadata?.meta_description || ''}
@@ -80,6 +81,7 @@ export default async function BlogPage({
     return notFound();
   }
 }
+
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', {
     day: 'numeric',
@@ -87,6 +89,3 @@ function formatDate(date: Date) {
     year: 'numeric'
   });
 }
-// export default function Test() {
-//   return <></>;
-// }

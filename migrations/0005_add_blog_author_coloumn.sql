@@ -1,0 +1,1 @@
+ALTER TABLE `blogs` ADD COLUMN `blog_author` varchar(255) NOT NULL;
