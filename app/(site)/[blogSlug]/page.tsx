@@ -19,10 +19,7 @@ export async function generateMetadata(
   return {
     title: blog?.metadata?.meta_title,
     description: blog?.metadata?.meta_description,
-    keywords: blog?.metadata?.target_keyword,
-    alternates: {
-      canonical: blog?.canonical_url || `https://vconekt.com/${slug}`
-    }
+    keywords: blog?.metadata?.target_keyword
   };
 }
 
@@ -52,9 +49,6 @@ export default async function BlogPage({
           )}
           {blog.metadata?.target_keyword && (
             <meta name={'keywords'} content={blog.metadata.target_keyword} />
-          )}
-          {blog.canonical_url && (
-            <link rel="canonical" href={blog.canonical_url} />
           )}
         </Head>
         <div className="responsive max-w-screen-768 ">

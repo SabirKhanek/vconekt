@@ -37,7 +37,6 @@ export async function editBlog(
     thumbnail?: string;
     content?: string;
     content_obj: Value;
-    canonical_url?: string;
     metadata: InferInsertModel<typeof schema.blogs>['metadata'];
   }
 ) {
@@ -50,7 +49,6 @@ export async function editBlog(
       blog_thumbnail: obj.thumbnail,
       blog_content_slate: obj.content_obj,
       slug: obj.slug,
-      canonical_url: obj.canonical_url,
       metadata: obj.metadata
     })
     .where(eq(schema.blogs.id, id));
