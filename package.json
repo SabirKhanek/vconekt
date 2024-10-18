@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "prepare": "husky",
-    "migrate": "ts-node db/migrate"
+    "migrate": "ts-node --esm db/migrate.ts"
   },
   "lint-staged": {
     "**/*": [
@@ -114,7 +114,7 @@
     "gsap": "^3.12.4",
     "gsap-trial": "^3.12.4",
     "lucide-react": "^0.291.0",
-    "mysql2": "^3.10.2",
+    "mysql2": "^3.11.3",
     "net": "^1.0.2",
     "next": "^14.2.3",
     "next-auth": "^5.0.0-beta.18",

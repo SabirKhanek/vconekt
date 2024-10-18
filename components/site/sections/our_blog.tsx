@@ -34,13 +34,13 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
   const [blogs, setBlogs] = useState<Awaited<ReturnType<typeof getBlogs>>>([]);
   async function fetchBlogs() {
     try {
-      const res = await getBlogs();
+      const res = await getBlogs(onPage ? undefined : 3);
       setBlogs(res);
     } catch (err: any) {}
   }
   useEffect(() => {
     fetchBlogs();
-  }, []);
+  }, [onPage]);
 
   return (
     <motion.section

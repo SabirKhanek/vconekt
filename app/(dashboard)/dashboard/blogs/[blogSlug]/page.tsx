@@ -107,6 +107,7 @@ const CreateFormSchema = z.object({
     .array(ImgSchema)
     .max(1, 'You can only add 1 thumbnail')
     .min(1, 'You must add cover thumbnail!'),
+
   meta_title: z.string(),
   meta_description: z.string(),
   image_alt: z.string(),
@@ -156,6 +157,7 @@ function CreateBlog() {
         blog_content: v.blog_content,
         blog_thumbnail: v.blog_thumbnail.at(0)!.url,
         blog_title: v.blog_title,
+
         slug: v.blog_slug,
         canonical_url: v.canonical_url,
         metadata: {

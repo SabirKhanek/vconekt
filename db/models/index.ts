@@ -27,6 +27,7 @@ export const blogs = mysqlTable('blogs', {
   slug: varchar('slug', { length: 255 }).notNull().unique(),
   created_at: timestamp('created_at').defaultNow(),
   blog_title: text('blog_title').notNull(),
+
   blog_content: text('blog_content').notNull(),
   blog_thumbnail: text('blog_thumbnail').notNull(),
   blog_content_slate: json('blog_content_slate').$type<Value>().default([]),
