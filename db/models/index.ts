@@ -30,6 +30,7 @@ export const blogs = mysqlTable('blogs', {
   blog_content: text('blog_content').notNull(),
   blog_thumbnail: text('blog_thumbnail').notNull(),
   blog_content_slate: json('blog_content_slate').$type<Value>().default([]),
+  canonical_url: text('canonical_url'),
   updated_at: timestamp('updated_at', {
     mode: 'date'
   }).$onUpdate(() => new Date()),
@@ -63,6 +64,7 @@ export const projects = mysqlTable('projects', {
     }>()
     .notNull(),
   short_desc: text('short_desc').notNull(),
+  canonical_url: text('canonical_url'),
   created_at: timestamp('created_at').defaultNow(),
   updated_at: timestamp('updated_at', { mode: 'date' }).$onUpdate(
     () => new Date()

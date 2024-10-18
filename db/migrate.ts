@@ -7,8 +7,11 @@ async function main() {
   const { db, connection } = await getConnection({ logging: true });
   const dirPath = path.join(__dirname, '..', 'migrations');
   // await db.execute(sql`select 1`);
-  await migrate<typeof schema>(db, { migrationsFolder: dirPath });
+  (await migrate)<typeof schema>(db, { migrationsFolder: dirPath });
   await connection.end();
 }
 // console.log(process.env.DB_STRING);
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -2,11 +2,22 @@
 import { schema } from '@/db';
 import { initConnection } from '@/shared/mysql';
 import { Value } from '@udecode/plate-common';
-import { eq, InferInsertModel } from 'drizzle-orm';
+import { eq, InferInsertModel, desc, sql } from 'drizzle-orm';
 
-export async function getBlogs() {
+export async function getBlogs(limit?: number) {
   const db = await initConnection();
-  return (await db.select().from(schema.blogs)).map((v) => {
+  let query = db
+    .select()
+    .from(schema.blogs)
+    .orderBy(desc(schema.blogs.created_at));
+
+  let result = await query;
+
+  if (limit) {
+    result = result.slice(0, limit);
+  }
+
+  return result.map((v) => {
     const { blog_content, blog_content_slate, ...blog } = v;
     return blog;
   });
@@ -26,6 +37,7 @@ export async function editBlog(
     thumbnail?: string;
     content?: string;
     content_obj: Value;
+    canonical_url?: string;
     metadata: InferInsertModel<typeof schema.blogs>['metadata'];
   }
 ) {
@@ -38,6 +50,7 @@ export async function editBlog(
       blog_thumbnail: obj.thumbnail,
       blog_content_slate: obj.content_obj,
       slug: obj.slug,
+      canonical_url: obj.canonical_url,
       metadata: obj.metadata
     })
     .where(eq(schema.blogs.id, id));
