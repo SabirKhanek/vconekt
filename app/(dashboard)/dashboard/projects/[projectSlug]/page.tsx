@@ -12,7 +12,6 @@
  */
 'use client';
 
-import { createBlog, editBlog, getBlogBySlug } from '@/app/actions/blogs';
 import {
   createProjecct,
   editProject,
@@ -174,10 +173,23 @@ const ProjectSchema = z.object({
   short_desc: z
     .string()
     .min(1, 'Short description is required')
-    .max(200, 'Short description should not exceed 200 characters')
+    .max(200, 'Short description should not exceed 200 characters'),
+  canonical_url: z.string().min(1, 'Canonical URL is required'),
+  metadata: z
+    .object({
+      meta_title: z.string().optional(),
+      meta_description: z.string().optional(),
+      image_alt: z.string().optional(),
+      target_keyword: z.string().optional()
+    })
+    .optional()
 });
 
 type CreateSchemaType = z.infer<typeof ProjectSchema>;
+
+const generateCanonicalUrl = (title: string) => {
+  return `https://vconekt.com/projects/${generateSlug(title)}`;
+};
 
 function CreateProject() {
   const form = useForm<CreateSchemaType>({
@@ -196,7 +208,14 @@ function CreateProject() {
         authorName: '',
         text: ''
       },
-      mainThumb: undefined
+      mainThumb: undefined,
+      canonical_url: '',
+      metadata: {
+        meta_title: '',
+        meta_description: '',
+        image_alt: '',
+        target_keyword: ''
+      }
     }
   });
   const { toast } = useToast();
@@ -269,7 +288,12 @@ function CreateProject() {
                     placeholder="Enter project title"
                     {...field}
                     onChange={(e) => {
-                      form.setValue('slug', generateSlug(e.target.value || ''));
+                      const title = e.target.value;
+                      form.setValue('slug', generateSlug(title));
+                      form.setValue(
+                        'canonical_url',
+                        generateCanonicalUrl(title)
+                      );
                       field.onChange(e);
                     }}
                   />
@@ -292,6 +316,19 @@ function CreateProject() {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="canonical_url"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Canonical URL</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter canonical URL" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="my-3 flex items-center gap-5">
           <FormField
             control={form.control}
@@ -572,7 +609,9 @@ function EditProject({
         authorCompany: syncedProject.review?.authorCompany || '',
         text: syncedProject.review?.text || ''
       },
-      short_desc: syncedProject.short_desc
+      short_desc: syncedProject.short_desc,
+      canonical_url:
+        syncedProject.canonical_url || generateCanonicalUrl(syncedProject.title)
     }
   });
 
@@ -653,7 +692,12 @@ function EditProject({
                     placeholder="Enter project title"
                     {...field}
                     onChange={(e) => {
-                      form.setValue('slug', generateSlug(e.target.value || ''));
+                      const title = e.target.value;
+                      form.setValue('slug', generateSlug(title));
+                      form.setValue(
+                        'canonical_url',
+                        generateCanonicalUrl(title)
+                      );
                       field.onChange(e);
                     }}
                   />
@@ -676,6 +720,19 @@ function EditProject({
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="canonical_url"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Canonical URL</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter canonical URL" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="my-3 flex items-center gap-5">
           <FormField
             control={form.control}

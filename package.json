@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "prepare": "husky",
-    "migrate": "ts-node --esm db/migrate.ts"
+    "migrate": "tsx db/migrate.ts"
   },
   "lint-staged": {
     "**/*": [
@@ -105,7 +105,7 @@
     "daisyui": "^4.5.0",
     "date-fns": "^2.30.0",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.24.0",
+    "drizzle-kit": "^0.24.2",
     "drizzle-orm": "^0.33.0",
     "emblor": "^1.4.4",
     "eslint": "8.48.0",
@@ -166,6 +166,7 @@
     "lint-staged": "^15.2.7",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1"
   }
 }

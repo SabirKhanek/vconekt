@@ -50,23 +50,23 @@ export async function editProject(
 
   return true;
 }
-export async function addDefaultProjects() {
-  const db = await initConnection();
+// export async function addDefaultProjects() {
+//   const db = await initConnection();
 
-  const existingProjects = await db
-    .select({ slug: schema.projects.slug })
-    .from(schema.projects);
-  const existingSlugs = new Set(
-    existingProjects.map((project) => project.slug)
-  );
+//   const existingProjects = await db
+//     .select({ slug: schema.projects.slug })
+//     .from(schema.projects);
+//   const existingSlugs = new Set(
+//     existingProjects.map((project) => project.slug)
+//   );
 
-  const newProjects = projects.filter(
-    (project) => !existingSlugs.has(project.slug)
-  );
+//   const newProjects = projects.filter(
+//     (project) => !existingSlugs.has(project.slug)
+//   );
 
-  if (newProjects.length > 0) {
-    await db.insert(schema.projects).values(newProjects);
-  }
+//   if (newProjects.length > 0) {
+//     await db.insert(schema.projects).values(newProjects);
+//   }
 
-  return true;
-}
+//   return true;
+// }

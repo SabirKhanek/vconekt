@@ -1,1 +1,0 @@
-ALTER TABLE `blogs` ADD COLUMN `canonical` text;

@@ -101,6 +101,7 @@ const CreateFormSchema = z.object({
   blog_title: z.string().min(1, 'Title is required'),
   blog_content: z.string().min(1, 'Content is required'),
   blog_slug: z.string().min(1, 'Slug is required'),
+  canonical_url: z.string().min(1, 'Canonical URL is required'),
   blog_content_slate: z.array(z.any()),
   blog_thumbnail: z
     .array(ImgSchema)
@@ -133,12 +134,19 @@ function CreateBlog() {
       image_alt: '',
       meta_description: '',
       meta_title: '',
-      target_keywords: ''
+      target_keywords: '',
+      canonical_url: ''
     }
   });
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  // Add this function to generate canonical URL
+  const generateCanonicalUrl = (title: string) => {
+    return `https://vconekt.com/${generateSlug(title)}`;
+  };
+
   async function handleSubmit(v: CreateSchemaType) {
     if (isLoading) return;
     setIsLoading(true);
@@ -151,6 +159,7 @@ function CreateBlog() {
         blog_title: v.blog_title,
 
         slug: v.blog_slug,
+        canonical_url: v.canonical_url,
         metadata: {
           image_alt: v.image_alt,
           meta_description: v.meta_description,
@@ -202,9 +211,11 @@ function CreateBlog() {
                     placeholder="Enter blog title"
                     {...field}
                     onChange={(e) => {
+                      const title = e.target.value;
+                      form.setValue('blog_slug', generateSlug(title));
                       form.setValue(
-                        'blog_slug',
-                        generateSlug(e.target.value || '')
+                        'canonical_url',
+                        generateCanonicalUrl(title)
                       );
                       field.onChange(e);
                     }}
@@ -228,6 +239,19 @@ function CreateBlog() {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="canonical_url"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Canonical URL</FormLabel>
+              <FormControl>
+                <Input disabled placeholder="Canonical URL" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="my-3 flex items-center gap-5">
           <FormField
             control={form.control}
@@ -374,7 +398,9 @@ function EditBlog({
       image_alt: syncedBlog.metadata?.image_alt,
       meta_description: syncedBlog.metadata?.meta_description,
       meta_title: syncedBlog.metadata?.meta_title,
-      target_keywords: syncedBlog.metadata?.target_keyword
+      target_keywords: syncedBlog.metadata?.target_keyword,
+      canonical_url:
+        syncedBlog.canonical_url || `https://vconekt.com/${syncedBlog.slug}`
     }
   });
   const { toast } = useToast();
@@ -388,6 +414,7 @@ function EditBlog({
         content: v.blog_content,
         thumbnail: v.blog_thumbnail.at(0)!.url,
         title: v.blog_title,
+        canonical_url: v.canonical_url,
         metadata: {
           image_alt: v.image_alt,
           meta_description: v.meta_description,
@@ -552,6 +579,19 @@ function EditBlog({
                   setEditorValue={field.onChange}
                   initialValue={field.value}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="canonical_url"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Canonical URL</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter canonical URL" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

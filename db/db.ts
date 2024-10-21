@@ -2,31 +2,34 @@ import { drizzle } from 'drizzle-orm/mysql2'; // Use MySQL specific drizzle impo
 import mysql from 'mysql2/promise'; // Import MySQL client
 import * as schema from './schema';
 import { Logger } from 'drizzle-orm';
-// import { config } from 'dotenv';
-// config();
 
-// config({ path: path.join(__dirname, "..", "..", "..", ".env") });
-let { MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD } = process.env;
+// Hardcoded database configuration
+const DB_CONFIG = {
+  host: 'localhost',
+  database: 'vconekt',
+  user: 'root',
+  password: 'root123'
+};
 
 export async function getConnection({
   logging = false
 }: {
   logging?: boolean;
 }) {
-  const connection = await mysql.createConnection({
-    host: MYSQL_HOST!,
-    database: MYSQL_DATABASE!,
-    user: MYSQL_USER!,
-    password: MYSQL_PASSWORD!
-  });
+  try {
+    const connection = await mysql.createConnection(DB_CONFIG);
 
-  const db = drizzle<typeof schema>(connection, {
-    logger: logging,
-    schema,
-    mode: 'default'
-  });
+    const db = drizzle<typeof schema>(connection, {
+      logger: logging,
+      schema,
+      mode: 'default'
+    });
 
-  return { db, connection };
+    return { db, connection };
+  } catch (error) {
+    console.error('Failed to create database connection:', error);
+    throw error;
+  }
 }
 
 export async function getPoolConnection({
@@ -37,10 +40,7 @@ export async function getPoolConnection({
   timeout?: number;
 }) {
   const pool = mysql.createPool({
-    host: MYSQL_HOST!,
-    database: MYSQL_DATABASE!,
-    user: MYSQL_USER!,
-    password: MYSQL_PASSWORD!,
+    ...DB_CONFIG,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0

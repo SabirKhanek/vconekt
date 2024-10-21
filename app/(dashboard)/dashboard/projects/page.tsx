@@ -1,7 +1,7 @@
 'use client';
 import { deleteBlog, getBlogs } from '@/app/actions/blogs';
 import {
-  addDefaultProjects,
+  //addDefaultProjects,
   deleteProject,
   getProjects
 } from '@/app/actions/projects';
@@ -75,7 +75,7 @@ export default function Projects() {
         <div className="flex items-center justify-between">
           <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
           <div className="flex items-center gap-2">
-            <Button
+            {/* <Button
               onClick={() =>
                 addDefaultProjects()
                   .then(() => {
@@ -92,7 +92,7 @@ export default function Projects() {
               variant="outline"
             >
               Add default projects
-            </Button>
+            </Button> */}
             <Button variant="outline">
               <Link href={'/dashboard/projects/new'}>Create New Project</Link>
             </Button>

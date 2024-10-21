@@ -34,12 +34,16 @@ export const blogs = mysqlTable('blogs', {
   updated_at: timestamp('updated_at', {
     mode: 'date'
   }).$onUpdate(() => new Date()),
+
   metadata: json('metadata').default({}).$type<{
     meta_title?: string;
     meta_description?: string;
     image_alt?: string;
     target_keyword?: string;
-  }>()
+  }>(),
+
+  // Add canonical_url field
+  canonical_url: varchar('canonical_url', { length: 255 }).notNull()
 });
 
 export const projects = mysqlTable('projects', {
@@ -49,6 +53,7 @@ export const projects = mysqlTable('projects', {
   involvements: json('involvements').$type<string[]>().notNull(),
   targetUrl: text('target_url').notNull(),
   about: text('about').notNull(),
+  canonical_url: varchar('canonical_url', { length: 255 }).notNull(),
   mainThumb: json('main_thumb')
     .$type<{ src: string; type: 'image' }>()
     .notNull(),

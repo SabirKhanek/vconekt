@@ -71,17 +71,13 @@
       "compositePrimaryKeys": {
         "blogs_id": {
           "name": "blogs_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {
         "blogs_slug_unique": {
           "name": "blogs_slug_unique",
-          "columns": [
-            "slug"
-          ]
+          "columns": ["slug"]
         }
       }
     },
@@ -129,9 +125,7 @@
       "compositePrimaryKeys": {
         "testimonials_id": {
           "name": "testimonials_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -167,9 +161,7 @@
       "compositePrimaryKeys": {
         "uploads_id": {
           "name": "uploads_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}

@@ -36,6 +36,20 @@
       "when": 1722391820863,
       "tag": "0004_steady_toro",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1722391820864,
+      "tag": "0005_add_Canonical",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1722391820865,
+      "tag": "0006_add_url_project",
+      "breakpoints": true
     }
   ]
 }
