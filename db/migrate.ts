@@ -1,41 +1,34 @@
 import { migrate } from 'drizzle-orm/mysql2/migrator';
-import { drizzle } from 'drizzle-orm/mysql2';
-import mysql from 'mysql2/promise';
-import * as dotenv from 'dotenv';
+import { getConnection } from './db';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { schema } from '.';
 
 async function main() {
-  const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root123',
-    database: 'vconekt',
-    multipleStatements: true
-  });
-
-  const db = drizzle(connection);
-
-  console.log('Starting migration...');
-
   try {
-    await migrate(db, {
-      migrationsFolder: path.join(__dirname, '..', 'migrations')
+    console.log('Starting migration process...');
+    const { db, connection } = await getConnection({ logging: true });
+    const dirPath = path.join(__dirname, '..', 'migrations');
+
+    console.log(`Migration folder: ${dirPath}`);
+    console.log('Executing migrations...');
+
+    const results = await migrate<typeof schema>(db, {
+      migrationsFolder: dirPath
     });
-    console.log('Migration completed successfully');
-  } catch (error) {
-    console.error('Migration failed:', error);
-  } finally {
+
+    // console.log(`Executed ${results.length} migrations`);
+    // results.forEach((migration) => {
+    //   console.log(`- ${migration.migrationName}`);
+    // });
+
     await connection.end();
+    console.log('Migration process completed successfully.');
+  } catch (error) {
+    console.error('Error during migration:', error);
+    process.exit(1);
   }
 }
 
-main().catch((error) => {
-  console.error('Unhandled error during migration:', error);
-  process.exit(1);
-});
+if (require.main === module) {
+  main();
+}
