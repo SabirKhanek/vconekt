@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "prepare": "husky",
-    "migrate": "tsx db/migrate.ts"
+    "migrate": "ts-node db/migrate"
   },
   "lint-staged": {
     "**/*": [

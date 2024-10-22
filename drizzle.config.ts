@@ -1,23 +1,22 @@
-/**
- * Drizzle configuration for the application.
- * This file sets up the database connection and other Drizzle-related settings.
- */
 import type { Config } from 'drizzle-kit';
+import { config } from 'dotenv';
 
-const DB_CONFIG = {
-  host: 'localhost',
-  database: 'vconekt',
-  user: 'root',
-  password: 'root123'
-};
+config({ path: '.env.local' });
+
+let { MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD } = process.env;
+
+let mysqlUrl = `mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}/${MYSQL_DATABASE}`;
 
 export default {
   schema: './db/schema.ts',
   out: './migrations',
   dialect: 'mysql',
   dbCredentials: {
-    ...DB_CONFIG,
-    url: `mysql://${DB_CONFIG.user}:${DB_CONFIG.password}@${DB_CONFIG.host}/${DB_CONFIG.database}`
+    host: MYSQL_HOST,
+    database: MYSQL_DATABASE,
+    password: MYSQL_PASSWORD,
+    user: MYSQL_USER,
+    url: mysqlUrl
   },
   verbose: true,
   strict: true
