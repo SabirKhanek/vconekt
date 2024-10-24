@@ -54,13 +54,12 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
           </span>
           <div className="flex flex-col gap-1">
             <p
-              className="heading mt-5  font-orbit text-[5vw] font-semibold !leading-tight text-white max-lm:!max-h-full max-lm:!text-[34px]"
+              className=" mt-5 font-orbit text-[3vw] !leading-tight text-white max-lm:!max-h-full max-lm:!text-[34px]"
               style={{ textTransform: 'capitalize' }}
             >
-              Discover valuable insights, tips, and trends in design,
-              development, and marketing through our informative blog. Our
-              articles are curated to help you stay ahead of the competition and
-              achieve your digital goals.
+              Discover insights, tips, and trends in design, development, and
+              marketing through our blog. Stay ahead of the competition and
+              achieve your digital goals with our curated articles.
             </p>
             <Link href="/blogs">
               <Button className="w-fit sm:hidden">View All</Button>
@@ -73,7 +72,7 @@ export function OurBlog({ onPage = false, ...props }: Blogs) {
           </Link>
         </div>
       ) : (
-        <div className="mb-16 w-full max-w-[80%]">
+        <div className="mb-16 w-full max-w-[50%]">
           <h2 className="heading font-orbit">
             Stay Ahead of the Curve with{' '}
             <span className="text-primary">Expert Insights</span>

@@ -37,7 +37,7 @@ export function Footer({}: HTMLProps<HTMLElement>) {
       <div className="flex flex-col items-center justify-between gap-y-5 py-3 md:flex-row">
         <div className="flex flex-col items-center justify-center gap-1 sm:flex-row sm:gap-7">
           <p className="cursor-pointer text-sm font-light  text-white/65 hover:text-white hover:underline">
-            © 2024 Vconekt. All Rights Reserved.
+            © 2024 Vconekt LLC. All Rights Reserved.
           </p>
           <p className="cursor-pointer text-sm font-light text-white/65 hover:text-white hover:underline">
             Privacy Policy

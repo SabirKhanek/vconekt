@@ -587,7 +587,7 @@ const cardDetails = [
     title: 'Mobile App Development',
     description:
       'In your hand, we sculpt captivating mobile experiences that empower brand exploration like never before.',
-    link: '/services/mobile_app_dev'
+    link: '/services/mobile-app-dev'
   },
   {
     title: 'Search Engine Optimization',
@@ -659,19 +659,19 @@ const cardDetails = [
     title: 'Artificial Intelligence',
     description:
       'In the data realm, we architect innovation, weaving intelligence into your business fabric, crafting automated solutions that anticipate, adapt, and evolve, unlocking endless possibilities.',
-    link: '/services/ai'
+    link: '/services/artificialintelligence'
   },
   {
     title: 'Blockchain',
     description:
       'We pioneer trust in the digital frontier, using blockchain to secure transactions and forge transparent pathways to a future where trust is currency.',
-    link: '/services/blockchain'
+    link: '/services/blockchain-development'
   },
   {
     title: 'Social Media Management',
     description:
       'We spark conversations, ignite passions, and forge loyal bonds from tweets to trends, bridging the digital divide with engaging content.',
-    link: '/services/social_media_management'
+    link: '/services/social-media-marketing'
   },
   {
     title: 'Ads Management',
@@ -683,6 +683,6 @@ const cardDetails = [
     title: 'Unity Game Development',
     description:
       'We code dreams into reality, crafting immersive worlds where players become heroes, triumphing over challenges in epic quests.',
-    link: '/services/unity_game_development'
+    link: '/services/unity-game-development'
   }
 ];

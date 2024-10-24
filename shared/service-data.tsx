@@ -160,7 +160,7 @@ const services_with_metas = [
     ]
   },
   {
-    slug: 'artificial intelligence',
+    slug: 'artificialintelligence',
     video: '/ai.mp4',
     title: 'Artificial Intelligence',
     meta_title:
@@ -231,7 +231,7 @@ const services_with_metas = [
     Illustration: ({ ...props }: HTMLProps<HTMLElement>) => (
       <img
         {...(props as HTMLProps<HTMLImageElement>)}
-        src="/design.png"
+        src="/ui_ux.png"
         className={`h-[100px] w-[100px] ${props.className}`}
       ></img>
     ),
