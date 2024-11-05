@@ -129,11 +129,11 @@ export const AboutUs = React.memo(
               />
               <div className="sm:shrink-0 sm:basis-1/2">
                 <span className="rounded-3xl bg-primary/15 px-5 py-2 font-orbit uppercase text-primary ">
-                  About Us
+                  About Vconekt LLC:
                 </span>
                 <h2 className="my-3 whitespace-break-spaces font-orbit text-[30px]  font-semibold uppercase leading-tight text-white sm:text-[36px] md:text-[40px] xl:text-5xl">
-                  About Vconekt LLC: Empowering Your Brand with Design, Web &
-                  App Development and Digital Marketing
+                  Empowering Your Brand with Design, Web & App Development and
+                  Digital Marketing
                 </h2>
               </div>
               <div className="sm:shrink-0 sm:basis-1/2" ref={vidContainerRef}>
