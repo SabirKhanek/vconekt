@@ -108,38 +108,43 @@ export default function ContactUsPage() {
         </div>
       </div>
       <div className="responsive relative z-[2]">
-        <h2 className="heading">GET IN TOUCH WITH OUR TEAM</h2>
-        <div
-          className="my-3 w-full px-10 py-10 md:px-20"
-          style={{
-            background:
-              'linear-gradient(45.84deg, #131A14 1.97%, #253426 97.02%)'
-          }}
-        >
-          <div className="relative min-h-[986px] w-full">
-            <iframe
-              src="https://link.apisystem.tech/widget/form/Tc8lIuQPRf7anHOVLHW4"
-              style={{
-                width: '100%',
-                height: '100%',
-                border: 'none',
-                borderRadius: '3px'
-              }}
-              id="inline-Tc8lIuQPRf7anHOVLHW4"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="VConekt Website"
-              data-height="986"
-              data-layout-iframe-id="inline-Tc8lIuQPRf7anHOVLHW4"
-              data-form-id="Tc8lIuQPRf7anHOVLHW4"
-              title="VConekt Website"
-              className="absolute inset-0"
-            />
+        <div className="mx-auto w-full max-w-4xl">
+          <h2 className="heading mb-6">GET IN TOUCH WITH US</h2>
+          <div
+            className="w-full px-5 py-8 md:px-10"
+            style={{
+              background:
+                'linear-gradient(45.84deg, #131A14 1.97%, #253426 97.02%)',
+              borderRadius: '12px'
+            }}
+          >
+            <div className="relative min-h-[700px] w-full">
+              <iframe
+                src="https://link.apisystem.tech/widget/form/Tc8lIuQPRf7anHOVLHW4"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  borderRadius: '3px',
+                  background: 'transparent',
+                  backgroundColor: 'transparent'
+                }}
+                id="inline-Tc8lIuQPRf7anHOVLHW4"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="VConekt Website"
+                data-height="700"
+                data-layout-iframe-id="inline-Tc8lIuQPRf7anHOVLHW4"
+                data-form-id="Tc8lIuQPRf7anHOVLHW4"
+                title="VConekt Website"
+                className="absolute inset-0"
+              />
+            </div>
           </div>
         </div>
       </div>
