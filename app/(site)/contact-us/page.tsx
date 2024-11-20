@@ -43,6 +43,7 @@ export default function ContactUsPage() {
     }
     setIsLoading(false);
   };
+
   useGSAP(() => {
     if (!isInView) return;
     const tl = gsap.timeline({});
@@ -52,6 +53,7 @@ export default function ContactUsPage() {
       { opacity: 1, x: 0 }
     ).fromTo('#talk_text', { opacity: 0, x: 30 }, { opacity: 1, x: 0 });
   }, [isInView]);
+
   return (
     <>
       <div className="relative z-[2] flex flex-col items-center justify-center gap-4  pb-24 pt-36 text-white">
@@ -106,11 +108,7 @@ export default function ContactUsPage() {
         </div>
       </div>
       <div className="responsive relative z-[2]">
-        <h2 className="heading">
-          Contact us today to discuss your project and explore how our{' '}
-          <span className="text-primary"> innovative digital solutions</span>{' '}
-          can help you achieve your goals.
-        </h2>
+        <h2 className="heading">GET IN TOUCH WITH OUR TEAM</h2>
         <div
           className="my-3 w-full px-10 py-10 md:px-20"
           style={{
@@ -120,7 +118,7 @@ export default function ContactUsPage() {
         >
           <div className="relative min-h-[986px] w-full">
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/Tc8lIuQPRf7anHOVLHW4"
+              src="https://link.apisystem.tech/widget/form/Tc8lIuQPRf7anHOVLHW4"
               style={{
                 width: '100%',
                 height: '100%',
@@ -144,17 +142,6 @@ export default function ContactUsPage() {
             />
           </div>
         </div>
-      </div>
-      <div className="responsive relative z-[2]">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3524.9391694766897!2d-82.64400792396726!3d27.90416997619675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2e21b8b333333%3A0x7c7f4a5f8e4b4b4b!2s7901%204th%20St%20N%2C%20St.%20Petersburg%2C%20FL%2033702!5e0!3m2!1sen!2sus!4v1652345678901!5m2!1sen!2sus"
-          width="100%"
-          height="450"
-          style={{ border: 0 }}
-          allowFullScreen={true}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
       </div>
       <Script src="https://link.msgsndr.com/js/form_embed.js" />
     </>
