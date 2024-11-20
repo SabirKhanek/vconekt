@@ -9,6 +9,7 @@ import { FaSpinner } from 'react-icons/fa';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useEffect } from 'react';
+import Script from 'next/script';
 
 export default function ContactUsPage() {
   const ref = useRef<HTMLDivElement>(null);
@@ -117,80 +118,31 @@ export default function ContactUsPage() {
               'linear-gradient(45.84deg, #131A14 1.97%, #253426 97.02%)'
           }}
         >
-          <form onSubmit={onSubmit}>
-            <div className="flex flex-wrap items-center gap-4 font-orbit">
-              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
-                <label htmlFor="">What's your name?</label>
-                <input
-                  placeholder="your name?"
-                  type="text"
-                  name="name"
-                  style={{ background: 'rgba(19, 26, 20, 1)' }}
-                  className="bg-black p-2 text-white outline-none"
-                />
-              </div>
-              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
-                <label htmlFor="">What's your email?</label>
-                <input
-                  placeholder="Your Email"
-                  type="text"
-                  name="email"
-                  style={{ background: 'rgba(19, 26, 20, 1)' }}
-                  className="bg-black p-2 text-white outline-none"
-                />
-              </div>
-            </div>
-            <div className="my-3 flex flex-wrap items-center gap-4 font-orbit">
-              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
-                <label htmlFor="">What's your phone number?</label>
-                <input
-                  placeholder="phone number"
-                  type="text"
-                  name="phone"
-                  style={{ background: 'rgba(19, 26, 20, 1)' }}
-                  className="bg-black p-2 text-white outline-none"
-                />
-              </div>
-              <div className="flex min-w-[250px] flex-1 flex-col gap-1">
-                <label htmlFor="">Your Country?</label>
-                <input
-                  type="text"
-                  placeholder="country"
-                  name="country"
-                  style={{ background: 'rgba(19, 26, 20, 1)' }}
-                  className="bg-black p-2 text-white outline-none"
-                />
-              </div>
-            </div>
-            <div className="flex  flex-1 flex-col gap-1">
-              <label htmlFor="">Your project is about?</label>
-              <textarea
-                name="project_details"
-                id=""
-                rows={7}
-                className="resize-none bg-black p-2 text-white outline-none"
-                style={{ background: 'rgba(19, 26, 20, 1)' }}
-              />
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <Button type="submit">Submit</Button>
-              {isLoading && <FaSpinner className="animate-spin"></FaSpinner>}
-              <p className="text-sm">
-                OR YOU CAN EMAIL US HERE:{' '}
-                <a
-                  href="mailto:Info@vconekt.com"
-                  className="cursor-pointer hover:underline"
-                >
-                  Info@vconekt.com
-                </a>
-              </p>
-            </div>
-          </form>
-          {thankYouMessage && (
-            <p className="mt-4 rounded border border-primary bg-[#131A14] p-3 font-orbit text-lg font-semibold text-primary transition-opacity duration-500 ease-in-out">
-              {thankYouMessage}
-            </p>
-          )}
+          <div className="relative min-h-[986px] w-full">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/Tc8lIuQPRf7anHOVLHW4"
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                borderRadius: '3px'
+              }}
+              id="inline-Tc8lIuQPRf7anHOVLHW4"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="VConekt Website"
+              data-height="986"
+              data-layout-iframe-id="inline-Tc8lIuQPRf7anHOVLHW4"
+              data-form-id="Tc8lIuQPRf7anHOVLHW4"
+              title="VConekt Website"
+              className="absolute inset-0"
+            />
+          </div>
         </div>
       </div>
       <div className="responsive relative z-[2]">
@@ -204,6 +156,7 @@ export default function ContactUsPage() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
+      <Script src="https://link.msgsndr.com/js/form_embed.js" />
     </>
   );
 }
